@@ -1,0 +1,726 @@
+Last login: Sat Dec 21 13:20:34 on ttys001
+tanay@Tanays-MBP ~ % cd Documents/Programmin/Projects/chinese-ocr
+cd: no such file or directory: Documents/Programmin/Projects/chinese-ocr
+tanay@Tanays-MBP ~ % cd Documents
+tanay@Tanays-MBP Documents % cd Programming/Projects/chinese-ocr
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py HWDB1.1trn_gnt/ HWDB1.1tst_gnt/
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 7, in <module>
+    import utils
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 6, in <module>
+    import skimage.exposure
+ModuleNotFoundError: No module named 'skimage'
+tanay@Tanays-MBP chinese-ocr % python3 i-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+/usr/local/Cellar/python/3.7.5/Frameworks/Python.framework/Versions/3.7/Resources/Python.app/Contents/MacOS/Python: can't open file 'i-gnt_to_dataset.py': [Errno 2] No such file or directory
+tanay@Tanays-MBP chinese-ocr % python3 i-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_datasetp.y /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python: can't open file '1-gnt_to_datasetp.y': [Errno 2] No such file or directory
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 5, in <module>
+    import h5py
+ImportError: No module named h5py
+tanay@Tanays-MBP chinese-ocr % cd
+tanay@Tanays-MBP ~ % pip3 install h5py
+Requirement already satisfied: h5py in ./Library/Python/3.7/lib/python/site-packages (2.9.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+Requirement already satisfied: numpy>=1.7 in ./Library/Python/3.7/lib/python/site-packages (from h5py) (1.16.4)
+tanay@Tanays-MBP ~ % pip install h5py
+Requirement already satisfied: h5py in ./Library/Python/3.7/lib/python/site-packages (2.9.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+Requirement already satisfied: numpy>=1.7 in ./Library/Python/3.7/lib/python/site-packages (from h5py) (1.16.4)
+tanay@Tanays-MBP ~ % cd Documents                                               
+tanay@Tanays-MBP Documents % cd Programming/Projects/chinese-ocr
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 5, in <module>
+    import h5py
+ImportError: No module named h5py
+tanay@Tanays-MBP chinese-ocr % nano 1-gnt_to_dataset.py
+tanay@Tanays-MBP chinese-ocr % cd
+tanay@Tanays-MBP ~ % pip3 install keras
+Requirement already satisfied: keras in /usr/local/lib/python3.7/site-packages (2.3.1)
+Requirement already satisfied: six>=1.9.0 in /usr/local/lib/python3.7/site-packages (from keras) (1.13.0)
+Requirement already satisfied: scipy>=0.14 in /usr/local/lib/python3.7/site-packages (from keras) (1.3.1)
+Requirement already satisfied: keras-preprocessing>=1.0.5 in ./Library/Python/3.7/lib/python/site-packages (from keras) (1.1.0)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.7/site-packages (from keras) (5.1.2)
+Requirement already satisfied: numpy>=1.9.1 in ./Library/Python/3.7/lib/python/site-packages (from keras) (1.16.4)
+Requirement already satisfied: keras-applications>=1.0.6 in ./Library/Python/3.7/lib/python/site-packages (from keras) (1.0.8)
+Requirement already satisfied: h5py in ./Library/Python/3.7/lib/python/site-packages (from keras) (2.9.0)
+tanay@Tanays-MBP ~ % pip install keras
+Requirement already satisfied: keras in /usr/local/lib/python3.7/site-packages (2.3.1)
+Requirement already satisfied: numpy>=1.9.1 in ./Library/Python/3.7/lib/python/site-packages (from keras) (1.16.4)
+Requirement already satisfied: scipy>=0.14 in /usr/local/lib/python3.7/site-packages (from keras) (1.3.1)
+Requirement already satisfied: h5py in ./Library/Python/3.7/lib/python/site-packages (from keras) (2.9.0)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.7/site-packages (from keras) (5.1.2)
+Requirement already satisfied: keras-applications>=1.0.6 in ./Library/Python/3.7/lib/python/site-packages (from keras) (1.0.8)
+Requirement already satisfied: keras-preprocessing>=1.0.5 in ./Library/Python/3.7/lib/python/site-packages (from keras) (1.1.0)
+Requirement already satisfied: six>=1.9.0 in /usr/local/lib/python3.7/site-packages (from keras) (1.13.0)
+tanay@Tanays-MBP ~ % pip3
+
+Usage:   
+  pip3 <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --isolated                  Run pip in an isolated mode, ignoring environment
+                              variables and user configuration.
+  -v, --verbose               Give more output. Option is additive, and can be
+                              used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be
+                              used up to 3 times (corresponding to WARNING,
+                              ERROR, and CRITICAL logging levels).
+  --log <path>                Path to a verbose appending log.
+  --proxy <proxy>             Specify a proxy in the form
+                              [user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should
+                              attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists:
+                              (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even
+                              though it does not have valid or any HTTPS.
+  --cert <path>               Path to alternate CA bundle.
+  --client-cert <path>        Path to SSL client certificate, a single file
+                              containing the private key and the certificate in
+                              PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether
+                              a new version of pip is available for download.
+                              Implied with --no-index.
+  --no-color                  Suppress colored output
+tanay@Tanays-MBP ~ % pip3 install --upgrade all
+ERROR: Could not find a version that satisfies the requirement all (from versions: none)
+ERROR: No matching distribution found for all
+tanay@Tanays-MBP ~ % pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+Collecting absl-py
+  Downloading https://files.pythonhosted.org/packages/1a/53/9243c600e047bd4c3df9e69cfabc1e8004a82cac2e0c484580a78a94ba2a/absl-py-0.9.0.tar.gz (104kB)
+     |████████████████████████████████| 112kB 2.3MB/s 
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from absl-py) (1.13.0)
+Building wheels for collected packages: absl-py
+  Building wheel for absl-py (setup.py) ... done
+  Created wheel for absl-py: filename=absl_py-0.9.0-cp37-none-any.whl size=121932 sha256=6030bbcbc91b8dd4dcb91b14c9341babe885fc5d5c82aa083c7a6e50b7d494e2
+  Stored in directory: /Users/tanay/Library/Caches/pip/wheels/8e/28/49/fad4e7f0b9a1227708cbbee4487ac8558a7334849cb81c813d
+Successfully built absl-py
+ERROR: tensorboard 2.0.1 has requirement grpcio>=1.24.3, but you'll have grpcio 1.21.1 which is incompatible.
+Installing collected packages: absl-py
+  Found existing installation: absl-py 0.7.1
+    Uninstalling absl-py-0.7.1:
+      Successfully uninstalled absl-py-0.7.1
+Successfully installed absl-py-0.9.0
+Collecting astor
+  Downloading https://files.pythonhosted.org/packages/c3/88/97eef84f48fa04fbd6750e62dcceafba6c63c81b7ac1420856c8dcc0a3f9/astor-0.8.1-py2.py3-none-any.whl
+Installing collected packages: astor
+  Found existing installation: astor 0.8.0
+    Uninstalling astor-0.8.0:
+      Successfully uninstalled astor-0.8.0
+Successfully installed astor-0.8.1
+Collecting cachetools
+  Downloading https://files.pythonhosted.org/packages/08/6a/abf83cb951617793fd49c98cb9456860f5df66ff89883c8660aa0672d425/cachetools-4.0.0-py3-none-any.whl
+ERROR: google-auth 1.7.0 has requirement cachetools<3.2,>=2.0.0, but you'll have cachetools 4.0.0 which is incompatible.
+Installing collected packages: cachetools
+  Found existing installation: cachetools 3.1.1
+    Uninstalling cachetools-3.1.1:
+      Successfully uninstalled cachetools-3.1.1
+Successfully installed cachetools-4.0.0
+Collecting certifi
+  Downloading https://files.pythonhosted.org/packages/b9/63/df50cac98ea0d5b006c55a399c3bf1db9da7b5a24de7890bc9cfd5dd9e99/certifi-2019.11.28-py2.py3-none-any.whl (156kB)
+     |████████████████████████████████| 163kB 2.6MB/s 
+Installing collected packages: certifi
+  Found existing installation: certifi 2019.9.11
+    Uninstalling certifi-2019.9.11:
+      Successfully uninstalled certifi-2019.9.11
+Successfully installed certifi-2019.11.28
+Collecting gast
+  Downloading https://files.pythonhosted.org/packages/1f/04/4e36c33f8eb5c5b6c622a1f4859352a6acca7ab387257d4b3c191d23ec1d/gast-0.3.2.tar.gz
+Building wheels for collected packages: gast
+  Building wheel for gast (setup.py) ... done
+  Created wheel for gast: filename=gast-0.3.2-cp37-none-any.whl size=9678 sha256=d8a116ced763d61b2a8db376d4e2cdb46f73f41caeca90c2308656f920409960
+  Stored in directory: /Users/tanay/Library/Caches/pip/wheels/59/38/c6/234dc39b4f6951a0768fbc02d5b7207137a5b1d9094f0d54bf
+Successfully built gast
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+Installing collected packages: gast
+  Found existing installation: gast 0.2.2
+    Uninstalling gast-0.2.2:
+      Successfully uninstalled gast-0.2.2
+Successfully installed gast-0.3.2
+Collecting google-auth
+  Downloading https://files.pythonhosted.org/packages/36/f8/84b5771faec3eba9fe0c91c8c5896364a8ba08852c0dea5ad2025026dd95/google_auth-1.10.0-py2.py3-none-any.whl (76kB)
+     |████████████████████████████████| 81kB 2.1MB/s 
+Requirement already satisfied, skipping upgrade: rsa<4.1,>=3.1.4 in /usr/local/lib/python3.7/site-packages (from google-auth) (4.0)
+Requirement already satisfied, skipping upgrade: six>=1.9.0 in /usr/local/lib/python3.7/site-packages (from google-auth) (1.13.0)
+Requirement already satisfied, skipping upgrade: setuptools>=40.3.0 in /usr/local/lib/python3.7/site-packages (from google-auth) (41.6.0)
+Requirement already satisfied, skipping upgrade: cachetools<5.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from google-auth) (4.0.0)
+Requirement already satisfied, skipping upgrade: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.7/site-packages (from google-auth) (0.2.7)
+Requirement already satisfied, skipping upgrade: pyasn1>=0.1.3 in /usr/local/lib/python3.7/site-packages (from rsa<4.1,>=3.1.4->google-auth) (0.4.7)
+ERROR: tensorboard 2.0.1 has requirement grpcio>=1.24.3, but you'll have grpcio 1.21.1 which is incompatible.
+Installing collected packages: google-auth
+  Found existing installation: google-auth 1.7.0
+    Uninstalling google-auth-1.7.0:
+      Successfully uninstalled google-auth-1.7.0
+Successfully installed google-auth-1.10.0
+Collecting google-pasta
+  Downloading https://files.pythonhosted.org/packages/c3/fd/1e86bc4837cc9a3a5faf3db9b1854aa04ad35b5f381f9648fbe81a6f94e4/google_pasta-0.1.8-py3-none-any.whl (57kB)
+     |████████████████████████████████| 61kB 1.8MB/s 
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from google-pasta) (1.13.0)
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+Installing collected packages: google-pasta
+  Found existing installation: google-pasta 0.1.7
+    Uninstalling google-pasta-0.1.7:
+      Successfully uninstalled google-pasta-0.1.7
+Successfully installed google-pasta-0.1.8
+Collecting grpcio
+  Downloading https://files.pythonhosted.org/packages/df/f1/98449d2c173c6324220ab1672203ad09ac7345f023dc62eb0786ad2a0df6/grpcio-1.26.0-cp37-cp37m-macosx_10_9_x86_64.whl (2.3MB)
+     |████████████████████████████████| 2.3MB 2.6MB/s 
+Requirement already satisfied, skipping upgrade: six>=1.5.2 in /usr/local/lib/python3.7/site-packages (from grpcio) (1.13.0)
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+Installing collected packages: grpcio
+  Found existing installation: grpcio 1.21.1
+    Uninstalling grpcio-1.21.1:
+      Successfully uninstalled grpcio-1.21.1
+Successfully installed grpcio-1.26.0
+Collecting h5py
+  Downloading https://files.pythonhosted.org/packages/1a/8b/4d01ae9a9d50a0bcc7b0b9aae41785d8d9de6fa9bba04dc20b1582181d2d/h5py-2.10.0-cp37-cp37m-macosx_10_6_intel.whl (3.0MB)
+     |████████████████████████████████| 3.0MB 2.5MB/s 
+Requirement already satisfied, skipping upgrade: numpy>=1.7 in ./Library/Python/3.7/lib/python/site-packages (from h5py) (1.16.4)
+Requirement already satisfied, skipping upgrade: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+Installing collected packages: h5py
+  Found existing installation: h5py 2.9.0
+    Uninstalling h5py-2.9.0:
+      Successfully uninstalled h5py-2.9.0
+Successfully installed h5py-2.10.0
+Collecting numpy
+  Downloading https://files.pythonhosted.org/packages/f0/14/f71a89e03578084111e352f464d9f3b7f701ebbecbd1a60e89c96983ef77/numpy-1.18.0-cp37-cp37m-macosx_10_9_x86_64.whl (15.1MB)
+     |████████████████████████████████| 15.1MB 2.8MB/s 
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+Installing collected packages: numpy
+  Found existing installation: numpy 1.16.4
+    Uninstalling numpy-1.16.4:
+      Successfully uninstalled numpy-1.16.4
+Successfully installed numpy-1.18.0
+Collecting protobuf
+  Downloading https://files.pythonhosted.org/packages/2d/09/176fcab8aab35065e9f973c0ef093e8e296fb4d8d4e3ef2ed4fd2e6ff2f2/protobuf-3.11.2-cp37-cp37m-macosx_10_9_x86_64.whl (1.3MB)
+     |████████████████████████████████| 1.3MB 2.8MB/s 
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf) (41.6.0)
+Requirement already satisfied, skipping upgrade: six>=1.9 in /usr/local/lib/python3.7/site-packages (from protobuf) (1.13.0)
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+Installing collected packages: protobuf
+  Found existing installation: protobuf 3.8.0
+    Uninstalling protobuf-3.8.0:
+      Successfully uninstalled protobuf-3.8.0
+Successfully installed protobuf-3.11.2
+Collecting pyasn1
+  Downloading https://files.pythonhosted.org/packages/62/1e/a94a8d635fa3ce4cfc7f506003548d0a2447ae76fd5ca53932970fe3053f/pyasn1-0.4.8-py2.py3-none-any.whl (77kB)
+     |████████████████████████████████| 81kB 2.4MB/s 
+Installing collected packages: pyasn1
+  Found existing installation: pyasn1 0.4.7
+    Uninstalling pyasn1-0.4.7:
+      Successfully uninstalled pyasn1-0.4.7
+Successfully installed pyasn1-0.4.8
+Collecting PyYAML
+  Downloading https://files.pythonhosted.org/packages/8d/c9/e5be955a117a1ac548cdd31e37e8fd7b02ce987f9655f5c7563c656d5dcb/PyYAML-5.2.tar.gz (265kB)
+     |████████████████████████████████| 266kB 2.6MB/s 
+Building wheels for collected packages: PyYAML
+  Building wheel for PyYAML (setup.py) ... done
+  Created wheel for PyYAML: filename=PyYAML-5.2-cp37-cp37m-macosx_10_15_x86_64.whl size=44215 sha256=4c7c3ab8116dd8e3b6f1620ab696fcac14b5926bd13985746a4d3da89a03ca6f
+  Stored in directory: /Users/tanay/Library/Caches/pip/wheels/54/b7/c7/2ada654ee54483c9329871665aaf4a6056c3ce36f29cf66e67
+Successfully built PyYAML
+Installing collected packages: PyYAML
+  Found existing installation: PyYAML 5.1.2
+    Uninstalling PyYAML-5.1.2:
+      Successfully uninstalled PyYAML-5.1.2
+Successfully installed PyYAML-5.2
+Collecting scipy
+  Downloading https://files.pythonhosted.org/packages/85/7a/ae480be23b768910a9327c33517ced4623ba88dc035f9ce0206657c353a9/scipy-1.4.1-cp37-cp37m-macosx_10_6_intel.whl (28.4MB)
+     |████████████████████████████████| 28.4MB 1.7MB/s 
+Requirement already satisfied, skipping upgrade: numpy>=1.13.3 in /usr/local/lib/python3.7/site-packages (from scipy) (1.18.0)
+Installing collected packages: scipy
+  Found existing installation: scipy 1.3.1
+    Uninstalling scipy-1.3.1:
+      Successfully uninstalled scipy-1.3.1
+Successfully installed scipy-1.4.1
+Collecting setuptools
+  Downloading https://files.pythonhosted.org/packages/54/28/c45d8b54c1339f9644b87663945e54a8503cfef59cf0f65b3ff5dd17cf64/setuptools-42.0.2-py2.py3-none-any.whl (583kB)
+     |████████████████████████████████| 583kB 2.6MB/s 
+Installing collected packages: setuptools
+  Found existing installation: setuptools 41.6.0
+    Uninstalling setuptools-41.6.0:
+      Successfully uninstalled setuptools-41.6.0
+Successfully installed setuptools-42.0.2
+Collecting tensorboard
+  Downloading https://files.pythonhosted.org/packages/40/23/53ffe290341cd0855d595b0a2e7485932f473798af173bbe3a584b99bb06/tensorboard-2.1.0-py3-none-any.whl (3.8MB)
+     |████████████████████████████████| 3.8MB 2.6MB/s 
+Requirement already satisfied, skipping upgrade: setuptools>=41.0.0 in /usr/local/lib/python3.7/site-packages (from tensorboard) (42.0.2)
+Requirement already satisfied, skipping upgrade: google-auth-oauthlib<0.5,>=0.4.1 in /usr/local/lib/python3.7/site-packages (from tensorboard) (0.4.1)
+Requirement already satisfied, skipping upgrade: requests<3,>=2.21.0 in /usr/local/lib/python3.7/site-packages (from tensorboard) (2.22.0)
+Requirement already satisfied, skipping upgrade: werkzeug>=0.11.15 in ./Library/Python/3.7/lib/python/site-packages (from tensorboard) (0.15.4)
+Requirement already satisfied, skipping upgrade: wheel>=0.26; python_version >= "3" in /usr/local/lib/python3.7/site-packages (from tensorboard) (0.33.6)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.0 in /usr/local/lib/python3.7/site-packages (from tensorboard) (3.11.2)
+Requirement already satisfied, skipping upgrade: absl-py>=0.4 in /usr/local/lib/python3.7/site-packages (from tensorboard) (0.9.0)
+Requirement already satisfied, skipping upgrade: numpy>=1.12.0 in /usr/local/lib/python3.7/site-packages (from tensorboard) (1.18.0)
+Requirement already satisfied, skipping upgrade: google-auth<2,>=1.6.3 in /usr/local/lib/python3.7/site-packages (from tensorboard) (1.10.0)
+Requirement already satisfied, skipping upgrade: six>=1.10.0 in /usr/local/lib/python3.7/site-packages (from tensorboard) (1.13.0)
+Requirement already satisfied, skipping upgrade: grpcio>=1.24.3 in /usr/local/lib/python3.7/site-packages (from tensorboard) (1.26.0)
+Requirement already satisfied, skipping upgrade: markdown>=2.6.8 in ./Library/Python/3.7/lib/python/site-packages (from tensorboard) (3.1.1)
+Requirement already satisfied, skipping upgrade: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.7/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard) (1.3.0)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard) (2019.11.28)
+Requirement already satisfied, skipping upgrade: idna<2.9,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard) (2.8)
+Requirement already satisfied, skipping upgrade: chardet<3.1.0,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard) (3.0.4)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard) (1.25.6)
+Requirement already satisfied, skipping upgrade: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard) (0.2.7)
+Requirement already satisfied, skipping upgrade: rsa<4.1,>=3.1.4 in /usr/local/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard) (4.0)
+Requirement already satisfied, skipping upgrade: cachetools<5.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard) (4.0.0)
+Requirement already satisfied, skipping upgrade: oauthlib>=3.0.0 in /usr/local/lib/python3.7/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard) (3.1.0)
+Requirement already satisfied, skipping upgrade: pyasn1<0.5.0,>=0.4.6 in /usr/local/lib/python3.7/site-packages (from pyasn1-modules>=0.2.1->google-auth<2,>=1.6.3->tensorboard) (0.4.8)
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+ERROR: tensorflow 2.0.0 has requirement tensorboard<2.1.0,>=2.0.0, but you'll have tensorboard 2.1.0 which is incompatible.
+Installing collected packages: tensorboard
+  Found existing installation: tensorboard 2.0.1
+    Uninstalling tensorboard-2.0.1:
+      Successfully uninstalled tensorboard-2.0.1
+Successfully installed tensorboard-2.1.0
+Collecting tensorflow-estimator
+  Downloading https://files.pythonhosted.org/packages/18/90/b77c328a1304437ab1310b463e533fa7689f4bfc41549593056d812fab8e/tensorflow_estimator-2.1.0-py2.py3-none-any.whl (448kB)
+     |████████████████████████████████| 450kB 2.6MB/s 
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+ERROR: tensorflow 2.0.0 has requirement tensorboard<2.1.0,>=2.0.0, but you'll have tensorboard 2.1.0 which is incompatible.
+ERROR: tensorflow 2.0.0 has requirement tensorflow-estimator<2.1.0,>=2.0.0, but you'll have tensorflow-estimator 2.1.0 which is incompatible.
+Installing collected packages: tensorflow-estimator
+  Found existing installation: tensorflow-estimator 2.0.1
+    Uninstalling tensorflow-estimator-2.0.1:
+      Successfully uninstalled tensorflow-estimator-2.0.1
+Successfully installed tensorflow-estimator-2.1.0
+Collecting urllib3
+  Downloading https://files.pythonhosted.org/packages/b4/40/a9837291310ee1ccc242ceb6ebfd9eb21539649f193a7c8c86ba15b98539/urllib3-1.25.7-py2.py3-none-any.whl (125kB)
+     |████████████████████████████████| 133kB 2.5MB/s 
+Installing collected packages: urllib3
+  Found existing installation: urllib3 1.25.6
+    Uninstalling urllib3-1.25.6:
+      Successfully uninstalled urllib3-1.25.6
+Successfully installed urllib3-1.25.7
+Collecting Werkzeug
+  Downloading https://files.pythonhosted.org/packages/ce/42/3aeda98f96e85fd26180534d36570e4d18108d62ae36f87694b476b83d6f/Werkzeug-0.16.0-py2.py3-none-any.whl (327kB)
+     |████████████████████████████████| 327kB 2.7MB/s 
+Installing collected packages: Werkzeug
+  Found existing installation: Werkzeug 0.15.4
+    Uninstalling Werkzeug-0.15.4:
+      Successfully uninstalled Werkzeug-0.15.4
+Successfully installed Werkzeug-0.16.0
+tanay@Tanays-MBP ~ % pip install -U
+ERROR: You must give at least one requirement to install (see "pip help install")
+tanay@Tanays-MBP ~ % cd Documents/Programming/Projects/chinese-ocr
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 5, in <module>
+    import h5py
+ImportError: No module named h5py
+tanay@Tanays-MBP chinese-ocr % pip3 install h5py
+Requirement already satisfied: h5py in /usr/local/lib/python3.7/site-packages (2.10.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+Requirement already satisfied: numpy>=1.7 in /usr/local/lib/python3.7/site-packages (from h5py) (1.18.0)
+tanay@Tanays-MBP chinese-ocr % pip3 uninstall h5py
+Uninstalling h5py-2.10.0:
+  Would remove:
+    /usr/local/lib/python3.7/site-packages/h5py-2.10.0.dist-info/*
+    /usr/local/lib/python3.7/site-packages/h5py/*
+Proceed (y/n)? y
+  Successfully uninstalled h5py-2.10.0
+tanay@Tanays-MBP chinese-ocr % pip3 install h5py
+Collecting h5py
+  Using cached https://files.pythonhosted.org/packages/1a/8b/4d01ae9a9d50a0bcc7b0b9aae41785d8d9de6fa9bba04dc20b1582181d2d/h5py-2.10.0-cp37-cp37m-macosx_10_6_intel.whl
+Requirement already satisfied: numpy>=1.7 in /usr/local/lib/python3.7/site-packages (from h5py) (1.18.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+ERROR: tensorflow 2.0.0 has requirement gast==0.2.2, but you'll have gast 0.3.2 which is incompatible.
+ERROR: tensorflow 2.0.0 has requirement tensorboard<2.1.0,>=2.0.0, but you'll have tensorboard 2.1.0 which is incompatible.
+ERROR: tensorflow 2.0.0 has requirement tensorflow-estimator<2.1.0,>=2.0.0, but you'll have tensorflow-estimator 2.1.0 which is incompatible.
+Installing collected packages: h5py
+Successfully installed h5py-2.10.0
+tanay@Tanays-MBP chinese-ocr % pip3 install --upgrade tensorflow
+Requirement already up-to-date: tensorflow in /usr/local/lib/python3.7/site-packages (2.0.0)
+Requirement already satisfied, skipping upgrade: protobuf>=3.6.1 in /usr/local/lib/python3.7/site-packages (from tensorflow) (3.11.2)
+Requirement already satisfied, skipping upgrade: opt-einsum>=2.3.2 in /usr/local/lib/python3.7/site-packages (from tensorflow) (3.1.0)
+Requirement already satisfied, skipping upgrade: keras-applications>=1.0.8 in /Users/tanay/Library/Python/3.7/lib/python/site-packages (from tensorflow) (1.0.8)
+Requirement already satisfied, skipping upgrade: six>=1.10.0 in /usr/local/lib/python3.7/site-packages (from tensorflow) (1.13.0)
+Collecting tensorflow-estimator<2.1.0,>=2.0.0
+  Using cached https://files.pythonhosted.org/packages/fc/08/8b927337b7019c374719145d1dceba21a8bb909b93b1ad6f8fb7d22c1ca1/tensorflow_estimator-2.0.1-py2.py3-none-any.whl
+Requirement already satisfied, skipping upgrade: google-pasta>=0.1.6 in /usr/local/lib/python3.7/site-packages (from tensorflow) (0.1.8)
+Requirement already satisfied, skipping upgrade: grpcio>=1.8.6 in /usr/local/lib/python3.7/site-packages (from tensorflow) (1.26.0)
+Requirement already satisfied, skipping upgrade: keras-preprocessing>=1.0.5 in /Users/tanay/Library/Python/3.7/lib/python/site-packages (from tensorflow) (1.1.0)
+Requirement already satisfied, skipping upgrade: wrapt>=1.11.1 in /Users/tanay/Library/Python/3.7/lib/python/site-packages (from tensorflow) (1.11.2)
+Requirement already satisfied, skipping upgrade: numpy<2.0,>=1.16.0 in /usr/local/lib/python3.7/site-packages (from tensorflow) (1.18.0)
+Requirement already satisfied, skipping upgrade: astor>=0.6.0 in /usr/local/lib/python3.7/site-packages (from tensorflow) (0.8.1)
+Requirement already satisfied, skipping upgrade: wheel>=0.26 in /usr/local/lib/python3.7/site-packages (from tensorflow) (0.33.6)
+Requirement already satisfied, skipping upgrade: termcolor>=1.1.0 in /Users/tanay/Library/Python/3.7/lib/python/site-packages (from tensorflow) (1.1.0)
+Requirement already satisfied, skipping upgrade: absl-py>=0.7.0 in /usr/local/lib/python3.7/site-packages (from tensorflow) (0.9.0)
+Processing /Users/tanay/Library/Caches/pip/wheels/5c/2e/7e/a1d4d4fcebe6c381f378ce7743a3ced3699feb89bcfbdadadd/gast-0.2.2-cp37-none-any.whl
+Collecting tensorboard<2.1.0,>=2.0.0
+  Downloading https://files.pythonhosted.org/packages/76/54/99b9d5d52d5cb732f099baaaf7740403e83fe6b0cedde940fabd2b13d75a/tensorboard-2.0.2-py3-none-any.whl (3.8MB)
+     |████████████████████████████████| 3.8MB 2.3MB/s 
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.7/site-packages (from protobuf>=3.6.1->tensorflow) (42.0.2)
+Requirement already satisfied, skipping upgrade: h5py in /usr/local/lib/python3.7/site-packages (from keras-applications>=1.0.8->tensorflow) (2.10.0)
+Requirement already satisfied, skipping upgrade: werkzeug>=0.11.15 in /usr/local/lib/python3.7/site-packages (from tensorboard<2.1.0,>=2.0.0->tensorflow) (0.16.0)
+Requirement already satisfied, skipping upgrade: requests<3,>=2.21.0 in /usr/local/lib/python3.7/site-packages (from tensorboard<2.1.0,>=2.0.0->tensorflow) (2.22.0)
+Requirement already satisfied, skipping upgrade: markdown>=2.6.8 in /Users/tanay/Library/Python/3.7/lib/python/site-packages (from tensorboard<2.1.0,>=2.0.0->tensorflow) (3.1.1)
+Requirement already satisfied, skipping upgrade: google-auth<2,>=1.6.3 in /usr/local/lib/python3.7/site-packages (from tensorboard<2.1.0,>=2.0.0->tensorflow) (1.10.0)
+Requirement already satisfied, skipping upgrade: google-auth-oauthlib<0.5,>=0.4.1 in /usr/local/lib/python3.7/site-packages (from tensorboard<2.1.0,>=2.0.0->tensorflow) (0.4.1)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.1.0,>=2.0.0->tensorflow) (2019.11.28)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.1.0,>=2.0.0->tensorflow) (1.25.7)
+Requirement already satisfied, skipping upgrade: idna<2.9,>=2.5 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.1.0,>=2.0.0->tensorflow) (2.8)
+Requirement already satisfied, skipping upgrade: chardet<3.1.0,>=3.0.2 in /usr/local/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard<2.1.0,>=2.0.0->tensorflow) (3.0.4)
+Requirement already satisfied, skipping upgrade: rsa<4.1,>=3.1.4 in /usr/local/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.1.0,>=2.0.0->tensorflow) (4.0)
+Requirement already satisfied, skipping upgrade: cachetools<5.0,>=2.0.0 in /usr/local/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.1.0,>=2.0.0->tensorflow) (4.0.0)
+Requirement already satisfied, skipping upgrade: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.7/site-packages (from google-auth<2,>=1.6.3->tensorboard<2.1.0,>=2.0.0->tensorflow) (0.2.7)
+Requirement already satisfied, skipping upgrade: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.7/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.1.0,>=2.0.0->tensorflow) (1.3.0)
+Requirement already satisfied, skipping upgrade: pyasn1>=0.1.3 in /usr/local/lib/python3.7/site-packages (from rsa<4.1,>=3.1.4->google-auth<2,>=1.6.3->tensorboard<2.1.0,>=2.0.0->tensorflow) (0.4.8)
+Requirement already satisfied, skipping upgrade: oauthlib>=3.0.0 in /usr/local/lib/python3.7/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.1.0,>=2.0.0->tensorflow) (3.1.0)
+Installing collected packages: tensorflow-estimator, gast, tensorboard
+  Found existing installation: tensorflow-estimator 2.1.0
+    Uninstalling tensorflow-estimator-2.1.0:
+      Successfully uninstalled tensorflow-estimator-2.1.0
+  Found existing installation: gast 0.3.2
+    Uninstalling gast-0.3.2:
+      Successfully uninstalled gast-0.3.2
+  Found existing installation: tensorboard 2.1.0
+    Uninstalling tensorboard-2.1.0:
+      Successfully uninstalled tensorboard-2.1.0
+Successfully installed gast-0.2.2 tensorboard-2.0.2 tensorflow-estimator-2.0.1
+tanay@Tanays-MBP chinese-ocr % pip3 install h5py              
+Requirement already satisfied: h5py in /usr/local/lib/python3.7/site-packages (2.10.0)
+Requirement already satisfied: numpy>=1.7 in /usr/local/lib/python3.7/site-packages (from h5py) (1.18.0)
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 5, in <module>
+    import h5py
+ImportError: No module named h5py
+tanay@Tanays-MBP chinese-ocr % cd
+tanay@Tanays-MBP ~ % pip3 uninstall h5py
+Uninstalling h5py-2.10.0:
+  Would remove:
+    /usr/local/lib/python3.7/site-packages/h5py-2.10.0.dist-info/*
+    /usr/local/lib/python3.7/site-packages/h5py/*
+Proceed (y/n)? y
+  Successfully uninstalled h5py-2.10.0
+tanay@Tanays-MBP ~ % pip uninstall h5py
+WARNING: Skipping h5py as it is not installed.
+tanay@Tanays-MBP ~ % pip3 install h5py
+Collecting h5py
+  Using cached https://files.pythonhosted.org/packages/1a/8b/4d01ae9a9d50a0bcc7b0b9aae41785d8d9de6fa9bba04dc20b1582181d2d/h5py-2.10.0-cp37-cp37m-macosx_10_6_intel.whl
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from h5py) (1.13.0)
+Requirement already satisfied: numpy>=1.7 in /usr/local/lib/python3.7/site-packages (from h5py) (1.18.0)
+Installing collected packages: h5py
+Successfully installed h5py-2.10.0
+tanay@Tanays-MBP ~ % pip3 list
+Package              Version   
+-------------------- ----------
+absl-py              0.9.0     
+astor                0.8.1     
+cachetools           4.0.0     
+certifi              2019.11.28
+chardet              3.0.4     
+gast                 0.2.2     
+google-auth          1.10.0    
+google-auth-oauthlib 0.4.1     
+google-pasta         0.1.8     
+grpcio               1.26.0    
+h5py                 2.10.0    
+idna                 2.8       
+Keras                2.3.1     
+Keras-Applications   1.0.8     
+Keras-Preprocessing  1.1.0     
+Markdown             3.1.1     
+numpy                1.18.0    
+oauthlib             3.1.0     
+opt-einsum           3.1.0     
+Pillow               6.2.1     
+pip                  19.3.1    
+protobuf             3.11.2    
+pyasn1               0.4.8     
+pyasn1-modules       0.2.7     
+Pycasia              0.2       
+PyYAML               5.2       
+requests             2.22.0    
+requests-oauthlib    1.3.0     
+rsa                  4.0       
+scipy                1.4.1     
+setuptools           42.0.2    
+six                  1.13.0    
+tensorboard          2.0.2     
+tensorflow           2.0.0     
+tensorflow-estimator 2.0.1     
+termcolor            1.1.0     
+tqdm                 4.41.0    
+urllib3              1.25.7    
+utils                0.9.0     
+Werkzeug             0.16.0    
+wheel                0.33.6    
+wrapt                1.11.2    
+tanay@Tanays-MBP ~ % echo "hi"
+hi
+tanay@Tanays-MBP ~ % clear 
+
+tanay@Tanays-MBP ~ % cd /Users/tanay/Documents/Programming/Projects/chinese-ocr 
+tanay@Tanays-MBP chinese-ocr % ls
+1-gnt_to_dataset.py	HWDB1.1trn_gnt		__pycache__
+HWDB1.1.hdf5		HWDB1.1tst_gnt		utils.py
+tanay@Tanays-MBP chinese-ocr % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tanay@Tanays-MBP chinese-ocr % /Users/tanay/Documents/Programming/Projects/chinese-ocr/1-gnt_to_dataset.py
+zsh: permission denied: /Users/tanay/Documents/Programming/Projects/chinese-ocr/1-gnt_to_dataset.py
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_dataset.py
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 5, in <module>
+    import h5py
+ImportError: No module named h5py
+tanay@Tanays-MBP chinese-ocr % sudo apt-get install libhdf5
+Password:
+sudo: apt-get: command not found
+tanay@Tanays-MBP chinese-ocr % conda
+zsh: command not found: conda
+tanay@Tanays-MBP chinese-ocr %     
+tanay@Tanays-MBP chinese-ocr % python 1-gnt_to_dataset.py  
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 5, in <module>
+    import h5py
+ImportError: No module named h5py
+tanay@Tanays-MBP chinese-ocr % cd
+tanay@Tanays-MBP ~ % cd /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt
+tanay@Tanays-MBP HWDB1.1trn_gnt % cd ..
+tanay@Tanays-MBP chinese-ocr % ls
+1-gnt_to_dataset.py	HWDB1.1trn_gnt		__pycache__
+HWDB1.1.hdf5		HWDB1.1tst_gnt		utils.py
+tanay@Tanays-MBP chinese-ocr % clear
+
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py 
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 7, in <module>
+    import utils
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 6, in <module>
+    import skimage.exposure
+ModuleNotFoundError: No module named 'skimage'
+tanay@Tanays-MBP chinese-ocr % cd
+tanay@Tanays-MBP ~ % pip3 install skimage
+Collecting skimage
+  Downloading https://files.pythonhosted.org/packages/3b/ee/edbfa69ba7b7d9726e634bfbeefd04b5a1764e9e74867ec916113eeaf4a1/skimage-0.0.tar.gz
+    ERROR: Command errored out with exit status 1:
+     command: /usr/local/opt/python/bin/python3.7 -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/private/var/folders/06/jjy80d3x7f3c_9fvq99m20p80000gn/T/pip-install-0nt6hs0c/skimage/setup.py'"'"'; __file__='"'"'/private/var/folders/06/jjy80d3x7f3c_9fvq99m20p80000gn/T/pip-install-0nt6hs0c/skimage/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /private/var/folders/06/jjy80d3x7f3c_9fvq99m20p80000gn/T/pip-install-0nt6hs0c/skimage/pip-egg-info
+         cwd: /private/var/folders/06/jjy80d3x7f3c_9fvq99m20p80000gn/T/pip-install-0nt6hs0c/skimage/
+    Complete output (3 lines):
+    
+    *** Please install the `scikit-image` package (instead of `skimage`) ***
+    
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+tanay@Tanays-MBP ~ % pip3 install scikit-image
+Collecting scikit-image
+  Downloading https://files.pythonhosted.org/packages/f7/c5/d2625858ffcc0b5a86557200224be9f1f22a71e5234563d218b6153fb635/scikit_image-0.16.2-cp37-cp37m-macosx_10_6_intel.whl (30.3MB)
+     |████████████████████████████████| 30.3MB 1.5MB/s 
+Collecting matplotlib!=3.0.0,>=2.0.0
+  Downloading https://files.pythonhosted.org/packages/a0/76/68bc3374ffa2d8d3dfd440fe94158fa8aa2628670fa38bdaf186c9af0d94/matplotlib-3.1.2-cp37-cp37m-macosx_10_9_x86_64.whl (13.2MB)
+     |████████████████████████████████| 13.2MB 30.9MB/s 
+Collecting PyWavelets>=0.4.0
+  Downloading https://files.pythonhosted.org/packages/61/e7/b35d14bf5416e771764dd6e35b522cb2c02de02cdac493e509751b0be18f/PyWavelets-1.1.1-cp37-cp37m-macosx_10_9_x86_64.whl (4.3MB)
+     |████████████████████████████████| 4.3MB 11.6MB/s 
+Requirement already satisfied: pillow>=4.3.0 in /usr/local/lib/python3.7/site-packages (from scikit-image) (6.2.1)
+Collecting networkx>=2.0
+  Downloading https://files.pythonhosted.org/packages/41/8f/dd6a8e85946def36e4f2c69c84219af0fa5e832b018c970e92f2ad337e45/networkx-2.4-py3-none-any.whl (1.6MB)
+     |████████████████████████████████| 1.6MB 14.0MB/s 
+Collecting imageio>=2.3.0
+  Downloading https://files.pythonhosted.org/packages/1a/de/f7f985018f462ceeffada7f6e609919fbcc934acd9301929cba14bc2c24a/imageio-2.6.1-py3-none-any.whl (3.3MB)
+     |████████████████████████████████| 3.3MB 4.9MB/s 
+Requirement already satisfied: scipy>=0.19.0 in /usr/local/lib/python3.7/site-packages (from scikit-image) (1.4.1)
+Requirement already satisfied: numpy>=1.11 in /usr/local/lib/python3.7/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.18.0)
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1
+  Downloading https://files.pythonhosted.org/packages/c0/0c/fc2e007d9a992d997f04a80125b0f183da7fb554f1de701bbb70a8e7d479/pyparsing-2.4.5-py2.py3-none-any.whl (67kB)
+     |████████████████████████████████| 71kB 7.0MB/s 
+Collecting cycler>=0.10
+  Using cached https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
+Collecting python-dateutil>=2.1
+  Downloading https://files.pythonhosted.org/packages/d4/70/d60450c3dd48ef87586924207ae8907090de0b306af2bce5d134d78615cb/python_dateutil-2.8.1-py2.py3-none-any.whl (227kB)
+     |████████████████████████████████| 235kB 19.6MB/s 
+Collecting kiwisolver>=1.0.1
+  Using cached https://files.pythonhosted.org/packages/df/93/8bc9b52a8846be2b9572aa0a7c881930939b06e4abe1162da6a0430b794f/kiwisolver-1.1.0-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
+Collecting decorator>=4.3.0
+  Downloading https://files.pythonhosted.org/packages/8f/b7/f329cfdc75f3d28d12c65980e4469e2fa373f1953f5df6e370e84ea2e875/decorator-4.4.1-py2.py3-none-any.whl
+Requirement already satisfied: six in /usr/local/lib/python3.7/site-packages (from cycler>=0.10->matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.13.0)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.7/site-packages (from kiwisolver>=1.0.1->matplotlib!=3.0.0,>=2.0.0->scikit-image) (42.0.2)
+Installing collected packages: pyparsing, cycler, python-dateutil, kiwisolver, matplotlib, PyWavelets, decorator, networkx, imageio, scikit-image
+Successfully installed PyWavelets-1.1.1 cycler-0.10.0 decorator-4.4.1 imageio-2.6.1 kiwisolver-1.1.0 matplotlib-3.1.2 networkx-2.4 pyparsing-2.4.5 python-dateutil-2.8.1 scikit-image-0.16.2
+tanay@Tanays-MBP ~ % cd /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt
+tanay@Tanays-MBP HWDB1.1trn_gnt % cd ..
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py 
+Usage: 1-gnt_to_dataset.py trn_dirpath tst_dirpath
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 45, in normalize_bitmap
+    bitmap = scipy.misc.imresize(bitmap, (64 - 4*2, 64 - 4*2))
+AttributeError: module 'scipy.misc' has no attribute 'imresize'
+tanay@Tanays-MBP chinese-ocr % nano 1-gnt_to_dataset.py
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt 
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 45, in normalize_bitmap
+    bitmap = scipy.misc.imresize(bitmap, (64 - 4*2, 64 - 4*2))
+AttributeError: module 'scipy.misc' has no attribute 'imresize'
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt 
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 46, in normalize_bitmap
+    bitmap = numpy.array(Image.fromarray(bitmap).resize(64-4*2, 64-4*2))
+NameError: name 'numpy' is not defined
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt 
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 46, in normalize_bitmap
+    bitmap = np.array(Image.fromarray(bitmap).resize(64-4*2, 64-4*2))
+NameError: name 'Image' is not defined
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt 
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 46, in normalize_bitmap
+    bitmap = np.array(bitmap.fromarray(arr).resize(64-4*2, 64-4*2))
+AttributeError: 'numpy.ndarray' object has no attribute 'fromarray'
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt 
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 48, in normalize_bitmap
+    assert bitmap.shape == (64, 64)
+AssertionError
+tanay@Tanays-MBP chinese-ocr % nano utils.py
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Converting 'trn'...
+Traceback (most recent call last):
+  File "1-gnt_to_dataset.py", line 25, in <module>
+    dset_bitmap[i]  = utils.normalize_bitmap(bitmap)
+AttributeError: module 'utils' has no attribute 'normalize_bitmap'
+tanay@Tanays-MBP chinese-ocr % python3 1-gnt_to_dataset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1trn_gnt /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1tst_gnt
+Converting 'trn'...
+Converting 'tst'...
+tanay@Tanays-MBP chinese-ocr % nano 2-dataset_to_subset.py
+tanay@Tanays-MBP chinese-ocr % python3 2-dataset_to_subset.py
+Using TensorFlow backend.
+Usage: 2-dataset_to_subset.py dataset_filepath
+tanay@Tanays-MBP chinese-ocr % python3 2-dataset_to_subset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1.hdf5
+Using TensorFlow backend.
+Subsetting 'trn'...
+Traceback (most recent call last):
+  File "2-dataset_to_subset.py", line 63, in <module>
+    trn_x[trn_i] = utils.preprocess_bitmap(bitmap)
+  File "/Users/tanay/Documents/Programming/Projects/chinese-ocr/utils.py", line 57, in preprocess_bitmap
+    assert abs(p2-p98) > 10
+AssertionError
+tanay@Tanays-MBP chinese-ocr % python3 2-dataset_to_subset.py /Users/tanay/Documents/Programming/Projects/chinese-ocr/HWDB1.1.hdf5
+Using TensorFlow backend.
+Subsetting 'trn'...
+^CTraceback (most recent call last):
+  File "2-dataset_to_subset.py", line 32, in <module>
+    tagcode = f1['trn/tagcode'][i][0]
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/usr/local/lib/python3.7/site-packages/h5py/_hl/dataset.py", line 531, in __getitem__
+    if numpy.product(self.shape, dtype=numpy.ulonglong) == 0:
+  File "<__array_function__ internals>", line 6, in product
+  File "/usr/local/lib/python3.7/site-packages/numpy/core/fromnumeric.py", line 3602, in product
+    @array_function_dispatch(_prod_dispatcher, verify=False)
+KeyboardInterrupt
+tanay@Tanays-MBP chinese-ocr % python3 train.py
+Using TensorFlow backend.
+2019-12-22 11:44:38.678531: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-12-22 11:44:38.699354: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fef6a6d85f0 executing computations on platform Host. Devices:
+2019-12-22 11:44:38.699376: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+Train on 40000 samples, validate on 8020 samples
+Epoch 1/15
+40000/40000 [==============================] - 669s 17ms/step - loss: 4.6832 - accuracy: 0.0753 - val_loss: 2.4674 - val_accuracy: 0.3906
+Epoch 2/15
+40000/40000 [==============================] - 667s 17ms/step - loss: 1.9003 - accuracy: 0.5352 - val_loss: 0.8286 - val_accuracy: 0.7834
+Epoch 3/15
+40000/40000 [==============================] - 704s 18ms/step - loss: 0.9188 - accuracy: 0.7562 - val_loss: 0.6000 - val_accuracy: 0.8377
+Epoch 4/15
+40000/40000 [==============================] - 638s 16ms/step - loss: 0.6124 - accuracy: 0.8304 - val_loss: 0.4935 - val_accuracy: 0.8622
+Epoch 5/15
+40000/40000 [==============================] - 695s 17ms/step - loss: 0.4547 - accuracy: 0.8706 - val_loss: 0.3760 - val_accuracy: 0.8951
+Epoch 6/15
+40000/40000 [==============================] - 643s 16ms/step - loss: 0.3591 - accuracy: 0.8953 - val_loss: 0.4066 - val_accuracy: 0.8889
+Epoch 7/15
+40000/40000 [==============================] - 629s 16ms/step - loss: 0.2950 - accuracy: 0.9125 - val_loss: 0.3432 - val_accuracy: 0.9092
+Epoch 8/15
+40000/40000 [==============================] - 626s 16ms/step - loss: 0.2516 - accuracy: 0.9256 - val_loss: 0.3324 - val_accuracy: 0.9116
+Epoch 9/15
+40000/40000 [==============================] - 608s 15ms/step - loss: 0.2085 - accuracy: 0.9368 - val_loss: 0.3254 - val_accuracy: 0.9122
+Epoch 10/15
+40000/40000 [==============================] - 624s 16ms/step - loss: 0.1886 - accuracy: 0.9409 - val_loss: 0.3424 - val_accuracy: 0.9103
+Epoch 11/15
+40000/40000 [==============================] - 642s 16ms/step - loss: 0.1815 - accuracy: 0.9445 - val_loss: 0.3216 - val_accuracy: 0.9195
+Epoch 12/15
+40000/40000 [==============================] - 625s 16ms/step - loss: 0.1615 - accuracy: 0.9493 - val_loss: 0.3577 - val_accuracy: 0.9040
+Epoch 13/15
+40000/40000 [==============================] - 609s 15ms/step - loss: 0.1432 - accuracy: 0.9548 - val_loss: 0.3239 - val_accuracy: 0.9264
+Epoch 14/15
+40000/40000 [==============================] - 701s 18ms/step - loss: 0.1312 - accuracy: 0.9598 - val_loss: 0.3385 - val_accuracy: 0.9242
+Epoch 15/15
+40000/40000 [==============================] - 709s 18ms/step - loss: 0.1225 - accuracy: 0.9618 - val_loss: 0.3358 - val_accuracy: 0.9185
+Test score: 0.35828671898521436
+Test accuracy: 0.9203147292137146
+tanay@Tanays-MBP chinese-ocr %  
