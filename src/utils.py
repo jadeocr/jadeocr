@@ -42,7 +42,8 @@ def normalize_bitmap(bitmap): # NEED TO FIX THIS
     bitmap = np.lib.pad(bitmap, pad_dims, mode='constant', constant_values=255)
 
     # rescale and add empty border
-    # bitmap = scipy.misc.imresize(bitmap, (64 - 4*2, 64 - 4*2))
+    # bitmap = scipy.misc.imresize(bitmap, (64, 64))
+    # bitmap.resize((64, 64), refcheck=True)
     # TODO: something should go here
     bitmap = np.lib.pad(bitmap, ((4, 4), (4, 4)), mode='constant', constant_values=255)
     assert bitmap.shape == (64, 64)

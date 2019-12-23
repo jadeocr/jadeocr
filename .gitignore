@@ -1,4 +1,5 @@
-__pycache__
+*/__pycache__
 data/HWDB1.1trn_gnt
 data/HWDB1.1tst_gnt
 data/HWDB1.1subset.hdf5
+*/.DS_Store

@@ -15,5 +15,6 @@ model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['a
 # It works! TODO: Prediction
 with h5py.File(subset_filepath, 'r') as f:
     score = model.evaluate(f['tst/x'], f['tst/y'], verbose=0)
+    pdctn = model.
     print('Test score:', score[0])
     print('Test accuracy:', score[1])
