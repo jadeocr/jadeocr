@@ -1,23 +1,12 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-import sys
-
+import imageio
+import numpy as np
 import h5py
 
-import utils
+f = h5py.File('../output/in1.hdf5', 'r')
+dset = f['key']
+data = np.array(dset[:,:,:])
+file = 'test.png' # or .jpg
+imageio.imwrite(file, data)
 
-# if len(sys.argv) != 3:
-#     print('Usage: %s trn_dirpath tst_dirpath' % sys.argv[0])
-#     sys.exit(1)
-#
-# trn_dirpath = sys.argv[1]
-dirpath = "../model_input"
-
-with h5py.File('input.hdf5', 'w') as f:
-    for i in (dirpath):
-        print('Converting \'%s\'...' % i)
-        grp = f.create_group(i)
-        dset_bitmap  = grp.create_dataset('bitmap',  (64, 64), dtype='uint8')
-
-        for j, (bitmap) in enumerate(utils.read_gnt_in_directory(dirpath)):
-            dset_bitmap[j]  = utils.normalize_bitmap(bitmap) #fixed?
+# TODO: Make sure in1.hdf5 works so we can input it into the model to predict
+# Also recover the code that converted png to hdf5
