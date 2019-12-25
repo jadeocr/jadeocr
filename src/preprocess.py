@@ -19,8 +19,17 @@ def extract_data(path):
                 labels.append(i-1)
                 numOfItems += 1
     data = np.array(data)
-    labels = tf.keras.utils.to_categorical(labels, num_classes=None, dtype='float32') # This seems to work
+    labels = tf.keras.utils.to_categorical(labels, num_classes=None, dtype='float32') # One-hot; this seems to work
     return (data.reshape(numOfItems, 1, 64, 64), np.array(labels))
+
+def normalize(trainX, testX):
+    # Int to float
+	train_norm = trainX.astype('float32')
+	test_norm = testX.astype('float32')
+    # Normalize between 0 and 1
+	train_norm = train_norm / 255.0
+	test_norm = test_norm / 255.0
+	return train_norm, test_norm
 
 def plot_images(xval, yval):
     from matplotlib import pyplot as plt

@@ -1,5 +1,6 @@
 # Most of this code comes from https://github.com/integeruser/CASIA-HWDB1.1-cnn
-import json, sys, time
+import json, sys
+from datetime import datetime
 import numpy as np
 from tensorflow import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
@@ -23,18 +24,19 @@ model.add(Conv2D(256, (3, 3), weights=[np.random.normal(0, 0.01, size=(3, 3, 128
     activation='relu', padding='same', strides=(1, 1)))
 model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 model.add(Flatten())
-model.add(Dropout(0.5))
+model.add(Dropout(0.1))
 model.add(Dense(1024, activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dropout(0.1))
 model.add(Dense(10, activation='softmax')) # CHANGE TO REFLECT NUM OF CLASSES
-opt = keras.optimizers.Adam(lr = 0.05)
+opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 # Save the model to a JSON file for easy import
-# timestamp = int(time.time())
-# with open('../output/model.json' % timestamp, 'w') as f:
-#     d = json.loads(model.to_json())
-#     json.dump(d, f, indent=4)
+timestamp = str(datetime.now())
+with open('../model/model' + timestamp + '.json', 'w') as f:
+    d = json.loads(model.to_json())
+    json.dump(d, f, indent=4)
+
 
 train_path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
 test_path = '../data/temptst'
@@ -42,11 +44,13 @@ test_path = '../data/temptst'
 # Preprocessing
 (trainX, trainY) = preprocess.extract_data(train_path)
 (testX, testY) = preprocess.extract_data(test_path)
+trainX, testX = preprocess.normalize(trainX, testX)
 # preprocess.plot_images(trainX, trainY)
 
 # Training
-model.fit(trainX, trainY, epochs=50, batch_size=128, shuffle='batch', verbose=1)
+model.fit(trainX, trainY, epochs=1, batch_size=32, verbose=1) # Probably underfitting
 score = model.evaluate(testX, testY, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
-model.save_weights('../output/weights.hdf5' % (time.time(), score[1])) # TODO: Switch to pickle
+
+model.save_weights('../model/weights' + timestamp + '.hdf5')
