@@ -39,3 +39,19 @@ def plot_images(xval, yval):
     plt.show()
     print('XY SHAPE: X=%s, y=%s' % (xval.shape, yval.shape))
     # cv2.imshow('abc', data[0]); cv2.waitKey(0); cv2.destroyAllWindows() # cv2 implementation - show the image at data[0]
+
+# These two are for making predictions
+def extract_data_predict(path): # Something is broken TODO: Fix it
+    data = []
+    image = cv2.imread(path)
+    image = cv2.resize(image, (64, 64))
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    data.append(image)
+    data = np.array(data)
+    return (data.reshape(1, 1, 64, 64))
+
+def normalize_predict(arr):
+    # Int to float
+	norm = arr.astype('float32')
+	norm = norm / 255.0
+	return norm

@@ -1,8 +1,7 @@
 # Most of this code comes from https://github.com/integeruser/CASIA-HWDB1.1-cnn
-import json, sys
-from datetime import datetime
+import json, sys, datetime
 import numpy as np
-from tensorflow import keras
+import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential
@@ -32,7 +31,7 @@ opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 # Save the model to a JSON file for easy import
-timestamp = str(datetime.now())
+timestamp = str(datetime.time())
 with open('../model/model' + timestamp + '.json', 'w') as f:
     d = json.loads(model.to_json())
     json.dump(d, f, indent=4)
@@ -48,9 +47,17 @@ trainX, testX = preprocess.normalize(trainX, testX)
 # preprocess.plot_images(trainX, trainY)
 
 # Training
-model.fit(trainX, trainY, epochs=1, batch_size=32, verbose=1) # Probably underfitting
+log_dir="../logs/" + timestamp
+# $ tensorboard --logdir ../logs/log_timestamp
+tensorboard_callback = keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+model.fit(trainX, trainY, epochs=15, batch_size=128, verbose=1, callbacks=[tensorboard_callback]) # 15 epochs
 score = model.evaluate(testX, testY, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
 model.save_weights('../model/weights' + timestamp + '.hdf5')
+
+# sample = '../data/test.png'
+# sample = preprocess.extract_data_predict(sample)
+# sample = preprocess.normalize_predict(sample)
+# print(model.predict(sample))
