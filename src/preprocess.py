@@ -41,7 +41,7 @@ def plot_images(xval, yval):
     # cv2.imshow('abc', data[0]); cv2.waitKey(0); cv2.destroyAllWindows() # cv2 implementation - show the image at data[0]
 
 # These two are for making predictions
-def extract_data_predict(path): # Something is broken TODO: Fix it
+def extract_data_predict(path):
     data = []
     image = cv2.imread(path)
     image = cv2.resize(image, (64, 64))

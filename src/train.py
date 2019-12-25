@@ -1,12 +1,11 @@
 # Most of this code comes from https://github.com/integeruser/CASIA-HWDB1.1-cnn
-import json, sys, datetime
+import json, datetime
 import numpy as np
 import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential
-import preprocess
-# TODO: Tensorboard
+from preprocess import extract_data, normalize, plot_images
 
 # This is the CNN model
 # https://github.com/integeruser/CASIA-HWDB1.1-cnn/blob/master/src/3-train_subset.py
@@ -26,7 +25,7 @@ model.add(Flatten())
 model.add(Dropout(0.1))
 model.add(Dense(1024, activation='relu'))
 model.add(Dropout(0.1))
-model.add(Dense(10, activation='softmax')) # CHANGE TO REFLECT NUM OF CLASSES
+model.add(Dense(10, activation='softmax')) # TODO: CHANGE TO REFLECT NUM OF CLASSES IN ACTUAL TRAINING SET
 opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
@@ -36,28 +35,22 @@ with open('../model/model' + timestamp + '.json', 'w') as f:
     d = json.loads(model.to_json())
     json.dump(d, f, indent=4)
 
-
 train_path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
 test_path = '../data/temptst'
 
 # Preprocessing
-(trainX, trainY) = preprocess.extract_data(train_path)
-(testX, testY) = preprocess.extract_data(test_path)
-trainX, testX = preprocess.normalize(trainX, testX)
-# preprocess.plot_images(trainX, trainY)
+(trainX, trainY) = extract_data(train_path)
+(testX, testY) = extract_data(test_path)
+trainX, testX = normalize(trainX, testX)
+# plot_images(trainX, trainY)
 
 # Training
-log_dir="../logs/" + timestamp
 # $ tensorboard --logdir ../logs/log_timestamp
+log_dir="../logs/" + timestamp
 tensorboard_callback = keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
-model.fit(trainX, trainY, epochs=15, batch_size=128, verbose=1, callbacks=[tensorboard_callback]) # 15 epochs
+model.fit(trainX, trainY, epochs=15, batch_size=32, verbose=1, callbacks=[tensorboard_callback]) # 15 epochs
 score = model.evaluate(testX, testY, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
 model.save_weights('../model/weights' + timestamp + '.hdf5')
-
-# sample = '../data/test.png'
-# sample = preprocess.extract_data_predict(sample)
-# sample = preprocess.normalize_predict(sample)
-# print(model.predict(sample))
