@@ -1,10 +1,12 @@
 # Most of this code comes from https://github.com/integeruser/CASIA-HWDB1.1-cnn
 import json, sys, time
 import numpy as np
-np.random.seed(3141)
+from tensorflow import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential
+import preprocess
+# TODO: Tensorboard
 
 # This is the CNN model
 # https://github.com/integeruser/CASIA-HWDB1.1-cnn/blob/master/src/3-train_subset.py
@@ -24,23 +26,27 @@ model.add(Flatten())
 model.add(Dropout(0.5))
 model.add(Dense(1024, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(200, activation='softmax'))
-myAdam = keras.optimizers.Adam(learning_rate=0.001, beta_1=0.9, beta_2=0.999, amsgrad=False)
-model.compile(loss='categorical_crossentropy', optimizer=myAdam, learning_rate=0.05 metrics=['accuracy'])
+model.add(Dense(10, activation='softmax')) # CHANGE TO REFLECT NUM OF CLASSES
+opt = keras.optimizers.Adam(lr = 0.05)
+model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 # Save the model to a JSON file for easy import
-timestamp = int(time.time())
-with open('../output/model.json' % timestamp, 'w') as f:
-    d = json.loads(model.to_json())
-    json.dump(d, f, indent=4)
+# timestamp = int(time.time())
+# with open('../output/model.json' % timestamp, 'w') as f:
+#     d = json.loads(model.to_json())
+#     json.dump(d, f, indent=4)
 
-# Training - TODO: Change filetype input
-with h5py.File(subset_filepath, 'r') as f:
-    model.fit(f['trn/x'], f['trn/y'], validation_data=(f['vld/x'], f['vld/y']),
-              epochs=15, batch_size=128, shuffle='batch', verbose=1)
+train_path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
+test_path = '../data/temptst'
 
-    score = model.evaluate(f['tst/x'], f['tst/y'], verbose=0)
-    print('Test score:', score[0])
-    print('Test accuracy:', score[1])
+# Preprocessing
+(trainX, trainY) = preprocess.extract_data(train_path)
+(testX, testY) = preprocess.extract_data(test_path)
+# preprocess.plot_images(trainX, trainY)
 
-    model.save_weights('../output/weights.hdf5' % (timestamp, score[1]))
+# Training
+model.fit(trainX, trainY, epochs=50, batch_size=128, shuffle='batch', verbose=1)
+score = model.evaluate(testX, testY, verbose=0)
+print('Test score:', score[0])
+print('Test accuracy:', score[1])
+model.save_weights('../output/weights.hdf5' % (time.time(), score[1])) # TODO: Switch to pickle
