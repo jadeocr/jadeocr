@@ -1,4 +1,3 @@
-# Most of this code comes from https://github.com/integeruser/CASIA-HWDB1.1-cnn
 import json, datetime
 import numpy as np
 import keras
@@ -31,9 +30,8 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 # Save the model to a JSON file for easy import
 timestamp = str(datetime.time())
-with open('../model/model' + timestamp + '.json', 'w') as f:
-    d = json.loads(model.to_json())
-    json.dump(d, f, indent=4)
+with open('../model/model1.json', 'w') as f:
+    f.write(model.to_json())
 
 train_path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
 test_path = '../data/temptst'
@@ -48,9 +46,9 @@ trainX, testX = normalize(trainX, testX)
 # $ tensorboard --logdir ../logs/log_timestamp
 log_dir="../logs/" + timestamp
 tensorboard_callback = keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
-model.fit(trainX, trainY, epochs=15, batch_size=32, verbose=1, callbacks=[tensorboard_callback]) # 15 epochs
+model.fit(trainX, trainY, epochs=1, batch_size=32, verbose=1, callbacks=[tensorboard_callback]) # 15 epochs
 score = model.evaluate(testX, testY, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
-model.save_weights('../model/weights' + timestamp + '.hdf5')
+model.save_weights('../model/weights.h5')
