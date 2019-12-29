@@ -30,7 +30,6 @@ opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 # Save the model to a JSON file for easy import
-timestamp = str(datetime.time())
 with open('../model/model.json', 'w') as f:
     f.write(model.to_json())
 
@@ -46,12 +45,12 @@ trainX, testX = normalize(trainX, testX)
 # Callbacks: Model checkpoints and tensorboard
 weights_path='../model/weights.h5'
 checkpoint = ModelCheckpoint(weights_path, monitor='val_accuracy', verbose=1, save_best_only=True, save_weights_only=True, mode='max')
-log_dir="../logs/" + timestamp # View using $tensorboard --logdir ../logs/log_timestamp
+log_dir="../logs/training_log" # View using $tensorboard --logdir ../logs/training_log
 tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 callbacks_list = [checkpoint, tensorboard_callback]
 
 # Training
-model.fit(trainX, trainY, epochs=15, batch_size=128, validation_data=(testX, testY), verbose=1, callbacks=callbacks_list) # 15 epochs
+model.fit(trainX, trainY, epochs=3, batch_size=32, validation_data=(testX, testY), verbose=1, callbacks=callbacks_list) # TODO
 score = model.evaluate(testX, testY, verbose=0)
 print('Test score:', score[0], '\n', 'Test accuracy:', score[1])
 

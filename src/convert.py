@@ -1,6 +1,6 @@
 # Thank you to 蹦跶的小羊羔 at
 # https://blog.csdn.net/yql_617540298/article/details/82740382
-# For this script
+# For this script - converts from GNT folders to the images
 import os
 import numpy as np
 import struct
@@ -46,23 +46,23 @@ import pickle
 with open('char_dict', 'wb') as f:
     pickle.dump(char_dict, f)
 
-# train_counter = 0
-# test_counter = 0
-# for image, tagcode in read_from_gnt_dir(gnt_dir=train_data_dir):
-#     tagcode_unicode = struct.pack('>H', tagcode).decode('gb2312')
-#     im = Image.fromarray(image)
-#     dir_name = '../data/train/' + '%0.5d'%char_dict[tagcode_unicode]
-#     if not os.path.exists(dir_name):
-#         os.mkdir(dir_name)
-#     im.convert('RGB').save(dir_name+'/' + str(train_counter) + '.png')
-#     print("train_counter=",train_counter)
-#     train_counter += 1
-# for image, tagcode in read_from_gnt_dir(gnt_dir=test_data_dir):
-#     tagcode_unicode = struct.pack('>H', tagcode).decode('gb2312')
-#     im = Image.fromarray(image)
-#     dir_name = '../data/test/' + '%0.5d'%char_dict[tagcode_unicode]
-#     if not os.path.exists(dir_name):
-#         os.mkdir(dir_name)
-#     im.convert('RGB').save(dir_name+'/' + str(test_counter) + '.png')
-#     print("test_counter=",test_counter)
-#     test_counter += 1
+train_counter = 0
+test_counter = 0
+for image, tagcode in read_from_gnt_dir(gnt_dir=train_data_dir):
+    tagcode_unicode = struct.pack('>H', tagcode).decode('gb2312')
+    im = Image.fromarray(image)
+    dir_name = '../data/train/' + '%0.5d'%char_dict[tagcode_unicode]
+    if not os.path.exists(dir_name):
+        os.mkdir(dir_name)
+    im.convert('RGB').save(dir_name+'/' + str(train_counter) + '.png')
+    print("train_counter=",train_counter)
+    train_counter += 1
+for image, tagcode in read_from_gnt_dir(gnt_dir=test_data_dir):
+    tagcode_unicode = struct.pack('>H', tagcode).decode('gb2312')
+    im = Image.fromarray(image)
+    dir_name = '../data/test/' + '%0.5d'%char_dict[tagcode_unicode]
+    if not os.path.exists(dir_name):
+        os.mkdir(dir_name)
+    im.convert('RGB').save(dir_name+'/' + str(test_counter) + '.png')
+    print("test_counter=",test_counter)
+    test_counter += 1
