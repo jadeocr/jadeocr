@@ -19,8 +19,6 @@ with open('char_dict', 'rb') as f:
     char_dict = pickle.load(f)
 char_dict = dict([(value, key) for key, value in char_dict.items()])
 path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
-labels = os.listdir(path)
-labels.remove('.DS_Store')
 
 # Use the model to predict an image
 test_img = '../data/test.png' # TODO: UPDATE TO SAMPLE DATA
@@ -30,9 +28,9 @@ sample = model.predict(sample)
 # Print all predictions and probabiliites
 with open('../logs/predictions.txt', 'w') as f:
     for i in range(len(sample[0])):
-        pred = str(i) + ' ' + char_dict.get(int(labels[i])) + ' ' + str(sample[0][i]) + '\n'
+        pred = str(i) + ' ' + char_dict.get(i) + ' ' + str(sample[0][i]) + '\n'
         f.write(pred)
         print(pred)
 # Print out overall prediction
 maxindex = sample.argmax() # Index of largest item
-print('Prediction: ', maxindex, char_dict.get(int(labels[maxindex])), ' ', sample[0][maxindex])
+print('Prediction: ', maxindex, char_dict.get(maxindex), ' ', sample[0][maxindex])
