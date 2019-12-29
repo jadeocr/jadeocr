@@ -1,4 +1,4 @@
-import json, datetime, os
+import json, datetime, os, pickle
 import numpy as np
 import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
@@ -20,9 +20,18 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
 labels = os.listdir(path)
 labels.remove('.DS_Store')
-print(labels)
+# print(labels)
 
-sample = '../data/test.png' # TODO: UPDATE TO SAMPLE DATA
-sample = extract_data_predict(sample) # TODO: MAKE CODE MORE ELEGANT
-sample = normalize_predict(sample)
-print(model.predict(sample))
+# Use the model to predict an image
+test_img = '../data/test.png' # TODO: UPDATE TO SAMPLE DATA
+sample = normalize_predict(extract_data_predict(test_img))
+sample = model.predict(sample)
+# print(sample)
+maxindex = sample.argmax() # Index of largest item
+# print(int(labels[maxindex]))
+
+with open('char_dict', 'rb') as f:
+    char_dict = pickle.load(f)
+char_dict = dict([(value, key) for key, value in char_dict.items()])
+
+print('Prediction: ', char_dict.get(int(labels[maxindex]))) # Final Prediction
