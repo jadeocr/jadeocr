@@ -4,6 +4,7 @@ import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential
+from keras.callbacks import ModelCheckpoint, TensorBoard
 from preprocess import extract_data, normalize, plot_images
 
 # This is the CNN model
@@ -30,7 +31,7 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 
 # Save the model to a JSON file for easy import
 timestamp = str(datetime.time())
-with open('../model/model1.json', 'w') as f:
+with open('../model/model.json', 'w') as f:
     f.write(model.to_json())
 
 train_path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
@@ -42,13 +43,16 @@ test_path = '../data/temptst'
 trainX, testX = normalize(trainX, testX)
 # plot_images(trainX, trainY)
 
-# Training
-# $ tensorboard --logdir ../logs/log_timestamp
-log_dir="../logs/" + timestamp
-tensorboard_callback = keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
-model.fit(trainX, trainY, epochs=1, batch_size=32, verbose=1, callbacks=[tensorboard_callback]) # 15 epochs
-score = model.evaluate(testX, testY, verbose=0)
-print('Test score:', score[0])
-print('Test accuracy:', score[1])
+# Callbacks: Model checkpoints and tensorboard
+weights_path='../model/weights.h5'
+checkpoint = ModelCheckpoint(weights_path, monitor='val_accuracy', verbose=1, save_best_only=True, save_weights_only=True, mode='max')
+log_dir="../logs/" + timestamp # View using $tensorboard --logdir ../logs/log_timestamp
+tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
+callbacks_list = [checkpoint, tensorboard_callback]
 
-model.save_weights('../model/weights.h5')
+# Training
+model.fit(trainX, trainY, epochs=15, batch_size=128, validation_data=(testX, testY), verbose=1, callbacks=callbacks_list) # 15 epochs
+score = model.evaluate(testX, testY, verbose=0)
+print('Test score:', score[0], '\n', 'Test accuracy:', score[1])
+
+model.save_weights(weights_path)
