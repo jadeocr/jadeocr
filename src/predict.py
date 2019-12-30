@@ -1,4 +1,4 @@
-import json, datetime, os, pickle
+import json, os, pickle
 import numpy as np
 import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D

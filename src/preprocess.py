@@ -1,4 +1,4 @@
-import os
+import os, h5py
 import numpy as np
 import tensorflow as tf
 import cv2
@@ -55,3 +55,25 @@ def normalize_predict(arr):
 	norm = arr.astype('float32')
 	norm = norm / 255.0
 	return norm
+
+
+train_path = '../data/train' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
+test_path = '../data/test'
+
+# Call preprocessing functions
+print('Extracting Train')
+(trainX, trainY) = extract_data(train_path)
+print('Extracting Test')
+(testX, testY) = extract_data(test_path)
+print('Normalizing')
+trainX, testX = normalize(trainX, testX)
+print('Done!')
+
+with h5py.File('../data/compressed/trainX.h5', 'w') as f:
+    f.create_dataset('trainX', data=trainX)
+with h5py.File('../data/compressed/testX.h5', 'w') as f:
+    f.create_dataset('testX', data=testX)
+with h5py.File('../data/compressed/trainY.h5', 'w') as f:
+    f.create_dataset('trainY', data=trainY)
+with h5py.File('../data/compressed/testY.h5', 'w') as f:
+    f.create_dataset('testY', data=testY)

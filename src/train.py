@@ -1,11 +1,10 @@
-import json, datetime
+import json, h5py
 import numpy as np
 import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential
 from keras.callbacks import ModelCheckpoint, TensorBoard
-from preprocess import extract_data, normalize, plot_images
 
 # This is the CNN model
 # https://github.com/integeruser/CASIA-HWDB1.1-cnn/blob/master/src/3-train_subset.py
@@ -33,14 +32,15 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 with open('../model/model.json', 'w') as f:
     f.write(model.to_json())
 
-train_path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
-test_path = '../data/temptst'
-
-# Preprocessing
-(trainX, trainY) = extract_data(train_path)
-(testX, testY) = extract_data(test_path)
-trainX, testX = normalize(trainX, testX)
-# plot_images(trainX, trainY)
+# Load preprocessed training data
+with h5py.File('../data/compressed/trainX.h5', 'r') as f:
+    trainX = f['trainX'][:]
+with h5py.File('../data/compressed/testX.h5', 'r') as f:
+    testX = f['testX'][:]
+with h5py.File('../data/compressed/trainY.h5', 'r') as f:
+    trainY = f['trainY'][:]
+with h5py.File('../data/compressed/testY.h5', 'r') as f:
+    testY = f['testY'][:]
 
 # Callbacks: Model checkpoints and tensorboard
 weights_path='../model/weights.h5'
