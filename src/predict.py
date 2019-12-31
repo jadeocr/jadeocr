@@ -18,7 +18,6 @@ model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy
 with open('char_dict', 'rb') as f:
     char_dict = pickle.load(f)
 char_dict = dict([(value, key) for key, value in char_dict.items()])
-path = '../data/temptrn' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
 
 # Use the model to predict an image
 test_img = '../data/test.png' # TODO: UPDATE TO SAMPLE DATA

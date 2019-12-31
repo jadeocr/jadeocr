@@ -28,18 +28,17 @@ model.add(Dense(10, activation='softmax')) # TODO: CHANGE TO REFLECT NUM OF CLAS
 opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
-# Save the model to a JSON file for easy import
-with open('../model/model.json', 'w') as f:
+with open ('../model/model.json', 'w') as f:
     f.write(model.to_json())
 
 # Load preprocessed training data
-with h5py.File('../data/compressed/trainX.h5', 'r') as f:
+with h5py.File('../data/compressed_temp/trainX.h5', 'r') as f:
     trainX = f['trainX'][:]
-with h5py.File('../data/compressed/testX.h5', 'r') as f:
+with h5py.File('../data/compressed_temp/testX.h5', 'r') as f:
     testX = f['testX'][:]
-with h5py.File('../data/compressed/trainY.h5', 'r') as f:
+with h5py.File('../data/compressed_temp/trainY.h5', 'r') as f:
     trainY = f['trainY'][:]
-with h5py.File('../data/compressed/testY.h5', 'r') as f:
+with h5py.File('../data/compressed_temp/testY.h5', 'r') as f:
     testY = f['testY'][:]
 
 # Callbacks: Model checkpoints and tensorboard
@@ -50,7 +49,7 @@ tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 callbacks_list = [checkpoint, tensorboard_callback]
 
 # Training
-model.fit(trainX, trainY, epochs=3, batch_size=32, validation_data=(testX, testY), verbose=1, callbacks=callbacks_list) # TODO
+model.fit(trainX, trainY, epochs=3, batch_size=64, validation_data=(testX, testY), verbose=1, callbacks=callbacks_list) # TODO: 30 epochs
 score = model.evaluate(testX, testY, verbose=0)
 print('Test score:', score[0], '\n', 'Test accuracy:', score[1])
 
