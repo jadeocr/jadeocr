@@ -30,6 +30,7 @@ model.add(Dropout(0.1))
 model.add(Dense(3755, activation='softmax')) # TODO: CHANGE TO REFLECT NUM OF CLASSES IN ACTUAL TRAINING SET
 opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+model.summary()
 
 with open ('../model/model.json', 'w') as f:
     f.write(model.to_json())
@@ -43,6 +44,8 @@ with h5py.File('../data/compressed/trainY.h5', 'r') as f:
     trainY = f['trainY'][:]
 with h5py.File('../data/compressed/testY.h5', 'r') as f:
     testY = f['testY'][:]
+print(trainY.shape, '\n', testY.shape)
+print(trainX.shape, testX.shape, trainY.shape, testY.shape)
 
 # Callbacks: Model checkpoints and tensorboard
 weights_path='../model/weights.h5'

@@ -1,3 +1,4 @@
+model
 __pycache__
 data
 .DS_Store
@@ -5,4 +6,3 @@ env
 logs
 cloud
 chinese-ocr-jetson
-model

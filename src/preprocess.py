@@ -1,6 +1,6 @@
 import os, h5py
 import numpy as np
-import tensorflow as tf
+from keras.utils import to_categorical
 import cv2
 
 def extract_data(path):
@@ -19,7 +19,7 @@ def extract_data(path):
                 labels.append(i-1)
                 numOfItems += 1
     data = np.array(data)
-    labels = tf.keras.utils.to_categorical(labels, num_classes=None, dtype='float32') # One-hot; this seems to work
+    labels = to_categorical(labels, num_classes=None, dtype='float32') # One-hot; this seems to work
     return (data.reshape(numOfItems, 1, 64, 64), np.array(labels))
 
 def normalize(trainX, testX):
@@ -42,22 +42,22 @@ def plot_images(xval, yval):
 
 # TODO: Comment out after extraction
 # Call preprocessing functions
-# train_path = '../data/trn2k'
-# test_path = '../data/tst2k'
-# print('Extracting Train...')
-# (trainX, trainY) = extract_data(train_path)
-# print('Extracting Test...')
-# (testX, testY) = extract_data(test_path)
-# print('Normalizing...')
-# trainX, testX = normalize(trainX, testX)
-# print('Saving...')
-#
+train_path = '../data/train'
+test_path = '../data/test'
+print('Extracting Train...')
+(trainX, trainY) = extract_data(train_path)
+print('Extracting Test...')
+(testX, testY) = extract_data(test_path)
+print('Normalizing...')
+trainX, testX = normalize(trainX, testX)
+print('Saving...')
+
 # TODO: CHANGE PATHS
-# with h5py.File('../data/compressed/trainX.h5', 'w') as f:
-#    f.create_dataset('trainX', data=trainX, compression='gzip', compression_opts=9)
-# with h5py.File('../data/compressed/testX.h5', 'w') as f:
-#    f.create_dataset('testX', data=testX, compression='gzip', compression_opts=9)
-# with h5py.File('../data/compressed/trainY.h5', 'w') as f:
-#    f.create_dataset('trainY', data=trainY, compression='gzip', compression_opts=9)
-# with h5py.File('../data/compressed/testY.h5', 'w') as f:
-#    f.create_dataset('testY', data=testY, compression='gzip', compression_opts=9)
+with h5py.File('../data/compressed/trainX.h5', 'w') as f:
+   f.create_dataset('trainX', data=trainX, compression='gzip', compression_opts=6)
+with h5py.File('../data/compressed/testX.h5', 'w') as f:
+   f.create_dataset('testX', data=testX, compression='gzip', compression_opts=6)
+with h5py.File('../data/compressed/trainY.h5', 'w') as f:
+   f.create_dataset('trainY', data=trainY, compression='gzip', compression_opts=6)
+with h5py.File('../data/compressed/testY.h5', 'w') as f:
+   f.create_dataset('testY', data=testY, compression='gzip', compression_opts=6)
