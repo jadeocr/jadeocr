@@ -1,10 +1,25 @@
-import json, os, pickle
+import json, os, pickle, cv2
 import numpy as np
 import keras
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential, model_from_json
-from preprocess import extract_data_predict, normalize_predict
+
+# These two are for normalizing
+def extract_data_predict(path):
+    data = []
+    image = cv2.imread(path)
+    image = cv2.resize(image, (64, 64))
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    data.append(image)
+    data = np.array(data)
+    return (data.reshape(1, 1, 64, 64))
+
+def normalize_predict(arr):
+    # Int to float
+	norm = arr.astype('float32')
+	norm = norm / 255.0
+	return norm
 
 # Load the model and weights
 with open('../model/model.json', 'r') as f:
@@ -20,7 +35,7 @@ with open('char_dict', 'rb') as f:
 char_dict = dict([(value, key) for key, value in char_dict.items()])
 
 # Use the model to predict an image
-test_img = '../data/test.png' # TODO: UPDATE TO SAMPLE DATA
+test_img = '../data/test.png'
 sample = normalize_predict(extract_data_predict(test_img))
 sample = model.predict(sample)
 

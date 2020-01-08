@@ -40,27 +40,10 @@ def plot_images(xval, yval):
     print('XY SHAPE: X=%s, y=%s' % (xval.shape, yval.shape))
     # cv2.imshow('abc', data[0]); cv2.waitKey(0); cv2.destroyAllWindows() # cv2 implementation - show the image at data[0]
 
-# These two are for making predictions
-def extract_data_predict(path):
-    data = []
-    image = cv2.imread(path)
-    image = cv2.resize(image, (64, 64))
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    data.append(image)
-    data = np.array(data)
-    return (data.reshape(1, 1, 64, 64))
-
-def normalize_predict(arr):
-    # Int to float
-	norm = arr.astype('float32')
-	norm = norm / 255.0
-	return norm
-
-
-# train_path = '../data/train' # TODO: CHANGE LATER TO ACTUAL TRAINING SET
-# test_path = '../data/test'
-#
-# # Call preprocessing functions
+# TODO: Comment out after extraction
+# Call preprocessing functions
+# train_path = '../data/trn2k'
+# test_path = '../data/tst2k'
 # print('Extracting Train...')
 # (trainX, trainY) = extract_data(train_path)
 # print('Extracting Test...')
@@ -69,11 +52,12 @@ def normalize_predict(arr):
 # trainX, testX = normalize(trainX, testX)
 # print('Saving...')
 #
+# TODO: CHANGE PATHS
 # with h5py.File('../data/compressed/trainX.h5', 'w') as f:
-#     f.create_dataset('trainX', data=trainX, compression='gzip', compression_opts=9)
+#    f.create_dataset('trainX', data=trainX, compression='gzip', compression_opts=9)
 # with h5py.File('../data/compressed/testX.h5', 'w') as f:
-#     f.create_dataset('testX', data=testX, compression='gzip', compression_opts=9)
+#    f.create_dataset('testX', data=testX, compression='gzip', compression_opts=9)
 # with h5py.File('../data/compressed/trainY.h5', 'w') as f:
-#     f.create_dataset('trainY', data=trainY, compression='gzip', compression_opts=9)
+#    f.create_dataset('trainY', data=trainY, compression='gzip', compression_opts=9)
 # with h5py.File('../data/compressed/testY.h5', 'w') as f:
-#     f.create_dataset('testY', data=testY, compression='gzip', compression_opts=9)
+#    f.create_dataset('testY', data=testY, compression='gzip', compression_opts=9)

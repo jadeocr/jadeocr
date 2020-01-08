@@ -4,3 +4,5 @@ data
 env
 logs
 cloud
+chinese-ocr-jetson
+model
