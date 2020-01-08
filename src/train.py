@@ -5,7 +5,7 @@ from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Dense, Dropout, Flatten
 from keras.models import Sequential
 from keras.callbacks import ModelCheckpoint, TensorBoard
-# TODO: Add GPU Support and the CUDA stuff for Nvidia Jetson
+# TODO: Add GPU Support and the CUDA stuff for Nvidia Jetson - You can do this part
 
 # This is the CNN model
 # https://github.com/integeruser/CASIA-HWDB1.1-cnn/blob/master/src/3-train_subset.py
