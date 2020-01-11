@@ -31,15 +31,6 @@ def normalize(trainX, testX):
 	test_norm = test_norm / 255.0
 	return train_norm, test_norm
 
-def plot_images(xval, yval):
-    from matplotlib import pyplot as plt
-    for i in range(9): # Plots 1st 9 images
-        plt.subplot(330 + 1 + i)
-        plt.imshow(xval[i], cmap=plt.get_cmap('gray'))
-    plt.show()
-    print('XY SHAPE: X=%s, y=%s' % (xval.shape, yval.shape))
-    # cv2.imshow('abc', data[0]); cv2.waitKey(0); cv2.destroyAllWindows() # cv2 implementation - show the image at data[0]
-
 # TODO: Comment out after extraction
 # Call preprocessing functions
 train_path = '../data/train'

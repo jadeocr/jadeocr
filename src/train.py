@@ -27,7 +27,7 @@ model.add(Dense(1024, activation='relu'))
 model.add(Dropout(0.1))
 # There's a chance you'll run into an error here because of some weird thing where the number of classes in test set ≠ train set
 # In that case please let me know
-model.add(Dense(3755, activation='softmax')) # TODO: CHANGE TO REFLECT NUM OF CLASSES IN ACTUAL TRAINING SET
+model.add(Dense(3701, activation='softmax')) # TODO: CHANGE TO REFLECT NUM OF CLASSES IN ACTUAL TRAINING SET
 opt = keras.optimizers.Adadelta(learning_rate = 1.0)
 model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 model.summary()
