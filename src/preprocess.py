@@ -1,6 +1,5 @@
 import os, h5py
 import numpy as np
-from keras.utils import to_categorical
 import cv2
 
 def extract_data(path):
@@ -17,8 +16,8 @@ def extract_data(path):
                 labels.append(i-1)
                 numOfItems += 1
     data = np.array(data)
-    labels = to_categorical(labels, num_classes=None, dtype='float32')
-    return (data.reshape(numOfItems, 1, 64, 64), np.array(labels))
+    # labels = to_categorical(labels, num_classes=None, dtype='float32')
+    return (data.reshape(numOfItems, 64, 64, 1), np.array(labels))
 
 def normalize(trainX, testX):
 	train_norm = trainX.astype('float32') / 255.0
@@ -34,6 +33,8 @@ print('Extracting Test...')
 print('Normalizing...')
 trainX, testX = normalize(trainX, testX)
 print('Saving...')
+
+print(trainX.shape, testX.shape, trainY.shape, testY.shape)
 
 # TODO: PATHS
 with h5py.File('../data/compressed/trainX.h5', 'w') as f:

@@ -1,9 +1,6 @@
-import json, os, pickle, cv2
+import json, pickle, cv2
 import numpy as np
-import keras
-from keras.layers.convolutional import Conv2D, MaxPooling2D
-from keras.layers.core import Dense, Dropout, Flatten
-from keras.models import Sequential, model_from_json
+from tensorflow.python.keras.models import model_from_json
 
 # These two are for normalizing
 def extract_data_predict(path):
@@ -13,7 +10,7 @@ def extract_data_predict(path):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     data.append(image)
     data = np.array(data)
-    return (data.reshape(1, 1, 64, 64))
+    return (data.reshape(1, 64, 64, 1))
 
 def normalize_predict(arr):
     # Int to float
@@ -26,8 +23,8 @@ with open('../model/model.json', 'r') as f:
     model = f.read()
     model = model_from_json(model)
 model.load_weights('../model/weights.h5')
-opt = keras.optimizers.Adadelta(learning_rate = 1.0)
-model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
 
 # Allows predictions to be mapped to classes and characters
 with open('char_dict', 'rb') as f:
@@ -35,7 +32,7 @@ with open('char_dict', 'rb') as f:
 char_dict = dict([(value, key) for key, value in char_dict.items()])
 
 # Use the model to predict an image
-test_img = '../data/test.png'
+test_img = '../data/test1.jpg'
 sample = normalize_predict(extract_data_predict(test_img))
 sample = model.predict(sample)
 
