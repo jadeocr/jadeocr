@@ -27,6 +27,8 @@ Run the program.
 ## Prediction
 Save an image labelled **test.png** you would like to have the network predict to **data**. Comment out lines 60-79 of **preprocess.py**, then run **predict.py**
 
+## Running the Webpage (work in progress)
+run ```python -m SimpleHTTPServer 8000``` in the root directory. You might need to deactivate the python virtual environment.
 
 ## Acknowledgements
 I'd like to thank the following people/pages for providing resources that have especially helped me.
