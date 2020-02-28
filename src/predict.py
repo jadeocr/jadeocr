@@ -19,10 +19,10 @@ def normalize_predict(arr):
 	return norm
 
 # Load the model and weights
-with open('../model/model.json', 'r') as f:
+with open('model/model.json', 'r') as f:
     model = f.read()
     model = model_from_json(model)
-model.load_weights('../model/weights.h5')
+model.load_weights('model/weights.h5')
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 
