@@ -36,7 +36,6 @@ if(typeof G_vmlCanvasManager != 'undefined') {
 
 ctx = canvas.getContext("2d");
 
-
 //---------------------
 // MOUSE DOWN function
 //---------------------
@@ -171,7 +170,7 @@ function drawOnCanvas() {
 // CLEAR CANVAS function
 //------------------------
 $("#clear-button").click(async function () {
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 	clickX = new Array();
 	clickY = new Array();
 	clickD = new Array();
@@ -201,6 +200,7 @@ loadModel();
 //-----------------------------------------------
 function preprocessCanvas(image) {
 	// resize the input image to target size of (1, 32, 32)
+  // TODO: Invert colors
 	let tensor = tf.browser.fromPixels(image)
 		.resizeNearestNeighbor([32, 32])
 		.mean(2)
@@ -210,6 +210,13 @@ function preprocessCanvas(image) {
 	console.log(tensor.shape);
 	return tensor.div(255.0);
 }
+
+var link = document.getElementById('download-button');
+link.addEventListener('click', function(ev) {
+    link.href = canvas.toDataURL('image/jpeg');
+    link.download = "mypainting.jpg";
+});
+document.body.appendChild(link);
 
 //--------------------------------------------
 // predict function

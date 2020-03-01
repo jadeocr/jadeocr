@@ -5,7 +5,7 @@
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<title>Hand Written Digit Recognition using TensorFlow.js</title>
+	<title>简体中文OCR</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/chart.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
@@ -16,7 +16,7 @@
 	<main>
 		<div class="container mt-1">
 			<div class="digit-demo-container">
-				<h3>Hand Written Digit Recognition</h3>
+				<h3>简体中文OCR</h3>
 					<div class="flex-two">
 						<div id="canvas_box_wrapper" class="canvas-box-wrapper">
 							<div id="canvas_box" class="canvas-box"></div>
@@ -25,6 +25,9 @@
 							</div>
 							<div class="col-12">
 								<button id="predict-button" class="btn btn-dark">Predict</button>
+							</div>
+							<div class="col-12">
+								<a id="download-button" class="btn btn-dark">Download</a>
 							</div>
 						</div>
 						<div class="col-6">
