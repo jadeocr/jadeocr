@@ -1,5 +1,5 @@
 <template>
-  <div id="#navigation" class="nav-container">
+  <div id="#navigation">
     <nav>
       <ul>
         <a href="#" id="nav-title">chinese-ocr</a>
@@ -17,7 +17,11 @@ export default {
 </script>
 
 <style scoped>
-.nav-container a{
+#navigation{
+  align-self: center;
+}
+
+nav a{
   display: inline-block;
   padding-top: 2em;
   padding-bottom: 2em;
@@ -28,55 +32,22 @@ export default {
 }
 
 #nav-title{
-  margin-left: 1.5em;
-  margin-right: 5em;
+  margin-right: 5%;
 }
 
 #nav-login{
-  margin-right: 5em;
+  margin-right: 3%;
 }
 
-#nav-signup{
-  margin-right: 1.5em;
-}
-
-@media (min-width: 600px) {
-  #nav-title{
-    margin-right: 15em;
-  }
-}
-
-@media (min-width: 900px) {
-  .nav-container a{
+@media (min-width: 600px){
+  nav a{
     font-size: 1.25em;
   }
-
-  #nav-title{
-    margin-right: 20em;
-  }
 }
 
-@media (min-width: 1200px) {
-  .nav-container a{
-    font-size: 1.25em;
-  }
-
-  #nav-title{
-    margin-right: 38em;
-  }
-}
-
-@media (min-width: 1800px) {
-  .nav-container a{
+@media (min-width: 900px){
+  nav a{
     font-size: 1.5em;
-  }
-
-  #nav-title{
-    margin-right: 50em;
-  }
-
-  #nav-login{
-    margin-right: 5em;
   }
 }
 </style>
