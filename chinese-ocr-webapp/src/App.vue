@@ -16,16 +16,19 @@ export default {
 </script>
 
 <style>
+/* Styling the background */
+body{
+  background-size: cover;
+  background: #121212;
+}
+
 #app{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Open Sans", sans-serif;
-  font-style: normal;
   font-weight: 300;
   text-align: center;
-  overflow: scroll;
-  background-size: cover;
-  background-color: #121212;
+  overflow: scroll; /* might have to move to body section */
   color: #ffffff;
 }
 </style>
