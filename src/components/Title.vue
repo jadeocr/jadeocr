@@ -1,6 +1,14 @@
 <template>
   <div id="title">
     <img src="../assets/title-image.png" alt="An image of the Chinese character 文, meaning 'written language'">
+    <div id="title-text">
+      <span>
+        <p>Learn Chinese.</p>
+      </span>
+      <span>
+        <p>Without Distractions.</p>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -17,6 +25,29 @@ export default {
 }
 img{
   max-width: 33%;
+  float: left;
+  margin-left: 20%;
+  margin-top: 2.5%;
+}
+
+@media (min-width: 600px){
+
+}
+
+@media (min-width: 900px){
   
+}
+
+@media (min-width: 1200px){
+  
+}
+
+@media (min-width: 1800px){
+  #title-text{
+    font-size: 3em;
+    text-align: left;
+    line-height: 0.5em;
+    margin-top: 15%;
+  }
 }
 </style>
