@@ -32,5 +32,6 @@ body{
   font-weight: 300;
   overflow: scroll;
   color: #ffffff;
+  text-align: center;
 }
 </style>
