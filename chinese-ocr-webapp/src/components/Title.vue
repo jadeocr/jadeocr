@@ -30,23 +30,37 @@ img{
   margin-top: 2.5%;
 }
 
-@media (min-width: 600px){
+#title-text{
+  font-size: 1em;
+  text-align: left;
+  line-height: 0.5em;
+  margin-top: 15%;
+}
 
+@media (min-width: 600px){
+  #title-text{
+    font-size: 1.5em;
+    margin-top: 15%;
+  }
 }
 
 @media (min-width: 900px){
-  
+  #title-text{
+    font-size: 2em;
+    margin-top: 15%;
+  }
 }
 
 @media (min-width: 1200px){
-  
+  #title-text{
+    font-size: 2.5em;
+    margin-top: 15%;
+  }
 }
 
 @media (min-width: 1800px){
   #title-text{
     font-size: 3em;
-    text-align: left;
-    line-height: 0.5em;
     margin-top: 15%;
   }
 }

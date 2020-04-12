@@ -52,7 +52,7 @@ export default {
   }
 
   #nav-title{
-    margin-right: 25em;
+    margin-right: 20em;
   }
 }
 
