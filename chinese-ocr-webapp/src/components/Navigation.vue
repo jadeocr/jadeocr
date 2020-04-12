@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .nav-container a{
-  display: inline-block flex;
+  display: inline-block;
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-decoration: none;
@@ -26,17 +26,14 @@ export default {
 #nav-title{
   margin-left: 1.5rem;
   margin-right: 5rem;
-  flex-grow: 3;
 }
 
 #nav-login{
   margin-right: 3rem;
-  flex-grow: 1;
 }
 
 #nav-signup{
   margin-right: 1.5rem;
-  flex-grow: 1;
 }
 
 @media (min-width: 600px) {
