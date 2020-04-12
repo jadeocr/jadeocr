@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <Navigation/>
+    <Title/>
   </div>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue'
+import Title from "./components/Title.vue"
 
 export default {
   name: 'App',
   components: {
-    Navigation
+    Navigation,
+    Title
   }
 }
 </script>
@@ -27,8 +30,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
-  text-align: center;
-  overflow: scroll; /* might have to move to body section */
+  overflow: scroll;
   color: #ffffff;
 }
 </style>
