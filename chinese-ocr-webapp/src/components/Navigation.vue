@@ -14,9 +14,10 @@ export default {
 
 <style scoped>
 .container{
-  display: inline-block;
+  margin: auto;
+  width: 50%;
+  text-align: center;
   padding-top: 2vh;
-  padding-left: 5vw;
   font-size: 5vw;
 }
 
