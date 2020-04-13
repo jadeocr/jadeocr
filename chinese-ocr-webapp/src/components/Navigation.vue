@@ -1,11 +1,7 @@
 <template>
-  <div id="#navigation">
+  <div class="container">
     <nav>
-      <ul>
-        <a href="#" id="nav-title">chinese-ocr</a>
-        <a href="#" id="nav-login">log in</a>
-        <a href="#" id="nav-signup">sign up</a>
-      </ul>
+      <a href="#" id="nav-title">chinese-ocr</a>
     </nav>
   </div>
 </template>
@@ -17,37 +13,40 @@ export default {
 </script>
 
 <style scoped>
-#navigation{
-  align-self: center;
-}
-
-nav a{
+.container{
   display: inline-block;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  text-decoration: none;
-  color: #ffffff;
-  opacity: 0.87;
-  font-size: 1em;
+  padding-top: 2vh;
+  padding-left: 5vw;
+  font-size: 5vw;
 }
 
 #nav-title{
-  margin-right: 5%;
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.87;
 }
 
-#nav-login{
-  margin-right: 3%;
-}
-
-@media (min-width: 600px){
-  nav a{
-    font-size: 1.25em;
+@media(min-width: 600px){
+  .container{
+    font-size: 4vw;  
   }
 }
 
-@media (min-width: 900px){
-  nav a{
-    font-size: 1.5em;
+@media(min-width: 900px){
+  .container{
+    font-size: 3vw;  
+  }
+}
+
+@media(min-width: 1200px){
+  .container{
+    font-size: 2.25vw;  
+  }
+}
+
+@media(min-width: 1800px){
+  .container{
+    font-size: 2vw;  
   }
 }
 </style>
