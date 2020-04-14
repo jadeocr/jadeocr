@@ -55,25 +55,13 @@ img{
 
 @media (min-width: 900px){
   .container{
-    margin-top: 5vh;
-  }
-}
-
-@media (min-width: 1200px){
-  .container{
-    margin-top: 8vh;
-  }
-}
-
-@media (min-width: 1600px){
-  .container{
-    margin-top: 8vh;
+    margin-top: 2vh;
   }
 }
 
 @media (min-width: 1800px){
   .container{
-    margin-top: 10vh;
+    margin-top: 0vh;
   }
 }
 </style>
