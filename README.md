@@ -1,8 +1,5 @@
 # chinese-ocr
 
-## Demo
-View a [live demo](https://tanayb11.github.io/chinese-ocr/) of this project. It's still in the works. (NOTE: Demo not available yet)
-
 ## About
 This repository contains code that trains a convolutional neural network (CNN) to recognize handwritten Chinese characters. The network is trained on the CASIA dataset, which can be found at [http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html).
 
