@@ -19,6 +19,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 /* Styling the background */
 body{
   background-size: cover;
@@ -28,7 +30,7 @@ body{
 #app{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   overflow: scroll;
   color: #ffffff;
