@@ -41,7 +41,7 @@ export default {
 
 @media(min-width: 1200px){
   .container{
-    font-size: 2.25vw;  
+    font-size: 2.5vw;  
   }
 }
 

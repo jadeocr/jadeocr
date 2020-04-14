@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <div>
+    <div class="col-1">
       <img src="../assets/title-image.png" alt="An image of the Chinese character 文, meaning 'written language'">
     </div>
-    <div class="greeting">
+    <div class="col-2">
       <p>Learn Chinese</p>
       <p>without distractions.</p>
     </div>
@@ -17,23 +17,63 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  margin: auto;
-  padding-top: 2.5vh;
-  display: flex;
-  flex-direction: column;
-}
-
 img{
   max-width: 100%;
 }
 
-.greeting{
-  flex: 1;
-  text-align: center;
-  line-height: 5vh;
-  font-size: 7vw;
-  margin-top: -7.5vh;
+.container{
+  display: flex;
+  flex-direction: column;
 }
 
+.col-1{
+  width: 100%;
+  flex: 1;
+}
+
+.col-2{
+  width: 100%;
+  text-align: center;
+  flex: 1;
+  line-height: 4vh;
+  font-size: 8vw;
+  margin-top: -8vh;
+}
+
+@media (min-width: 600px){
+  .container{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-2{
+    text-align: left;
+    font-size: 4vw;
+  }
+}
+
+@media (min-width: 900px){
+  .container{
+    margin-top: 5vh;
+  }
+}
+
+@media (min-width: 1200px){
+  .container{
+    margin-top: 8vh;
+  }
+}
+
+@media (min-width: 1600px){
+  .container{
+    margin-top: 8vh;
+  }
+}
+
+@media (min-width: 1800px){
+  .container{
+    margin-top: 10vh;
+  }
+}
 </style>
