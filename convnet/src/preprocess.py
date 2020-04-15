@@ -36,7 +36,6 @@ print('Saving...')
 
 print(trainX.shape, testX.shape, trainY.shape, testY.shape)
 
-# TODO: PATHS
 with h5py.File('../data/compressed/trainX.h5', 'w') as f:
    f.create_dataset('trainX', data=trainX, compression='gzip', compression_opts=6)
 with h5py.File('../data/compressed/testX.h5', 'w') as f:

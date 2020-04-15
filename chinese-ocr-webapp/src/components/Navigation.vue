@@ -24,6 +24,20 @@ export default {
 #nav-title{
   text-decoration: none;
   color: #ffffff;
+  opacity: 0.5;
+  animation: 1.25s shiftopacity;
+}
+
+@keyframes shiftopacity {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 0.5;
+  }
+}
+
+#nav-title:hover{
   opacity: 0.87;
 }
 

@@ -29,6 +29,16 @@ img{
 .col-1{
   width: 100%;
   flex: 1;
+  animation: 1.25s shiftopacity;
+}
+
+@keyframes shiftopacity {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 0.87
+  }
 }
 
 .col-2{
@@ -38,6 +48,19 @@ img{
   line-height: 4vh;
   font-size: 8vw;
   margin-top: -8vh;
+  animation: 1.25s slidedown;
+  opacity: .87;
+}
+
+@keyframes slidedown{
+  from{
+    margin-top: 10vh;
+    opacity: 0;
+  }
+  to{
+    margin-top: -8vh;
+    opacity: .87;
+  }
 }
 
 @media (min-width: 600px){
@@ -55,25 +78,7 @@ img{
 
 @media (min-width: 900px){
   .container{
-    margin-top: 5vh;
-  }
-}
-
-@media (min-width: 1200px){
-  .container{
-    margin-top: 8vh;
-  }
-}
-
-@media (min-width: 1600px){
-  .container{
-    margin-top: 8vh;
-  }
-}
-
-@media (min-width: 1800px){
-  .container{
-    margin-top: 10vh;
+    margin-top: 0vh;
   }
 }
 </style>
