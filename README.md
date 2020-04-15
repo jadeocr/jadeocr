@@ -20,13 +20,13 @@ A web-based flashcard app directed at language learning, particularly Chinese. C
 ## Installation
 We're still working on the webapp. Please help out by [contributing](#contribute)!
 
-To use the Chinese handwriting OCR, clone/download this repo and access the files in the **convnet** directory
+To use the Chinese handwriting OCR, see the section on using the CNN below.
 
-## Using the CNN
+## CNN
 Currently, the OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). Data augmentation needs to be applied to the dataset to achieve a usable training accuracy. Also, more computing power is needed to train on the 2 million+ training examples.
 
 ### Obtaining the Dataset
-To obtain the full dataset, download [**HWDB1.01train_gnt (2741MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn.zip) and [**HWDB1.0test_gnt (681MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst.zip) and extract the zip files. Store them in the directory **convnet/data** and make sure the extracted folders are named **HWDB1.1trn_gnt** and **HWDB1.1tst_gnt**, respectively.
+To obtain the full dataset, download [**HWDB1.1train_gnt (2741MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn.zip) and [**HWDB1.1test_gnt (681MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst.zip) and extract the zip files. Store them in the directory **convnet/data** and make sure the extracted folders are named **HWDB1.1trn_gnt** and **HWDB1.1tst_gnt**, respectively.
 
 ### Preprocessing
 Run **preprocess.py** to convert from GNT to png.
