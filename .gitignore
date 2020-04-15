@@ -5,6 +5,9 @@ logs
 data
 model
 
+# Tailwind CSS
+output.css
+
 # Vue Project
 .DS_Store
 node_modules
