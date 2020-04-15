@@ -1,0 +1,4 @@
+/* BUILD WITH %npx tailwind build src/assets/css/styles.css -o src/assets/css/output.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

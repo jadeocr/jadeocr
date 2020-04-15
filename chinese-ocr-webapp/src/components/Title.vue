@@ -54,7 +54,7 @@ img{
 
 @keyframes slidedown{
   from{
-    margin-top: 10vh;
+    margin-top: -20vh;
     opacity: 0;
   }
   to{
