@@ -9,8 +9,8 @@ from PIL import Image
 
 data_dir = '../data'
 # # train_data_dir = "../data/HWDB1.1trn_gnt"
-train_data_dir = os.path.join(data_dir, 'misc/HWDB1.1trn_gnt')
-test_data_dir = os.path.join(data_dir, 'misc/HWDB1.1tst_gnt')
+train_data_dir = os.path.join(data_dir, 'HWDB1.1trn_gnt')
+test_data_dir = os.path.join(data_dir, 'HWDB1.1tst_gnt')
 
 
 def read_from_gnt_dir(gnt_dir=train_data_dir):

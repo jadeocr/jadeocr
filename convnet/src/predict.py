@@ -32,7 +32,7 @@ with open('char_dict', 'rb') as f:
 char_dict = dict([(value, key) for key, value in char_dict.items()])
 
 # Use the model to predict an image
-test_img = '../data/test1.jpg'
+test_img = '../data/test.jpg'
 sample = normalize_predict(extract_data_predict(test_img))
 sample = model.predict(sample)
 
