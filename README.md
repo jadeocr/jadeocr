@@ -3,11 +3,9 @@ A web-based flashcard app directed at language learning, particularly Chinese. C
 
 
 ## Demo
-**Landing Page**
+### Landing Page
 
-<video width="320" height="240" controls>
-  <source src="demos/landing-page.mov" type="video/mov">
-</video>
+![Landing Page](demos/landing-page.png)
 
 ## Built With
 * [TensorFlow](https://www.tensorflow.org)
