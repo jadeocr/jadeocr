@@ -1,7 +1,7 @@
 <template>
 	<div class='container text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl'>
 		<nav>
-			<a href='/' id='nav-title'>chinese-ocr</a>
+			<router-link :to='{ name: "landing" }' id='nav-title'>chinese-ocr</router-link>
 		</nav>
 	</div>
 </template>
