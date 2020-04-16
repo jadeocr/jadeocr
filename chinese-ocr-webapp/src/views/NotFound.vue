@@ -4,7 +4,7 @@
     <p>囧</p>
     <p>404 Not Found</p>
     <router-link :to='{ name: "landing" }'
-    class='btn bg-purple-500 hover:bg-purple-600 mt-8 px-3 py-1 
+    class='bg-purple-500 hover:bg-purple-600 mt-8 px-3 py-1 
     text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'
     >
       Home | 返回
