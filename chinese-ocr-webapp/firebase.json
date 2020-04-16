@@ -5,5 +5,10 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "emulators": {
+    "firestore": {
+      "port": "3000"
+    }
   }
 }
