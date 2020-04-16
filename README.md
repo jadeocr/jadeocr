@@ -72,11 +72,11 @@ _________________________________________________________________
 Save an image **test.jpg** you would like to have the network predict to **data** and run **predict.py**.
 
 ## Contribute
-Contributions are very much appreciated! Please take a look at the information below. There are no set-in-stone rules, use your best judgement while trying to follow the guidelines.
+Contributions are very much appreciated! Please take a look at the information below. There are no set-in-stone rules; use your best judgement while trying to follow the guidelines.
 
 ### Issues
 Browse through the [issues](https://github.com/TanayB11/chinese-ocr/issues) or submit one. Here are a couple guidelines to follow:
-* Make sure all of your dependencies up to date
+* Make sure all of your dependencies are up to date
 * Include steps to reproduce the issue
 * Expected behavior and what went wrong
 * Screenshots/terminal output if necessary
@@ -94,6 +94,6 @@ Thank you so much for taking the time to contribute!
 * [蹦跶的小羊羔在cdsn.net](https://blog.csdn.net/yql_617540298/article/details/82740382)
 
 ## License
-This repository is under the MIT License.
+This repository is licensed under the MIT License.
 
 [Tanay Biradar](https://github.com/TanayB11)
