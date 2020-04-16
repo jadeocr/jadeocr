@@ -72,7 +72,7 @@ _________________________________________________________________
 Save an image **test.jpg** you would like to have the network predict to **data** and run **predict.py**.
 
 ## Contribute
-Contributions are very much appreciated! Please take a look at the information below. There are no hard and fast rules, use your best judgement while trying to follow the guidelines.
+Contributions are very much appreciated! Please take a look at the information below. There are no set-in-stone rules, use your best judgement while trying to follow the guidelines.
 
 ### Issues
 Browse through the [issues](https://github.com/TanayB11/chinese-ocr/issues) or submit one. Here are a couple guidelines to follow:
