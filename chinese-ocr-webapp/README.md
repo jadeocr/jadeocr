@@ -1,11 +1,5 @@
 # chinese-ocr-webapp
 
-### Builds TailwindCSS files
-Note: Run this after first cloning the repo or after modifying **tailwind.config.js**
-```
-npm run twbuild
-```
-
 ## Project setup
 ```
 npm install
