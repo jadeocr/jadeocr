@@ -24,6 +24,7 @@ export default {
 <style scoped>
 .btn{
   animation: 3s btnopacity;
+  opacity: 0.87;
 }
 
 @keyframes btnopacity{
