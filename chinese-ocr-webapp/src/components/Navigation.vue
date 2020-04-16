@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="container text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl"
-  >
+  <div class="container text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl">
     <nav>
       <a href="/" id="nav-title">chinese-ocr</a>
     </nav>
@@ -9,18 +7,20 @@
 </template>
 
 <script>
-export default {};
+export default {
+  
+}
 </script>
 
 <style scoped>
-.container {
+.container{
   margin: auto;
   width: 50%;
   text-align: center;
   padding-top: 2vh;
 }
 
-#nav-title {
+#nav-title{
   text-decoration: none;
   color: #ffffff;
   opacity: 0.5;
@@ -28,15 +28,15 @@ export default {};
 }
 
 @keyframes shiftopacity {
-  from {
+  from{
     opacity: 0;
   }
-  to {
+  to{
     opacity: 0.5;
   }
 }
 
-#nav-title:hover {
+#nav-title:hover{
   opacity: 0.87;
 }
 </style>
