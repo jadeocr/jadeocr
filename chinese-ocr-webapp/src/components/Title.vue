@@ -6,19 +6,41 @@
     <div class='col-2 text-base text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>
       <p>Learn Chinese</p>
       <p>without distractions.</p>
-      <router-link :to='{ name: "login" }'
+      <button @click='signIn'
       class='btn bg-purple-500 hover:bg-purple-600 mt-8 px-3 py-1 
       text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'
       >
-        Get Started | 开始
-      </router-link>
+        Sign in with Google
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import credentials from '../firebase/credentials'
+firebase.initializeApp(credentials.firebaseConfig)
 
+export default {
+  name: 'Login',
+  data() {
+    return {
+      username: ''
+    }
+  },
+  methods: {
+    signIn: function() {
+      var provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+    },
+    signOut: function() {
+      firebase.auth().signOut()
+    },
+    getUsername: function() {
+      this.username = firebase.auth().currentUser.displayName
+    }
+  }
 }
 </script>
 
