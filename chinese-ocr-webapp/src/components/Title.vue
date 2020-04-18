@@ -6,17 +6,13 @@
     <div class='col-2 text-base text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>
       <p>Learn Chinese</p>
       <p>without distractions.</p>
-      <button @click='signIn'
-      class='btn bg-purple-500 hover:bg-purple-600 mt-8 px-3 py-1 
-      text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'
-      >
-        Sign in with Google
-      </button>
+      <div class='g-signin2 mt-8 px-2 py-1' data-width='275' data-height='75' data-onsuccess='onSignIn'></div>
     </div>
   </div>
 </template>
 
 <script>
+
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import credentials from '../firebase/credentials'
@@ -30,9 +26,8 @@ export default {
     }
   },
   methods: {
-    signIn: function() {
-      var provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider)
+    onSignIn: function() {
+
     },
     signOut: function() {
       firebase.auth().signOut()
@@ -40,7 +35,7 @@ export default {
     getUsername: function() {
       this.username = firebase.auth().currentUser.displayName
     }
-  }
+  },
 }
 </script>
 
