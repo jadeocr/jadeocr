@@ -1,6 +1,6 @@
 <template>
-	<div class='container mx-auto text-base text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
-	mt-24 sm:mt-32 md:mt-40 lg:mt-56 xl:mt-64'>
+	<div class='chinese container mx-auto text-base text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
+	mt-18 sm:mt-24 md:mt-32 lg:mt-40 xl:mt-48'>
     <p>囧</p>
     <p>404 Not Found</p>
     <router-link :to='{ name: "landing" }'

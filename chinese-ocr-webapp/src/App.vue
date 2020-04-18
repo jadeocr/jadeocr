@@ -20,6 +20,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300&display=swap');
 @import './assets/css/output.css';
 
 /* Styling the background */
@@ -35,5 +36,10 @@ body {
 	font-weight: 300;
 	overflow: scroll;
 	color: #ffffff;
+}
+
+.chinese {
+	font-family: 'Noto Sans SC';
+	font-weight: 100;
 }
 </style>
