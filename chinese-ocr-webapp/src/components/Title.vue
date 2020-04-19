@@ -7,9 +7,7 @@
       <p>Learn Chinese</p>
       <p>without distractions.</p>
       <router-link :to='{ name: "login" }'
-      class='btn bg-purple-500 hover:bg-purple-600 mt-8 px-3 py-1 
-      text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'
-      >
+      class='btn mt-8 px-3 py-1 text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'>
         Get Started | 开始
       </router-link>
     </div>
@@ -30,7 +28,12 @@ export default {
 <style scoped>
 .btn{
   animation: 3s btnopacity;
+  background-color: #bb86fc;
   opacity: 0.87;
+}
+
+.btn:hover {
+	opacity: 0.75;
 }
 
 @keyframes btnopacity{

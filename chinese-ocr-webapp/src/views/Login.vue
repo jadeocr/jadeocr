@@ -101,11 +101,11 @@ export default {
 <style scoped>
 .btn-purple {
 	background-color: #bb86fc;
-	opacity: 0.6;
+	opacity: 0.87;
 }
 
 .btn-purple:hover {
-	opacity: 0.5;
+	opacity: 0.75;
 }
 
 .opacity-86{
