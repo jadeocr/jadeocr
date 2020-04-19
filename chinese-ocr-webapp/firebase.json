@@ -10,5 +10,13 @@
     "firestore": {
       "port": "3000"
     }
+  },
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }
