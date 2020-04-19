@@ -15,7 +15,7 @@
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
-					<p v-if='errors.length' class="text-red-500 text-sm mt-1 -mb-1">{{ errors }}</p>
+					<p v-if='errors.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ errors }}</p>
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
@@ -71,7 +71,7 @@ export default {
 			e.preventDefault()
 		},
 		validEmail: function (email) {
-			const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			return re.test(email)
 		},
 		signUpWithEmail: function() {
