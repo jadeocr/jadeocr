@@ -6,14 +6,14 @@
 					<label class='block opacity-86 text-sm font-bold mb-2'>
 						Email
 					</label>
-					<input v-model='email' class='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+					<input v-model='email' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
 					leading-tight focus:outline-none focus:shadow-outline' type='email' placeholder='alice@example.com'>
 				</div>
 				<div class='mb-6'>
 					<label class='block opacity-86 text-sm font-bold mb-2'>
 						Password
 					</label>
-					<input v-model='password' class='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 
+					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
 				</div>
 				<div class='flex items-center justify-between'>
@@ -27,8 +27,13 @@
 					</button>
 				</div>
 			</form>
+			<button @click='signInWithGoogle'
+			class='m-auto w-full bg-purple-500 hover:bg-purple-600 mt-8 px-3 py-1 
+			text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl rounded-lg'
+			>
+				Sign in with Google
+			</button>
 		</div>
-
 	</div>
 </template>
 
@@ -54,12 +59,16 @@ export default {
 				console.log(error.message)
 			})
 		},
-		signInWithEmail: function(){
+		signInWithEmail: function() {
 			firebase.auth().signInWithEmailAndPassword(this.email.trim(), this.password.trim())
 			.catch(function(error) {
 				console.log(error.code)
 				console.log(error.message)
 			})
+		},
+		signInWithGoogle: function() {
+			var provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
 		}
 	}
 }
