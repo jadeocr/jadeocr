@@ -3,6 +3,8 @@ A web-based flashcard app directed at language learning, particularly Chinese. C
 
 
 ## Demo
+Play with the partially working [demo](https://chinese-ocr-274418.firebaseapp.com/) while still in development
+
 ### Landing Page
 
 ![Landing Page](demos/landing-page.png)
@@ -10,11 +12,12 @@ A web-based flashcard app directed at language learning, particularly Chinese. C
 ## Built With
 * [TensorFlow](https://www.tensorflow.org)
 * [Vue.js](https://vuejs.org)
+* [Firebase](https://firebase.google.com/)
 
 ## Features
 * [x] Chinese handwriting recognition
+* [x] Individual user accounts
 * [ ] Spaced repetition flashcards
-* [ ] User management
 * [ ] Support for more languages
 
 ## Installation
