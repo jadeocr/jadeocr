@@ -6,14 +6,14 @@
 					<label class='block opacity-86 text-sm font-bold mb-2'>
 						Email
 					</label>
-					<input v-model='email' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+					<input v-model='email' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 
 					leading-tight focus:outline-none focus:shadow-outline' type='text' placeholder='alice@example.com'>
 				</div>
 				<div class='mb-6'>
 					<label class='block opacity-86 text-sm font-bold mb-2'>
 						Password
 					</label>
-					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 
+					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
 					<p v-if='errors.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ errors }}</p>
 				</div>
@@ -75,24 +75,28 @@ export default {
 			return re.test(email)
 		},
 		signUpWithEmail: function() {
-			firebase.auth().createUserWithEmailAndPassword(this.email.trim(), this.password.trim())
-			.catch(function(error) {
-				console.log(error.code)
-				console.log(error.message)
-			})
-			this.error = []
+			if (!this.errors.length) {
+				firebase.auth().createUserWithEmailAndPassword(this.email.trim(), this.password.trim())
+				.catch(function(error) {
+					console.log(error.code)
+					console.log(error.message)
+				})
+				this.error = []
+			}
 		},
 		signInWithEmail: function() {
-			firebase.auth().signInWithEmailAndPassword(this.email.trim(), this.password.trim())
-			.catch(function(error) {
-				console.log(error.code)
-				console.log(error.message)
-			})
-			this.error = []
+			if (!this.errors.length) {
+				firebase.auth().signInWithEmailAndPassword(this.email.trim(), this.password.trim())
+				.catch(function(error) {
+					console.log(error.code)
+					console.log(error.message)
+				})
+				this.error = []			
+			}
 		},
 		signInWithGoogle: function() {
 			var provider = new firebase.auth.GoogleAuthProvider()
-			firebase.auth().signInWithRedirect(provider)
+			firebase.auth().signInWithPopup(provider)
 		}
 	}
 }
