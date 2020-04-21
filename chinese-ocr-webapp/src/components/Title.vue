@@ -5,7 +5,7 @@
     </div>
     <div class='col-2 text-base text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl'>
       <p>Learn Chinese</p>
-      <p>without distractions.</p>
+      <p class='mb-4'>without distractions.</p>
       <router-link :to='{ name: "login" }'
       class='btn mt-8 px-3 py-1 text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'>
         Get Started | 开始
@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style scoped>
+img {
+  max-width: 93.547%;
+}
+
 .btn{
   animation: 3s btnopacity;
   background-color: #bb86fc;
@@ -68,7 +72,7 @@ export default {
   text-align: center;
   flex: 1;
   animation: 1.25s slidedown;
-  margin-top: -8vh;
+  margin-top: -6vh;
   opacity: .87;
 }
 
@@ -90,6 +94,7 @@ export default {
   }
   .col-2{
     text-align: left;
+    margin-top: -8vh;
   }
 }
 </style>
