@@ -25,6 +25,43 @@ We're still working on the webapp. Please help out by [contributing](#contribute
 
 To use the Chinese handwriting OCR, see the section on using the CNN below.
 
+### Quickstart
+Run these 3 commands to spin up a quick development instance:
+```
+npm install
+npm run twbuild
+npm run serve
+```
+
+#### Project setup
+Note: Since `node_modules` is not committed, this _must_ be run right after cloning the repo.
+```
+npm install
+```
+
+#### Builds TailwindCSS files
+Note: Run this after first cloning the repo or after modifying **tailwind.config.js**
+```
+npm run twbuild
+```
+
+### Compilation
+
+#### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+#### Compiles and minifies for production
+```
+npm run build
+```
+
+#### Lints and fixes files
+```
+npm run lint
+```
+
 ## CNN
 Currently, the OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). Data augmentation needs to be applied to the dataset to achieve a usable training accuracy. Also, more computing power is needed to train on the 2 million+ training examples.
 
