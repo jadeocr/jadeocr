@@ -1,15 +1,26 @@
 # chinese-ocr-webapp
 
+## Quickstart
+Run these 3 commands to spin up a quick development instance:
+```
+npm install
+npm run twbuild
+npm run serve
+```
+
+## Project setup
+Note: Since `node_modules` is not committed, this MUST be run right after cloning the repo.
+```
+npm install
+```
+
 ## Builds TailwindCSS files
 Note: Run this after first cloning the repo or after modifying **tailwind.config.js**
 ```
 npm run twbuild
 ```
 
-## Project setup
-```
-npm install
-```
+## Compilation
 
 ### Compiles and hot-reloads for development
 ```
