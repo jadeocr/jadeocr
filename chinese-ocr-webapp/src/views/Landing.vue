@@ -25,6 +25,10 @@ export default {
 </script>
 
 <style scoped>
+img {
+  max-width: 93.547%;
+}
+
 .container{
   display: flex;
   flex-direction: column;
