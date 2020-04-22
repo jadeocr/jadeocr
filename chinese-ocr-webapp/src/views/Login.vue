@@ -3,14 +3,14 @@
 		<div class='m-auto w-full max-w-xs mt-8 md:mt-10 lg:mt-12 xl:mt-26'>
 			<form class='login-form bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' @submit='checkForm'>
 				<div class='mb-4'>
-					<label class='block opacity-86 text-sm font-bold mb-2'>
+					<label class='block opacity-87 text-sm font-bold mb-2'>
 						Email
 					</label>
 					<input v-model='email' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 
 					leading-tight focus:outline-none focus:shadow-outline' type='text' placeholder='alice@example.com'>
 				</div>
 				<div class='mb-6'>
-					<label class='block opacity-86 text-sm font-bold mb-2'>
+					<label class='block opacity-87 text-sm font-bold mb-2'>
 						Password
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
@@ -19,11 +19,11 @@
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
-					class='btn-purple opacity-86 text-white font-bold py-2 px-4 rounded' type='submit'>
+					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded' type='submit'>
 						Sign In
 					</button>
 					<button @click='signUpWithEmail'
-					class='btn-purple opacity-86 text-white font-bold py-2 px-4 rounded' type='submit'>
+					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded' type='submit'>
 						Sign Up
 					</button>
 				</div>
@@ -105,10 +105,6 @@ export default {
 
 .btn-purple:hover {
 	opacity: 0.75;
-}
-
-.opacity-86{
-	opacity: .86;
 }
 
 .login-form {

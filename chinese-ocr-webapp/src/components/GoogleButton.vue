@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<button @click='signInWithGoogle'
-		class='m-auto w-full bg-white text-gray-600 opacity-86 hover:bg-gray-200 mt-8 px-3 py-1 
+		class='m-auto w-full bg-white text-gray-600 opacity-87 hover:bg-gray-200 mt-8 px-3 py-1 
 		text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl rounded-md'
 		>
 			<div>
