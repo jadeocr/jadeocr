@@ -34,7 +34,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	overflow: scroll;
+	/* overflow: scroll; */
 	color: #ffffff;
 }
 
