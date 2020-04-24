@@ -53,7 +53,7 @@ export default {
 		}
 	},
 	methods: {
-		checkForm: function(e) {
+		checkForm(e) {
 			this.errors = []
 
 			if ((!this.email) || (!this.password)){
@@ -69,11 +69,11 @@ export default {
 			this.password = ''
 			e.preventDefault()
 		},
-		validEmail: function (email) {
+		validEmail(email) {
 			const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			return re.test(email)
 		},
-		signUpWithEmail: function() {
+		signUpWithEmail() {
 			if (!this.errors.length) {
 				firebase.auth().createUserWithEmailAndPassword(this.email.trim(), this.password.trim())
 				.catch(function(error) {
@@ -81,16 +81,18 @@ export default {
 					console.log(error.message)
 				})
 				this.error = []
+				this.$store.commit('getUserInfo')
 			}
 		},
-		signInWithEmail: function() {
+		signInWithEmail() {
 			if (!this.errors.length) {
 				firebase.auth().signInWithEmailAndPassword(this.email.trim(), this.password.trim())
 				.catch(function(error) {
 					console.log(error.code)
 					console.log(error.message)
 				})
-				this.error = []			
+				this.error = []
+				this.$store.commit('getUserInfo')
 			}
 		}
 	}
