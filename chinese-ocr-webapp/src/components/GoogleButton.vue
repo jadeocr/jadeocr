@@ -36,6 +36,7 @@ export default {
 		signInWithGoogle() {
 			var provider = new firebase.auth.GoogleAuthProvider()
 			firebase.auth().signInWithPopup(provider)
+			.then(this.$store.dispatch('setUserAction', firebase.auth().currentUser))
 		}
 	}
 }
