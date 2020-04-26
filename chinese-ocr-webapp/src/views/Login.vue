@@ -81,7 +81,6 @@ export default {
 					console.log(error.message)
 				})
 				this.error = []
-				this.$store.commit('getUserInfo')
 			}
 		},
 		signInWithEmail() {
@@ -92,7 +91,6 @@ export default {
 					console.log(error.message)
 				})
 				this.error = []
-				this.$store.commit('getUserInfo')
 			}
 		}
 	}
