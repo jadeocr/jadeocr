@@ -27,16 +27,14 @@
 </template>
 
 <script>
-import * as firebase from 'firebase/app'
-import 'firebase/auth'
+// import * as firebase from 'firebase/app'
+// import 'firebase/auth'
 
 export default {
 	name: 'GoogleButton',
 	methods: {
 		signInWithGoogle() {
-			var provider = new firebase.auth.GoogleAuthProvider()
-			firebase.auth().signInWithPopup(provider)
-			.then(this.$store.dispatch('setUserAction', firebase.auth().currentUser))
+			this.$store.dispatch('signInWithGoogleAction')
 		}
 	}
 }

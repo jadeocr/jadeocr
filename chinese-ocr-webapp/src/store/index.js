@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
 
 Vue.use(Vuex)
 
@@ -8,13 +10,17 @@ export default new Vuex.Store({
     user: null
   },
   mutations: {
-    setUser (state, payload) {
+    updateUser(state, payload) {
       state.user = payload
     }
   },
   actions: {
-    setUserAction(context, payload) {
-      context.commit('setUser', payload)
+    signInWithGoogleAction(context) {
+      var provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider)
+      .then(response => {
+        context.commit('updateUser', response)
+      })
     }
   },
   modules: {
