@@ -45,6 +45,16 @@ Note: Run this after first cloning the repo or after modifying **tailwind.config
 npm run twbuild
 ```
 
+#### Adding Firebase
+To add the backend, create a project on [Firebase](https://firebase.google.com). Copy the JS config snippets from the Firebase console into the `firebaseConfig` object in **chinese-ocr-webapp/src/firebase/credentials.js** to add the SDK credentials.
+```javascript
+export default {
+  firebaseConfig: {
+  
+  }
+}
+```
+
 ### Compilation
 
 #### Compiles and hot-reloads for development
@@ -73,13 +83,13 @@ Run **preprocess.py** to convert from GNT to png.
 
 ### Training
 Modify **train.py** to reflect the number of classes you want to train the model on.
-```
+```python
 model.add(Dense(number_of_classes, activation='softmax'))
 ```
 
 This is the model structure for training on the subsetted dataset.
 
-```python
+```
 Model: "sequential"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
