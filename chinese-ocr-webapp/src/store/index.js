@@ -7,11 +7,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null
+    userInfo: {
+      displayName: null,
+      email: null,
+      emailVerified: null,
+      photoURL: null,
+      uid: null,
+    }
   },
   mutations: {
     updateUser(state, payload) {
-      state.user = payload
+      state.userInfo.displayName = payload.user.displayName
+      state.userInfo.email = payload.user.email
+      state.userInfo.emailVerified = payload.user.emailVerified
+      state.userInfo.photoURL = payload.user.photoURL
+      state.userInfo.uid = payload.user.uid
     }
   },
   actions: {
@@ -24,12 +34,18 @@ export default new Vuex.Store({
     signUpWithEmailAction({ commit }, credentials) {
       firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error.code)
+          console.log(error.message)
+        })
     },
     signInWithEmailAction({ commit }, credentials) {
       firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error.code)
+          console.log(error.message)
+        })
     }
   },
   modules: {
