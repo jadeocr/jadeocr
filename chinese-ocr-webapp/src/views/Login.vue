@@ -75,21 +75,20 @@ export default {
 		},
 		signUpWithEmail() {
 			if (!this.errors.length) {
-				firebase.auth().createUserWithEmailAndPassword(this.email.trim(), this.password.trim())
-				.catch(function(error) {
-					console.log(error.code)
-					console.log(error.message)
-				})
+        
+        this.$store.dispatch('signUpWithEmailAction', { 
+          email: this.email.trim(), 
+          password: this.password.trim()
+        })
 				this.error = []
 			}
 		},
 		signInWithEmail() {
 			if (!this.errors.length) {
-				firebase.auth().signInWithEmailAndPassword(this.email.trim(), this.password.trim())
-				.catch(function(error) {
-					console.log(error.code)
-					console.log(error.message)
-				})
+				this.$store.dispatch('signInWithEmailAction', { 
+          email: this.email.trim(), 
+          password: this.password.trim()
+        })
 				this.error = []
 			}
 		}

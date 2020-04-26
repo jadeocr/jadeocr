@@ -15,12 +15,21 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    signInWithGoogleAction(context) {
+    signInWithGoogleAction({ commit }) {
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider)
-      .then(response => {
-        context.commit('updateUser', response)
-      })
+        .then(response => commit('updateUser', response))
+        .catch(error => console.log(error))
+    },
+    signUpWithEmailAction({ commit }, credentials) {
+      firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+        .then(response => commit('updateUser', response))
+        .catch(error => console.log(error))
+    },
+    signInWithEmailAction({ commit }, credentials) {
+      firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+        .then(response => commit('updateUser', response))
+        .catch(error => console.log(error))
     }
   },
   modules: {
