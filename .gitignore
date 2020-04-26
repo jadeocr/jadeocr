@@ -1,10 +1,11 @@
 __pycache__
 .DS_Store
 env
+
+# ML Model
 logs
 data
 model
-dist
 
 # Tailwind CSS
 output.css
@@ -13,6 +14,9 @@ output.css
 .DS_Store
 node_modules
 /dist
+
+# API Keys
+credentials.js
 
 # local env files
 .env.local
