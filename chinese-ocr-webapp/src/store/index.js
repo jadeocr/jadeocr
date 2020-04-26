@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
+import credentials from '../firebase/credentials'
+firebase.initializeApp(credentials.firebaseConfig)
 
 Vue.use(Vuex)
 

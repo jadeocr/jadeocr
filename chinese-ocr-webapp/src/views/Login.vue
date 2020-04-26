@@ -35,10 +35,6 @@
 
 <script>
 import GoogleButton from '../components/GoogleButton'
-import * as firebase from 'firebase/app'
-import 'firebase/auth'
-import credentials from '../firebase/credentials'
-firebase.initializeApp(credentials.firebaseConfig)
 
 export default {
 	name: 'Login',
@@ -61,7 +57,7 @@ export default {
 			} else if (!this.validEmail(this.email)) {
 				this.errors.push('Invalid Email')
 			} else {
-				this.error = []
+				this.errors = []
 			}
 
 			this.errors = this.errors.toString()
@@ -75,12 +71,11 @@ export default {
 		},
 		signUpWithEmail() {
 			if (!this.errors.length) {
-        
         this.$store.dispatch('signUpWithEmailAction', { 
           email: this.email.trim(), 
           password: this.password.trim()
         })
-				this.error = []
+				this.errors = []
 			}
 		},
 		signInWithEmail() {
@@ -89,7 +84,7 @@ export default {
           email: this.email.trim(), 
           password: this.password.trim()
         })
-				this.error = []
+				this.errors = []
 			}
 		}
 	}
