@@ -19,6 +19,7 @@ node_modules
 credentials.js
 
 # local env files
+env
 .env.local
 .env.*.local
 
