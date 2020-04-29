@@ -57,6 +57,10 @@ export default {
 				this.$store.commit('addError', 'Invalid Email')
 			}
 		},
+		clearFields() {
+			this.email = ''
+			this.password = ''
+		},
 		validEmail(email) {
 			const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			return re.test(email)
@@ -68,9 +72,8 @@ export default {
           email: this.email.trim(), 
           password: this.password.trim()
 				})
-				this.email = ''
-				this.password = ''
 			}
+			this.clearFields()
 		},
 		signInWithEmail() {
 			this.checkForm()
@@ -79,9 +82,8 @@ export default {
           email: this.email.trim(), 
           password: this.password.trim()
 				})
-				this.email = ''
-				this.password = ''
 			}
+			this.clearFields()
 		}
 	}
 }
