@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class='m-auto w-full max-w-xs mt-8 md:mt-10 lg:mt-12 xl:mt-26'>
-			<form class='login-form bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' @submit='checkForm'>
+			<form class='login-form bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' @submit.prevent=''>
 				<div class='mb-4'>
 					<label class='block opacity-87 text-sm font-bold mb-2'>
 						Email
@@ -15,15 +15,15 @@
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
-					<p v-if='errors.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ errors }}</p>
+					<p v-if='$store.state.signInError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.signInError }}</p>
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
-					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded' type='submit'>
+					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded'>
 						Sign In
 					</button>
 					<button @click='signUpWithEmail'
-					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded' type='submit'>
+					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded'>
 						Sign Up
 					</button>
 				</div>
@@ -45,46 +45,42 @@ export default {
 		return {
 			email: '',
 			password: '',
-			errors: []
 		}
 	},
 	methods: {
-		checkForm(e) {
-			this.errors = []
+		checkForm() {
+			this.$store.commit('clearErrors')
 
 			if ((!this.email) || (!this.password)){
-				this.errors.push('Please complete all fields ')
+				this.$store.commit('addError', 'Please complete all fields')
 			} else if (!this.validEmail(this.email)) {
-				this.errors.push('Invalid Email')
-			} else {
-				this.errors = []
+				this.$store.commit('addError', 'Invalid Email')
 			}
-
-			this.errors = this.errors.toString()
-			this.email = ''
-			this.password = ''
-			e.preventDefault()
 		},
 		validEmail(email) {
 			const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			return re.test(email)
 		},
 		signUpWithEmail() {
-			if (!this.errors.length) {
+			this.checkForm()
+			if (!this.$store.state.signInError) {
         this.$store.dispatch('signUpWithEmailAction', { 
           email: this.email.trim(), 
           password: this.password.trim()
-        })
-				this.errors = []
+				})
+				this.email = ''
+				this.password = ''
 			}
 		},
 		signInWithEmail() {
-			if (!this.errors.length) {
+			this.checkForm()
+			if (!this.$store.state.signInError) {
 				this.$store.dispatch('signInWithEmailAction', { 
           email: this.email.trim(), 
           password: this.password.trim()
-        })
-				this.errors = []
+				})
+				this.email = ''
+				this.password = ''
 			}
 		}
 	}

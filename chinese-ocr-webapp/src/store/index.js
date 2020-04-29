@@ -16,7 +16,8 @@ export default new Vuex.Store({
       emailVerified: null,
       photoURL: null,
       uid: null,
-    }
+    },
+    signInError: ''
   },
   mutations: {
     updateUser(state, payload) {
@@ -25,6 +26,12 @@ export default new Vuex.Store({
       state.userInfo.emailVerified = payload.user.emailVerified
       state.userInfo.photoURL = payload.user.photoURL
       state.userInfo.uid = payload.user.uid
+    },
+    clearErrors(state) {
+      state.signInError = ''
+    },
+    addError(state, msg) {
+      state.signInError = msg
     }
   },
   actions: {
@@ -32,23 +39,17 @@ export default new Vuex.Store({
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider)
         .then(response => commit('updateUser', response))
-        .catch(error => console.log(error))
+        .catch(error => commit('addError', error.message))
     },
     signUpWithEmailAction({ commit }, credentials) {
       firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
-        .catch(error => {
-          console.log(error.code)
-          console.log(error.message)
-        })
+        .catch(error => commit('addError', error.message))
     },
     signInWithEmailAction({ commit }, credentials) {
       firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
-        .catch(error => {
-          console.log(error.code)
-          console.log(error.message)
-        })
+        .catch(error => commit('addError', error.message))
     }
   },
   modules: {
