@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Landing from '../views/Landing.vue'
+import Landing from '../views/Landing'
 
 Vue.use(VueRouter)
 
@@ -16,11 +16,16 @@ const routes = [
 	{
 		path: '/login',
 		name: 'login',
-		component: () => import('../views/Login.vue')
+		component: () => import('../views/Login')
+	},
+	{
+		path: '/dashboard',
+		name: 'dashboard',
+		component: () => import('../views/Dashboard')
 	},
 	{
 		path: '*',
-		component: () => import ('../views/NotFound.vue')
+		component: () => import ('../views/NotFound')
 	}
 ]
 
