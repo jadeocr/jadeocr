@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from '../router/index'
 
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
@@ -26,13 +27,14 @@ export default new Vuex.Store({
       state.userInfo.emailVerified = payload.user.emailVerified
       state.userInfo.photoURL = payload.user.photoURL
       state.userInfo.uid = payload.user.uid
+      router.push('dashboard') // Redirects to the dashboard page
     },
     clearErrors(state) {
       state.signInError = ''
     },
     addError(state, msg) {
       state.signInError = msg
-    }
+    },
   },
   actions: {
     signInWithGoogleAction({ commit }) {
