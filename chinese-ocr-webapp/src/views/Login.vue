@@ -1,16 +1,16 @@
 <template>
 	<div>
-		<div class='m-auto w-full max-w-xs mt-8 md:mt-10 lg:mt-12 xl:mt-26'>
+		<div class='m-auto w-full max-w-xs mt-8 md:mt-10 lg:mt-12 xl:mt-26 font-normal'>
 			<form class='login-form bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' @submit.prevent=''>
 				<div class='mb-4'>
-					<label class='block opacity-87 text-sm font-bold mb-2'>
+					<label class='block opacity-87 text-sm mb-2'>
 						Email
 					</label>
 					<input v-model='email' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 
 					leading-tight focus:outline-none focus:shadow-outline' type='text' placeholder='alice@example.com'>
 				</div>
 				<div class='mb-6'>
-					<label class='block opacity-87 text-sm font-bold mb-2'>
+					<label class='block opacity-87 text-sm mb-2'>
 						Password
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
@@ -19,11 +19,11 @@
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
-					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded'>
+					class='btn-purple opacity-87 text-white py-2 px-4 rounded'>
 						Sign In
 					</button>
 					<button @click='signUpWithEmail'
-					class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded'>
+					class='btn-purple opacity-87 text-white py-2 px-4 rounded'>
 						Sign Up
 					</button>
 				</div>

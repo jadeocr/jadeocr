@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class='container max-w-none mt-1 sm:mt-2 md:mt-3 lg:mt-5 xl:mt-6'>
+		<div class='container max-w-none mt-1 sm:mt-2 md:mt-3 lg:mt-5 xl:mt-6 font-light'>
 			<div class='col-1 opacity-87 mr-0 sm:-mr-2 md:-mr-3 lg:-mr-4 xl:-mr-5'>
 				<img src='../assets/title-image.png' alt='An image of the Chinese character 文, meaning "written language"'>
 			</div>
