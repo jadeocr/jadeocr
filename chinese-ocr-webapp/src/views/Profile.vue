@@ -5,7 +5,12 @@
 		</div>
 		<div class="col-span-1"></div>
 		<div class='col-span-4 mt-16'>
-			<div class="text-base text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Profile</div>
+			<p class="text-base text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal">
+				Profile
+			</p>
+			<div class="rounded">
+				<img :src='$store.state.userInfo.photoURL' alt="Profile Image">
+			</div>
 		</div>
 	</div>
 </template>

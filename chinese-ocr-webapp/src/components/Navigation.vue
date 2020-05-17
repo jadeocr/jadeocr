@@ -1,14 +1,27 @@
 <template>
 	<div class='container text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl'>
 		<nav>
-			<router-link :to='{ name: "landing" }' id='nav-title'>chinese-ocr</router-link>
+			<router-link :to='{ name: changeRoute }' id='nav-title'>chinese-ocr</router-link>
 		</nav>
 	</div>
 </template>
 
 <script>
 export default {
-
+	name: 'Navigation',
+	data(){
+		return {
+		}
+	},
+	computed: {
+		changeRoute() {
+			if (this.$store.state.signedIn) {
+				return "learn"
+			} else {
+				return "landing"
+			}
+		}
+	}
 }
 </script>
 
