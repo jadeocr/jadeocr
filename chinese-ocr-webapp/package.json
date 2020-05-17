@@ -9,6 +9,7 @@
     "twbuild": "npx tailwind build src/assets/css/styles.css -o src/assets/css/output.css"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.0.0-alpha3",
     "core-js": "^3.6.4",
     "firebase": "^7.14.2",
     "firebaseui": "^4.5.0",
