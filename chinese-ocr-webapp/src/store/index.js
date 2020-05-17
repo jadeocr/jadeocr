@@ -35,6 +35,14 @@ export default new Vuex.Store({
     addError(state, msg) {
       state.signInError = msg
     },
+    clearUserData(state) {
+      state.userInfo.displayName = null
+      state.userInfo.email = null
+      state.userInfo.emailVerified = null
+      state.userInfo.photoURL = null
+      state.userInfo.uid = null
+      router.push('/') // Redirects to the dashboard page
+    }
   },
   actions: {
     signInWithGoogleAction({ commit }) {
@@ -52,6 +60,11 @@ export default new Vuex.Store({
       firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
         .catch(error => commit('addError', error.message))
+    },
+    signOutAction({ commit }) {
+      firebase.auth().signOut()
+      .then(commit('clearUserData')) //Redirect to home page
+      .catch(error => console.log(error))
     }
   },
   modules: {

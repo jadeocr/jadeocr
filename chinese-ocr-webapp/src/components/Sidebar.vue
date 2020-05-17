@@ -35,7 +35,7 @@
 			</router-link>
 		</div>
 		<div>
-			<button @click='signUpWithEmail'
+			<button @click='signOut'
 			class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded'>
 				Sign Out
 			</button>
@@ -45,7 +45,12 @@
 
 <script>
 export default {
-	name: 'Profile'
+	name: 'Profile',
+	methods: {
+		signOut() {
+			this.$store.dispatch('signOutAction')
+		}
+	}
 }
 </script>
 
