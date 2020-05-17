@@ -8,8 +8,9 @@
 			<p class="text-base text-md sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal">
 				Profile
 			</p>
-			<div class="rounded">
-				<img :src='$store.state.userInfo.photoURL' alt="Profile Image">
+			<div class="flex items-center w-32 mt-12">
+				<img :src='$store.state.userInfo.photoURL' alt="Profile Image" class='rounded-full'>
+				<p class="ml-12 text-base text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl">{{ $store.state.userInfo.displayName }}</p>
 			</div>
 		</div>
 	</div>
