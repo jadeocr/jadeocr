@@ -9,7 +9,7 @@
 <script>
 import Sidebar from '../components/Sidebar'
 export default {
-	name: 'Profile',
+	name: 'Decks',
 	components: {
 		Sidebar
 	}

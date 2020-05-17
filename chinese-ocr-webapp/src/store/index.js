@@ -18,6 +18,7 @@ export default new Vuex.Store({
       photoURL: null,
       uid: null,
     },
+    signedIn: false,
     signInError: ''
   },
   mutations: {
@@ -26,8 +27,9 @@ export default new Vuex.Store({
       state.userInfo.email = payload.user.email
       state.userInfo.emailVerified = payload.user.emailVerified
       state.userInfo.photoURL = payload.user.photoURL
-      state.userInfo.uid = payload.user.uid
-      router.push('dashboard') // Redirects to the dashboard page
+      state.userInfo.uid = payload.user.uid,
+      state.signedIn = true
+      router.push('dashboard/learn')
     },
     clearErrors(state) {
       state.signInError = ''
@@ -41,7 +43,8 @@ export default new Vuex.Store({
       state.userInfo.emailVerified = null
       state.userInfo.photoURL = null
       state.userInfo.uid = null
-      router.push('/') // Redirects to the dashboard page
+      state.signedIn = false
+      router.push('/')
     }
   },
   actions: {
@@ -63,7 +66,7 @@ export default new Vuex.Store({
     },
     signOutAction({ commit }) {
       firebase.auth().signOut()
-      .then(commit('clearUserData')) //Redirect to home page
+      .then(commit('clearUserData'))
       .catch(error => console.log(error))
     }
   },

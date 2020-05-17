@@ -12,13 +12,25 @@
 			</router-link>
 		</div>
 		<div class="mb-16">
-			<router-link :to='{ name: "learn" }'>
+			<router-link :to='{ name: "decks" }'>
 				<div class="flex items-center">
 					<svg class="bi bi-files" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" d="M3 2h8a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V4a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/>
 						<path d="M5 0h8a2 2 0 012 2v10a2 2 0 01-2 2v-1a1 1 0 001-1V2a1 1 0 00-1-1H5a1 1 0 00-1 1H3a2 2 0 012-2z"/>
 					</svg>
 					<p class="ml-5">Decks</p>
+				</div>
+			</router-link>
+		</div>
+		<div class="mb-16">
+			<router-link :to='{ name: "stats" }'>
+				<div class="flex items-center">
+					<svg class="bi bi-graph-up" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
+						<path fill-rule="evenodd" d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z" clip-rule="evenodd"/>
+						<path fill-rule="evenodd" d="M10 3.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V4h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+					</svg>
+					<p class="ml-5">Stats</p>
 				</div>
 			</router-link>
 		</div>
@@ -36,7 +48,7 @@
 		</div>
 		<div>
 			<button @click='signOut'
-			class='btn-purple opacity-87 text-white font-bold py-2 px-4 rounded'>
+			class='btn-purple opacity-87 text-white py-2 px-4 rounded'>
 				Sign Out
 			</button>
 		</div>

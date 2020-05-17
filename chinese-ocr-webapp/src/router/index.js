@@ -20,11 +20,25 @@ const routes = [
 	},
 	{
 		path: '/dashboard',
-		name: 'dashboard',
-		component: () => import('../views/Dashboard')
+		redirect: '/dashboard/learn'
 	},
 	{
-		path: '/profile',
+		path: '/dashboard/learn',
+		name: 'learn',
+		component: () => import('../views/Learn')
+	},
+	{
+		path: '/dashboard/decks',
+		name: 'decks',
+		component: () => import('../views/Decks')
+	},
+	{
+		path: '/dashboard/stats',
+		name: 'stats',
+		component: () => import('../views/Stats')
+	},
+	{
+		path: '/dashboard/profile',
 		name: 'profile',
 		component: () => import('../views/Profile')
 	},
