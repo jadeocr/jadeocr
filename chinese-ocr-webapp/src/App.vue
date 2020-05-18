@@ -40,4 +40,22 @@ body {
 .chinese {
 	font-family: 'Noto Sans SC';
 }
+
+.btn-red {
+	background-color: #cf6679;
+	opacity: 0.87;
+}
+
+.btn-red:hover {
+	opacity: 0.75;
+}
+
+.btn-purple {
+	background-color: #bb86fc;
+	opacity: 0.87;
+}
+
+.btn-purple:hover {
+	opacity: 0.75;
+}
 </style>

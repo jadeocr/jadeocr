@@ -90,15 +90,6 @@ export default {
 </script>
 
 <style scoped>
-.btn-purple {
-	background-color: #bb86fc;
-	opacity: 0.87;
-}
-
-.btn-purple:hover {
-	opacity: 0.75;
-}
-
 .login-form {
 	top: 0;
 	left: 0;
