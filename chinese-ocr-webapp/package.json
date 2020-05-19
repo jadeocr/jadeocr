@@ -13,6 +13,7 @@
     "core-js": "^3.6.4",
     "firebase": "^7.14.2",
     "firebaseui": "^4.5.0",
+    "jquery": "^3.5.1",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.3"
