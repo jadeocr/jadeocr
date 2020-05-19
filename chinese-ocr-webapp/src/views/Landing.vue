@@ -4,7 +4,7 @@
 			<div class='col-span-1'>
         <img src='../assets/title-image.png' alt='An image of the Chinese character 文, meaning "written language"'>
 			</div>
-			<div class='opacity-87 col-span-1 text-center md:text-left my-auto md:ml-8'>
+			<div class='opacity-87 col-span-1 text-center md:text-left -mt-16 md:my-auto md:ml-8'>
         <div class='mb-6 text-2xl md:text-3xl lg:text-4xl xl:text-5xl'>
           <p>Learn Chinese</p>
           <p class=''>without distractions.</p>
