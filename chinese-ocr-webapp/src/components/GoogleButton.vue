@@ -2,7 +2,7 @@
 	<div>
 		<button @click='signInWithGoogle'
 		class='m-auto w-full bg-white text-gray-600 opacity-87 hover:bg-gray-200 mt-8 px-3 py-1 
-		text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl rounded-md font-light'
+		text-base sm:text-md md:text-xl lg:text-2xl rounded-md font-light'
 		>
 			<div>
 				<span class='google-button__icon w-6 h-6 mr-3 -mt-1'>

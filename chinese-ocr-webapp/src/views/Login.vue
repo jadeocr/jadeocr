@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class='m-auto w-full max-w-xs mt-8 md:mt-10 lg:mt-12 xl:mt-26 font-normal'>
+		<div class='m-auto w-full max-w-xs mt-10 font-normal'>
 			<form class='login-form bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' @submit.prevent=''>
 				<div class='mb-4'>
 					<label class='block opacity-87 text-sm mb-2'>

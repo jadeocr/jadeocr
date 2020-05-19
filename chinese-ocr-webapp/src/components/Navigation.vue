@@ -1,5 +1,5 @@
 <template>
-	<div class='container text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl'>
+	<div class='container text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl' id='navigation'>
 		<nav>
 			<router-link :to='{ name: changeRoute }' id='nav-title'>chinese-ocr</router-link>
 		</nav>
