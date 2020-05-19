@@ -3,7 +3,7 @@
 		<div>
 			<Sidebar/>
 		</div>
-		<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20' id='page-content'>
+		<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8' id='page-content'>
 			<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Learn</p>
 		</div>
 	</div>

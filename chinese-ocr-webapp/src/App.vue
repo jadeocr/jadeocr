@@ -56,4 +56,18 @@ body {
 .btn-purple:hover {
 	opacity: 0.75;
 }
+
+#page-content {
+	position: fixed;
+	right: 0px;
+	width: calc(100vw - 300px);
+	-webkit-transition: width 0.3s ease;
+	transition: width 0.3s ease;
+}
+
+@media(max-width: 640px) {
+	#page-content {
+		width: 100vw;
+	}
+}
 </style>

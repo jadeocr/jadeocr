@@ -1,6 +1,6 @@
 <template>
 	<div id='sidebar'>
-		<div class='container px-16 py-32 font-normal hidden md:block' id='sidebar-content'>
+		<div class='px-8 md:px-16 py-24 md:py-32 font-normal' id='sidebar-content'>
 			<div class="mb-16">
 				<router-link :to='{ name: "learn" }'>
 					<div class="flex items-center hover:opacity-75">
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-// var $ = require('jquery')
+var $ = require('jquery')
 export default {
 	name: 'Profile',
 	methods: {
@@ -74,18 +74,31 @@ export default {
 			this.$store.dispatch('signOutAction')
 		},
 		collapse() { // Doesn't work
-			// let currPos = $('#sidebar-content').css('left')
-			// if (currPos == '0px') {
-			// 	$('#sidebar-content').css('left', '-200px')
-			// 	$('#page-content').css('width', '100vw')
-			// } else {
-			// 	$('#sidebar-content').css('left', '0px')
-			// 	$('#page-content').css('width', 'calc(100vw - 200px)')
-			// }
+			let currPos = $('#sidebar-content').css('left')
+			if (currPos == '0px') {
+				$('#sidebar-content').css('left', '-300px')
+				$('#page-content').css('width', '100vw')
+			} else {
+				$('#sidebar-content').css('left', '0px')
+				$('#page-content').css('width', 'calc(100vw - 300px)')
+			}
 		}
 	}
 }
 </script>
 
 <style scoped>
+#sidebar-content {
+	position: fixed;
+	left: 0px;
+	width: 300px;
+	-webkit-transition: left 0.3s ease;
+	transition: left 0.3s ease;
+}
+
+@media(max-width: 640px) {
+	#sidebar-content {
+		left: -300px;
+	}
+}
 </style>
