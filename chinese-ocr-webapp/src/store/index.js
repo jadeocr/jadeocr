@@ -19,7 +19,8 @@ export default new Vuex.Store({
       uid: null,
     },
     signedIn: false,
-    signInError: ''
+    signInError: '',
+    sidebarExpanded: false
   },
   mutations: {
     updateUser(state, payload) {
@@ -45,6 +46,9 @@ export default new Vuex.Store({
       state.userInfo.uid = null
       state.signedIn = false
       router.push('/')
+    },
+    toggleSidebarState(state) {
+      state.sidebarExpanded = !state.sidebarExpanded
     }
   },
   actions: {
@@ -67,6 +71,14 @@ export default new Vuex.Store({
     signOutAction({ commit }) {
       firebase.auth().signOut()
       .then(commit('clearUserData'))
+      .catch(error => console.log(error))
+    },
+    resetPassword() {
+      firebase.auth().sendPasswordResetEmail(this.state.userInfo.email)
+      .catch(error => console.log(error))
+    },
+    deleteAccount() {
+      firebase.auth().currentUser.delete()
       .catch(error => console.log(error))
     }
   },

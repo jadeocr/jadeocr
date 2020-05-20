@@ -44,16 +44,17 @@ body {
 	opacity: 0.87;
 }
 
-.btn-red:hover {
-	opacity: 0.75;
-}
-
 .btn-purple {
 	background-color: #bb86fc;
 	opacity: 0.87;
 }
 
-.btn-purple:hover {
+.btn-blue {
+	background-color: #3700b3;
+	opacity: 0.87;
+}
+
+.btn-purple:hover, .btn-red:hover, .btn:hover {
 	opacity: 0.75;
 }
 

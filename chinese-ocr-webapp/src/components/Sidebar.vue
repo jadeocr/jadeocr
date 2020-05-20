@@ -49,7 +49,7 @@
 			</div>
 			<div>
 				<button @click='signOut'
-				class='btn-red opacity-87 text-white py-2 px-4 rounded'>
+				class='btn btn-purple opacity-87 text-white py-2 px-4 rounded'>
 					Sign Out
 				</button>
 			</div>
