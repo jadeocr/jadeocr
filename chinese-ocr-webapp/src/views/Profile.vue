@@ -22,11 +22,11 @@
 				<div class='text-xs md:text-sm'>
 					<div>
 						<button @click='resetPassword'
-						class='mt-10 btn-red opacity-87 text-white py-2 px-4 rounded'>
+						class='mt-8 btn-red opacity-87 text-white py-2 px-4 rounded'>
 							Reset Password
 						</button>
 					</div>
-					<div class="mt-10">
+					<div class="mt-6">
 						<button @click='deleteAccount'
 						class='btn-red opacity-87 text-white py-2 px-4 rounded'>
 							Delete Account
@@ -56,6 +56,7 @@ export default {
 		},
 		deleteAccount() {
 			alert('Add some warning and confirmation here')
+			// this.$store.dispatch('deleteAccount')
 		}
 	}
 }
