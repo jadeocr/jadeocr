@@ -21,7 +21,6 @@ export default new Vuex.Store({
     },
     signedIn: false,
     signInError: '',
-    sidebarExpanded: false
   },
   mutations: {
     updateUser(state, payload) {

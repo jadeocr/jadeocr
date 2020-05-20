@@ -3,33 +3,48 @@
 			<div class='col-span-1'>
 				<Sidebar/>
 			</div>
-			<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 mt-12 md:mt-0' id='page-content'>
+			<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 mt-12 md:mt-0 overflow-x-none overflow-y-auto' id='page-content'>
 				<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Create</p>
 				<div class='mt-8'>
-					<!-- TODO: Make prettier, make scroll work, +/- icons -->
-					<button @click='addWord'
-					class='btn btn-purple opacity-87 text-white py-2 px-4 rounded mr-4'>
-						Add Word
-					</button>
-					<button @click='createDeck'
-					class='btn btn-purple opacity-87 text-white py-2 px-4 rounded'>
-						Create Deck
-					</button>
-				</div>
-				<div class='mt-8 relative overflow-y-scroll'>
 					<div v-for='i in numOfWords' :key='i.key' class="flex">
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
-								<div class="w-1/2 px-3">
+								<div class="w-1/3 px-3">
 									<input class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
-									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="wén">
+									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='i + ".  huā"'>
 								</div>
-								<div class="w-1/2 px-3">
+								<div class="w-1/3 px-3">
 									<input class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
-									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="文">
+									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
+								</div>
+								<div class="w-1/3 px-3">
+									<input class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
 								</div>
 							</div>
 						</form>
+					</div>
+				</div>
+				<div class="mt-8">
+					<button @click='addWord("add")'
+					class='btn btn-teal opacity-87 text-white py-2 px-4 rounded mr-4'>
+						<svg class="bi bi-plus" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+							<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+						</svg>
+					</button>
+					<button @click='addWord("subtract")'
+					class='btn btn-red opacity-87 text-white py-2 px-4 rounded mr-4'>
+						<svg class="bi bi-dash" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+						</svg>
+					</button>
+					<div>
+						<!-- TODO: Make prettier, make scroll work, +/- icons -->
+						<button @click='createDeck'
+						class='btn btn-purple opacity-87 text-white py-2 px-4 rounded mt-4'>
+							Create Deck
+						</button>
 					</div>
 				</div>
 			</div>
@@ -42,7 +57,7 @@ export default {
 	name: 'Create',
 	data() {
 		return {
-			numOfWords: 9,
+			numOfWords: 8,
 		}
 	},
 	components: {
@@ -52,12 +67,19 @@ export default {
 		createDeck() {
 			console.log('yee')
 		},
-		addWord() {
-			this.numOfWords ++
+		addWord(addSubtract) {
+			if (addSubtract == 'add') {
+				this.numOfWords++
+			} else {
+				this.numOfWords--
+			}
 		}
 	}
 }
 </script>
 
 <style scoped>
+#page-content {
+	height: 80vh;
+}
 </style>
