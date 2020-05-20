@@ -5,6 +5,7 @@ import router from '../router/index'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import credentials from '../firebase/credentials'
+// import db from '../firebase/db'
 firebase.initializeApp(credentials.firebaseConfig)
 
 Vue.use(Vuex)
@@ -80,6 +81,9 @@ export default new Vuex.Store({
     deleteAccount() {
       firebase.auth().currentUser.delete()
       .catch(error => console.log(error))
+    },
+    createDeck() {
+      // if user not has collection then create one, else create document
     }
   },
   modules: {

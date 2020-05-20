@@ -49,6 +49,11 @@ body {
 	opacity: 0.87;
 }
 
+.btn-teal {
+	background-color: #03dac5;
+	opacity: 0.87;
+}
+
 .btn-blue {
 	background-color: #3700b3;
 	opacity: 0.87;
