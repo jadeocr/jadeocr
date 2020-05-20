@@ -1,6 +1,6 @@
 <template>
 	<div id='sidebar'>
-		<div class='px-8 md:px-16 py-24 md:py-32 font-normal' id='sidebar-content'>
+		<div class='px-8 md:px-16 py-20 md:py-32 font-normal' id='sidebar-content'>
 			<div class="mb-16">
 				<router-link :to='{ name: "learn" }'>
 					<div class="flex items-center hover:opacity-75">
@@ -35,7 +35,7 @@
 					</div>
 				</router-link>
 			</div>
-			<div class="mb-16">
+			<div class="mb-12 md:mb-16">
 				<router-link :to='{ name: "profile" }'>
 					<div class="flex items-center hover:opacity-75">
 						<svg class="bi bi-people-circle" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -69,18 +69,24 @@
 var $ = require('jquery')
 export default {
 	name: 'Profile',
+	data() {
+		return {
+		}
+	},
 	methods: {
 		signOut() {
 			this.$store.dispatch('signOutAction')
 		},
-		collapse() { // Doesn't work
+		collapse() {
 			let currPos = $('#sidebar-content').css('left')
 			if (currPos == '0px') {
 				$('#sidebar-content').css('left', '-300px')
 				$('#page-content').css('width', '100vw')
+				this.$store.commit('toggleSidebarState')
 			} else {
 				$('#sidebar-content').css('left', '0px')
 				$('#page-content').css('width', 'calc(100vw - 300px)')
+				this.$store.commit('toggleSidebarState')
 			}
 		}
 	}
