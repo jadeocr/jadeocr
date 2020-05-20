@@ -5,7 +5,22 @@
 			</div>
 			<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 mt-12 md:mt-0 overflow-x-none overflow-y-auto' id='page-content'>
 				<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Create</p>
-				<div class='mt-8'>
+				<div class="mt-8">
+					<button @click='addWord("add")'
+					class='btn btn-teal opacity-87 text-white py-2 px-4 rounded mr-4'>
+						<svg class="bi bi-plus" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+							<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+						</svg>
+					</button>
+					<button @click='addWord("subtract")'
+					class='btn btn-red opacity-87 text-white py-2 px-4 rounded mr-4'>
+						<svg class="bi bi-dash" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+						</svg>
+					</button>
+				</div>
+				<div class='mt-6'>
 					<div v-for='i in numOfWords' :key='i.key' class="flex">
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
@@ -24,25 +39,9 @@
 							</div>
 						</form>
 					</div>
-				</div>
-				<div class="mt-8">
-					<button @click='addWord("add")'
-					class='btn btn-teal opacity-87 text-white py-2 px-4 rounded mr-4'>
-						<svg class="bi bi-plus" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-							<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
-						</svg>
-					</button>
-					<button @click='addWord("subtract")'
-					class='btn btn-red opacity-87 text-white py-2 px-4 rounded mr-4'>
-						<svg class="bi bi-dash" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
-						</svg>
-					</button>
-					<div>
-						<!-- TODO: Make prettier, make scroll work, +/- icons -->
+					<div class='mt-4'>
 						<button @click='createDeck'
-						class='btn btn-purple opacity-87 text-white py-2 px-4 rounded mt-4'>
+						class='btn btn-purple opacity-87 text-white py-2 px-4 rounded my-auto'>
 							Create Deck
 						</button>
 					</div>
@@ -57,7 +56,7 @@ export default {
 	name: 'Create',
 	data() {
 		return {
-			numOfWords: 8,
+			numOfWords: 6,
 		}
 	},
 	components: {
