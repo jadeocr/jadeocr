@@ -3,7 +3,7 @@ A web-based flashcard app directed at language learning, particularly Chinese. C
 
 
 ## Demo
-Play with the partially working [demo](https://chinese-ocr-274418.firebaseapp.com/) while still in development
+A demo is in the works.
 
 ### Landing Page
 
