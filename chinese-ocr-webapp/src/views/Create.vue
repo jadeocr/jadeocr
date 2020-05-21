@@ -25,15 +25,15 @@
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
 								<div class="w-1/3 px-3">
-									<input class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deckData.pinyin[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='i + ".  huā"'>
 								</div>
 								<div class="w-1/3 px-3">
-									<input class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deckData.hanzi[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
 								</div>
 								<div class="w-1/3 px-3">
-									<input class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deckData.definition[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
 								</div>
 							</div>
@@ -57,6 +57,11 @@ export default {
 	data() {
 		return {
 			numOfWords: 6,
+			deckData: {
+				pinyin: [],
+				hanzi: [],
+				definition: []
+			}
 		}
 	},
 	components: {
@@ -64,7 +69,7 @@ export default {
 	},
 	methods: {
 		createDeck() {
-			console.log('yee')
+			console.log(this.deckData)
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
