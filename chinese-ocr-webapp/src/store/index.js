@@ -2,11 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
 
-import * as firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
-// import db from '../firebase/db'
+import 'firebase/auth'
+import 'firebase/firestore'
+import 'firebase/performance'
 firebase.initializeApp(credentials.firebaseConfig)
+const auth = firebase.auth()
+// const db = firebase.firestore()
+const perf = firebase.performance() // eslint-disable-line no-unused-vars
 
 Vue.use(Vuex)
 
@@ -54,31 +58,31 @@ export default new Vuex.Store({
   actions: {
     signInWithGoogleAction({ commit }) {
       var provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithPopup(provider)
+      auth.signInWithPopup(provider)
         .then(response => commit('updateUser', response))
         .catch(error => commit('addError', error.message))
     },
     signUpWithEmailAction({ commit }, credentials) {
-      firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+      auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
         .catch(error => commit('addError', error.message))
     },
     signInWithEmailAction({ commit }, credentials) {
-      firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+      auth.signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(response => commit('updateUser', response))
         .catch(error => commit('addError', error.message))
     },
     signOutAction({ commit }) {
-      firebase.auth().signOut()
+      auth.signOut()
       .then(commit('clearUserData'))
       .catch(error => console.log(error))
     },
     resetPassword() {
-      firebase.auth().sendPasswordResetEmail(this.state.userInfo.email)
+      auth.sendPasswordResetEmail(this.state.userInfo.email)
       .catch(error => console.log(error))
     },
     deleteAccount() {
-      firebase.auth().currentUser.delete()
+      auth.currentUser.delete()
       .catch(error => console.log(error))
     },
     createDeck() {
