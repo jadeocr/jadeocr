@@ -6,11 +6,9 @@ import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
 import 'firebase/auth'
 import 'firebase/firestore'
-import 'firebase/performance'
 firebase.initializeApp(credentials.firebaseConfig)
 const auth = firebase.auth()
 // const db = firebase.firestore()
-const perf = firebase.performance() // eslint-disable-line no-unused-vars
 
 Vue.use(Vuex)
 
