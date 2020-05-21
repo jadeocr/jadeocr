@@ -21,12 +21,12 @@
 					</button>
 				</div>
 				<div class='mt-6'>
-					<div v-for='i in numOfWords' :key='i.key' class="flex">
+					<div v-for='(n, i) in numOfWords' :key='i.key' class="flex">
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
 								<div class="w-1/3 px-3">
 									<input v-model='deckData.pinyin[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
-									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='i + ".  huā"'>
+									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='(i+1) + ".  huā"'>
 								</div>
 								<div class="w-1/3 px-3">
 									<input v-model='deckData.hanzi[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
