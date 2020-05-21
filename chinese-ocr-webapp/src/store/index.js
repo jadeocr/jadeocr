@@ -8,7 +8,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 firebase.initializeApp(credentials.firebaseConfig)
 const auth = firebase.auth()
-// const db = firebase.firestore()
+const db = firebase.firestore()
 
 Vue.use(Vuex)
 
@@ -75,16 +75,18 @@ export default new Vuex.Store({
       .then(commit('clearUserData'))
       .catch(error => console.log(error))
     },
-    resetPassword() {
-      auth.sendPasswordResetEmail(this.state.userInfo.email)
+    resetPassword({ state }) {
+      auth.sendPasswordResetEmail(state.userInfo.email)
       .catch(error => console.log(error))
     },
     deleteAccount() {
       auth.currentUser.delete()
       .catch(error => console.log(error))
     },
-    createDeck() {
+    createDeck({ state }, deckData) {
       // if user not has collection then create one, else create document
+      deckData = JSON.parse(JSON.stringify(deckData))
+      db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc('deck0').set(deckData, { merge: true })
     }
   },
   modules: {

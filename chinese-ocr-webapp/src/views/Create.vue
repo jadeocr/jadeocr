@@ -69,7 +69,7 @@ export default {
 	},
 	methods: {
 		createDeck() {
-			console.log(this.deckData)
+			this.$store.dispatch('createDeck', this.deckData)
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
