@@ -101,13 +101,12 @@ export default new Vuex.Store({
       })
     },
     showSuccess() {
-      // Make this fade
       new Promise((resolve) => {
         this.commit('addSuccess', 'Deck created successfully')
         setTimeout(() => {
           $('#successField').fadeOut(1000)
           resolve()
-        }, 3500)
+        }, 3000)
       })
         .then(this.commit('addSuccess', ''))
         .catch(error => console.log(error))
