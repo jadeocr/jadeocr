@@ -110,15 +110,7 @@ export default new Vuex.Store({
       })
         .then(this.commit('addSuccess', ''))
         .catch(error => console.log(error))
-    },
-    // readDecks({ state }) {
-    //   let userDecks = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
-    //   console.log(userDecks)
-    //   // for (decks in userDecks) {
-    //   //   console.log(decks)
-    //   //   // userDecks.doc('deck' + x)
-    //   // }
-    // }
+    }
   },
   modules: {
   },

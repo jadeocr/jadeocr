@@ -3,7 +3,7 @@
 			<div class='col-span-1'>
 				<Sidebar/>
 			</div>
-			<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 mt-12 md:mt-0 overflow-x-none overflow-y-auto' id='page-content'>
+			<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 overflow-x-none overflow-y-auto' id='page-content'>
 				<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Create</p>
 				<div class="mt-8">
 					<button @click='addWord("add")'
@@ -21,23 +21,23 @@
 					</button>
 				</div>
 				<div class='mt-6'>
-					<div class="w-1/3 mb-12">
+					<div class="w-1/2 md:w-1/4 mb-12">
 						<input v-model='deckName' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Deck name'>
 						<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
 					</div>
-					<div v-for='(n, i) in numOfWords' :key='i.key' class="flex">
+					<div v-for='(n, i) in numOfWords' :key='i.key' >
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
-								<div class="w-1/3 px-3">
+								<div class="w-1/3 md:w-1/5 px-3">
 									<input v-model='deckData.pinyin[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='(i+1) + ".  huā"'>
 								</div>
-								<div class="w-1/3 px-3">
+								<div class="w-1/3 md:w-1/5 px-3">
 									<input v-model='deckData.hanzi[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
 								</div>
-								<div class="w-1/3 px-3">
+								<div class="w-1/3 md:w-1/5 px-3">
 									<input v-model='deckData.definition[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
 								</div>
