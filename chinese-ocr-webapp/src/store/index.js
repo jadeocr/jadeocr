@@ -72,23 +72,29 @@ export default new Vuex.Store({
     },
     signOutAction({ commit }) {
       auth.signOut()
-      .then(commit('clearUserData'))
-      .catch(error => console.log(error))
+        .then(commit('clearUserData'))
+        .catch(error => console.log(error))
     },
     resetPassword({ state }) {
       auth.sendPasswordResetEmail(state.userInfo.email)
-      .catch(error => console.log(error))
+        .catch(error => console.log(error))
     },
     deleteAccount() {
       auth.currentUser.delete()
-      .catch(error => console.log(error))
+        .catch(error => console.log(error))
     },
     createDeck({ state }, payload) {
       var docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
-      // if (!docRef.exists) {
-        docRef.set(payload.deckData, { merge: true })
-          .catch(error => console.log(error))
-      // }
+      docRef.get()
+      .then(doc => {
+        if (!doc.exists) {
+          docRef.set(payload.deckData, { merge: true })
+            .then(this.commit('addError', ''))
+            .catch(error => console.log(error))          
+        } else {
+          this.commit('addError', 'A deck with this name already exists')
+        }
+      })
     },
     // readDecks({ state }) {
     //   let userDecks = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
