@@ -22,7 +22,7 @@ export default new Vuex.Store({
       uid: null,
     },
     signedIn: false,
-    signInError: '',
+    formError: '',
   },
   mutations: {
     updateUser(state, payload) {
@@ -35,10 +35,10 @@ export default new Vuex.Store({
       router.push('dashboard/learn')
     },
     clearErrors(state) {
-      state.signInError = ''
+      state.formError = ''
     },
     addError(state, msg) {
-      state.signInError = msg
+      state.formError = msg
     },
     clearUserData(state) {
       state.userInfo.displayName = null
@@ -83,11 +83,21 @@ export default new Vuex.Store({
       auth.currentUser.delete()
       .catch(error => console.log(error))
     },
-    createDeck({ state }, deckData) {
-      // if user not has collection then create one, else create document
-      deckData = JSON.parse(JSON.stringify(deckData))
-      db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc('deck0').set(deckData, { merge: true })
-    }
+    createDeck({ state }, payload) {
+      var docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
+      // if (!docRef.exists) {
+        docRef.set(payload.deckData, { merge: true })
+          .catch(error => console.log(error))
+      // }
+    },
+    // readDecks({ state }) {
+    //   let userDecks = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
+    //   console.log(userDecks)
+    //   // for (decks in userDecks) {
+    //   //   console.log(decks)
+    //   //   // userDecks.doc('deck' + x)
+    //   // }
+    // }
   },
   modules: {
   },

@@ -21,6 +21,10 @@
 					</button>
 				</div>
 				<div class='mt-6'>
+					<div class="w-1/3 mb-12">
+						<input v-model='deckName' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
+						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Deck name'>
+					</div>
 					<div v-for='(n, i) in numOfWords' :key='i.key' class="flex">
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
@@ -57,6 +61,7 @@ export default {
 	data() {
 		return {
 			numOfWords: 6,
+			deckName: '',
 			deckData: {
 				pinyin: [],
 				hanzi: [],
@@ -68,8 +73,20 @@ export default {
 		Sidebar
 	},
 	methods: {
+		clearFields(){
+			this.name = ''
+			this.deckData = {
+				pinyin: [],
+				hanzi: [],
+				definition: []
+			}
+		},
 		createDeck() {
-			this.$store.dispatch('createDeck', this.deckData)
+			this.$store.dispatch('createDeck', {
+				deckData: JSON.parse(JSON.stringify(this.deckData)),
+				name: this.deckName
+			})
+			.then(this.clearFields())
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
