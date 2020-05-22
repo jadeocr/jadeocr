@@ -10,6 +10,8 @@ firebase.initializeApp(credentials.firebaseConfig)
 const auth = firebase.auth()
 const db = firebase.firestore()
 
+var $ = require('jquery')
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -103,12 +105,13 @@ export default new Vuex.Store({
       new Promise((resolve) => {
         this.commit('addSuccess', 'Deck created successfully')
         setTimeout(() => {
-          this.commit('addSuccess', '')
+          $('#successField').fadeOut(1000)
           resolve()
-        }, 5000)
+        }, 3500)
       })
-      .catch(error => console.log(error))
-    }
+        .then(this.commit('addSuccess', ''))
+        .catch(error => console.log(error))
+    },
     // readDecks({ state }) {
     //   let userDecks = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
     //   console.log(userDecks)
