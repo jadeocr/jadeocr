@@ -21,6 +21,9 @@ export default {
 	name: 'Decks',
 	components: {
 		Sidebar
+	},
+	mounted() {
+		// this.$store.dispatch('readDecks')
 	}
 }
 </script>

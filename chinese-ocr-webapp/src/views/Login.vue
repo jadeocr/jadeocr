@@ -15,7 +15,7 @@
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
-					<p v-if='$store.state.signInError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.signInError }}</p>
+					<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
@@ -67,7 +67,7 @@ export default {
 		},
 		signUpWithEmail() {
 			this.checkForm()
-			if (!this.$store.state.signInError) {
+			if (!this.$store.state.formError) {
         this.$store.dispatch('signUpWithEmailAction', { 
           email: this.email.trim(), 
           password: this.password.trim()
@@ -77,7 +77,7 @@ export default {
 		},
 		signInWithEmail() {
 			this.checkForm()
-			if (!this.$store.state.signInError) {
+			if (!this.$store.state.formError) {
 				this.$store.dispatch('signInWithEmailAction', { 
           email: this.email.trim(), 
           password: this.password.trim()
