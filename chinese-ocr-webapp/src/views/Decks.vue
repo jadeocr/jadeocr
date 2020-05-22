@@ -12,6 +12,11 @@
 					Add Deck
 				</router-link>
 			</div>
+			<div class='mt-12'>
+				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='mt-4'>
+					<!-- Put cards for each deck here -->
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -20,8 +25,15 @@
 import Sidebar from '../components/Sidebar'
 export default {
 	name: 'Decks',
+	data() {
+		return {
+		}
+	},
 	components: {
 		Sidebar
+	},
+	mounted() {
+		this.$store.dispatch('getNumOfDecks')
 	}
 }
 </script>

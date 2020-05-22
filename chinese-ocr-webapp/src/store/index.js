@@ -25,7 +25,8 @@ export default new Vuex.Store({
     },
     signedIn: false,
     formError: '',
-    formSuccess: ''
+    formSuccess: '',
+    numOfDecks: 0
   },
   mutations: {
     updateUser(state, payload) {
@@ -87,7 +88,7 @@ export default new Vuex.Store({
         .catch(error => console.log(error))
     },
     createDeck({ state }, payload) {
-      var docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
+      let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
       docRef.get()
       .then(doc => {
         if (!doc.exists) {
@@ -109,6 +110,14 @@ export default new Vuex.Store({
         }, 3000)
       })
         .then(this.commit('addSuccess', ''))
+        .catch(error => console.log(error))
+    },
+    getNumOfDecks({ state }) {
+      let decksRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
+      decksRef.get()
+        .then(snapshot => {
+          state.numOfDecks = snapshot.size
+        })
         .catch(error => console.log(error))
     }
   },
