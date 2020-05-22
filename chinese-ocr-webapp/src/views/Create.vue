@@ -88,6 +88,8 @@ export default {
 				name: this.deckName
 			})
 			.then(this.clearFields())
+			.then(this.$store.dispatch('showSuccess'))
+			.catch(error => console.log(error))
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {

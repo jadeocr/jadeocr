@@ -49,7 +49,7 @@ export default {
 	},
 	methods: {
 		checkForm() {
-			this.$store.commit('clearErrors')
+			this.$store.commit('addError', '')
 
 			if ((!this.email) || (!this.password)){
 				this.$store.commit('addError', 'Please complete all fields')

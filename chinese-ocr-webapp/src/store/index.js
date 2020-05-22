@@ -23,6 +23,7 @@ export default new Vuex.Store({
     },
     signedIn: false,
     formError: '',
+    formSuccess: ''
   },
   mutations: {
     updateUser(state, payload) {
@@ -34,11 +35,11 @@ export default new Vuex.Store({
       state.signedIn = true
       router.push('dashboard/learn')
     },
-    clearErrors(state) {
-      state.formError = ''
-    },
     addError(state, msg) {
       state.formError = msg
+    },
+    addSuccess(state, msg) {
+      state.formSuccess = msg
     },
     clearUserData(state) {
       state.userInfo.displayName = null
@@ -90,12 +91,24 @@ export default new Vuex.Store({
         if (!doc.exists) {
           docRef.set(payload.deckData, { merge: true })
             .then(this.commit('addError', ''))
+            .then(router.push('dashboard/decks'))
             .catch(error => console.log(error))          
         } else {
           this.commit('addError', 'A deck with this name already exists')
         }
       })
     },
+    showSuccess() {
+      // Make this fade
+      new Promise((resolve) => {
+        this.commit('addSuccess', 'Deck created successfully')
+        setTimeout(() => {
+          this.commit('addSuccess', '')
+          resolve()
+        }, 5000)
+      })
+      .catch(error => console.log(error))
+    }
     // readDecks({ state }) {
     //   let userDecks = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
     //   console.log(userDecks)
