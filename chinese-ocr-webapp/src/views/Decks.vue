@@ -33,7 +33,9 @@ export default {
 		Sidebar
 	},
 	mounted() {
-		this.$store.dispatch('getNumOfDecks')
+		if (!this.$store.state.numOfDecks){
+			this.$store.dispatch('getNumOfDecks')
+		}
 	}
 }
 </script>

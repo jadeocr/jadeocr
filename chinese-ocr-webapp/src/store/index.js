@@ -10,7 +10,7 @@ firebase.initializeApp(credentials.firebaseConfig)
 const auth = firebase.auth()
 const db = firebase.firestore()
 
-var $ = require('jquery')
+const $ = require('jquery')
 
 Vue.use(Vuex)
 
@@ -59,7 +59,7 @@ export default new Vuex.Store({
   },
   actions: {
     signInWithGoogleAction({ commit }) {
-      var provider = new firebase.auth.GoogleAuthProvider()
+      const provider = new firebase.auth.GoogleAuthProvider()
       auth.signInWithPopup(provider)
         .then(response => commit('updateUser', response))
         .catch(error => commit('addError', error.message))
@@ -105,11 +105,12 @@ export default new Vuex.Store({
       new Promise((resolve) => {
         this.commit('addSuccess', 'Deck created successfully')
         setTimeout(() => {
-          $('#successField').fadeOut(1000)
-          resolve()
-        }, 3000)
+          $('#successField').fadeOut(2000, () => {
+            this.commit('addSuccess', '')
+            resolve()
+          })
+        }, 1500)
       })
-        .then(this.commit('addSuccess', ''))
         .catch(error => console.log(error))
     },
     getNumOfDecks({ state }) {
