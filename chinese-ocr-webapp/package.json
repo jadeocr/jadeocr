@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "twbuild": "npx tailwind build src/assets/css/styles.css -o src/assets/css/output.css",
-    "devbuild": "npm run build && firebase deploy && rm -rf dist"
+    "devbuild": "npm run build && firebase deploy && rm -rf dist",
+    "emulate": "firebase emulators:start"
   },
   "dependencies": {
     "bootstrap-icons": "^1.0.0-alpha3",

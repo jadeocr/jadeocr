@@ -14,6 +14,9 @@
   "emulators": {
     "firestore": {
       "port": "5000"
+    },
+    "hosting": {
+      "port": "3000"
     }
   }
 }
