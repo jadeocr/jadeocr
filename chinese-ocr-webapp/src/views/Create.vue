@@ -22,23 +22,23 @@
 				</div>
 				<div class='mt-6'>
 					<div class="w-1/2 md:w-1/4 mb-12">
-						<input v-model='deckName' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
+						<input v-model='name' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Deck name'>
 						<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
 					</div>
-					<div v-for='(n, i) in numOfWords' :key='i.key' >
+					<div v-for='(n, i) in deck.numOfWords' :key='i.key' >
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
 								<div class="w-1/3 md:w-1/5 px-3">
-									<input v-model='deck.deckData[i].pinyin' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deck.cards[i].pinyin' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='(i+1) + ".  huā"'>
 								</div>
 								<div class="w-1/3 md:w-1/5 px-3">
-									<input v-model='deck.deckData[i].hanzi' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deck.cards[i].hanzi' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
 								</div>
 								<div class="w-1/3 md:w-1/5 px-3">
-									<input v-model='deck.deckData[i].definition' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deck.cards[i].definition' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
 								</div>
 							</div>
@@ -61,16 +61,11 @@ export default {
 	name: 'Create',
 	data() {
 		return {
-			numOfWords: 6,
-			deckName: '',
+			name: '',
 			deck: {
-				deckData: []
-			},
-			emptyCard: {
-				pinyin: '',
-				hanzi: '',
-				definition: ''
-			} 
+				numOfWords: 6,
+				cards: []
+			}
 		}
 	},
 	components: {
@@ -78,30 +73,33 @@ export default {
 	},
 	methods: {
 		resetDeck() {
-			this.name = ''
-			this.deck = {
-				deckData: []
-			}
-			for(let i = 0; i < this.numOfWords; i++) {
-				this.deck.deckData.push(this.emptyCard)
+			for(let i = 0; i < this.deck.numOfWords; i++) {
+				this.deck.cards.push({
+					pinyin: '',
+					hanzi: '',
+					definition: ''
+				})
 			}
 		},
 		createDeck() {
 			this.$store.dispatch('createDeck', {
-				deck: JSON.parse(JSON.stringify(this.deck)),
-				name: this.deckName
+				name: this.name,
+				deck: JSON.parse(JSON.stringify(this.deck))
 			})
-			.then(this.resetDeck())
 			.then(this.$store.dispatch('showSuccess'))
 			.catch(error => console.log(error))
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
-				this.numOfWords++
-				this.deck.deckData.push(this.emptyCard)
+				this.deck.numOfWords++
+				this.deck.cards.push({
+					pinyin: '',
+					hanzi: '',
+					definition: ''
+				})
 			} else {
-				this.numOfWords--
-				this.deck.deckData.pop()
+				this.deck.numOfWords--
+				this.deck.cards.pop()
 			}
 		}
 	},
