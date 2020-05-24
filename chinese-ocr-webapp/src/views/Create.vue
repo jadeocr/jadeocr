@@ -77,11 +77,11 @@ export default {
 		Sidebar
 	},
 	methods: {
-		clearFields(){
-			this.name = ''
-			this.deck.deckData = []
-		},
 		resetDeck() {
+			this.name = ''
+			this.deck = {
+				deckData: []
+			}
 			for(let i = 0; i < this.numOfWords; i++) {
 				this.deck.deckData.push(this.emptyCard)
 			}
@@ -91,7 +91,6 @@ export default {
 				deck: JSON.parse(JSON.stringify(this.deck)),
 				name: this.deckName
 			})
-			.then(this.clearFields())
 			.then(this.resetDeck())
 			.then(this.$store.dispatch('showSuccess'))
 			.catch(error => console.log(error))
