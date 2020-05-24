@@ -86,7 +86,15 @@ export default {
 				})
 			}
 		},
+		trimDeck() {
+			for(let i = 0; i < this.deck.numOfWords; i++) {
+				if (!(this.deck.cards[i].pinyin + this.deck.cards[i].hanzi + this.deck.cards[i].definition)) {
+					this.deck.cards.splice(i, 1)
+				}
+			}
+		},
 		createDeck() {
+			this.trimDeck()
 			this.$store.dispatch('createDeck', {
 				name: this.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
