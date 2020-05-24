@@ -21,10 +21,14 @@
 					</button>
 				</div>
 				<div class='mt-6'>
-					<div class="w-1/2 md:w-1/4 mb-12">
+					<div class="w-1/2 md:w-1/4">
 						<input v-model='name' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Deck name'>
 						<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
+					</div>
+					<div class="w-4/5 md:w-2/5 mt-4 mb-12">
+						<input v-model='deck.description' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
+						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Description'>
 					</div>
 					<div v-for='(n, i) in deck.numOfWords' :key='i.key' >
 						<form>
@@ -63,7 +67,8 @@ export default {
 		return {
 			name: '',
 			deck: {
-				numOfWords: 6,
+				numOfWords: 3,
+				description: '',
 				cards: []
 			}
 		}
