@@ -30,15 +30,15 @@
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
 								<div class="w-1/3 md:w-1/5 px-3">
-									<input v-model='deckData.pinyin[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deck.deckData[i].pinyin' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='(i+1) + ".  huā"'>
 								</div>
 								<div class="w-1/3 md:w-1/5 px-3">
-									<input v-model='deckData.hanzi[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deck.deckData[i].hanzi' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
 								</div>
 								<div class="w-1/3 md:w-1/5 px-3">
-									<input v-model='deckData.definition[i]' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
+									<input v-model='deck.deckData[i].definition' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
 								</div>
 							</div>
@@ -63,11 +63,14 @@ export default {
 		return {
 			numOfWords: 6,
 			deckName: '',
-			deckData: {
-				pinyin: [],
-				hanzi: [],
-				definition: []
-			}
+			deck: {
+				deckData: []
+			},
+			emptyCard: {
+				pinyin: '',
+				hanzi: '',
+				definition: ''
+			} 
 		}
 	},
 	components: {
@@ -76,28 +79,35 @@ export default {
 	methods: {
 		clearFields(){
 			this.name = ''
-			this.deckData = {
-				pinyin: [],
-				hanzi: [],
-				definition: []
+			this.deck.deckData = []
+		},
+		resetDeck() {
+			for(let i = 0; i < this.numOfWords; i++) {
+				this.deck.deckData.push(this.emptyCard)
 			}
 		},
 		createDeck() {
 			this.$store.dispatch('createDeck', {
-				deckData: JSON.parse(JSON.stringify(this.deckData)),
+				deck: JSON.parse(JSON.stringify(this.deck)),
 				name: this.deckName
 			})
 			.then(this.clearFields())
+			.then(this.resetDeck())
 			.then(this.$store.dispatch('showSuccess'))
 			.catch(error => console.log(error))
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
 				this.numOfWords++
+				this.deck.deckData.push(this.emptyCard)
 			} else {
 				this.numOfWords--
+				this.deck.deckData.pop()
 			}
 		}
+	},
+	created(){
+		this.resetDeck()
 	}
 }
 </script>

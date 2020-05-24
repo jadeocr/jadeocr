@@ -92,7 +92,7 @@ export default new Vuex.Store({
       docRef.get()
       .then(doc => {
         if (!doc.exists) {
-          docRef.set(payload.deckData, { merge: true })
+          docRef.set(payload.deck, { merge: true })
             .then(this.commit('addError', ''))
             .then(router.push('dashboard/decks'))
             .catch(error => console.log(error))          
