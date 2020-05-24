@@ -101,7 +101,7 @@ export default new Vuex.Store({
         }
       })
     },
-    showSuccess() {
+    showSuccess() { // Fade for deck creation success message
       new Promise((resolve) => {
         this.commit('addSuccess', 'Deck created successfully')
         setTimeout(() => {
