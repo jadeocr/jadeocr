@@ -49,12 +49,12 @@ const routes = [
 	},
 	{
 		path: '/review/:name',
-		props: { deckName: name },
+		props: true,
 		component: () => import('../views/Learn') // Make this point to the view for actually reviewing the cards
 	},
 	{
 		path: '/edit/:name',
-		props: { deckName: name },
+		props: true,
 		component: () => import('../views/Edit')
 	},
 	{

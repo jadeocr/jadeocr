@@ -96,10 +96,11 @@ export default {
 		createDeck() {
 			this.trimDeck()
 			this.$store.dispatch('createDeck', {
+				method: 'create',
 				name: this.deck.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
-			.then(this.$store.dispatch('showSuccess'))
+			.then(this.$store.dispatch('showSuccess', 'Deck created successfully'))
 			.catch(error => console.log(error))
 		},
 		addWord(addSubtract) {

@@ -37,7 +37,7 @@ export default new Vuex.Store({
       state.userInfo.photoURL = payload.user.photoURL
       state.userInfo.uid = payload.user.uid,
       state.signedIn = true
-      router.push('dashboard/learn')
+      router.push('/dashboard/learn')
     },
     addError(state, msg) {
       state.formError = msg
@@ -96,10 +96,10 @@ export default new Vuex.Store({
       let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
       docRef.get()
       .then(doc => {
-        if (!doc.exists) {
-          docRef.set(payload.deck)
+        if (!doc.exists || (payload.method == 'edit')) {
+          docRef.set(payload.deck, { merge: true })
             .then(commit('addError', ''))
-            .then(router.push('dashboard/decks'))
+            .then(router.push('/dashboard/decks'))
             .then(dispatch('getDecks'))
             .catch(error => console.log(error))          
         } else {
@@ -107,9 +107,9 @@ export default new Vuex.Store({
         }
       })
     },
-    showSuccess({ commit }) { // Fade for deck creation success message
+    showSuccess({ commit }, message) { // Fade for deck creation success message
       new Promise((resolve) => {
-        commit('addSuccess', 'Deck created successfully')
+        commit('addSuccess', message)
         setTimeout(() => {
           $('#successField').fadeOut(2000, () => {
             commit('addSuccess', '')
