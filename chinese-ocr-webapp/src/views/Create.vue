@@ -88,7 +88,7 @@ export default {
 		},
 		trimDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
-				if (!(this.deck.cards[i].pinyin && this.deck.cards[i].hanzi + this.deck.cards[i].definition)) {
+				if (!(this.deck.cards[i])) {
 					this.deck.cards.splice(i, 1)
 				}
 			}
