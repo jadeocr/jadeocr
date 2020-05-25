@@ -129,6 +129,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+#page-content {
+	height: 80vh;
+}
 </style>
