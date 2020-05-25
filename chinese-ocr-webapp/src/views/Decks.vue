@@ -8,22 +8,22 @@
 			<p v-if='$store.state.formSuccess' class='text-green-500 text-base mt-1 -mb-1' id='successField'>{{ $store.state.formSuccess }}</p>
 			<div class="mt-8">
 				<router-link :to='{ name: "create" }'
-				class='btn btn-purple opacity-87 text-white py-2 px-4 rounded'>
+				class='btn btn-teal font-normal opacity-87 text-white py-2 px-4 rounded'>
 					Add Deck
 				</router-link>
 			</div>
-			<div v-if='$store.state.numOfDecks' class='mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 font-normal text-center'>
-				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='w-3/5 mt-4 col-span-1'>
+			<div v-if='$store.state.numOfDecks' class='mt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 font-normal text-center'>
+				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='w-4/5 mt-4 col-span-1'>
 					<div class='bg-black rounded-md px-12 py-12 decklist'>
-						<div class=''>
+						<div>
 							{{ $store.state.decks[i].name }}
 						</div>
-						<div class='btn btn-blue opacity-87 text-white py-1 text-md mt-2 rounded w-full'>
-							<router-link :to='{ path: `/review/${$store.state.decks[i].name}` }'>
+						<router-link :to='{ path: `/review/${$store.state.decks[i].name}` }'>
+							<div class='btn btn-purple opacity-87 text-white py-1 text-md mt-2 rounded w-full'>
 								Learn
-							</router-link>
-						</div>
-						<div class='mt-2'>
+							</div>
+						</router-link>
+						<div class='mt-3 relative' id='edit-icon'>
 							<router-link :to='{ path: `/edit/${$store.state.decks[i].name}` }'>
 								<svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 									<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -65,7 +65,11 @@ export default {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(255,255,255,0.05);
+	background-color: rgba(255,255,255,0.07);
 	z-index: 2;
+}
+
+#edit-icon {
+	left: calc(100% - 1em);
 }
 </style>
