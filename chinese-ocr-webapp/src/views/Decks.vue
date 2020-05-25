@@ -12,9 +12,9 @@
 					Add Deck
 				</router-link>
 			</div>
-			<div v-if='$store.state.numOfDecks' class='mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 font-normal'>
+			<div v-if='$store.state.numOfDecks' class='mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 font-normal'>
 				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='mt-4 col-span-1 flex'>
-					<div class='bg-black rounded-md px-0 md:px-20 py-12 decklist'>
+					<div class='bg-black rounded-md px-20 py-12 decklist'>
 						<div class="">
 							{{ $store.state.decks[i].name }}
 						</div>
