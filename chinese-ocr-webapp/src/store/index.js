@@ -129,6 +129,13 @@ export default new Vuex.Store({
           })
         })
         .catch(error => console.log(error))
+    },
+    deleteDeck({ state,  dispatch }, name) {
+      let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(name)
+      docRef.delete()
+        .then(dispatch('getDecks'))
+        .then(router.push('/dashboard/decks'))
+        .catch(error => console.log(error))
     }
   },
   modules: {

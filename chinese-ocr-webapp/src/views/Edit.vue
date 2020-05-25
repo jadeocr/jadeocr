@@ -56,6 +56,12 @@
 							Create Deck
 						</button>
 					</div>
+					<div class='mt-8'>
+						<button @click='deleteDeck'
+						class='btn btn-red opacity-87 text-white py-2 px-4 rounded my-auto'>
+							Delete Deck
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -96,8 +102,8 @@ export default {
 				name: this.deck.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
-			.then(this.$store.dispatch('showSuccess', 'Deck edited successfully'))
-			.catch(error => console.log(error))
+				.then(this.$store.dispatch('showSuccess', 'Deck edited successfully'))
+				.catch(error => console.log(error))
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
@@ -111,6 +117,10 @@ export default {
 				this.deck.numOfWords--
 				this.deck.cards.pop()
 			}
+		},
+		deleteDeck() {
+			this.$store.dispatch('deleteDeck', this.deck.name)
+				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))
 		}
 	},
 	created() {
