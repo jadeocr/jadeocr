@@ -21,27 +21,27 @@
 					</button>
 				</div>
 				<div class='mt-6'>
-					<div class="w-1/2 md:w-1/4">
-						<input v-model='name' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
+					<div class="w-1/2 lg:w-1/4">
+						<input v-model='deck.name' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Deck name'>
 						<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
 					</div>
-					<div class="w-4/5 md:w-2/5 mt-4 mb-12">
+					<div class="w-4/5 lg:w-2/5 mt-4 mb-12">
 						<input v-model='deck.description' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Description'>
 					</div>
 					<div v-for='(n, i) in deck.numOfWords' :key='i.key' >
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
-								<div class="w-1/3 md:w-1/5 px-3">
+								<div class="w-1/3 lg:w-1/4 px-3">
 									<input v-model='deck.cards[i].pinyin' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='(i+1) + ".  huā"'>
 								</div>
-								<div class="w-1/3 md:w-1/5 px-3">
+								<div class="w-1/3 lg:w-1/4 px-3">
 									<input v-model='deck.cards[i].hanzi' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
 								</div>
-								<div class="w-1/3 md:w-1/5 px-3">
+								<div class="w-1/3 lg:w-1/4 px-3">
 									<input v-model='deck.cards[i].definition' class="bg-gray-300 shadow appearance-none border rounded w-full py-3 px-4 text-gray-800 
 									leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
 								</div>
@@ -65,8 +65,8 @@ export default {
 	name: 'Create',
 	data() {
 		return {
-			name: '',
 			deck: {
+				name: '',
 				numOfWords: 3,
 				description: '',
 				cards: []
@@ -88,7 +88,7 @@ export default {
 		},
 		trimDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
-				if (!(this.deck.cards[i].pinyin + this.deck.cards[i].hanzi + this.deck.cards[i].definition)) {
+				if (!(this.deck.cards[i].pinyin && this.deck.cards[i].hanzi + !this.deck.cards[i].definition)) {
 					this.deck.cards.splice(i, 1)
 				}
 			}
@@ -96,7 +96,7 @@ export default {
 		createDeck() {
 			this.trimDeck()
 			this.$store.dispatch('createDeck', {
-				name: this.name,
+				name: this.deck.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
 			.then(this.$store.dispatch('showSuccess'))

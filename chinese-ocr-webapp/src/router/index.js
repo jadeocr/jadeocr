@@ -48,6 +48,16 @@ const routes = [
 		component: () => import('../views/Create')
 	},
 	{
+		path: '/review/:name',
+		props: { deckName: name },
+		component: () => import('../views/Learn') // Make this point to the view for actually reviewing the cards
+	},
+	{
+		path: '/edit/:name',
+		props: { deckName: name },
+		component: () => import('../views/Edit')
+	},
+	{
 		path: '*',
 		component: () => import ('../views/NotFound')
 	}

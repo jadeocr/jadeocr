@@ -26,7 +26,8 @@ export default new Vuex.Store({
     signedIn: false,
     formError: '',
     formSuccess: '',
-    numOfDecks: 0
+    numOfDecks: 0,
+    decks: []
   },
   mutations: {
     updateUser(state, payload) {
@@ -55,6 +56,10 @@ export default new Vuex.Store({
     },
     toggleSidebarState(state) {
       state.sidebarExpanded = !state.sidebarExpanded
+    },
+    updateDecks(state, payload) {
+      state.numOfDecks = payload.size
+      state.decks = payload.docs
     }
   },
   actions: {
@@ -87,37 +92,41 @@ export default new Vuex.Store({
       auth.currentUser.delete()
         .catch(error => console.log(error))
     },
-    createDeck({ state }, payload) {
+    createDeck({ state, dispatch, commit }, payload) {
       let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
       docRef.get()
       .then(doc => {
         if (!doc.exists) {
           docRef.set(payload.deck)
-            .then(this.commit('addError', ''))
+            .then(commit('addError', ''))
             .then(router.push('dashboard/decks'))
+            .then(dispatch('getDecks'))
             .catch(error => console.log(error))          
         } else {
-          this.commit('addError', 'A deck with this name already exists')
+          commit('addError', 'A deck with this name already exists')
         }
       })
     },
-    showSuccess() { // Fade for deck creation success message
+    showSuccess({ commit }) { // Fade for deck creation success message
       new Promise((resolve) => {
-        this.commit('addSuccess', 'Deck created successfully')
+        commit('addSuccess', 'Deck created successfully')
         setTimeout(() => {
           $('#successField').fadeOut(2000, () => {
-            this.commit('addSuccess', '')
+            commit('addSuccess', '')
             resolve()
           })
         }, 1500)
       })
         .catch(error => console.log(error))
     },
-    getNumOfDecks({ state }) {
+    getDecks({ state, commit }) {
       let decksRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
       decksRef.get()
         .then(snapshot => {
-          state.numOfDecks = snapshot.size
+          commit('updateDecks', { 
+            size: snapshot.size,
+            docs: snapshot.docs.map(doc => doc.data())
+          })
         })
         .catch(error => console.log(error))
     }
