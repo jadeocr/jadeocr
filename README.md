@@ -55,6 +55,14 @@ export default {
 }
 ```
 
+#### HTTPS development server
+As more features are added, some might break without the use of HTTPS. To remedy this, and also for best practice, make the Vue.js development server use the HTTPS protocol.
+
+First run `brew install mkcert`
+Then run `mkcert -install` in the **chinese-ocr-webapp** directory and follow instructions
+Create a directory **certs** (which has been gitignored) and move the created files in
+Run `npm run serve` to spin up the development instance with HTTPS
+
 ### Compilation
 
 #### Compiles and hot-reloads for development
