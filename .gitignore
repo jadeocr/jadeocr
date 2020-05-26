@@ -15,8 +15,9 @@ output.css
 node_modules
 /dist
 
-# API Keys
+# Keys
 credentials.js
+certs
 
 # local env files
 env
