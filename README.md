@@ -1,6 +1,4 @@
 # chinese-ocr
-[![Build Status](https://travis-ci.org/TanayB11/chinese-ocr.svg?branch=master)](https://travis-ci.org/TanayB11/chinese-ocr)
-
 A web-based flashcard app directed at language learning, particularly Chinese. Complete with free-form Chinese handwriting recognition, a [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) system, and a clean, minimalist UI. This project aims to cover all these bases while staying open source.
 
 
