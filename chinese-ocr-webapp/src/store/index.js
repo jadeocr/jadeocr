@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
+import createPersistedState from 'vuex-persistedstate'
 
 import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
@@ -141,5 +142,6 @@ export default new Vuex.Store({
   modules: {
   },
   getters: {
-  }
+  },
+  plugins: [createPersistedState()]
 })
