@@ -2,6 +2,9 @@ __pycache__
 .DS_Store
 env
 
+# API Keys
+credentials
+
 # ML Model
 logs
 data
