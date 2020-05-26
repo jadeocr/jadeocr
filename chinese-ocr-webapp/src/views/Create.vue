@@ -88,9 +88,12 @@ export default {
 		},
 		trimDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
-				if (!(this.deck.cards[i])) {
+				if (!(this.deck.cards[i].pinyin && this.deck.cards[i].hanzi + this.deck.cards[i].definition)) {
 					this.deck.cards.splice(i, 1)
 				}
+				this.deck.cards[i].pinyin = this.deck.cards[i].pinyin.trim()
+				this.deck.cards[i].hanzi = this.deck.cards[i].hanzi.trim()
+				this.deck.cards[i].definition = this.deck.cards[i].definition.trim()
 			}
 		},
 		createDeck() {
