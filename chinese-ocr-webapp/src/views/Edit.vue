@@ -53,7 +53,7 @@
 					<div class='mt-4'>
 						<button @click='createDeck'
 						class='btn btn-purple opacity-87 text-white py-2 px-4 rounded my-auto'>
-							Create Deck
+							Save Changes
 						</button>
 					</div>
 					<div class='mt-8'>
@@ -90,12 +90,9 @@ export default {
 		},
 		trimDeck() {
 			for(let i = 0; i < (this.deck.numOfWords - 1); i++) {
-				if (!(this.deck.cards[i].pinyin && this.deck.cards[i].hanzi + this.deck.cards[i].definition)) {
+				if (!(this.deck.cards[i].pinyin && this.deck.cards[i].hanzi && this.deck.cards[i].definition)) {
 					this.deck.cards.splice(i, 1)
 				}
-				this.deck.cards[i].pinyin = this.deck.cards[i].pinyin.trim()
-				this.deck.cards[i].hanzi = this.deck.cards[i].hanzi.trim()
-				this.deck.cards[i].definition = this.deck.cards[i].definition.trim()
 			}
 		},
 		createDeck() {
