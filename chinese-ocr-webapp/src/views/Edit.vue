@@ -32,7 +32,7 @@
 						<input v-model='deck.description' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 						leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Description'>
 					</div>
-					<div v-for='(n, i) in (deck.numOfWords - 1)' :key='i.key' >
+					<div v-for='(n, i) in (deck.numOfWords)' :key='i.key' >
 						<form>
 							<div class="flex flex-wrap -mx-3 mb-6">
 								<div class="w-1/3 lg:w-1/4 px-3">
@@ -89,9 +89,10 @@ export default {
 			})
 		},
 		trimDeck() {
-			for(let i = 0; i < (this.deck.numOfWords - 1); i++) {
-				if (!this.deck.cards[i]) {
+			for(let i = 0; i < this.deck.numOfWords; i++) {
+				if (!(this.deck.cards[i].pinyin || this.deck.cards[i].hanzi || this.deck.cards[i].definition)) {
 					this.deck.cards.splice(i, 1)
+					this.deck.numOfWords --
 				}
 			}
 		},
@@ -115,11 +116,11 @@ export default {
 					definition: ''
 				})
 			} else {
+				this.deck.cards.splice(this.deck.numOfWords - 1, 1)
 				this.deck.numOfWords--
-				this.deck.cards.pop()
 			}
 		},
-		deleteDeck() {
+		deleteDeck() { //TODO: Add confirmation
 			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('deleteDeck', this.deck.name)
 				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))

@@ -88,8 +88,9 @@ export default {
 		},
 		trimDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
-				if (!(this.deck.cards[i])) {
+				if (!(this.deck.cards[i].pinyin || this.deck.cards[i].hanzi || this.deck.cards[i].definition)) {
 					this.deck.cards.splice(i, 1)
+					this.deck.numOfWords --
 				}
 			}
 		},
@@ -101,8 +102,8 @@ export default {
 				name: this.deck.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
-			.then(this.$store.dispatch('showSuccess', 'Deck created successfully'))
-			.catch(error => console.log(error))
+				.then(this.$store.dispatch('showSuccess', 'Deck created successfully'))
+				.catch(error => console.log(error))
 		},
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
@@ -113,8 +114,8 @@ export default {
 					definition: ''
 				})
 			} else {
+				this.deck.cards.splice(this.deck.numOfWords - 1, 1)
 				this.deck.numOfWords--
-				this.deck.cards.pop()
 			}
 		}
 	},
