@@ -50,6 +50,7 @@ export default {
 		Sidebar
 	},
 	beforeCreate() {
+		this.$store.commit('addError', '')
 		this.$store.dispatch('getDecks')
 	}
 }

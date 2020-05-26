@@ -97,6 +97,7 @@ export default {
 		},
 		createDeck() {
 			this.trimDeck()
+			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('createDeck', {
 				method: 'edit',
 				name: this.deck.name,
@@ -119,11 +120,13 @@ export default {
 			}
 		},
 		deleteDeck() {
+			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('deleteDeck', this.deck.name)
 				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))
 		}
 	},
 	created() {
+		this.$store.commit('addError', '')
 		this.loadDeck()
 	}
 }

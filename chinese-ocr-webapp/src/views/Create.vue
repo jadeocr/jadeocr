@@ -95,6 +95,7 @@ export default {
 		},
 		createDeck() {
 			this.trimDeck()
+			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('createDeck', {
 				method: 'create',
 				name: this.deck.name,
@@ -118,6 +119,7 @@ export default {
 		}
 	},
 	created(){
+		this.$store.commit('addError', '')
 		this.resetDeck()
 	}
 }

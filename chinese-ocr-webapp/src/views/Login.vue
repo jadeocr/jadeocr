@@ -96,6 +96,10 @@ export default {
 				this.$store.dispatch('resetPassword', this.email.trim())
 					.then(this.$store.dispatch('showSuccess', 'Sent a password reset email'))
 			}
+		},
+		mounted() {
+			this.$store.commit('addError', '')
+			this.$store.commit('addSuccess', '')
 		}
 	}
 }
