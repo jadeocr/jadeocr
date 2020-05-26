@@ -15,9 +15,7 @@
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
-					<button @click='resetPassword' class='text-xs text-blue-400 hover:text-blue-500'>Forgot Password?</button>
-					<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1'>{{ $store.state.formError }}</p>
-					<p v-if='$store.state.formSuccess' class='text-green-500 text-sm mt-1 -mb-1' id='successField'>{{ $store.state.formSuccess }}</p>
+					<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
@@ -52,10 +50,11 @@ export default {
 	methods: {
 		checkForm() {
 			this.$store.commit('addError', '')
+
 			if ((!this.email) || (!this.password)){
 				this.$store.commit('addError', 'Please complete all fields')
 			} else if (!this.validEmail(this.email)) {
-				this.$store.commit('addError', 'Invalid email')
+				this.$store.commit('addError', 'Invalid Email')
 			}
 		},
 		clearFields() {
@@ -85,17 +84,6 @@ export default {
 				})
 			}
 			this.clearFields()
-		},
-		resetPassword() {
-			if (!this.email) {
-				this.$store.commit('addError', 'Please enter your email')
-			} else if (!this.validEmail(this.email)) {
-				this.$store.commit('addError', 'Invalid email')
-			} else {
-				this.$store.commit('addError', '')
-				this.$store.dispatch('resetPassword', this.email.trim())
-					.then(this.$store.dispatch('showSuccess', 'Sent a password reset email'))
-			}
 		}
 	}
 }

@@ -2,9 +2,6 @@ __pycache__
 .DS_Store
 env
 
-# API Keys
-credentials
-
 # ML Model
 logs
 data
@@ -17,6 +14,9 @@ output.css
 .DS_Store
 node_modules
 /dist
+
+# API Keys
+credentials.js
 
 # local env files
 env
@@ -36,4 +36,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-chinese-ocr-webapp/src/firebase/credentials.js
