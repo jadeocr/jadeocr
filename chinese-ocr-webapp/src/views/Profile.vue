@@ -52,7 +52,7 @@ export default {
 	},
 	methods: {
 		resetPassword() {
-			this.$store.dispatch('resetPassword')
+			this.$store.dispatch('resetPassword', this.$store.state.userInfo.email)
 		},
 		deleteAccount() {
 			alert('Add some warning and confirmation here')

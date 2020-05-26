@@ -84,8 +84,9 @@ export default new Vuex.Store({
         .then(commit('clearUserData'))
         .catch(error => console.log(error))
     },
-    resetPassword({ state }) {
-      auth.sendPasswordResetEmail(state.userInfo.email)
+    resetPassword(state, payload) {
+      console.log(payload)
+      auth.sendPasswordResetEmail(payload)
         .catch(error => console.log(error))
     },
     deleteAccount() {
