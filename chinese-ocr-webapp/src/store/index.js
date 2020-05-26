@@ -85,7 +85,6 @@ export default new Vuex.Store({
         .catch(error => console.log(error))
     },
     resetPassword(state, payload) {
-      console.log(payload)
       auth.sendPasswordResetEmail(payload)
         .catch(error => console.log(error))
     },
