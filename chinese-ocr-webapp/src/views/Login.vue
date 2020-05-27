@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class='m-auto w-full max-w-xs mt-10 font-normal'>
-			<form class='login-form bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' @submit.prevent=''>
+			<form class='bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 rounded-md' id='login-form' @submit.prevent=''>
 				<div class='mb-4'>
 					<label class='block opacity-87 text-sm mb-2'>
 						Email
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style scoped>
-.login-form {
+#login-form {
 	top: 0;
 	left: 0;
 	right: 0;

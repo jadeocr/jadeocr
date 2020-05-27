@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id='deck-list'>
 		<div v-if='$store.state.numOfDecks' class='mt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 font-normal text-center'>
 				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='w-4/5 mt-4 col-span-1'>
 					<div class='bg-black rounded-md px-12 py-12 decklist'>
