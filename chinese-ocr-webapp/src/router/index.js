@@ -69,7 +69,7 @@ const routes = [
 	{
 		path: '/review/:name',
 		props: true,
-		component: () => import('../views/Learn'), // Make this point to the view for actually reviewing the cards
+		component: () => import('../views/Review'), // Make this point to the view for actually reviewing the cards
 		meta: {
 			requiresAuth: true			
 		}
@@ -85,6 +85,10 @@ const routes = [
 	{
 		path: '*',
 		component: () => import ('../views/NotFound')
+	},
+	{
+		path: '*/*',
+		component: () => import('../views/NotFound')
 	}
 ]
 
