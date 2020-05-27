@@ -2,6 +2,10 @@ __pycache__
 .DS_Store
 env
 
+# Maker Portfolio Submission
+maker-portfolio
+srs-papers
+
 # ML Model
 logs
 data
