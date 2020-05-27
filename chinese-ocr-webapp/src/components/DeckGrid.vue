@@ -4,7 +4,7 @@
 			<p v-if='view == "create"'>Create</p>
 			<div v-else>
 				<p>Edit</p>
-				<p class="mt-6 opacity-87 text-lg lg:text-xl xl:text-2xl font-normal">{{ name }}</p>
+				<p class="mt-2 text-lg lg:text-xl xl:text-2xl font-normal">{{ name }}</p>
 			</div>
 		</div>
 		<div class="mt-8">

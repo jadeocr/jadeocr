@@ -112,11 +112,11 @@ export default new Vuex.Store({
       new Promise((resolve) => {
         commit('addSuccess', message)
         setTimeout(() => {
-          $('#successField').fadeOut(2000, () => {
+          $('#successField').fadeOut(1000, () => {
             commit('addSuccess', '')
             resolve()
           })
-        }, 1500)
+        }, 1000)
       })
         .catch(error => console.log(error))
     },
