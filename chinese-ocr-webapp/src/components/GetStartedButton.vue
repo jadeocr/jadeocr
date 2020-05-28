@@ -2,7 +2,7 @@
 	<div>
 		<router-link :to='{ name: "login" }'
 		class='chinese opacity-87 btn mt-8 px-3 py-1 text-base 
-		sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-lg'>
+		sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-md'>
 			Get Started | 开始
 		</router-link>
 	</div>
