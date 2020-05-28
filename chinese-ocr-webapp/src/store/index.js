@@ -86,27 +86,35 @@ export default new Vuex.Store({
         .catch(error => console.log(error))
     },
     resetPassword(state, email) {
-      auth.sendPasswordResetEmail(email)
-        .catch(error => console.log(error))
+      if (state.signedIn && state.userInfo.uid) {
+        auth.sendPasswordResetEmail(email)
+          .catch(error => console.log(error))
+      }
     },
-    deleteAccount() {
-      auth.currentUser.delete()
-        .catch(error => console.log(error))
+    deleteAccount({ state }) {
+      if (state.signedIn && state.userInfo.uid) {
+        // let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
+        // CHECK STUFF HERE
+          auth.currentUser.delete()
+            .catch(error => console.log(error))
+      }
     },
     createDeck({ state, dispatch, commit }, payload) {
-      let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
-      docRef.get()
-      .then(doc => {
-        if (!doc.exists || (payload.method == 'edit')) {
-          docRef.set(payload.deck, { merge: true })
-            .then(commit('addError', ''))
-            .then(router.push('/dashboard/decks'))
-            .then(dispatch('getDecks'))
-            .catch(error => console.log(error))          
-        } else {
-          commit('addError', 'A deck with this name already exists')
-        }
-      })
+      if (state.signedIn && state.userInfo.uid) {
+        let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
+        docRef.get()
+        .then(doc => {
+          if (!doc.exists || (payload.method == 'edit')) {
+            docRef.set(payload.deck, { merge: true })
+              .then(commit('addError', ''))
+              .then(router.push('/dashboard/decks'))
+              .then(dispatch('getDecks'))
+              .catch(error => console.log(error))          
+          } else {
+            commit('addError', 'A deck with this name already exists')
+          }
+        })
+      }
     },
     showSuccess({ commit }, message) { // Fade for deck creation success message
       new Promise((resolve) => {
@@ -121,22 +129,26 @@ export default new Vuex.Store({
         .catch(error => console.log(error))
     },
     getDecks({ state, commit }) {
-      let decksRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
-      decksRef.get()
-        .then(snapshot => {
-          commit('updateDecks', { 
-            size: snapshot.size,
-            docs: snapshot.docs.map(doc => doc.data())
+      if (state.signedIn && state.userInfo.uid) {
+        let decksRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
+        decksRef.get()
+          .then(snapshot => {
+            commit('updateDecks', { 
+              size: snapshot.size,
+              docs: snapshot.docs.map(doc => doc.data())
+            })
           })
-        })
-        .catch(error => console.log(error))
+          .catch(error => console.log(error))
+      }
     },
     deleteDeck({ state,  dispatch }, name) {
-      let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(name)
-      docRef.delete()
-        .then(router.push('/dashboard/decks'))
-        .then(dispatch('getDecks'))
-        .catch(error => console.log(error))
+      if (state.signedIn && state.userInfo.uid) {
+        let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(name)
+        docRef.delete()
+          .then(router.push('/dashboard/decks'))
+          .then(dispatch('getDecks'))
+          .catch(error => console.log(error))
+      }
     }
   },
   modules: {
