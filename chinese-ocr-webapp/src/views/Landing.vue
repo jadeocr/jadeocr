@@ -14,7 +14,6 @@
         </div>
       </div>
       <div class='slide grid grid-rows-1'>
-        <!-- Make it scroll down or something -->
         <div @click='scrollDown'
         class="row-span-1 m-auto opacity-75 mt-8 lg:-mt-8">
           <svg class="bi bi-chevron-down" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -30,44 +29,51 @@
           <p>until now.</p>
         </div>
         <div class="lg:mt-10 w-1/2 m-auto flex justify-center items-center
-        grid grid-rows-8 grid-cols-1 lg:grid-cols-2 text-md md:text-xl">
-          <div class="col-span-1">
+        grid grid-rows-8 grid-cols-1 lg:grid-cols-2 text-md md:text-lg">
+          <div class="col-span-1 pr-8">
             <Feature name='minimalist' :isFirstElement='true'
               title='Minimalist Design'
-              body='
-                hello world
-              '
+              body="
+                A modern, simple design inspired by Material Dark 
+                makes chinese-ocr fun and intuitive.
+              "
             />
             <Feature name='ocr' :isFirstElement='false'
               title='Handwriting OCR'
               body='
-                hello world
+                Computer vision delivers powerful handwriting recognition 
+                to help you practice.
               '
             />
             <Feature name='cloud' :isFirstElement='false'
               title='Cloud Sync'
               body='
-                hello world
+                Chinese-ocr safely stores your decks in the cloud so you 
+                can review no matter where you are.
               '
             />
           </div>
-          <div class="col-span-1 ">
+          <div class="col-span-1 pl-8">
             <Feature name='reactive' :isFirstElement='true'
               title='Reactive UI'
-              body='
-                hello world
-              '
+              body="
+                Vue.js powers chinese-ocr's snappy experience that makes 
+                learning languages a joy.
+              "
             />
             <Feature name='spaced-repetition' :isFirstElement='false'
-              title='SRS Cards'
+              title='SRS Cards (β)'
               body='
-                hello world
+                Spaced repetition allows you to learn more efficiently 
+                and promotes long-term retention.
               '
             />
             <Feature name='open-source' :isFirstElement='false'
               title='Open Source'
               body='
-                hello world
+                In the open-source spirit, the
+                code is public on GitHub. Thus,  
+                chinese-ocr will remain free, forever.
               '
             />
           </div>
