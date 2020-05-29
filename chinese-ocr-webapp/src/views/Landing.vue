@@ -15,7 +15,7 @@
       </div>
       <div class='slide grid grid-rows-1'>
         <div @click='scrollDown'
-        class="row-span-1 m-auto opacity-75 mt-8 lg:-mt-8">
+        class="row-span-1 m-auto opacity-75 mt-8 lg:-mt-8 hoverlink">
           <svg class="bi bi-chevron-down" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
           </svg>
@@ -31,7 +31,7 @@
         <div class='mt-6 text-sm md:text-lg lg:text-xl opacity-87 px-3 text-center'>
           <div>
             Learn languages with 
-            <a href="https://en.wikipedia.org/wiki/Spaced_repetition" class="font-normal">spaced repetition</a>
+            <a href="https://en.wikipedia.org/wiki/Spaced_repetition" class="font-normal hoverlink">spaced repetition</a>
             flashcards
           </div>
           <p>and practice writing with built-in handwriting recognition.</p>
@@ -96,23 +96,23 @@
             <p>© 2020 Tanay Biradar</p>
             <p>
               This project is licensed under the 
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal hover:underline'>
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal hoverlink'>
                 MIT License
               </a>
             </p>
           </div>
           <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center font-normal">
             <div>
-              <a href='https://github.com/TanayB11/chinese-ocr' target="_blank" class="hover:underline">GitHub Repo</a>
+              <a href='https://github.com/TanayB11/chinese-ocr' target="_blank" class="hoverlink">GitHub Repo</a>
             </div>
             <div>
-              <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank" class="hover:underline">Donate</a>
+              <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank" class="hoverlink">Donate</a>
             </div>
             <div>
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank" class="hover:underline">Terms and Privacy</a>
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms and Privacy</a>
             </div>
             <div>
-              <a href='mailto: tanaybiradar24@gmail.com' class="hover:underline">Contact</a>
+              <a href='mailto: tanaybiradar24@gmail.com' class="hoverlink">Contact</a>
             </div>
           </div>
         </div>
@@ -141,6 +141,10 @@ export default {
 </script>
 
 <style scoped>
+.hoverlink:hover {
+  opacity: 0.60;
+}
+
 .slide {
   animation: .75s slidedown;
 }
