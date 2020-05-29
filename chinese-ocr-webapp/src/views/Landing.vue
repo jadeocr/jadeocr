@@ -103,13 +103,16 @@
           </div>
           <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center font-normal">
             <div>
-              <a href='https://github.com/TanayB11/chinese-ocr'>GitHub Repo</a>
+              <a href='https://github.com/TanayB11/chinese-ocr' target="_blank">GitHub Repo</a>
+            </div>
+            <div>
+              <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank">Donate</a>
+            </div>
+            <div>
+              <a href='/' target="_blank">Terms of Use</a>
             </div>
             <div>
               <a href='mailto: tanaybiradar24@gmail.com'>Contact</a>
-            </div>
-            <div>
-              <a href='/'>Terms of Use</a>
             </div>
           </div>
         </div>

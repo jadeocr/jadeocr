@@ -144,12 +144,21 @@ Pull requests are also always welcome. Here are a couple simple guidelines:
 * Make sure your code is readable and commented when necessary
 * Document your changes adequately when opening a pull request
 
+### Donations
+If chinese-ocr has been of some value to you, and if you can afford it, please consider donating. Donations will always be first allocated to the upkeep of the project. We have a few costs that are expected to grow as we gain more users, including domain registration and Firebase/Google Cloud billing as we pass the free tier quotas. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
+* BTC: 15Y9NZjxTLWHDU8kVsqN7FKey3c1RPNiFi
+* (We'll add more options soon)
+
 Thank you so much for taking the time to contribute!
 
 ## Credits
 * [integeruser on Github](https://github.com/integeruser/CASIA-HWDB1.1-cnn)
 * [想飞的石头在知乎](https://zhuanlan.zhihu.com/p/24698483)
 * [蹦跶的小羊羔在cdsn.net](https://blog.csdn.net/yql_617540298/article/details/82740382)
+
+## Contact
+If you would like to get in touch with me for any (legitimate) reason, please do not hesitate to 
+<a href='mailto: tanaybiradar24@gmail.com'>contact</a> me.
 
 ## License
 This repository is licensed under the MIT License.
