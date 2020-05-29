@@ -28,7 +28,7 @@
           <p>The perfect language learning system didn't exist...</p>
           <p>until now.</p>
         </div>
-        <div class='mt-6 text-md md:text-lg lg:text-xxl opacity-87 px-8 text-center'>
+        <div class='mt-6 text-sm md:text-lg lg:text-xl opacity-87 px-3 text-center'>
           <div>
             Learn languages with 
             <a href="https://en.wikipedia.org/wiki/Spaced_repetition" class="font-normal">spaced repetition</a>
