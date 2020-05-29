@@ -1,7 +1,7 @@
 <template>
 	<div id='landing'>
-    <div id='intro' class='overflow-y-hidden md:overflow-y-auto h-screen'>
-      <div class='slide container opacity-87 font-light grid grid-cols-1 lg:grid-cols-2 m-auto'>
+    <div id='intro' class='h-screen'>
+      <div class='title-container slide container opacity-87 font-light grid grid-cols-1 lg:grid-cols-2 m-auto'>
         <div class='col-span-1'>
           <img src='../assets/title-image.png' alt='An image of the Chinese character 文, meaning "written language"'>
         </div>
@@ -130,7 +130,6 @@ export default {
 </script>
 
 <style scoped>
-
 .slide {
   animation: .75s slidedown;
 }
@@ -146,4 +145,11 @@ export default {
   }
 }
 
+/* To deal with weird landscape bug on phones */
+@media (max-width: 800px) and (orientation:landscape) {
+  #intro {
+    height: 200vh;
+    margin-bottom: 8rem;
+  }
+}
 </style>
