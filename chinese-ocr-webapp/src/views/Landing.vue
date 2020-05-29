@@ -66,7 +66,7 @@
               title='Reactive UI'
               body="
                 Vue.js powers chinese-ocr's snappy experience that makes 
-                learning languages a joy.
+                learning languages (not only Chinese) a joy.
               "
             />
             <Feature name='spaced-repetition' :isFirstElement='false'
