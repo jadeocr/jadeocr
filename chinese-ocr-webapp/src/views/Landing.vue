@@ -1,6 +1,6 @@
 <template>
 	<div id='landing'>
-    <div id='intro' class='overflow-y-hidden md:overflow-y-auto'>
+    <div id='intro' class='overflow-y-hidden md:overflow-y-auto h-screen'>
       <div class='slide container opacity-87 font-light grid grid-cols-1 lg:grid-cols-2 m-auto'>
         <div class='col-span-1'>
           <img src='../assets/title-image.png' alt='An image of the Chinese character 文, meaning "written language"'>
@@ -30,7 +30,7 @@
         </div>
         <div class="lg:mt-10 w-1/2 m-auto flex justify-center items-center
         grid grid-rows-8 grid-cols-1 lg:grid-cols-2 text-md md:text-lg">
-          <div class="col-span-1 pr-8">
+          <div class="col-span-1 lg:pr-8">
             <Feature name='minimalist' :isFirstElement='true'
               title='Minimalist Design'
               body="
@@ -53,7 +53,7 @@
               '
             />
           </div>
-          <div class="col-span-1 pl-8">
+          <div class="col-span-1 lg:pl-8">
             <Feature name='reactive' :isFirstElement='true'
               title='Reactive UI'
               body="
@@ -80,11 +80,33 @@
         </div>
       </div>
     </div>
-    <!-- <div id="footer">
-      <div class="text-center">
-        Footer
+    <div class="footer mt-24">
+      <hr class="opacity-25">
+      <div id="footer-content" class='py-12'>
+        <div class="text-center grid grid-cols-1 lg:grid-cols-2 opacity-87">
+          <div class="col-span-1 w-1/2 m-auto text-center">
+            <p>© 2020 Tanay Biradar</p>
+            <p>
+              This project is licensed under the 
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='underline'>
+                MIT License
+              </a>
+            </p>
+          </div>
+          <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center">
+            <div>
+              <a href='https://github.com/TanayB11/chinese-ocr'>GitHub Repo</a>
+            </div>
+            <div>
+              <a href='mailto: tanaybiradar24@gmail.com'>Contact</a>
+            </div>
+            <div>
+              <a href='/'>Terms of Use</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div> -->
+    </div>
 	</div>
 </template>
 
@@ -108,9 +130,6 @@ export default {
 </script>
 
 <style scoped>
-#about, #intro {
-  height: 100vh;
-}
 
 .slide {
   animation: .75s slidedown;
