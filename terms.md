@@ -1,5 +1,5 @@
 ## Terms of Use and Privacy Policy
-We do everything here in good faith, and we hope you will, too. These terms are in place for your protection and for ours.
+We do everything here in good faith, and we hope you will, too. These terms are in place for your protection and for ours. By using chinese-ocr, you agree to the following terms.
 
 ### Terms of Use
 1. This software is licensed under the MIT License. Thus, all terms of the MIT License apply to these terms of use.
