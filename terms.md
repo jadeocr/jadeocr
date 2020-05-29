@@ -8,6 +8,8 @@ We do everything here in good faith, and we hope you will, too. These terms are 
 
 
 ### Privacy Policy
-Chinese-ocr uses Google Firebase for handling user authentication and storing user data. Chinese-ocr has access to your name, email address, and profile picture when you sign in with Google. When you sign in with email and password, chinese-ocr stores your email address. Deck data is stored in Firebase's Cloud Firestore, and it is not encrypted. Chinese-ocr's maintainers have full read and write access to this database.
+Chinese-ocr uses Google Firebase for handling user authentication and storing user data. Chinese-ocr has access to your name, email address, and profile picture when you sign in with Google. When you sign in with email and password, chinese-ocr stores your email address.
+
+Deck data is stored in Firebase's Cloud Firestore, and it is not encrypted. Chinese-ocr's maintainers have full read and write access to this Firestore database.
 
 Chinese-ocr only uses cookies to utilize Google Firebase and to store user data between page refreshes.
