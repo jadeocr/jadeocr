@@ -96,23 +96,23 @@
             <p>© 2020 Tanay Biradar</p>
             <p>
               This project is licensed under the 
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal'>
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal hover:underline'>
                 MIT License
               </a>
             </p>
           </div>
           <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center font-normal">
             <div>
-              <a href='https://github.com/TanayB11/chinese-ocr' target="_blank">GitHub Repo</a>
+              <a href='https://github.com/TanayB11/chinese-ocr' target="_blank" class="hover:underline">GitHub Repo</a>
             </div>
             <div>
-              <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank">Donate</a>
+              <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank" class="hover:underline">Donate</a>
             </div>
             <div>
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank">Terms and Privacy</a>
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank" class="hover:underline">Terms and Privacy</a>
             </div>
             <div>
-              <a href='mailto: tanaybiradar24@gmail.com'>Contact</a>
+              <a href='mailto: tanaybiradar24@gmail.com' class="hover:underline">Contact</a>
             </div>
           </div>
         </div>
