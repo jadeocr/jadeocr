@@ -1,9 +1,9 @@
 # chinese-ocr
-A web-based flashcard app directed at language learning, particularly Chinese. Complete with free-form Chinese handwriting recognition, a [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) system, and a clean, minimalist UI. This project aims to cover all these bases while staying open source.
+A web-based flashcard app directed at language learning and focused on learning Chinese. Complete with handwriting recognition, a [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) system, and a clean, minimalist UI. This project aims to cover all these bases while staying open source.
 
 
 ## Demo
-A demo is in the works.
+See and interact with the live [demo](https://chinese-ocr-274418.web.app/). It's still in the works
 
 ### Landing Page
 
@@ -23,7 +23,7 @@ A demo is in the works.
 ## Installation
 We're still working on the webapp. Please help out by [contributing](#contribute)!
 
-To use the Chinese handwriting OCR, see the section on using the CNN below.
+To use the Chinese handwriting OCR model, see the section on using the CNN below.
 
 ### Quickstart
 Run these 3 commands to spin up a quick development instance:
@@ -81,7 +81,7 @@ npm run lint
 ```
 
 ## CNN
-Currently, the OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). Data augmentation needs to be applied to the dataset to achieve a usable training accuracy. Also, more computing power is needed to train on the 2 million+ training examples.
+The OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). Data augmentation needs to be applied to the dataset to achieve a usable training accuracy. Also, more computing power is needed to train on the 2 million+ training examples.
 
 ### Obtaining the Dataset
 To obtain the full dataset, download [**HWDB1.1train_gnt (2741MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn.zip) and [**HWDB1.1test_gnt (681MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst.zip) and extract the zip files. Store them in the directory **convnet/data** and make sure the extracted folders are named **HWDB1.1trn_gnt** and **HWDB1.1tst_gnt**, respectively.
@@ -145,7 +145,7 @@ Pull requests are also always welcome. Here are a couple simple guidelines:
 * Document your changes adequately when opening a pull request
 
 ### Donations
-If chinese-ocr has been of some value to you, and if you can afford it, please consider donating. Donations will always be first allocated to the upkeep of the project. We have a few costs that are expected to grow as we gain more users, including domain registration and Firebase/Google Cloud billing as we pass the free tier quotas. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
+If chinese-ocr has been of some value to you, and if you can afford it, please consider donating. Donations will always first be allocated to the upkeep of the project. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
 * BTC: 15Y9NZjxTLWHDU8kVsqN7FKey3c1RPNiFi
 * (We'll add more options soon)
 
