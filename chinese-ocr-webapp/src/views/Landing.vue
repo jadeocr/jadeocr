@@ -28,6 +28,14 @@
           <p>The perfect language learning system didn't exist...</p>
           <p>until now.</p>
         </div>
+        <div class='mt-6 text-md md:text-lg lg:text-xxl opacity-87 px-8 text-center'>
+          <div>
+            Learn languages with 
+            <a href="https://en.wikipedia.org/wiki/Spaced_repetition" class="font-normal">spaced repetition</a>
+            flashcards
+          </div>
+          <p>and practice writing with built-in handwriting recognition.</p>
+        </div>
         <div class="lg:mt-10 w-1/2 m-auto flex justify-center items-center
         grid grid-rows-8 grid-cols-1 lg:grid-cols-2 text-md md:text-lg">
           <div class="col-span-1 lg:pr-8">
@@ -41,8 +49,8 @@
             <Feature name='ocr' :isFirstElement='false'
               title='Handwriting OCR'
               body='
-                Computer vision delivers powerful handwriting recognition 
-                to help you practice.
+                Computer vision delivers powerful optical character recognition 
+                to help you practice writing.
               '
             />
             <Feature name='cloud' :isFirstElement='false'
@@ -82,18 +90,18 @@
     </div>
     <div class="footer mt-24">
       <hr class="opacity-25">
-      <div id="footer-content" class='py-12'>
+      <div id="footer-content" class='py-8 lg:py-12 text-xs lg:text-sm'>
         <div class="text-center grid grid-cols-1 lg:grid-cols-2 opacity-87">
           <div class="col-span-1 w-1/2 m-auto text-center">
             <p>© 2020 Tanay Biradar</p>
             <p>
               This project is licensed under the 
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='underline'>
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal'>
                 MIT License
               </a>
             </p>
           </div>
-          <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center">
+          <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center font-normal">
             <div>
               <a href='https://github.com/TanayB11/chinese-ocr'>GitHub Repo</a>
             </div>
