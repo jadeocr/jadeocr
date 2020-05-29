@@ -109,7 +109,7 @@
               <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank">Donate</a>
             </div>
             <div>
-              <a href='/' target="_blank">Terms of Use</a>
+              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank">Terms and Privacy</a>
             </div>
             <div>
               <a href='mailto: tanaybiradar24@gmail.com'>Contact</a>
