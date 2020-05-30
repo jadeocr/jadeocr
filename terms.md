@@ -2,14 +2,19 @@
 We do everything here in good faith, and we hope you will, too. These terms are in place for your protection and for ours. By using chinese-ocr, you agree to the following terms.
 
 ### Terms of Use
-1. This software is licensed under the MIT License. Thus, all terms of the MIT License apply to these terms of use.
-2. You agree to the privacy policy below.
-4. Chinese-ocr's maintainers reserve the right to terminate your account at any time with reasonable cause.
+1. This software is licensed under the [MIT License](https://github.com/TanayB11/chinese-ocr/blob/master/terms.md). Thus, all terms of the MIT License apply to these terms of use.
+2. You will not use this software to cause harm to another individual or individuals. (Just in case someone, somehow, figures out a way to.)
+3. You agree to the privacy policy below.
+4. Chinese-ocr's maintainers reserve the right to terminate your account at any time.
+5. If you choose not to use the webapp linked in the **README.md** in this repository, terms 3 and 4 do not apply. You're on your own. In this case, do whatever you want as long as it complies with terms 1 and 2 (which isn't exactly hard to do).
 
 
 ### Privacy Policy
-Chinese-ocr uses Google Firebase for handling user authentication and storing user data. Chinese-ocr has access to your name, email address, and profile picture when you sign in with Google. When you sign in with email and password, chinese-ocr stores your email address.
+1. Chinese-ocr uses [Google Firebase](https://firebase.google.com) for handling user authentication and storing user data. Chinese-ocr has access to your name, email address, and profile picture when you sign in with Google. When you sign in with email and password, chinese-ocr also stores your email address.
+2. Deck data is stored in a Cloud Firestore database, and it is not encrypted.
+3. Chinese-ocr's maintainers have full access to the database.
+4. Backups of the database will also be regularly made at the maintainers' discretion.
+5. Chinese-ocr only uses cookies to utilize Google Firebase and to store user data between page refreshes.
 
-Deck data is stored in Firebase's Cloud Firestore, and it is not encrypted. Chinese-ocr's maintainers have full read and write access to this Firestore database.
 
-Chinese-ocr only uses cookies to utilize Google Firebase and to store user data between page refreshes.
+Our minimalist philosophy extends behind the scenes, too! If we don't need it—especially when it involves your privacy—we won't use it. We have nothing to gain from your data, anyway, and it's easier to respect your privacy than to protect it.
