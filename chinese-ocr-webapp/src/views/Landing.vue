@@ -31,7 +31,7 @@
         <div class='mt-6 text-sm md:text-lg lg:text-xl opacity-87 px-3 text-center'>
           <div>
             Learn languages with 
-            <a href="https://en.wikipedia.org/wiki/Spaced_repetition" class="font-normal hoverlink">spaced repetition</a>
+            <a href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank" class="font-normal hoverlink">spaced repetition</a>
             flashcards
           </div>
           <p>and practice writing with built-in handwriting recognition.</p>
@@ -90,7 +90,7 @@
     </div>
     <div class="footer mt-24">
       <hr class="opacity-25">
-      <div id="footer-content" class='py-8 lg:py-12 text-xs lg:text-sm'>
+      <div id="footer-content" class='py-8 text-xs lg:text-sm'>
         <div class="text-center grid grid-cols-1 lg:grid-cols-2 opacity-87">
           <div class="col-span-1 w-1/2 m-auto text-center">
             <p>© 2020 Tanay Biradar</p>
@@ -101,18 +101,25 @@
               </a>
             </p>
           </div>
+          <!-- Make 2 more cols on small displays -->
           <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center font-normal">
-            <div>
-              <a href='https://github.com/TanayB11/chinese-ocr' target="_blank" class="hoverlink">GitHub Repo</a>
-            </div>
-            <div>
-              <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank" class="hoverlink">Donate</a>
-            </div>
-            <div>
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms and Privacy</a>
-            </div>
-            <div>
-              <a href='mailto: tanaybiradar24@gmail.com' class="hoverlink">Contact</a>
+            <div class='grid grid-cols-2 lg:grid-cols-1'>
+              <div class='col-span-1'>
+                <div>
+                  <a href='https://github.com/TanayB11/chinese-ocr' target="_blank" class="hoverlink">GitHub Repo</a>
+                </div>
+                <div>
+                  <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank" class="hoverlink">Donate</a>
+                </div>
+              </div>
+              <div class="col-span-1">
+                <div>
+                  <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms</a>
+                </div>
+                <div>
+                  <a href='mailto: tanaybiradar24@gmail.com' class="hoverlink">Contact</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
