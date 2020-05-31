@@ -33,11 +33,21 @@
 <script>
 export default {
 	name: 'Review',
+	data() {
+		return {
+			deck: Object
+		}
+	},
 	props: {
 		name: String
 	},
 	methods: {
 		
+	},
+	mounted() {
+		this.deck = this.$store.state.decks.find(obj => {
+			return obj.name == this.name
+		})
 	}
 }
 </script>
