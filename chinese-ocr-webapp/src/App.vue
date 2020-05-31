@@ -44,10 +44,6 @@ body {
 	opacity: 0.87;
 }
 
-.btn-purple {
-	background-color: #bb86fc;
-	opacity: 0.87;
-}
 
 .btn-teal {
 	background-color: #03dac5;
@@ -61,6 +57,11 @@ body {
 
 .btn-purple:hover, .btn-red:hover, .btn:hover {
 	opacity: 0.75;
+}
+
+.btn-purple {
+	background-color: #bb86fc;
+	opacity: 0.87;
 }
 
 #page-content {
