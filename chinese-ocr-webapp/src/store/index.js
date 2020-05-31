@@ -93,10 +93,10 @@ export default new Vuex.Store({
     },
     deleteAccount({ state }) {
       if (state.signedIn && state.userInfo.uid) {
-        // let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
-        // CHECK STUFF HERE
-          auth.currentUser.delete()
-            .catch(error => console.log(error))
+        // TODO: Delete all user docs
+        // TODO: Check perms
+        auth.currentUser.delete()
+          .catch(error => console.log(error))
       }
     },
     createDeck({ state, dispatch, commit }, payload) {

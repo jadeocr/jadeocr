@@ -55,7 +55,7 @@ export default {
 			this.$store.dispatch('resetPassword', this.$store.state.userInfo.email)
 		},
 		deleteAccount() {
-			alert('Add some warning and confirmation here')
+			// TODO: Add confirmation screen
 			// this.$store.dispatch('deleteAccount')
 		}
 	}

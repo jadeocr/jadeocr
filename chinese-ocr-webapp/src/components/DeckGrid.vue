@@ -32,6 +32,7 @@
 				<input v-model='deck.description' class="bg-gray-300 shadow appearance-none border rounded w-full py-2 px-4 text-gray-800 
 				leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Description'>
 			</div>
+			<!-- TODO: Add deck language -->
 			<div v-for='(n, i) in deck.numOfWords' :key='i.key' >
 				<form>
 					<div class="flex flex-wrap -mx-3 mb-6">
@@ -78,9 +79,14 @@ export default {
 		return {
 			deck: {
 				name: '',
-				numOfWords: 3,
+				numOfWords: 3,			// Default when creating deck
 				description: '',
-				cards: []
+				cards: [],
+				ocr: false,
+				dueDates: [],				// Used to show user when to review
+				nextInterval: [],		// Used to calculate dueDates
+				numReviews: [],
+				timesCorrect: []
 			}
 		}
 	},
@@ -89,21 +95,43 @@ export default {
 			this.deck = this.$store.state.decks.find(obj => {
 				return obj.name == this.name
 			})
+			if(!this.deck.ocr) { // Allows us to see if deck has the updated properties
+				// TODO: Remove if statement for production (all user decks will start empty)
+				this.deck.ocr = false
+				this.deck.numReviews = this.deck.timesCorrect = this.deck.nextInterval = 
+					Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
+				// TODO: Calculate due dates (use UTC) instead of empty string
+				this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, '')
+			}
+		},
+		pushData(){
+			this.deck.cards.push({
+				pinyin: '',
+				hanzi: '',
+				definition: ''
+			})
+			this.deck.dueDates.push('')
+			this.deck.nextInterval.push(0)
+			this.deck.numReviews.push(0)
+			this.deck.timesCorrect.push(0)
+		},
+		spliceMetadata(index) {
+			this.deck.cards.splice(index, 1)
+			this.deck.dueDates.splice(index, 1)
+			this.deck.nextInterval.splice(index, 1)
+			this.deck.numReviews.splice(index, 1)
+			this.deck.timesCorrect.splice(index, 1)
+			this.deck.numOfWords--
 		},
 		resetDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
-				this.deck.cards.push({
-					pinyin: '',
-					hanzi: '',
-					definition: ''
-				})
+				this.pushData()
 			}
 		},
 		trimDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
 				if (!(this.deck.cards[i].pinyin || this.deck.cards[i].hanzi || this.deck.cards[i].definition)) {
-					this.deck.cards.splice(i, 1)
-					this.deck.numOfWords --
+					this.spliceMetadata(i)
 				}
 			}
 		},
@@ -127,17 +155,12 @@ export default {
 		addWord(addSubtract) {
 			if (addSubtract == 'add') {
 				this.deck.numOfWords++
-				this.deck.cards.push({
-					pinyin: '',
-					hanzi: '',
-					definition: ''
-				})
+				this.pushData()
 			} else {
-				this.deck.cards.splice(this.deck.numOfWords - 1, 1)
-				this.deck.numOfWords--
+				this.spliceMetadata(this.deck.numOfWords - 1)
 			}
 		},
-		deleteDeck() { //TODO: Add confirmation
+		deleteDeck() { // TODO: Add confirmation
 			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('deleteDeck', this.deck.name)
 				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))
