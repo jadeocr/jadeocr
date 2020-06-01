@@ -6,7 +6,7 @@
 		</div>
 		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center'>	
 			<div class='bg-black rounded-md px-12 py-24 md:py-32 card'>
-				<!-- {{ currentWord }} --> HELLO
+				{{ currentWord }}
 			</div>
 			<div class="mt-10">
 				<div class="md:w-2/3 mt-4 m-auto flex items-center justify-between opacity-87">
@@ -39,7 +39,7 @@ export default {
 		return {
 			deck: Object,
 			untilDue: [],
-			numToReview: Number
+			currentWord: String
 		}
 	},
 	props: {
@@ -85,34 +85,43 @@ export default {
 					this.deck.dueDates[cardIndex] = now.add(this.deck.interval[cardIndex], 'days')
 				})
 		},
-		getDueDifference(due) {
-			this.$store.dispatch('getServerTime')
-				.then(response => {
-					let now = moment.utc(moment.unix(response.seconds))
-					this.untilDue.push(moment.duration(now.diff(due)).asHours())
-				})
+		getDueDifference(due, response) {
+			due = moment(due, 'YYYY-MM-DD')
+			let now = moment(moment.utc(moment.unix(response.seconds)).format('YYYY-MM-DD'), 'YYYY-MM-DD') // Today's date
+			return moment.duration(due.diff(now)).asDays()
 		},
 		randInt(min, max) {
 			return Math.floor(Math.random() * (max - min) + min)
 		},
-		chooseCards() {
-			for (let i = 0; i < this.deck.numOfWords; i++) {
-				this.getDueDifference(this.deck.dueDates[i]) // TODO: Pass in this.deck.interval[i] into due
+		learnLoop(dueIndices) {	
+			let numToReview = this.randInt(10, 20)
+			for (let i = 0; (i < dueIndices.length) && (i < numToReview); i++) {
+				// Execute main learning logic here
 			}
-			this.numToReview = this.randInt(10, 20)
-			let closestToDue = Math.min(2, ...this.deck.interval)
-			this.deck.interval.indexOf(closestToDue)
 		},
-		learnLoop() {
-			
-		}
+		chooseCards() {
+			this.$store.dispatch('getServerTime')
+				.then(response => {
+					for (let i = 0; i < this.deck.numOfWords; i++) {
+						this.untilDue.push(this.getDueDifference(this.deck.dueDates[i], response))
+					}
+				})
+				.then(() => {
+					let mostDue = Math.min(...this.untilDue)
+					let dueIndices = []
+					for (let i = 0; i < this.untilDue.length; i++) { // Check for all cards due today
+						if (this.untilDue[i] == mostDue) dueIndices.push(i)
+					}
+					this.learnLoop(dueIndices)
+				})
+				.catch(error => console.log(error))
+		},
 	},
 	mounted() {
 		this.deck = this.$store.state.decks.find(obj => {
 			return obj.name == this.name
 		})
 		this.chooseCards() // TODO: Testing this and all called functions
-		this.learnLoop()
 	}
 }
 </script>
