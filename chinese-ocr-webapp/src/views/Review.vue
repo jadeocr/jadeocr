@@ -51,7 +51,33 @@ export default {
 		}
 	},
 	methods: {
-		
+		calculateSuperMemo2(cardIndex, quality) { // Thanks to https://stackoverflow.com/questions/49047159/spaced-repetition-algorithm-from-supermemo-sm-2
+			let repetitions = this.deck.repetitions[cardIndex]
+			let easiness = this.deck.easiness[cardIndex]
+			let interval = this.deck.interval[cardIndex]
+
+			let repetitionFormula = easiness + 0.1 - (5.0 - quality) * (0.08 + (5.0 - quality) * 0.02)
+			easiness = Math.max(1.3, repetitionFormula)
+
+			if (quality == 0) { // Modified for only 2 quality buttons (is either 0 or 5)
+				this.deck.repetitions[cardIndex] = 0
+			} else {
+				this.deck.repetitions[cardIndex]++
+			}
+
+			if (repetitions <= 1) {
+				this.deck.interval[cardIndex] = 1;
+			} else if (repetitions == 2) {
+				this.deck.interval[cardIndex] = 6;
+			} else {
+				this.deck.interval[cardIndex] = Math.round(interval * easiness);
+			}
+
+			// TODO: Calculate next practice date by adding interval to current date
+		},
+		learnLoop() {
+			
+		}
 	},
 	mounted() {
 		this.deck = this.$store.state.decks.find(obj => {

@@ -84,9 +84,9 @@ export default {
 				cards: [],
 				ocr: false,
 				dueDates: [],				// Used to show user when to review
-				nextInterval: [],		// Used to calculate dueDates
-				numReviews: [],
-				timesCorrect: []
+				interval: [],				// In days, used to calculate dueDates
+				repetitions: [],
+				easiness: [],
 			}
 		}
 	},
@@ -98,10 +98,11 @@ export default {
 			if(!this.deck.ocr) { // Allows us to see if deck has the updated properties
 				// TODO: Remove if statement for production (all user decks will start empty)
 				this.deck.ocr = false
-				this.deck.numReviews = this.deck.timesCorrect = this.deck.nextInterval = 
-					Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
 				// TODO: Calculate due dates (use UTC) instead of empty string
 				this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, '')
+				this.deck.interval = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 1)
+				this.deck.repetitions = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
+				this.deck.easiness = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 2.5) // Easiest
 			}
 		},
 		pushData(){
@@ -111,16 +112,16 @@ export default {
 				definition: ''
 			})
 			this.deck.dueDates.push('')
-			this.deck.nextInterval.push(0)
-			this.deck.numReviews.push(0)
-			this.deck.timesCorrect.push(0)
+			this.deck.interval.push(0)
+			this.deck.repetitions.push(0)
+			this.deck.easiness.push(2.5)
 		},
 		spliceMetadata(index) {
 			this.deck.cards.splice(index, 1)
 			this.deck.dueDates.splice(index, 1)
-			this.deck.nextInterval.splice(index, 1)
-			this.deck.numReviews.splice(index, 1)
-			this.deck.timesCorrect.splice(index, 1)
+			this.deck.interval.splice(index, 1)
+			this.deck.repetitions.splice(index, 1)
+			this.deck.easiness.splice(index, 1)
 			this.deck.numOfWords--
 		},
 		resetDeck() {
