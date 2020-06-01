@@ -51,7 +51,7 @@ body {
 }
 
 .btn-blue {
-	background-color: #3700b3;
+	background-color: #1e88e5;
 	opacity: 0.87;
 }
 

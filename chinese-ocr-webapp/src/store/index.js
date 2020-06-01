@@ -149,6 +149,9 @@ export default new Vuex.Store({
           .then(dispatch('getDecks'))
           .catch(error => console.log(error))
       }
+    },
+    getServerTime() {
+      return firebase.firestore.Timestamp.now()
     }
   },
   modules: {

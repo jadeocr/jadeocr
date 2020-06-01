@@ -31,11 +31,15 @@
 </template>
 
 <script>
+import * as moment from 'moment'
+
 export default {
 	name: 'Review',
 	data() {
 		return {
 			deck: Object,
+			untilDue: [],
+			numToReview: Number
 		}
 	},
 	props: {
@@ -51,7 +55,7 @@ export default {
 		}
 	},
 	methods: {
-		calculateSuperMemo2(cardIndex, quality) { // Thanks to https://stackoverflow.com/questions/49047159/spaced-repetition-algorithm-from-supermemo-sm-2
+		calculateSuperMemo2(cardIndex, quality) { // Thanks to Suragch on Stack Overflow!
 			let repetitions = this.deck.repetitions[cardIndex]
 			let easiness = this.deck.easiness[cardIndex]
 			let interval = this.deck.interval[cardIndex]
@@ -73,7 +77,31 @@ export default {
 				this.deck.interval[cardIndex] = Math.round(interval * easiness);
 			}
 
-			// TODO: Calculate next practice date by adding interval to current date
+			// TODO: Check practice date calculation
+			// TODO: Add enhancements
+			this.$store.dispatch('getServerTime')
+				.then(response => {
+					let now = moment.utc(moment.unix(response.seconds))
+					this.deck.dueDates[cardIndex] = now.add(this.deck.interval[cardIndex], 'days')
+				})
+		},
+		getDueDifference(due) {
+			this.$store.dispatch('getServerTime')
+				.then(response => {
+					let now = moment.utc(moment.unix(response.seconds))
+					this.untilDue.push(moment.duration(now.diff(due)).asHours())
+				})
+		},
+		randInt(min, max) {
+			return Math.floor(Math.random() * (max - min) + min)
+		},
+		chooseCards() {
+			for (let i = 0; i < this.deck.numOfWords; i++) {
+				this.getDueDifference(this.deck.dueDates[i]) // TODO: Pass in this.deck.interval[i] into due
+			}
+			this.numToReview = this.randInt(10, 20)
+			let closestToDue = Math.min(2, ...this.deck.interval)
+			this.deck.interval.indexOf(closestToDue)
 		},
 		learnLoop() {
 			
@@ -83,6 +111,8 @@ export default {
 		this.deck = this.$store.state.decks.find(obj => {
 			return obj.name == this.name
 		})
+		this.chooseCards() // TODO: Testing this and all called functions
+		this.learnLoop()
 	}
 }
 </script>
