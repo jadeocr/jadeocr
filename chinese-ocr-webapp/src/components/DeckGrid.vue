@@ -31,6 +31,12 @@
 			<div class="w-4/5 lg:w-2/5 mt-4 mb-12">
 				<input v-model='deck.description' class="bg-gray-300 shadow appearance-none rounded w-full py-2 px-4 text-gray-800 
 				leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Description'>
+				<div class="flex">
+					<div class="font-normal text-xl mt-3 mr-3">
+						OCR
+					</div>
+					<toggle-button class='mt-4' v-model="deck.ocr"/>
+				</div>
 			</div>
 			<!-- TODO: Add deck language -->
 			<div v-for='(n, i) in deck.numOfWords' :key='i.key' >
@@ -69,11 +75,16 @@
 </template>
 
 <script>
+import { ToggleButton } from 'vue-js-toggle-button'
+
 export default {
 	name: 'DeckGrid',
 	props: {
 		view: String,
 		name: String
+	},
+	components: {
+		ToggleButton
 	},
 	data() {
 		return {

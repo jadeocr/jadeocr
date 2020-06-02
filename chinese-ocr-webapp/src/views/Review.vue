@@ -6,8 +6,16 @@
 		</div>
 		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center'>	
 			<div
-			class='bg-black rounded-md px-12 py-24 md:py-32 card'>
-				{{ deck.cards[dueIndices[currentIndex]].pinyin }}
+			class='bg-black rounded-md px-12 card font-normal text-xl lg:text-2xl xl:text-3xl'>
+				<div>
+					<p>
+						{{ cardSideData[0] }}
+					</p>
+					<p v-if='cardSideData.length == 2' 
+					class='text-lg lg:text-xl xl:text-2xl'>
+						{{ cardSideData[1] }}
+					</p>
+				</div>
 			</div>
 			<div class="mt-10">
 				<div class="md:w-2/3 mt-4 m-auto flex items-center justify-between opacity-87">
@@ -19,7 +27,9 @@
 							<path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
 						</svg>
 					</div>
-					<div class="btn btn-blue mx-auto rounded-md py-2 px-4 text-sm font-normal">
+					<div @click='flipCard()'
+						class="btn btn-blue mx-auto rounded-md py-2 px-4 text-sm font-normal unselect"
+					>
 						{{ reviewedButton }}
 					</div>
 					<div class='btn btn-cyan rounded-md px-4 py-3'
@@ -46,6 +56,8 @@ export default {
 			untilDue: [],
 			dueIndices: [], // Refers to which cards to review
 			currentIndex: 0, // Iterator for dueIndices
+			cardSideData: '',
+			cardFace: 'front'
 		}
 	},
 	props: {
@@ -61,6 +73,20 @@ export default {
 		}
 	},
 	methods: {
+		flipCard() {
+			if (!this.deck.ocr) {
+				if (this.cardFace == 'back') {
+					this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
+					this.cardFace = 'front'
+				} else {
+					this.cardSideData = [
+						this.deck.cards[this.dueIndices[this.currentIndex]].hanzi,
+						this.deck.cards[this.dueIndices[this.currentIndex]].definition
+					]
+					this.cardFace = 'back'
+				}
+			}		
+		},
 		calculateSuperMemo2(index, quality) { // Thanks to Suragch on Stack Overflow!
 			let repetitions = this.deck.repetitions[index]
 			let easiness = this.deck.easiness[index]
@@ -101,7 +127,12 @@ export default {
 			} else {
 				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 0)
 			}
-			this.currentIndex == (this.dueIndices.length - 1) ? this.submitFinished() : this.currentIndex ++
+
+			if (((this.currentIndex == (this.dueIndices.length - 1)) && (this.currentIndex < this.randInt(10, 20)))) {
+				this.submitFinished()
+			} else {
+				this.currentIndex ++
+			}
 		},
 		getDueDifference(due) {
 			due = moment(due, 'YYYY-MM-DD')
@@ -128,6 +159,7 @@ export default {
 					return obj.name == this.name
 				})
 				this.chooseCards()
+				this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
 			})
 			.catch(error => console.log(error))
 	},
@@ -145,6 +177,10 @@ export default {
 	bottom: 0;
 	background-color: rgba(255,255,255,0.07);
 	z-index: 2;
+	height: 40vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .btn:hover {
@@ -159,5 +195,15 @@ export default {
 .btn-review-red {
 	background-color: #ff7043;
 	opacity: 0.87;
+}
+
+.unselect {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 </style>

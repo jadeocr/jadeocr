@@ -21,7 +21,7 @@ node_modules
 
 # Keys
 credentials.js
-certs
+vision/
 
 # local env files
 env
