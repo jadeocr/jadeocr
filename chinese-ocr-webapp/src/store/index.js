@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import router from '../router/index'
 import createPersistedState from 'vuex-persistedstate'
 
+import * as moment from 'moment'
+
 import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
 import 'firebase/auth'
@@ -28,7 +30,8 @@ export default new Vuex.Store({
     formError: '',
     formSuccess: '',
     numOfDecks: 0,
-    decks: []
+    decks: [],
+    serverTime: null
   },
   mutations: {
     updateUser(state, payload) {
@@ -61,6 +64,9 @@ export default new Vuex.Store({
     updateDecks(state, payload) {
       state.numOfDecks = payload.size
       state.decks = payload.docs
+    },
+    updateServerTime(state, payload) {
+      state.serverTime = moment.utc(moment.unix(payload.seconds))
     }
   },
   actions: {
@@ -150,8 +156,8 @@ export default new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
-    getServerTime() {
-      return firebase.firestore.Timestamp.now()
+    getServerTime({ commit }) {
+      commit('updateServerTime', firebase.firestore.Timestamp.now())
     }
   },
   modules: {

@@ -45,7 +45,8 @@ export default {
 			deck: Object,
 			untilDue: [],
 			dueIndices: [], // Refers to which cards to review
-			currentIndex: 0 // Iterator for dueIndices
+			currentIndex: 0, // Iterator for dueIndices
+			serverTime: null
 		}
 	},
 	props: {
@@ -85,14 +86,11 @@ export default {
 
 			// TODO: Check practice date calculation
 			// TODO: Add enhancements
-			this.$store.dispatch('getServerTime')
-				.then(response => {
-					let now = moment.utc(moment.unix(response.seconds))
-					this.deck.dueDates[cardIndex] = now.add(this.deck.interval[cardIndex], 'days')
-				})
+			this.deck.dueDates[cardIndex] = this.$store.state.serverTime.add(this.deck.interval[cardIndex], 'days')
 		},
 		submitFinished() {
 			console.log('fin')
+			console.log(this.deck)
 			this.$store.dispatch('createDeck', {
 				method: 'edit',
 				name: this.name,
@@ -105,37 +103,37 @@ export default {
 			} else {
 				this.calculateSuperMemo2(this.dueIndices[this.cardIndex], 0)
 			}
-			(this.currentIndex == this.dueIndices.length) ? this.submitFinished() : this.currentIndex ++
+			this.currentIndex == this.dueIndices.length ? this.submitFinished() : this.currentIndex ++
 		},
-		getDueDifference(due, response) {
+		getDueDifference(due) {
 			due = moment(due, 'YYYY-MM-DD')
-			let now = moment(moment.utc(moment.unix(response.seconds)).format('YYYY-MM-DD'), 'YYYY-MM-DD') // Today's date
+			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD') // Today's date
 			return moment.duration(due.diff(now)).asDays()
 		},
 		randInt(min, max) {
 			return Math.floor(Math.random() * (max - min) + min)
 		},
 		chooseCards() {
-			this.$store.dispatch('getServerTime')
-				.then(response => {
-					for (let i = 0; i < this.deck.numOfWords; i++) {
-						this.untilDue.push(this.getDueDifference(this.deck.dueDates[i], response))
-					}
-				})
-				.then(() => {
-					let mostDue = Math.min(...this.untilDue)
-					for (let i = 0; i < this.untilDue.length; i++) { // Check for all cards due today
-						if (this.untilDue[i] == mostDue) this.dueIndices.push(i)
-					}
-				})
-				.catch(error => console.log(error))
+			for (let i = 0; i < this.deck.numOfWords; i++) {
+				this.untilDue.push(this.getDueDifference(this.deck.dueDates[i]))
+			}
+			let mostDue = Math.min(...this.untilDue)
+			for (let i = 0; i < this.untilDue.length; i++) { // Check for all cards due today
+				if (this.untilDue[i] == mostDue) this.dueIndices.push(i)
+			}
 		},
 	},
 	mounted() {
-		this.deck = this.$store.state.decks.find(obj => {
-			return obj.name == this.name
+		this.$store.dispatch('getServerTime')
+		.then(() => {
+			this.deck = this.$store.state.decks.find(obj => {
+				return obj.name == this.name
+			})
+			this.chooseCards() // TODO: Testing this and all called functions
 		})
-		this.chooseCards() // TODO: Testing this and all called functions
+	},
+	updated() {
+		console.clear()
 	}
 }
 </script>
