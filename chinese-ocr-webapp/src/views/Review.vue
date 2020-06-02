@@ -5,12 +5,15 @@
 			{{ name }}
 		</div>
 		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center'>	
-			<div class='bg-black rounded-md px-12 py-24 md:py-32 card'>
-				{{ currentWord }}
+			<div
+			class='bg-black rounded-md px-12 py-24 md:py-32 card'>
+				{{ deck.cards[dueIndices[currentIndex]].pinyin }}
 			</div>
 			<div class="mt-10">
 				<div class="md:w-2/3 mt-4 m-auto flex items-center justify-between opacity-87">
-					<div class='btn btn-red rounded-md px-4 py-3'>
+					<div class='btn btn-red rounded-md px-4 py-3'
+						@click='cardCheck("wrong")'
+					>
 						<svg class="bi bi-x" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
 							<path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
@@ -19,7 +22,9 @@
 					<div class="btn btn-blue mx-auto rounded-md py-2 px-4 text-sm font-normal">
 						{{ reviewedButton }}
 					</div>
-					<div class='btn btn-cyan rounded-md px-4 py-3'>
+					<div class='btn btn-cyan rounded-md px-4 py-3'
+						@click='cardCheck("correct")'
+					>
 						<svg class="bi bi-check2" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 						</svg>
@@ -39,7 +44,8 @@ export default {
 		return {
 			deck: Object,
 			untilDue: [],
-			currentWord: String
+			dueIndices: [], // Refers to which cards to review
+			currentIndex: 0 // Iterator for dueIndices
 		}
 	},
 	props: {
@@ -85,6 +91,22 @@ export default {
 					this.deck.dueDates[cardIndex] = now.add(this.deck.interval[cardIndex], 'days')
 				})
 		},
+		submitFinished() {
+			console.log('fin')
+			this.$store.dispatch('createDeck', {
+				method: 'edit',
+				name: this.name,
+				deck: JSON.parse(JSON.stringify(this.deck))
+			})
+		},
+		cardCheck(correctness) {
+			if (correctness == 'correct') {
+				this.calculateSuperMemo2(this.dueIndices[this.cardIndex], 5)
+			} else {
+				this.calculateSuperMemo2(this.dueIndices[this.cardIndex], 0)
+			}
+			(this.currentIndex == this.dueIndices.length) ? this.submitFinished() : this.currentIndex ++
+		},
 		getDueDifference(due, response) {
 			due = moment(due, 'YYYY-MM-DD')
 			let now = moment(moment.utc(moment.unix(response.seconds)).format('YYYY-MM-DD'), 'YYYY-MM-DD') // Today's date
@@ -92,12 +114,6 @@ export default {
 		},
 		randInt(min, max) {
 			return Math.floor(Math.random() * (max - min) + min)
-		},
-		learnLoop(dueIndices) {	
-			let numToReview = this.randInt(10, 20)
-			for (let i = 0; (i < dueIndices.length) && (i < numToReview); i++) {
-				// Execute main learning logic here
-			}
 		},
 		chooseCards() {
 			this.$store.dispatch('getServerTime')
@@ -108,11 +124,9 @@ export default {
 				})
 				.then(() => {
 					let mostDue = Math.min(...this.untilDue)
-					let dueIndices = []
 					for (let i = 0; i < this.untilDue.length; i++) { // Check for all cards due today
-						if (this.untilDue[i] == mostDue) dueIndices.push(i)
+						if (this.untilDue[i] == mostDue) this.dueIndices.push(i)
 					}
-					this.learnLoop(dueIndices)
 				})
 				.catch(error => console.log(error))
 		},
