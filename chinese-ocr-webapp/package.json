@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "bootstrap-icons": "^1.0.0-alpha3",
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "firebase": "^7.14.2",
     "firebaseui": "^4.5.0",
@@ -19,6 +20,7 @@
     "moment": "^2.26.0",
     "moment-timezone": "^0.5.31",
     "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.0",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.3",
     "vuex-persistedstate": "^3.0.1"
