@@ -61,34 +61,33 @@ export default {
 		}
 	},
 	methods: {
-		calculateSuperMemo2(cardIndex, quality) { // Thanks to Suragch on Stack Overflow!
-			let repetitions = this.deck.repetitions[cardIndex]
-			let easiness = this.deck.easiness[cardIndex]
-			let interval = this.deck.interval[cardIndex]
+		calculateSuperMemo2(index, quality) { // Thanks to Suragch on Stack Overflow!
+			let repetitions = this.deck.repetitions[index]
+			let easiness = this.deck.easiness[index]
+			let interval = this.deck.interval[index]
 
 			let repetitionFormula = easiness + 0.1 - (5.0 - quality) * (0.08 + (5.0 - quality) * 0.02)
 			easiness = Math.max(1.3, repetitionFormula)
 
 			if (quality == 0) { // Modified for only 2 quality buttons (is either 0 or 5)
-				this.deck.repetitions[cardIndex] = 0
+				this.deck.repetitions[index] = 0
 			} else {
-				this.deck.repetitions[cardIndex]++
+				this.deck.repetitions[index]++
 			}
 
 			if (repetitions <= 1) {
-				this.deck.interval[cardIndex] = 4;
+				this.deck.interval[index] = 1;
 			} else if (repetitions == 2) {
-				this.deck.interval[cardIndex] = 6;
+				this.deck.interval[index] = 6;
 			} else {
-				this.deck.interval[cardIndex] = Math.round(interval * easiness);
+				this.deck.interval[index] = Math.round(interval * easiness);
 			}
 
 			// TODO: Check practice date calculation
 			// TODO: Add enhancements
-			this.deck.dueDates[cardIndex] = this.$store.state.serverTime.add(this.deck.interval[cardIndex], 'days')
+			this.deck.dueDates[index] = this.$store.state.serverTime.add(this.deck.interval[index], 'days')
 		},
 		submitFinished() {
-			console.log(this.deck)
 			this.$store.dispatch('createDeck', {
 				method: 'edit',
 				name: this.name,
@@ -96,16 +95,17 @@ export default {
 			})
 		},
 		cardCheck(correctness) {
+			console.log(this.dueIndices)
 			if (correctness == 'correct') {
-				this.calculateSuperMemo2(this.dueIndices[this.cardIndex], 5)
+				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 5)
 			} else {
-				this.calculateSuperMemo2(this.dueIndices[this.cardIndex], 0)
+				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 0)
 			}
 			this.currentIndex == (this.dueIndices.length - 1) ? this.submitFinished() : this.currentIndex ++
 		},
 		getDueDifference(due) {
 			due = moment(due, 'YYYY-MM-DD')
-			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD') // Today's date
+			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
 			return moment.duration(due.diff(now)).asDays()
 		},
 		randInt(min, max) {
@@ -123,15 +123,16 @@ export default {
 	},
 	mounted() {
 		this.$store.dispatch('getServerTime')
-		.then(() => {
-			this.deck = this.$store.state.decks.find(obj => {
-				return obj.name == this.name
+			.then(() => {
+				this.deck = this.$store.state.decks.find(obj => {
+					return obj.name == this.name
+				})
+				this.chooseCards() // TODO: Testing this and all called functions
 			})
-			this.chooseCards() // TODO: Testing this and all called functions
-		})
+			.catch(error => console.log(error))
 	},
 	updated() {
-		console.clear()
+		// console.clear()
 	}
 }
 </script>

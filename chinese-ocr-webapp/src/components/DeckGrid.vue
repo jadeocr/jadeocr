@@ -69,8 +69,6 @@
 </template>
 
 <script>
-import * as moment from 'moment'
-
 export default {
 	name: 'DeckGrid',
 	props: {
@@ -100,16 +98,11 @@ export default {
 			if(!this.deck.ocr) { // Allows us to see if deck has the updated properties
 				// TODO: Remove if statement for production (all user decks will start empty)
 				this.deck.ocr = false
-				let today = ''
-				this.$store.dispatch('getServerTime')
-					.then(response => today = moment.utc(moment.unix(response.seconds)).format('YYYY-MM-DD'))
-					.then(() => {
-						this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, today)
-						this.deck.interval = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 1)
-						this.deck.repetitions = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
-						this.deck.easiness = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 2.5) // Easiest
-					})
-					.catch(error => console.log(error))
+				let today = this.$store.state.serverTime.format('YYYY-MM-DD')
+				this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, today)
+				this.deck.interval = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 1)
+				this.deck.repetitions = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
+				this.deck.easiness = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 2.5) // Easiest
 			}
 		},
 		pushData(){
@@ -181,6 +174,8 @@ export default {
 		} else {
 			this.loadDeck()
 		}
+		this.$store.dispatch('getServerTime')
+			.catch(error => console.log(error))
 	}
 }
 </script>
