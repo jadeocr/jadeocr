@@ -7,7 +7,7 @@
 		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center'>	
 			<div class='card-container'>
 				<div
-				class='bg-black rounded-md card font-normal text-xl lg:text-2xl xl:text-3xl'>
+				class='bg-black rounded-md py-6 card font-normal text-xl lg:text-2xl xl:text-3xl'>
 					<div>
 						<p>
 							{{ cardSideData[0] }}
@@ -90,7 +90,14 @@ export default {
 					]
 					this.cardFace = 'back'
 				}
-			}		
+			} else {
+				// Handle OCR logic here
+			}
+		},
+		nextCard() {
+			this.currentIndex ++
+			this.cardFace = 'front'
+			this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
 		},
 		calculateSuperMemo2(index, quality) { // Thanks to Suragch on Stack Overflow!
 			let repetitions = this.deck.repetitions[index]
@@ -126,6 +133,9 @@ export default {
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
 		},
+		randInt(min, max) {
+			return Math.floor(Math.random() * (max - min) + min)
+		},
 		cardCheck(correctness) {
 			if (correctness == 'correct') {
 				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 5)
@@ -136,16 +146,13 @@ export default {
 			if (((this.currentIndex == (this.dueIndices.length - 1)) && (this.currentIndex < this.randInt(10, 20)))) {
 				this.submitFinished()
 			} else {
-				this.currentIndex ++
+				this.nextCard()
 			}
 		},
 		getDueDifference(due) {
 			due = moment(due, 'YYYY-MM-DD')
 			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
 			return moment.duration(due.diff(now)).asDays()
-		},
-		randInt(min, max) {
-			return Math.floor(Math.random() * (max - min) + min)
 		},
 		chooseCards() {
 			for (let i = 0; i < this.deck.numOfWords; i++) {
@@ -186,7 +193,7 @@ export default {
 	background-color: rgba(255,255,255,0.07);
 	z-index: 2;
 	width: 100%;
-	height: 40vh;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -217,7 +224,9 @@ export default {
 }
 
 canvas {
-	border: 1px solid white;
+	border: 1px solid rgba(255, 255, 255, 0.75);
+	width: 100%;
+	height: 30vh;
 }
 
 @media(min-width: 768px) {
@@ -225,8 +234,12 @@ canvas {
 		display: flex;
 		justify-content: space-between;  
 	}
+	.card {
+		height: 40vh;
+	}
 	canvas {
-		width: 50%;
+		width: 40vh;
+		height: 40vh;
 	}
 }
 </style>
