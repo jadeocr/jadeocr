@@ -22,7 +22,7 @@ import LineChart from '../chart/linechart'
 			LineChart
     },
     data () {
-      return {
+      return {  //TODO: Change font color, add more charts
 				datacollection: {},
 				datasets: [],
 				labels: ['Number of Cards'],
@@ -34,7 +34,8 @@ import LineChart from '../chart/linechart'
 										}
 								}]
 						},
-						defaultFontColor: '#ffffff'
+						defaultFontColor: '#fff',
+						responsive: true
 				},
 				chartBg: '#bb86fc',
       }
