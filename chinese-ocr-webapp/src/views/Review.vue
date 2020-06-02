@@ -85,7 +85,10 @@ export default {
 
 			// TODO: Check practice date calculation
 			// TODO: Add enhancements
-			this.deck.dueDates[index] = this.$store.state.serverTime.add(this.deck.interval[index], 'days')
+			let today = this.$store.state.serverTime.clone()
+			console.log(index, this.deck.interval[index], this.$store.state.serverTime)
+			this.deck.dueDates[index] = today.add(this.deck.interval[index], 'days').format('YYYY-MM-DD')
+			console.log(this.deck.dueDates[index])
 		},
 		submitFinished() {
 			this.$store.dispatch('createDeck', {
@@ -95,7 +98,6 @@ export default {
 			})
 		},
 		cardCheck(correctness) {
-			console.log(this.dueIndices)
 			if (correctness == 'correct') {
 				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 5)
 			} else {
