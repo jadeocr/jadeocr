@@ -46,7 +46,6 @@ export default {
 			untilDue: [],
 			dueIndices: [], // Refers to which cards to review
 			currentIndex: 0, // Iterator for dueIndices
-			serverTime: null
 		}
 	},
 	props: {
@@ -77,7 +76,7 @@ export default {
 			}
 
 			if (repetitions <= 1) {
-				this.deck.interval[cardIndex] = 1;
+				this.deck.interval[cardIndex] = 4;
 			} else if (repetitions == 2) {
 				this.deck.interval[cardIndex] = 6;
 			} else {
@@ -89,7 +88,6 @@ export default {
 			this.deck.dueDates[cardIndex] = this.$store.state.serverTime.add(this.deck.interval[cardIndex], 'days')
 		},
 		submitFinished() {
-			console.log('fin')
 			console.log(this.deck)
 			this.$store.dispatch('createDeck', {
 				method: 'edit',
@@ -103,7 +101,7 @@ export default {
 			} else {
 				this.calculateSuperMemo2(this.dueIndices[this.cardIndex], 0)
 			}
-			this.currentIndex == this.dueIndices.length ? this.submitFinished() : this.currentIndex ++
+			this.currentIndex == (this.dueIndices.length - 1) ? this.submitFinished() : this.currentIndex ++
 		},
 		getDueDifference(due) {
 			due = moment(due, 'YYYY-MM-DD')
