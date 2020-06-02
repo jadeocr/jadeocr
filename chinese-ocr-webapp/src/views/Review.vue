@@ -5,17 +5,21 @@
 			{{ name }}
 		</div>
 		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center'>	
-			<div
-			class='bg-black rounded-md px-12 card font-normal text-xl lg:text-2xl xl:text-3xl'>
-				<div>
-					<p>
-						{{ cardSideData[0] }}
-					</p>
-					<p v-if='cardSideData.length == 2' 
-					class='text-lg lg:text-xl xl:text-2xl'>
-						{{ cardSideData[1] }}
-					</p>
+			<div class='card-container'>
+				<div
+				class='bg-black rounded-md card font-normal text-xl lg:text-2xl xl:text-3xl'>
+					<div>
+						<p>
+							{{ cardSideData[0] }}
+						</p>
+						<p v-if='cardSideData.length == 2' 
+						class='text-lg lg:text-xl xl:text-2xl'>
+							{{ cardSideData[1] }}
+						</p>
+					</div>
 				</div>
+				<canvas v-if='deck.ocr' id='draw' 
+				class='md:ml-12 mt-12 md:mt-0'></canvas>
 			</div>
 			<div class="mt-10">
 				<div class="md:w-2/3 mt-4 m-auto flex items-center justify-between opacity-87">
@@ -57,7 +61,8 @@ export default {
 			dueIndices: [], // Refers to which cards to review
 			currentIndex: 0, // Iterator for dueIndices
 			cardSideData: '',
-			cardFace: 'front'
+			cardFace: 'front',
+			canvas: document.getElementById('draw')
 		}
 	},
 	props: {
@@ -160,11 +165,14 @@ export default {
 				})
 				this.chooseCards()
 				this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
+				if (this.deck.ocr) {
+					console.log(this.canvas)
+					var ctx = this.canvas.getContext("2d")
+					ctx.fillStyle = "blue"
+					ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+				}
 			})
 			.catch(error => console.log(error))
-	},
-	updated() {
-		console.clear()
 	}
 }
 </script>
@@ -177,6 +185,7 @@ export default {
 	bottom: 0;
 	background-color: rgba(255,255,255,0.07);
 	z-index: 2;
+	width: 100%;
 	height: 40vh;
 	display: flex;
 	justify-content: center;
@@ -205,5 +214,19 @@ export default {
 	-o-user-select: none;
 	user-select: none;
 	cursor: default;
+}
+
+canvas {
+	border: 1px solid white;
+}
+
+@media(min-width: 768px) {
+	.card-container {
+		display: flex;
+		justify-content: space-between;  
+	}
+	canvas {
+		width: 50%;
+	}
 }
 </style>
