@@ -68,6 +68,7 @@ export default {
 
 			let repetitionFormula = easiness + 0.1 - (5.0 - quality) * (0.08 + (5.0 - quality) * 0.02)
 			easiness = Math.max(1.3, repetitionFormula)
+			this.deck.easiness[index] = Number.parseFloat(easiness).toFixed(2)
 
 			if (quality == 0) { // Modified for only 2 quality buttons (is either 0 or 5)
 				this.deck.repetitions[index] = 0
