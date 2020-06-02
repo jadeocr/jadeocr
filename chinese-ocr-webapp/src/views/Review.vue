@@ -84,12 +84,9 @@ export default {
 				this.deck.interval[index] = Math.round(interval * easiness);
 			}
 
-			// TODO: Check practice date calculation
-			// TODO: Add enhancements
+			// TODO: Add enhancements to tune SM-2 algorithm
 			let today = this.$store.state.serverTime.clone()
-			console.log(index, this.deck.interval[index], this.$store.state.serverTime)
 			this.deck.dueDates[index] = today.add(this.deck.interval[index], 'days').format('YYYY-MM-DD')
-			console.log(this.deck.dueDates[index])
 		},
 		submitFinished() {
 			this.$store.dispatch('createDeck', {
@@ -119,7 +116,7 @@ export default {
 				this.untilDue.push(this.getDueDifference(this.deck.dueDates[i]))
 			}
 			let mostDue = Math.min(...this.untilDue)
-			for (let i = 0; i < this.untilDue.length; i++) { // Check for all cards due today
+			for (let i = 0; i < this.untilDue.length; i++) { // Checks for all cards due today
 				if (this.untilDue[i] == mostDue) this.dueIndices.push(i)
 			}
 		},
@@ -130,12 +127,12 @@ export default {
 				this.deck = this.$store.state.decks.find(obj => {
 					return obj.name == this.name
 				})
-				this.chooseCards() // TODO: Testing this and all called functions
+				this.chooseCards()
 			})
 			.catch(error => console.log(error))
 	},
 	updated() {
-		// console.clear()
+		console.clear()
 	}
 }
 </script>

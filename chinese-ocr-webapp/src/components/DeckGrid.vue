@@ -95,15 +95,6 @@ export default {
 			this.deck = this.$store.state.decks.find(obj => {
 				return obj.name == this.name
 			})
-			if(!this.deck.ocr) { // Allows us to see if deck has the updated properties
-				// TODO: Remove if statement for production (all user decks will start empty)
-				this.deck.ocr = false
-				let today = this.$store.state.serverTime.format('YYYY-MM-DD')
-				this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, today)
-				this.deck.interval = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 1)
-				this.deck.repetitions = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
-				this.deck.easiness = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 2.5) // Easiest
-			}
 		},
 		pushData(){
 			this.deck.cards.push({
@@ -128,6 +119,12 @@ export default {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
 				this.pushData()
 			}
+			this.deck.ocr = false // Sets metadata
+			let today = this.$store.state.serverTime.format('YYYY-MM-DD')
+			this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, today)
+			this.deck.interval = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 1)
+			this.deck.repetitions = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
+			this.deck.easiness = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 2.5) // Easiest
 		},
 		trimDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
