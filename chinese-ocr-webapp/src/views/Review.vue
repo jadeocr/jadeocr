@@ -18,7 +18,7 @@
 						</p>
 					</div>
 				</div>
-				<canvas v-if='deck.ocr' id='draw' 
+				<canvas v-if='deck.ocr' id='draw' ref='draw' 
 				class='md:ml-12 mt-12 md:mt-0'></canvas>
 			</div>
 			<div class="mt-10">
@@ -62,7 +62,6 @@ export default {
 			currentIndex: 0, // Iterator for dueIndices
 			cardSideData: '',
 			cardFace: 'front',
-			canvas: document.getElementById('draw')
 		}
 	},
 	props: {
@@ -173,10 +172,11 @@ export default {
 				this.chooseCards()
 				this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
 				if (this.deck.ocr) {
-					console.log(this.canvas)
-					var ctx = this.canvas.getContext("2d")
+					var canvas = this.$refs.draw
+					console.log(document.getElementById("canvas"))
+					var ctx = canvas.getContext("2d")
 					ctx.fillStyle = "blue"
-					ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+					ctx.fillRect(0, 0, canvas.width, canvas.height)
 				}
 			})
 			.catch(error => console.log(error))
