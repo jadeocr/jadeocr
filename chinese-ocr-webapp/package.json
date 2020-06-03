@@ -11,6 +11,7 @@
     "emulate": "firebase emulators:start"
   },
   "dependencies": {
+    "@google-cloud/vision": "^1.11.0",
     "bootstrap-icons": "^1.0.0-alpha3",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
