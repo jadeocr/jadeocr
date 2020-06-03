@@ -70,12 +70,33 @@ body {
 	width: calc(100vw - 300px);
 	-webkit-transition: width 0.3s ease;
 	transition: width 0.3s ease;
-	height: 80vh;
+	height: calc(100vh - 147px);
 }
 
 @media(max-width: 640px) {
 	#page-content {
 		width: 100vw;
 	}
+}
+
+/* Credit to @devinrhode2 on GitHub: https://gist.github.com/devinrhode2/2573411 */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0,0,0,0);
+  -webkit-border-radius: 100px;
+}
+
+::-webkit-scrollbar:hover {
+  background-color: rgba(255,255,255, 0.05);
+  transition: background-color 0.5 ease;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: rgba(255,255,255,0.3);
+  -webkit-border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(255,255,255,0.2);
+  -webkit-border-radius: 100px;
 }
 </style>
