@@ -18,8 +18,23 @@
 						</p>
 					</div>
 				</div>
-				<canvas v-if='deck.ocr' id='draw' ref='draw' 
-				class='md:ml-12 mt-12 md:mt-0'></canvas>
+				<div v-if='deck.ocr' id="draw-wrapper" ref="draw-wrapper" class='lg:ml-10 mt-8 lg:mt-0'>
+					<canvas id='draw'></canvas>
+					<div class="mt-1 md:mt-5 lg:mt-2 w-1/2 mx-auto flex justify-center justify-between" id="canvas-ctrls">
+						<div class="mx-2">
+							<svg class="bi bi-arrow-counterclockwise" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M12.83 6.706a5 5 0 0 0-7.103-3.16.5.5 0 1 1-.454-.892A6 6 0 1 1 2.545 5.5a.5.5 0 1 1 .91.417 5 5 0 1 0 9.375.789z"/>
+								<path fill-rule="evenodd" d="M7.854.146a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708l2.5 2.5a.5.5 0 1 0 .708-.708L5.707 3 7.854.854a.5.5 0 0 0 0-.708z"/>
+							</svg>
+						</div>
+						<div class="mx-2">
+							<svg class="bi bi-trash" width="1.1em" height="1.1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+								<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="mt-10">
 				<div class="md:w-2/3 mt-4 m-auto flex items-center justify-between opacity-87">
@@ -173,15 +188,24 @@ export default {
 				})
 				this.chooseCards()
 				this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
-				if (this.deck.ocr) {
-					var canvas = this.$refs.draw
-					console.log(document.getElementById("canvas"))
-					var ctx = canvas.getContext("2d")
-					ctx.fillStyle = "blue"
-					ctx.fillRect(0, 0, canvas.width, canvas.height)
-				}
 			})
 			.catch(error => console.log(error))
+	},
+	updated() {
+		console.log(document.getElementById("draw"))
+		if (this.deck.ocr) {
+			var canvas = document.getElementById("draw")
+			var ctx = canvas.getContext("2d")
+			console.log(ctx)
+			ctx.fillStyle = "blue"
+			ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+			canvas.addEventListener("mousemove", draw, false)
+			canvas.addEventListener("mousedown", setPos, false)
+			canvas.addEventListener("mouseup", function (e) {
+				findxy('up', e)
+			}, false)
+		}
 	}
 }
 </script>
@@ -225,13 +249,30 @@ export default {
 	cursor: default;
 }
 
-canvas {
-	border: 1px solid rgba(255, 255, 255, 0.75);
+#draw-wrapper {
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
 	width: 100%;
-	height: 30vh;
+	height: 60vw;
 }
 
-@media(min-width: 768px) {
+#canvas-ctrls {
+	height: 1rem;
+}
+
+canvas {
+	border-radius: 10px 10px 10px 10px;
+	width: 100%;	
+	height: 87.5%;
+}
+
+@media (max-width: 768px) and (orientation:landscape) {
+	#canvas-ctrls {
+		margin-top: 1rem;
+	}
+}
+
+@media(min-width: 1024px) {
 	.card-container {
 		display: flex;
 		justify-content: space-between;  
@@ -239,8 +280,8 @@ canvas {
 	.card {
 		height: 40vh;
 	}
-	canvas {
-		width: 40vh;
+	#draw-wrapper {
+		width: 75vw;
 		height: 40vh;
 	}
 }
