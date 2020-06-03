@@ -113,8 +113,8 @@ export default {
 				hanzi: '',
 				definition: ''
 			})
-			this.deck.dueDates.push('')
-			this.deck.interval.push(0)
+			this.deck.dueDates.push(this.$store.state.serverTime.format('YYYY-MM-DD'))
+			this.deck.interval.push(1)
 			this.deck.repetitions.push(0)
 			this.deck.easiness.push(2.5)
 		},
@@ -128,10 +128,10 @@ export default {
 		},
 		resetDeck() {
 			for(let i = 0; i < this.deck.numOfWords; i++) {
-				this.pushData()
+				this.pushData(today)
 			}
-			this.deck.ocr = false // Sets metadata
 			let today = this.$store.state.serverTime.format('YYYY-MM-DD')
+			this.deck.ocr = false // Sets metadata
 			this.deck.dueDates = Array.apply(null, Array(this.deck.numOfWords)).map(String.prototype.valueOf, today)
 			this.deck.interval = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 1)
 			this.deck.repetitions = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 0)
@@ -175,15 +175,20 @@ export default {
 				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))
 		}
 	},
-	created(){
+	mounted() {
 		this.$store.commit('addError', '')
 		if (this.view == 'create') {
 			this.resetDeck()
 		} else {
 			this.loadDeck()
 		}
+	},
+	created(){
 		this.$store.dispatch('getServerTime')
 			.catch(error => console.log(error))
+	},
+	updated() {
+		console.clear()
 	}
 }
 </script>
