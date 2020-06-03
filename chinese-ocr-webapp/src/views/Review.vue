@@ -99,13 +99,14 @@ export default {
 			this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
 		},
 		calculateSuperMemo2(index, quality) { // Thanks to Suragch on Stack Overflow!
-			let repetitions = this.deck.repetitions[index]
-			let easiness = this.deck.easiness[index]
-			let interval = this.deck.interval[index]
+			let repetitions = Number.parseInt(this.deck.repetitions[index])
+			let easiness = Number.parseFloat(this.deck.easiness[index])
+			let interval = Number.parseInt(this.deck.interval[index])
 
 			let repetitionFormula = easiness + 0.1 - (5.0 - quality) * (0.08 + (5.0 - quality) * 0.02)
 			easiness = Math.max(1.3, repetitionFormula)
-			this.deck.easiness[index] = Number.parseFloat(easiness).toFixed(2)
+			this.deck.easiness[index] = Number.parseFloat(easiness).toFixed(1)
+		
 
 			if (quality == 0) { // Modified for only 2 quality buttons (is either 0 or 5)
 				this.deck.repetitions[index] = 0
@@ -165,6 +166,7 @@ export default {
 	},
 	mounted() {
 		this.$store.dispatch('getServerTime')
+			.then(this.$store.dispatch('getDecks'))
 			.then(() => {
 				this.deck = this.$store.state.decks.find(obj => {
 					return obj.name == this.name

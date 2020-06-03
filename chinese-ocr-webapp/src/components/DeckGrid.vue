@@ -176,6 +176,7 @@ export default {
 		}
 	},
 	mounted() {
+		console.clear()
 		this.$store.commit('addError', '')
 		if (this.view == 'create') {
 			this.resetDeck()
