@@ -21,7 +21,8 @@ node_modules
 
 # Keys
 credentials.js
-chinese-ocr-vision-credentials.json
+vision-credentials.json
+oauth2-credentials.js
 vision/
 
 # local env files
