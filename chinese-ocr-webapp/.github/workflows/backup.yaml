@@ -5,8 +5,8 @@ on:
     - cron:  '0 0 * * *'
 
 env:
-  PROJECT_ID: YOUR-PROJECT
-  BUCKET: gs://YOUR-BUCKET
+  PROJECT_ID: chinese-ocr-274418
+  BUCKET: gs://chinese-ocr-274418.appspot.com/firestore-backups
   
 jobs:
   backup:
