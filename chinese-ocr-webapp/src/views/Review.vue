@@ -12,7 +12,7 @@
 						<p>
 							{{ cardSideData[0] }}
 						</p>
-						<p v-if='cardSideData.length == 2' 
+						<p
 						class='text-lg lg:text-xl xl:text-2xl'>
 							{{ cardSideData[1] }}
 						</p>
@@ -93,7 +93,10 @@ export default {
 		flipCard() {
 			if (!this.deck.ocr) {
 				if (this.cardFace == 'back') {
-					this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
+					this.cardSideData = [
+						this.deck.cards[this.dueIndices[this.currentIndex]].pinyin,
+						this.deck.cards[this.dueIndices[this.currentIndex]].definition
+					]
 					this.cardFace = 'front'
 				} else {
 					this.cardSideData = [
@@ -109,7 +112,10 @@ export default {
 		nextCard() {
 			this.currentIndex ++
 			this.cardFace = 'front'
-			this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
+			this.cardSideData = [
+				this.deck.cards[this.dueIndices[this.currentIndex]].pinyin,
+				this.deck.cards[this.dueIndices[this.currentIndex]].definition
+			]
 		},
 		calculateSuperMemo2(index, quality) { // Thanks to Suragch on Stack Overflow!
 			let repetitions = Number.parseInt(this.deck.repetitions[index])
@@ -204,7 +210,10 @@ export default {
 					return obj.name == this.name
 				})
 				this.chooseCards()
-				this.cardSideData = [this.deck.cards[this.dueIndices[this.currentIndex]].pinyin]
+				this.cardSideData = [
+					this.deck.cards[this.dueIndices[this.currentIndex]].pinyin,
+					this.deck.cards[this.dueIndices[this.currentIndex]].definition
+				]
 			})
 			.catch(error => console.log(error))
 	},
