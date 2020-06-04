@@ -21,9 +21,7 @@ node_modules
 
 # Keys
 credentials.js
-vision-credentials.json
-oauth2-credentials.js
-vision/
+chinese-ocr-automated-firestorebackups.json
 
 # local env files
 env

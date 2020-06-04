@@ -4,6 +4,7 @@ import router from '../router/index'
 import createPersistedState from 'vuex-persistedstate'
 
 import * as moment from 'moment'
+import * as axios from 'axios'
 
 import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
@@ -160,7 +161,7 @@ export default new Vuex.Store({
       commit('updateServerTime', firebase.firestore.Timestamp.now())
     },
     getVisionPrediction() {
-      
+      axios('http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision')
     }
   },
   modules: {
