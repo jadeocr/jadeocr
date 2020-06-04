@@ -12,6 +12,7 @@
 				<h1 class="mb-4 text-lg lg:text-xl xl:text-2xl font-normal">General</h1>
 				<p>{{ $store.state.decks.length }} decks</p>
 				<p>{{ totalCards }} cards</p>
+				<p>{{ totalSeen }} cards seen</p>
 			</div>
 		</div>
 	</div>
@@ -44,6 +45,7 @@ import LineChart from '../chart/linechart'
 				},
 				chartBg: '#bb86fc',
 				totalCards: 0,
+				totalSeen: 0,
       }
     },
     methods: {
@@ -67,6 +69,9 @@ import LineChart from '../chart/linechart'
 			this.$store.dispatch('getDecks')
 			for (let i = 0; i < this.$store.state.decks.length; i++) {
 				this.totalCards += this.$store.state.decks[i].numOfWords
+				for (let repetition in this.$store.state.decks[i].repetitions) {
+					if (repetition > 0) this.totalSeen++
+				}
 			}
 		},
 		mounted() {
