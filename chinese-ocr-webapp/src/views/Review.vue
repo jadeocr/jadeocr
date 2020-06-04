@@ -103,6 +103,7 @@ export default {
 				}
 			} else {
 				// Handle OCR logic here
+				this.$store.dispatch('getVisionPrediction')
 			}
 		},
 		nextCard() {

@@ -5,9 +5,6 @@ import createPersistedState from 'vuex-persistedstate'
 
 import * as moment from 'moment'
 
-// const vision = require('@google-cloud/vision')()
-// const client = new vision.ImageAnnotatorClient()
-
 import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
 import 'firebase/auth'
@@ -162,12 +159,9 @@ export default new Vuex.Store({
     getServerTime({ commit }) {
       commit('updateServerTime', firebase.firestore.Timestamp.now())
     },
-    // async getVisionPrediction() {
-    //   const [result] = await client.labelDetection('../vision-test-imgs/handwriting-master.jpg')
-    //   const labels = result.labelAnnotations
-    //   console.log('labels: ')
-    //   labels.forEach(label => console.log(label.description))
-    // }
+    getVisionPrediction() {
+      
+    }
   },
   modules: {
   },
