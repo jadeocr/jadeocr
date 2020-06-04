@@ -185,11 +185,16 @@ export default {
 			this.yPos = (e.clientY - domRect.top) / domRect.height * this.canvas.height
 		},
 		draw(e) {
-			if (e.buttons !== 1) return;
+			if(!window.matchMedia("(pointer: coarse)").matches) {
+				// is not touchscreen
+				if (e.buttons !== 1) return;
+			}
+			
 			this.ctx.beginPath()
 			this.ctx.lineWidth = 20
 			this.ctx.lineCap = 'round'
 			this.ctx.strokeStyle = '#ffffff'
+			
 			this.ctx.moveTo(this.xPos, this.yPos)
 			this.setPos(e)
 			this.ctx.lineTo(this.xPos, this.yPos)
