@@ -103,7 +103,8 @@ export default {
 				}
 			} else {
 				// Handle OCR logic here
-				this.$store.dispatch('getVisionPrediction')
+				let image = this.canvas.toDataURL("image/jpeg")
+				this.$store.dispatch('getVisionPrediction', image)
 			}
 		},
 		nextCard() {

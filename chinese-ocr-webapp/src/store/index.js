@@ -5,6 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 import * as moment from 'moment'
 import * as axios from 'axios'
+import * as qs from 'querystring'
 
 import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
@@ -160,8 +161,18 @@ export default new Vuex.Store({
     getServerTime({ commit }) {
       commit('updateServerTime', firebase.firestore.Timestamp.now())
     },
-    getVisionPrediction() {
-      axios('http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision')
+    getVisionPrediction(state, image) {
+      const regexp = /data:image\/png;base64,/
+      image = image.replace(regexp, '')
+      
+      axios({
+        method: 'post',
+        url: 'http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision',
+        data: qs.stringify({ imageData: image }),
+        maxContentLength: 100000,
+        maxBodyLength: 100000
+      })
+      .then(result => console.log(result))
     }
   },
   modules: {
