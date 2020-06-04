@@ -5,7 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 import * as moment from 'moment'
 
-// const vision = require('@google-cloud/vision')
+// const vision = require('@google-cloud/vision')()
 // const client = new vision.ImageAnnotatorClient()
 
 import firebase from 'firebase/app'

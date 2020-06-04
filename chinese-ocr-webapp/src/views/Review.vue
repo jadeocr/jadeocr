@@ -9,12 +9,8 @@
 				<div
 				class='bg-black rounded-md py-6 card font-normal text-xl lg:text-2xl xl:text-3xl'>
 					<div>
-						<p>
-							{{ cardSideData[0] }}
-						</p>
-						<p
-						class='text-lg lg:text-xl xl:text-2xl'>
-							{{ cardSideData[1] }}
+						<p v-for='(n, side) in cardSideData' :key='side.key'>
+							{{ cardSideData[side] }}
 						</p>
 					</div>
 				</div>
@@ -218,7 +214,6 @@ export default {
 			.catch(error => console.log(error))
 	},
 	updated() {
-		console.log(document.getElementById("draw"))
 		if (this.deck.ocr) {
 			this.canvas = document.getElementById("draw")
 			this.ctx = this.canvas.getContext("2d")
