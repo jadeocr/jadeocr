@@ -33,7 +33,8 @@ export default new Vuex.Store({
     formSuccess: '',
     numOfDecks: 0,
     decks: [],
-    serverTime: null
+    serverTime: null,
+    ocrPreds: null
   },
   mutations: {
     updateUser(state, payload) {
@@ -69,6 +70,9 @@ export default new Vuex.Store({
     },
     updateServerTime(state, payload) {
       state.serverTime = moment.utc(moment.unix(payload.seconds))
+    },
+    updateOCRPreds(state, payload) {
+      state.ocrPreds = payload
     }
   },
   actions: {
@@ -161,7 +165,7 @@ export default new Vuex.Store({
     getServerTime({ commit }) {
       commit('updateServerTime', firebase.firestore.Timestamp.now())
     },
-    getVisionPrediction(state, image) {
+    getVisionPrediction({ commit }, image) {
       const regexp = /data:image\/jpeg;base64,/
       image = image.replace(regexp, '')
       axios({
@@ -174,8 +178,7 @@ export default new Vuex.Store({
         maxBodyLength: 100000
       })
         .then(result => {
-          console.log(result)
-          console.log(result.data[0].textAnnotations)
+          commit('updateOCRPreds', result.data[0].textAnnotations)
         })
         .catch(error => console.log(error))
     }
