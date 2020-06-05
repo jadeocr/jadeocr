@@ -166,7 +166,7 @@ export default new Vuex.Store({
       image = image.replace(regexp, '')
       axios({
         method: 'post',
-        url: 'http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision',
+        url: 'http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision', // TODO: Change URL
         data: qs.stringify({ 
           imageData: image,
         }),

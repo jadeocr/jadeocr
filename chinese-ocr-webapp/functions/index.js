@@ -5,13 +5,15 @@ const client = new vision.ImageAnnotatorClient()
 
 exports.ocrVision = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*') // TODO: Add whitelisted domains
-	// const fileName = './vision-test-imgs/handwriting-master.jpg'
 
 	const fileName = request.body.imageData
 
 	const req = {
 		image: {
 			content: fileName
+		},
+		imageContext: {
+			languageHints: ["zh-Hans-handwrit"]
 		}
 	}
 
