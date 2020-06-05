@@ -31,20 +31,20 @@
 					<div class='btn btn-red rounded-md px-4 py-3'
 						@click='cardCheck("wrong")'
 					>
-						<svg class="bi bi-x" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<svg class="bi bi-x" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
 							<path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
 						</svg>
 					</div>
 					<div @click='flipCard()'
-						class="btn btn-blue mx-auto rounded-md py-2 px-4 text-sm font-normal unselect"
+						class="btn btn-blue mx-auto rounded-md py-2 px-4 text-xs md:text-sm font-normal unselect"
 					>
 						{{ reviewedButton }}
 					</div>
 					<div class='btn btn-cyan rounded-md px-4 py-3'
 						@click='cardCheck("correct")'
 					>
-						<svg class="bi bi-check2" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<svg class="bi bi-check2" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 						</svg>
 					</div>
@@ -186,11 +186,16 @@ export default {
 			this.yPos = (e.clientY - domRect.top) / domRect.height * this.canvas.height
 		},
 		draw(e) {
-			if (e.buttons !== 1) return;
+			if(!window.matchMedia("(pointer: coarse)").matches) {
+				// is not touchscreen
+				if (e.buttons !== 1) return;
+			}
+			
 			this.ctx.beginPath()
 			this.ctx.lineWidth = 20
 			this.ctx.lineCap = 'round'
 			this.ctx.strokeStyle = '#ffffff'
+			
 			this.ctx.moveTo(this.xPos, this.yPos)
 			this.setPos(e)
 			this.ctx.lineTo(this.xPos, this.yPos)
@@ -291,6 +296,11 @@ canvas {
 	height: 87.5%;
 }
 
+.bi {
+	width: 0.75em;
+	height: 0.75em;
+}
+
 @media (max-width: 768px) and (orientation:landscape) {
 	#canvas-ctrls {
 		margin-top: 1rem;
@@ -308,6 +318,10 @@ canvas {
 	#draw-wrapper {
 		width: 80vh;
 		height: 40vh;
+	}
+	.bi {
+		width: 1.25em;
+		height: 1.25em;
 	}
 }
 </style>
