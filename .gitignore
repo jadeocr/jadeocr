@@ -22,6 +22,7 @@ node_modules
 # Keys
 credentials.js
 chinese-ocr-automated-firestorebackups.json
+firebase/
 
 # local env files
 env

@@ -162,17 +162,24 @@ export default new Vuex.Store({
       commit('updateServerTime', firebase.firestore.Timestamp.now())
     },
     getVisionPrediction(state, image) {
-      const regexp = /data:image\/png;base64,/
+      const regexp = /data:image\/jpeg;base64,/
       image = image.replace(regexp, '')
-      
-      axios({
-        method: 'post',
-        url: 'http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision',
-        data: qs.stringify({ imageData: image }),
-        maxContentLength: 100000,
-        maxBodyLength: 100000
-      })
-      .then(result => console.log(result))
+
+      auth.currentUser.getIdToken()
+        .then((idToken) => {
+          axios({
+            method: 'post',
+            url: 'http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision',
+            data: qs.stringify({ 
+              imageData: image,
+              token: idToken
+            }),
+            maxContentLength: 100000,
+            maxBodyLength: 100000
+          })
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+        })
     }
   },
   modules: {
