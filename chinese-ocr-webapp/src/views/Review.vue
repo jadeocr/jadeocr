@@ -180,8 +180,7 @@ export default {
 				if (this.untilDue[i] == mostDue) this.dueIndices.push(i)
 			}
 		},
-		setPos(e) {
-			let domRect = this.canvas.getBoundingClientRect()
+		setPos(e) { let domRect = this.canvas.getBoundingClientRect()
 			this.xPos = (e.clientX - domRect.left) / domRect.width * this.canvas.width
 			this.yPos = (e.clientY - domRect.top) / domRect.height * this.canvas.height
 		},
