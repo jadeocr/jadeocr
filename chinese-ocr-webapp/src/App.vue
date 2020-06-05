@@ -70,12 +70,23 @@ body {
 	width: calc(100vw - 300px);
 	-webkit-transition: width 0.3s ease;
 	transition: width 0.3s ease;
-	height: calc(100vh - 147px);
+	height: calc(98vh - 8.5rem);
 }
 
 @media(max-width: 640px) {
 	#page-content {
 		width: 100vw;
+		height: 100vh;
+	}
+}
+@media(max-width: 768px) {
+	#page-content {
+		height: calc(98vh - 7.75rem);
+	}
+}
+@media(max-width: 1024px) {
+	#page-content {
+		height: calc(98vh - 4.5rem);
 	}
 }
 
