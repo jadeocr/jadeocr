@@ -50,12 +50,18 @@
 					</div>
 				</div>
 			</div>
+			<div v-if="pred"
+			class="mt-4 md:mt-8 text-green-300 text-lg md:text-xl">
+				You wrote: {{ pred }}
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import * as moment from 'moment'
+import * as axios from 'axios'
+import * as qs from 'querystring'
 
 export default {
 	name: 'Review',
@@ -71,6 +77,7 @@ export default {
 			ctx: null,
 			xPos: 0,
 			yPos: 0,
+			pred: null
 		}
 	},
 	props: {
@@ -86,30 +93,59 @@ export default {
 		}
 	},
 	methods: {
+		switchSide() {
+			if (this.cardFace == 'back') {
+				this.cardSideData = [
+					this.deck.cards[this.dueIndices[this.currentIndex]].pinyin,
+					this.deck.cards[this.dueIndices[this.currentIndex]].definition
+				]
+				this.cardFace = 'front'
+			} else {
+				this.cardSideData = [
+					this.deck.cards[this.dueIndices[this.currentIndex]].hanzi,
+					this.deck.cards[this.dueIndices[this.currentIndex]].definition
+				]
+				this.cardFace = 'back'
+			}
+		},
+    getVisionPrediction(image) {
+      const regexp = /data:image\/jpeg;base64,/
+      image = image.replace(regexp, '')
+      axios({
+        method: 'post',
+        url: 'https://us-central1-chinese-ocr-274418.cloudfunctions.net/ocrVision',
+        data: qs.stringify({ 
+          imageData: image,
+        }),
+        maxContentLength: 100000,
+        maxBodyLength: 100000
+      })
+        .then(result => {
+					if (result.data[0].textAnnotations[1].description) {
+						this.pred = result.data[0].textAnnotations[1].description
+					} else {
+						this.pred = ''
+					}
+				})
+				.then(() => {
+					this.cardFace = 'front'
+					this.switchSide()
+				})
+				.catch(error => console.log(error))
+    },
 		flipCard() {
 			if (!this.deck.ocr) {
-				if (this.cardFace == 'back') {
-					this.cardSideData = [
-						this.deck.cards[this.dueIndices[this.currentIndex]].pinyin,
-						this.deck.cards[this.dueIndices[this.currentIndex]].definition
-					]
-					this.cardFace = 'front'
-				} else {
-					this.cardSideData = [
-						this.deck.cards[this.dueIndices[this.currentIndex]].hanzi,
-						this.deck.cards[this.dueIndices[this.currentIndex]].definition
-					]
-					this.cardFace = 'back'
-				}
+				this.switchSide()
 			} else {
 				// Handle OCR logic here
 				let image = this.canvas.toDataURL("image/jpeg")
-				this.$store.dispatch('getVisionPrediction', image)
+				this.getVisionPrediction(image)
 			}
 		},
 		nextCard() {
 			this.currentIndex ++
 			this.cardFace = 'front'
+			this.pred = ''
 			this.cardSideData = [
 				this.deck.cards[this.dueIndices[this.currentIndex]].pinyin,
 				this.deck.cards[this.dueIndices[this.currentIndex]].definition
@@ -201,6 +237,9 @@ export default {
 			this.ctx.stroke()
 		},
 		clearCanvas() {
+			this.pred = ''
+			this.cardFace = 'back'
+			this.switchSide()
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 		},
 	},

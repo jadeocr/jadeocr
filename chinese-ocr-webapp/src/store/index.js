@@ -4,8 +4,6 @@ import router from '../router/index'
 import createPersistedState from 'vuex-persistedstate'
 
 import * as moment from 'moment'
-import * as axios from 'axios'
-import * as qs from 'querystring'
 
 import firebase from 'firebase/app'
 import credentials from '../firebase/credentials'
@@ -34,7 +32,6 @@ export default new Vuex.Store({
     numOfDecks: 0,
     decks: [],
     serverTime: null,
-    ocrPreds: null
   },
   mutations: {
     updateUser(state, payload) {
@@ -70,9 +67,6 @@ export default new Vuex.Store({
     },
     updateServerTime(state, payload) {
       state.serverTime = moment.utc(moment.unix(payload.seconds))
-    },
-    updateOCRPreds(state, payload) {
-      state.ocrPreds = payload
     }
   },
   actions: {
@@ -164,25 +158,6 @@ export default new Vuex.Store({
     },
     getServerTime({ commit }) {
       commit('updateServerTime', firebase.firestore.Timestamp.now())
-    },
-    getVisionPrediction({ commit }, image) {
-      const regexp = /data:image\/jpeg;base64,/
-      image = image.replace(regexp, '')
-      axios({
-        method: 'post',
-        url: 'https://us-central1-chinese-ocr-274418.cloudfunctions.net/ocrVision', // TODO: Change URL
-        data: qs.stringify({ 
-          imageData: image,
-        }),
-        maxContentLength: 100000,
-        maxBodyLength: 100000
-      })
-        .then(result => {
-          let annotations = result.data[0].textAnnotations
-          console.log(annotations)
-          commit('updateOCRPreds', annotations)
-        })
-        .catch(error => console.log(error))
     }
   },
   modules: {
