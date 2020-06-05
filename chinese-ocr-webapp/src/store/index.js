@@ -170,7 +170,7 @@ export default new Vuex.Store({
       image = image.replace(regexp, '')
       axios({
         method: 'post',
-        url: 'http://localhost:5001/chinese-ocr-274418/us-central1/ocrVision', // TODO: Change URL
+        url: 'https://us-central1-chinese-ocr-274418.cloudfunctions.net/ocrVision', // TODO: Change URL
         data: qs.stringify({ 
           imageData: image,
         }),
@@ -178,7 +178,9 @@ export default new Vuex.Store({
         maxBodyLength: 100000
       })
         .then(result => {
-          commit('updateOCRPreds', result.data[0].textAnnotations)
+          let annotations = result.data[0].textAnnotations
+          console.log(annotations)
+          commit('updateOCRPreds', annotations)
         })
         .catch(error => console.log(error))
     }

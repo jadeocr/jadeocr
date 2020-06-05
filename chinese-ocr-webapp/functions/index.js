@@ -21,33 +21,3 @@ exports.ocrVision = functions.https.onRequest(async (request, response) => {
 		.then(result => response.send(result))
 		.catch(error => response.send(error))
 })
-
-
-// OLD CODE -- TEMP REMOVED
-
-// axios({
-// 	method: 'post',
-// 	url: 'https://vision.googleapis.com/v1/images:annotate',
-// 	headers: {
-// 		"Authorization": `Bearer ${request.body.token}`,
-// 		"Content-Type": "application/json charset=utf-8"
-// 	},
-// 	data: {
-// 		"requests": [
-// 			{
-// 				"image": {
-// 					"content": request.body.imageData
-// 				},
-// 				"features": [
-// 					{
-// 						"type": "DOCUMENT_TEXT_DETECTION"
-// 					}
-// 				]
-// 			}
-// 		]
-// 	},
-// 	maxContentLength: 100000,
-// 	maxBodyLength: 100000
-// })
-// 	.then((result) => response.send(result))
-	// .catch(error => console.log(JSON.stringify(error)))
