@@ -11,8 +11,7 @@
 			<div class="mt-8 md:mt-10 opacity-87 text-sm lg:text-md xl:text-lg">
 				<h1 class="mb-0 md:mb-2 text-lg lg:text-xl xl:text-2xl font-normal">General</h1>
 				<div>{{ $store.state.decks.length }} deck{{plural[0]}}</div>
-				<div>{{ totalCards }} card{{plural[1]}}</div>
-				<div>{{ totalSeen.reduce((a, b) => a+b, 0) }} card{{plural[2]}} seen</div>
+				<div>{{ totalSeen.reduce((a, b) => a+b, 0) }} / {{ totalCards }} card{{plural[1]}} seen</div>
 			</div>
 			<div v-if='$store.state.numOfDecks' class='my-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 text-center'>
 				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='w-4/5 mt-4 col-span-1'>
