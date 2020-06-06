@@ -14,7 +14,12 @@
 								Learn
 							</div>
 						</router-link>
-						<!-- TODO: Sort by due date, show stats -->
+						<div class="mt-3 -mb-3 text-sm" v-if='view == "learn"' :class="dueInfoColor">
+							Due in {{ $store.state.nextLearn[i] }}
+							<span v-if='$store.state.nextLearn[i] == 1'>day</span>
+							<span v-else>days</span>
+						</div>
+						<!-- TODO: Sort by due date -->
 					</div>
 				</div>
 			</div>
@@ -27,9 +32,26 @@ export default {
 	props: {
 		view: String
 	},
+	data() {
+		return {
+			dueInfoColor: ''
+		}
+	},
+	methods: {
+		dueInfo() {
+			for (let i = 0; i < this.$store.state.nextLearn.length; i++) {
+				(this.$store.state.nextLearn[i] > 0) ? 
+					this.dueInfoColor = 'text-green-300'
+					: this.dueInfoColor = 'text-red-400'
+			}
+		}
+	},
 	beforeCreate() {
 		this.$store.commit('addError', '')
 		this.$store.dispatch('getDecks')
+	},
+	mounted() {
+		this.dueInfo()
 	}
 }
 </script>
