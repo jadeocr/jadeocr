@@ -70,7 +70,7 @@
               "
             />
             <Feature name='spaced-repetition' :isFirstElement='false'
-              title='SRS Cards (β)'
+              title='SRS Cards'
               body='
                 Spaced repetition allows you to learn more efficiently 
                 and promotes long-term retention.

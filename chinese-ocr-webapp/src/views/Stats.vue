@@ -47,7 +47,6 @@
 
 <script>
 import Sidebar from '../components/Sidebar'
-// import LineChart from '../chart/linechart'
 import * as moment from 'moment'
 export default {
     components: {
@@ -55,22 +54,7 @@ export default {
 			// LineChart
     },
     data () {
-      return {  //TODO: Change font color, add more charts
-				// datacollection: {},
-				// datasets: [],
-				// labels: ['Number of Cards'],
-				// options: {
-				// 		scales: {
-				// 				yAxes: [{
-				// 						ticks: {
-				// 								beginAtZero: true
-				// 						}
-				// 				}]
-				// 		},
-				// 		defaultFontColor: '#fff',
-				// 		responsive: true
-				// },
-				// chartBg: '#bb86fc',
+      return {
 				totalCards: 0,
 				totalSeen: [],
 				plural: [[], 's', 's'],
@@ -80,21 +64,6 @@ export default {
       }
     },
     methods: {
-		// 	formatData() {
-		// 		for (let i = 0; i < this.$store.state.decks.length; i++) {
-		// 			this.datasets.push({
-		// 				label: this.$store.state.decks[i].name,
-		// 				data: [this.$store.state.decks[i].numOfWords],
-		// 				backgroundColor: this.chartBg
-		// 			})
-		// 		}
-		// 	},
-    //   fillData () {
-    //     this.datacollection = {
-		// 			labels: this.labels,
-    //       datasets: this.datasets
-		//     }
-		// }
 			getDueDifference(due) {
 				due = moment(due, 'YYYY-MM-DD')
 				let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')

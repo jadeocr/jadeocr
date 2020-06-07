@@ -279,6 +279,10 @@ export default {
 </script>
 
 <style scoped>
+#review {
+	touch-action: manipulation;
+}
+
 .card {
 	top: 0;
 	left: 0;
@@ -329,7 +333,6 @@ export default {
 }
 
 canvas {
-	touch-action: none;
 	border-radius: 10px 10px 10px 10px;
 	width: 100%;	
 	height: 87.5%;
