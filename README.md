@@ -107,9 +107,9 @@ Thank you so much for taking the time to contribute!
 * [Suragch on Stack Overflow](https://stackoverflow.com/questions/49047159/spaced-repetition-algorithm-from-supermemo-sm-2)
 
 
-## Contact
+## Contact/Help
 If you would like to get in touch with me for any (legitimate) reason, please do not hesitate to 
-<a href='mailto: tanaybiradar24@gmail.com'>contact</a> me.
+<a href='mailto: tanaybiradar24@gmail.com'>contact</a> me. If you need more help, please open an issue or send me an email (if an issue isn't appropriate).
 
 
 ## License
