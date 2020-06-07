@@ -1,11 +1,11 @@
 # chinese-ocr
 Chinese-ocr is a beautiful web-based [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcard app for learning languages (not just Chinese), complete with handwriting recognition.
 
-It ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet.
+This project ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet. Chinese-ocr makes the language-learning process more fun and more efficient.
 
 
-## Demo
-A demo is still in the works. Stay tuned for updates.
+## Webapp
+There will be a link to the official deployment here after v1.0 has been released. In the meantime, if you want to get your hands dirty, read on.
 
 ### Landing Page
 ![Landing Page](demos/landing-page.png)
@@ -22,7 +22,8 @@ A demo is still in the works. Stay tuned for updates.
 * [x] Spaced repetition flashcards
 * [x] Support for more languages
 
-### Quickstart
+
+## Quickstart
 In the **chinese-ocr-webapp** directory, run the following to quickly spin up a development instance.
 ```bash
 $ npm install        # Installs dependencies
@@ -30,7 +31,7 @@ $ npm run twbuild    # Builds Tailwind CSS files
 $ npm run serve      # Compiles/hot-reloads dev server
 ```
 
-#### Adding Firebase
+### Adding Firebase
 To add the backend, create a project in [Firebase](https://firebase.google.com). Copy the JS config snippets from the Firebase console into the `firebaseConfig` in **chinese-ocr-webapp/src/firebase/credentials.js** to add the SDK credentials.
 ```javascript
 export default {
@@ -42,21 +43,21 @@ export default {
 }
 ```
 
-#### Development
+### Development
 ```bash
 $ npm run serve      # Compiles/hot-reloads dev server
 $ npm run build      # Compiles/minifies -> dist for production
 $ npm run lint       # Lints/fixes files
 ```
 
-#### Deployment
+### Deployment
 ```bash
 $ npm run devbuild   # Builds, deploys to Firebase Hosting, and removes dist
 ```
 
 
-## CNN
-Currently, chinese-ocr uses the Google Cloud Vision API to handle handwriting recognition. In the future, it is planned to switch to a custom neural network for more accurate detection of languages not based on the Latin script.
+## OCR CNN
+Currently, chinese-ocr uses the Google Cloud Vision API to handle handwriting recognition. In the future, we plan to implement custom neural network for better detection of languages not using the Latin script.
 
 The OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). To train on the full dataset effectively, it is necessary to have more training examples per class.
 
@@ -64,16 +65,16 @@ The OCR neural network is trained on a 100-class subset of the [CASIA Chinese Ha
 To obtain the full dataset, download [**HWDB1.1train_gnt (2741MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn.zip) and [**HWDB1.1test_gnt (681MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst.zip) and extract the zip files. Store them in the directory **convnet/data** and check that the extracted folders are named **HWDB1.1trn_gnt** and **HWDB1.1tst_gnt**, respectively.
 
 ### Preprocessing
-Run **preprocess.py** to convert from GNT to png.
+Run **convnet/src/preprocess.py** to convert from GNT to png.
 
 ### Training
-Modify **train.py** to reflect the number of classes you want to train the model on.
+Modify **convnet/src/train.py** to reflect the number of classes you want to train the model on.
 ```python
 model.add(Dense(NUMBER_OF_CLASSES, activation='softmax'))
 ```
 
 ### Prediction
-Save an image **test.jpg** that you would like to have the network predict to **data** and run **predict.py**.
+Save an image **convnet/src/test.jpg** that you would like to have the network predict to **convnet/data** and run **convnet/src/predict.py**.
 
 
 ## Contribute
