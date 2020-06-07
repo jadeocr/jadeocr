@@ -52,7 +52,7 @@
 			</div>
 			<div v-if="pred"
 			class="mt-4 md:mt-8 text-green-300 text-lg md:text-xl">
-				You wrote: {{ pred }}
+				{{ pred }}
 			</div>
 		</div>
 	</div>
@@ -109,8 +109,11 @@ export default {
 			}
 		},
     getVisionPrediction(image) {
+			this.pred = 'Running OCR...'
       const regexp = /data:image\/jpeg;base64,/
-      image = image.replace(regexp, '')
+			image = image.replace(regexp, '')
+			this.cardFace = 'front'
+			this.switchSide()
       axios({
         method: 'post',
         url: 'https://us-central1-chinese-ocr-274418.cloudfunctions.net/ocrVision',
@@ -121,15 +124,12 @@ export default {
         maxBodyLength: 100000
       })
         .then(result => {
-					if (result.data[0].textAnnotations[1].description) {
-						this.pred = result.data[0].textAnnotations[1].description
+					console.log(result.data[0].textAnnotations)
+					if (result.data[0].textAnnotations.length) {
+						this.pred = 'You wrote: ' + result.data[0].textAnnotations[1].description
 					} else {
-						this.pred = ''
+						this.pred = 'No Prediction'
 					}
-				})
-				.then(() => {
-					this.cardFace = 'front'
-					this.switchSide()
 				})
 				.catch(error => console.log(error))
     },
