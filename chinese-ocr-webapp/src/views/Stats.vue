@@ -107,7 +107,6 @@ export default {
 						dues.push(this.getDueDifference(this.$store.state.decks[i].dueDates[duedate]))
 					}
 					this.untilDue.push(Math.min(...dues))
-					console.log(this.untilDue[i])
 					if (this.untilDue[i] > 0) {
 						this.dueInfoColor.push('text-green-300')
 					} else {
@@ -119,13 +118,12 @@ export default {
 		},
 		created() {
 			this.$store.dispatch('getDecks')
+			.then(this.$store.dispatch('getServerTime'))
 			.then(() => {
 				for (let i = 0; i < this.$store.state.decks.length; i++) {
 					this.totalSeen.push(0)
 					this.easinessAverage.push(
 						(this.$store.state.decks[i].easiness.reduce((a, b) => Number(a)+Number(b)) / this.$store.state.decks[i].easiness.length).toFixed(1))
-					if (this.$store.state.nextLearn[i] == 1) this.plural[0].push('')
-					else this.plural[0].push('s')
 					this.totalCards += this.$store.state.decks[i].numOfWords
 					for (let repetition in this.$store.state.decks[i].repetitions) {
 						if (repetition > 0) this.totalSeen[i]++
@@ -155,10 +153,6 @@ export default {
 	bottom: 0;
 	background-color: rgba(255,255,255,0.07);
 	z-index: 2;
-}
-
-#edit-link {
-	font-weight: 600;
 }
 
 #edit-link:hover {

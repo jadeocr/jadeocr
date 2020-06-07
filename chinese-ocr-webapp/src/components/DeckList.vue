@@ -54,7 +54,6 @@ export default {
 					dues.push(this.getDueDifference(this.$store.state.decks[i].dueDates[duedate]))
 				}
 				this.untilDue.push(Math.min(...dues))
-				console.log(this.untilDue[i])
 				if (this.untilDue[i] > 0) {
 					this.dueInfoColor.push('text-green-300')
 				} else {
