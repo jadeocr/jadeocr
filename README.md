@@ -78,7 +78,9 @@ Save an image **convnet/src/test.jpg** that you would like to have the network p
 
 
 ## Contribute
-Contributions are very much appreciated! Please take a look at the information below before contributing.
+Thank you for reading this far and considering contributing! Contributions are very much appreciated, and they are what makes this project what it is! We are looking for contributions of features/feature requests, bug fixes, documentation fixes, and anything else you can think of! The best contributions are those that will add value to the user experience. If you need to get in touch, please see the [contact/help](#Contact/Help) section.
+
+Please take a look at the information below before contributing. Also, please take a look at the [code of conduct](https://github.com/TanayB11/chinese-ocr/blob/master/CODE_OF_CONDUCT.md). We expect that you follow these standards, and we will enforce them. Please report any violations by sending me an <a href='mailto: tanaybiradar24@gmail.com'>email</a>. 
 
 ### Issues
 Browse through the [issues](https://github.com/TanayB11/chinese-ocr/issues) or submit one. Here are a couple guidelines to follow:
