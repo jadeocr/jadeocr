@@ -1,7 +1,7 @@
 <template>
 	<div id='deck-list'>
 		<div v-if='$store.state.numOfDecks' class='mt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 font-normal text-center'>
-				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='w-4/5 mt-4 col-span-1'>
+				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='mr-4 md:mr-12 mt-4 mb-8	 col-span-1'>
 					<div class='bg-black rounded-md px-12 py-12 decklist'>
 						<div>
 							<router-link id='edit-link' class="font-normal"
@@ -14,9 +14,11 @@
 								Learn
 							</div>
 						</router-link>
-						<div class="mt-3 -mb-3 text-sm" v-if='view == "learn"' :class="dueInfoColor">
-							Due in {{ $store.state.nextLearn[i] }}
-							<span v-if='$store.state.nextLearn[i] == 1'>day</span>
+						<div class="mt-3 -mb-3 text-sm" v-if='view == "learn"' :class="dueInfoColor[i]">
+							<span v-if="untilDue[i] >= 0">Due in</span> 
+							<span v-else>Overdue by</span>
+							{{ Math.abs(untilDue[i]) }}
+							<span v-if='untilDue[i] == 1'>day</span>
 							<span v-else>days</span>
 						</div>
 						<!-- TODO: Sort by due date -->
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+import * as moment from 'moment'
 export default {
 	name: 'DeckList',
 	props: {
@@ -34,21 +37,37 @@ export default {
 	},
 	data() {
 		return {
-			dueInfoColor: ''
+			dueInfoColor: [],
+			untilDue: [],
 		}
 	},
 	methods: {
+		getDueDifference(due) {
+			due = moment(due, 'YYYY-MM-DD')
+			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
+			return moment.duration(due.diff(now)).asDays()
+		},
 		dueInfo() {
-			for (let i = 0; i < this.$store.state.nextLearn.length; i++) {
-				(this.$store.state.nextLearn[i] > 0) ? 
-					this.dueInfoColor = 'text-green-300'
-					: this.dueInfoColor = 'text-red-400'
+			let dues = []
+			for (let i = 0; i < this.$store.state.decks.length; i++) {
+				for (let duedate in this.$store.state.decks[i].dueDates) {
+					dues.push(this.getDueDifference(this.$store.state.decks[i].dueDates[duedate]))
+				}
+				this.untilDue.push(Math.min(...dues))
+				console.log(this.untilDue[i])
+				if (this.untilDue[i] > 0) {
+					this.dueInfoColor.push('text-green-300')
+				} else {
+					this.dueInfoColor.push('text-red-400')
+				}
+				dues = []
 			}
 		}
 	},
 	beforeCreate() {
 		this.$store.commit('addError', '')
 		this.$store.dispatch('getDecks')
+		.then(this.$store.dispatch('getServerTime'))
 	},
 	mounted() {
 		this.dueInfo()

@@ -14,7 +14,7 @@
 				<div>{{ totalSeen.reduce((a, b) => a+b, 0) }} / {{ totalCards }} card{{plural[2]}} seen</div>
 			</div>
 			<div v-if='$store.state.numOfDecks' class='my-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 text-center'>
-				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='w-4/5 mt-4 col-span-1'>
+				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='mr-4 md:mr-12 mt-4 mb-8 col-span-1'>
 					<div class='bg-black rounded-md px-12 py-12 decklist'>
 						<div>
 							<router-link id='edit-link' class="font-normal"
@@ -22,11 +22,21 @@
 								{{ $store.state.decks[i].name }}
 							</router-link>
 						</div>
-						<p> Due in {{ $store.state.nextLearn[i] }}{{ plural[0] }} day</p>
-						<p v-if="$store.state.decks[i].numOfWords==1">{{ $store.state.decks[i].numOfWords }} card</p>
-						<p v-else>{{ $store.state.decks[i].numOfWords }} cards</p>
+						<div class="text-sm">
+						<div>
+							<div class="mt-3 mb-1 text-sm" :class="dueInfoColor[i]">
+								<span v-if="untilDue[i] >= 0">Due in</span> 
+								<span v-else>Overdue by</span>
+								{{ Math.abs(untilDue[i]) }}
+								<span v-if='untilDue[i] == 1'>day</span>
+								<span v-else>days</span>
+							</div>
+						</div>
 
-						<p>{{ totalSeen[i] }} card{{ plural[3] }} seen</p>
+						<p>{{ totalSeen[i] }} / {{ $store.state.decks[i].numOfWords }} cards seen</p>
+
+						<p class='pt-2'> Easiness: {{ easinessAverage[i] }} </p>
+						</div>
 						<!-- TODO: Sort by due date, show stats -->
 					</div>
 				</div>
@@ -38,8 +48,8 @@
 <script>
 import Sidebar from '../components/Sidebar'
 // import LineChart from '../chart/linechart'
-
- export default {
+import * as moment from 'moment'
+export default {
     components: {
 			Sidebar,
 			// LineChart
@@ -63,33 +73,59 @@ import Sidebar from '../components/Sidebar'
 				// chartBg: '#bb86fc',
 				totalCards: 0,
 				totalSeen: [],
-				plural: ['s', 's', 's', 's'],
+				plural: [[], 's', 's'],
+				dueInfoColor: [],
+				easinessAverage: [],
+				untilDue: [],
       }
     },
     methods: {
-	// 		formatData() {
-	// 			for (let i = 0; i < this.$store.state.decks.length; i++) {
-	// 				this.datasets.push({
-	// 					label: this.$store.state.decks[i].name,
-	// 					data: [this.$store.state.decks[i].numOfWords],
-	// 					backgroundColor: this.chartBg
-	// 				})
-	// 			}
-	// 		},
+		// 	formatData() {
+		// 		for (let i = 0; i < this.$store.state.decks.length; i++) {
+		// 			this.datasets.push({
+		// 				label: this.$store.state.decks[i].name,
+		// 				data: [this.$store.state.decks[i].numOfWords],
+		// 				backgroundColor: this.chartBg
+		// 			})
+		// 		}
+		// 	},
     //   fillData () {
     //     this.datacollection = {
-	// 				labels: this.labels,
+		// 			labels: this.labels,
     //       datasets: this.datasets
-    //     }
-    //   }
+		//     }
+		// }
+			getDueDifference(due) {
+				due = moment(due, 'YYYY-MM-DD')
+				let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
+				return moment.duration(due.diff(now)).asDays()
+			},
+			dueInfo() {
+				let dues = []
+				for (let i = 0; i < this.$store.state.decks.length; i++) {
+					for (let duedate in this.$store.state.decks[i].dueDates) {
+						dues.push(this.getDueDifference(this.$store.state.decks[i].dueDates[duedate]))
+					}
+					this.untilDue.push(Math.min(...dues))
+					console.log(this.untilDue[i])
+					if (this.untilDue[i] > 0) {
+						this.dueInfoColor.push('text-green-300')
+					} else {
+						this.dueInfoColor.push('text-red-400')
+					}
+					dues = []
+				}
+			}
 		},
 		created() {
 			this.$store.dispatch('getDecks')
 			.then(() => {
-				this.$store.commit('nextLearnDates')
 				for (let i = 0; i < this.$store.state.decks.length; i++) {
 					this.totalSeen.push(0)
-					if (this.$store.state.nextLearn[i] == 1) this.plural[0] = ''
+					this.easinessAverage.push(
+						(this.$store.state.decks[i].easiness.reduce((a, b) => Number(a)+Number(b)) / this.$store.state.decks[i].easiness.length).toFixed(1))
+					if (this.$store.state.nextLearn[i] == 1) this.plural[0].push('')
+					else this.plural[0].push('s')
 					this.totalCards += this.$store.state.decks[i].numOfWords
 					for (let repetition in this.$store.state.decks[i].repetitions) {
 						if (repetition > 0) this.totalSeen[i]++
@@ -98,13 +134,11 @@ import Sidebar from '../components/Sidebar'
 
 				if (this.$store.state.decks.length == 1) this.plural[1] = ''
 				if (this.totalCards == 1) this.plural[2] = ''
-				if (this.totalSeen.reduce((a, b) => a+b, 0) == 1) this.plural[3] = ''
 			})
 			
 		},
 		mounted() {
-			this.formatData()
-      this.fillData()
+			this.dueInfo()
     }
   }
 </script>

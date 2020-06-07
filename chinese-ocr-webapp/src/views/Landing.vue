@@ -97,7 +97,7 @@
             <p>
               This project is licensed under the 
               <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal hoverlink'>
-                MIT License
+                MIT License.
               </a>
             </p>
           </div>

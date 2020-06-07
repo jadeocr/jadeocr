@@ -32,7 +32,6 @@ export default new Vuex.Store({
     numOfDecks: 0,
     decks: [],
     serverTime: null,
-    nextLearn: []
   },
   mutations: {
     updateUser(state, payload) {
@@ -69,11 +68,6 @@ export default new Vuex.Store({
     updateServerTime(state, payload) {
       state.serverTime = moment.utc(moment.unix(payload.seconds))
     },
-    nextLearnDates(state) {
-      for (let i = 0; i < state.decks.length; i++) {
-        state.nextLearn.push(Math.min.apply(Math, state.decks[i].interval))
-      }
-    }
   },
   actions: {
     signInWithGoogleAction({ commit }) {
