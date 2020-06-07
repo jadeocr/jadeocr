@@ -14,7 +14,7 @@
 								Learn
 							</div>
 						</router-link>
-						<div class="mt-3 -mb-3 text-sm" v-if='view == "learn"' :class="dueInfoColor[i]">
+						<div class="mt-3 -mb-3 text-sm font-light" v-if='view == "learn"' :class="dueInfoColor[i]">
 							<span v-if="untilDue[i] >= 0">Due in</span> 
 							<span v-else>Overdue by</span>
 							{{ Math.abs(untilDue[i]) }}

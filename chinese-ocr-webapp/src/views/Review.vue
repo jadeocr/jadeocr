@@ -270,9 +270,9 @@ export default {
 			this.ctx.lineCap = 'round'
 			this.ctx.strokeStyle = '#ffffff'
 
-			this.canvas.addEventListener("mousemove", this.draw, false)
-			this.canvas.addEventListener("mousedown", this.setPos, false)
-			this.canvas.addEventListener("mouseenter", this.setPos, false)
+			this.canvas.addEventListener("pointermove", this.draw, false)
+			this.canvas.addEventListener("pointerdown", this.setPos, false)
+			this.canvas.addEventListener("pointerenter", this.setPos, false)
 		}
 	}
 }
@@ -329,6 +329,7 @@ export default {
 }
 
 canvas {
+	touch-action: none;
 	border-radius: 10px 10px 10px 10px;
 	width: 100%;	
 	height: 87.5%;
