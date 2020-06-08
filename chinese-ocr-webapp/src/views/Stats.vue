@@ -23,19 +23,9 @@
 							</router-link>
 						</div>
 						<div class="text-sm">
-						<div>
-							<div class="mt-3 mb-1 text-sm" :class="dueInfoColor[i]">
-								<span v-if="untilDue[i] >= 0">Due in</span> 
-								<span v-else>Overdue by</span>
-								{{ Math.abs(untilDue[i]).toFixed(0) }}
-								<span v-if='untilDue[i] == 1'>day</span>
-								<span v-else>days</span>
-							</div>
-						</div>
-
-						<p>{{ totalSeen[i] }} / {{ $store.state.decks[i].numOfWords }} cards seen</p>
-
-						<p class='pt-2'> Easiness: {{ easinessAverage[i] }} </p>
+							<DueDate :untilDue='untilDue[i]' :color='dueInfoColor[i]' class="mt-3 mb-1"/>
+							<p>{{ totalSeen[i] }} / {{ $store.state.decks[i].numOfWords }} cards seen</p>
+							<p class='pt-2'> Easiness: {{ easinessAverage[i] }} </p>
 						</div>
 						<!-- TODO: Sort by due date, show stats -->
 					</div>
@@ -47,11 +37,12 @@
 
 <script>
 import Sidebar from '../components/Sidebar'
+import DueDate from '../components/DueDate'
 import * as moment from 'moment'
 export default {
     components: {
 			Sidebar,
-			// LineChart
+			DueDate
     },
     data () {
       return {

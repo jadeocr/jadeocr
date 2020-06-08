@@ -14,12 +14,8 @@
 								Learn
 							</div>
 						</router-link>
-						<div class="mt-3 -mb-3 text-sm font-light" v-if='view == "learn"' :class="dueInfoColor[i]">
-							<span v-if="untilDue[i] >= 0">Due in</span> 
-							<span v-else>Overdue by</span>
-							{{ Math.abs(untilDue[i]).toFixed(0) }}
-							<span v-if='untilDue[i] == 1'>day</span>
-							<span v-else>days</span>
+						<div v-if='view == "learn"'>
+							<DueDate :untilDue='untilDue[i]' :color='dueInfoColor[i]' class="mt-2 -mb-2"/>
 						</div>
 						<!-- TODO: Sort by due date -->
 					</div>
@@ -29,9 +25,13 @@
 </template>
 
 <script>
+import DueDate from '../components/DueDate'
 import * as moment from 'moment'
 export default {
 	name: 'DeckList',
+	components: {
+		DueDate
+	},
 	props: {
 		view: String
 	},
