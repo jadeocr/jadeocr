@@ -160,19 +160,23 @@ export default {
 			easiness = Math.max(1.3, repetitionFormula)
 			this.deck.easiness[index] = Number.parseFloat(easiness).toFixed(1)
 		
-
 			if (quality == 0) { // Modified for only 2 quality buttons (is either 0 or 5)
 				this.deck.repetitions[index] = 0
 			} else {
 				this.deck.repetitions[index]++
 			}
 
+			let currDue = moment(this.deck.dueDates[index], 'YYYY-MM-DD')
+			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
+			let difference = moment.duration(currDue.diff(now)).asDays().toFixed(0)
+			if (difference == interval) return
+
 			if (repetitions <= 1) {
-				this.deck.interval[index] = 1;
+				this.deck.interval[index] = 1
 			} else if (repetitions == 2) {
-				this.deck.interval[index] = 6;
+				this.deck.interval[index] = 6
 			} else {
-				this.deck.interval[index] = Math.round(interval * easiness);
+				this.deck.interval[index] = Math.round(interval * easiness)
 			}
 
 			// TODO: Add enhancements to tune SM-2 algorithm

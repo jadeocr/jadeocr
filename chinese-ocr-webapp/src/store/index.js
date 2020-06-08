@@ -114,7 +114,7 @@ export default new Vuex.Store({
             .then(commit('addError', ''))  
             .then(() => {
               dispatch('getDecks')
-                .then(router.push('/dashboard/decks'))
+                .then(router.push('/dashboard/learn'))
                 .catch(error => console.log(error)) 
             })
         } else if (isRenaming) {
@@ -125,7 +125,7 @@ export default new Vuex.Store({
                 .then(() => {
                   commit('addError', '')
                   dispatch('getDecks')
-                    .then(router.push('/dashboard/decks'))
+                    .then(router.push('/dashboard/learn'))
                     .catch(error => console.log(error)) 
                 })
             })
@@ -163,7 +163,7 @@ export default new Vuex.Store({
       if (state.signedIn && state.userInfo.uid) {
         let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(name)
         docRef.delete()
-          .then(router.push('/dashboard/decks'))
+          .then(router.push('/dashboard/learn'))
           .then(dispatch('getDecks'))
           .catch(error => console.log(error))
       }
