@@ -64,12 +64,12 @@ export default {
 		}
 	},
 	beforeCreate() {
-		this.$store.commit('addError', '')
-		this.$store.dispatch('getDecks')
-		.then(this.$store.dispatch('getServerTime'))
 	},
 	mounted() {
-		this.dueInfo()
+		this.$store.commit('addError', '')
+		this.$store.dispatch('getServerTime')
+		.then(this.$store.dispatch('getDecks'))
+		.then(this.dueInfo())
 	}
 }
 </script>

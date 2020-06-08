@@ -21,10 +21,6 @@ export default {
 	},
 	props: {
 		deckName: String
-	},
-		beforeCreate() {
-		this.$store.commit('addError', '')
-		this.$store.dispatch('getDecks')
 	}
 }
 </script>
