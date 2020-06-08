@@ -80,12 +80,16 @@ export default {
 		collapse() {
 			let currPos = $('#sidebar-content').css('left')
 			if (currPos == '0px') {
-				$('#sidebar-content').css('left', '-300px')
+				$('#sidebar-content').css('left', '-100vw')
 				$('#page-content').css('width', '100vw')
+				$('#page-content').css('opacity', '100%')
+				$('#page-content').css('visibility', 'visible')
 				this.$store.commit('toggleSidebarState')
 			} else {
 				$('#sidebar-content').css('left', '0px')
-				$('#page-content').css('width', 'calc(100vw - 300px)')
+				$('#page-content').css('width', '0px')
+				$('#page-content').css('opacity', '0%')
+				$('#page-content').css('visibility', 'hidden')
 				this.$store.commit('toggleSidebarState')
 			}
 		}
@@ -99,12 +103,13 @@ export default {
 	left: 0px;
 	width: 300px;
 	-webkit-transition: left 0.3s ease;
-	transition: left 0.3s ease;
+	transition: left 0.3s ease
 }
 
 @media(max-width: 640px) {
 	#sidebar-content {
-		left: -300px;
+		width: 100vw;
+		left: -100vw;
 	}
 }
 
@@ -113,4 +118,5 @@ export default {
 	left: 20px;
 	top: 20px;
 }
+
 </style>

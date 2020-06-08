@@ -110,4 +110,9 @@ body {
   background: rgba(255,255,255,0.2);
   -webkit-border-radius: 100px;
 }
+
+#page-content {
+	-webkit-transition: width 0.3s ease, opacity 0.1s ease, visibility 0.1s ease;
+	transition: width 0.3s ease, opacity 0.1s ease, visibility 0.1s ease;
+}
 </style>
