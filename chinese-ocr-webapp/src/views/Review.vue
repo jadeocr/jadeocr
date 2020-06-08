@@ -182,6 +182,7 @@ export default {
 		submitFinished() {
 			this.$store.dispatch('createDeck', {
 				method: 'edit',
+				originalName: this.name,
 				name: this.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})

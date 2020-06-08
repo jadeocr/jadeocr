@@ -98,6 +98,7 @@ export default {
 				interval: [],				// In days, used to calculate dueDates
 				repetitions: [],
 				easiness: [],
+				originalName: String
 			}
 		}
 	},
@@ -106,6 +107,7 @@ export default {
 			this.deck = this.$store.state.decks.find(obj => {
 				return obj.name == this.name
 			})
+			this.originalName = this.deck.name
 		},
 		pushData(){
 			this.deck.cards.push({
@@ -149,6 +151,7 @@ export default {
 			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('createDeck', {
 				method: this.view,
+				originalName: this.originalName,
 				name: this.deck.name,
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
@@ -176,7 +179,6 @@ export default {
 		}
 	},
 	mounted() {
-		console.clear()
 		this.$store.commit('addError', '')
 		if (this.view == 'create') {
 			this.resetDeck()

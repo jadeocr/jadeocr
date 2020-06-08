@@ -108,18 +108,23 @@ export default new Vuex.Store({
     createDeck({ state, dispatch, commit }, payload) {
       if (state.signedIn && state.userInfo.uid) {
         let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
-        docRef.get()
-        .then(doc => {
-          if (!doc.exists || (payload.method == 'edit')) {
-            docRef.set(payload.deck, { merge: true })
-              .then(commit('addError', ''))
-              .then(router.push('/dashboard/decks'))
-              .then(dispatch('getDecks'))
-              .catch(error => console.log(error))          
-          } else {
-            commit('addError', 'A deck with this name already exists')
-          }
-        })
+        let isRenaming = ((payload.name != payload.originalName))
+        if ((payload.method == 'create') || !isRenaming) {
+          docRef.set(payload.deck, { merge: true })    
+            .then(commit('addError', ''))  
+        } else if (isRenaming) {
+          let originalDocRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.originalName)
+          docRef.set(payload.deck, { merge: true })
+            .then(() => {
+              originalDocRef.delete()
+              commit('addError', '')
+            })
+        } else {
+          commit('addError', 'A deck with this name already exists')
+        }
+        dispatch('getDecks')
+          .then(router.push('/dashboard/decks'))
+          .catch(error => console.log(error)) 
       }
     },
     showSuccess({ commit }, message) { // Fade for deck creation success message
