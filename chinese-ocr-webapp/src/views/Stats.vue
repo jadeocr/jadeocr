@@ -92,10 +92,11 @@ export default {
 				for (let i = 0; i < this.$store.state.decks.length; i++) {
 					this.totalSeen.push(0)
 					this.easinessAverage.push(
-						(this.$store.state.decks[i].easiness.reduce((a, b) => Number(a)+Number(b)) / this.$store.state.decks[i].easiness.length).toFixed(1))
+						(this.$store.state.decks[i].easiness.reduce((a, b) => Number(a)+Number(b)) / this.$store.state.decks[i].easiness.length).toFixed(1)
+					)
 					this.totalCards += this.$store.state.decks[i].numOfWords
-					for (let repetition in this.$store.state.decks[i].repetitions) {
-						if (repetition > 0) this.totalSeen[i]++
+					for (let j = 0; j <= this.$store.state.decks[i].repetitions.length; j++) {
+						if (this.$store.state.decks[i].repetitions[j] > 0) this.totalSeen[i]++
 					}
 				}
 
