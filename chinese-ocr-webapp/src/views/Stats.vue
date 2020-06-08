@@ -27,7 +27,7 @@
 							<div class="mt-3 mb-1 text-sm" :class="dueInfoColor[i]">
 								<span v-if="untilDue[i] >= 0">Due in</span> 
 								<span v-else>Overdue by</span>
-								{{ Math.abs(untilDue[i]) }}
+								{{ Math.abs(untilDue[i]).toFixed(0) }}
 								<span v-if='untilDue[i] == 1'>day</span>
 								<span v-else>days</span>
 							</div>
