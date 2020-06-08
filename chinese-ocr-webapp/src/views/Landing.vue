@@ -93,7 +93,7 @@
       <div id="footer-content" class='py-8 text-xs lg:text-sm'>
         <div class="text-center grid grid-cols-1 lg:grid-cols-2 opacity-87">
           <div class="col-span-1 w-1/2 m-auto text-center">
-            <p>© 2020 Tanay Biradar</p>
+            <p>Tanay Biradar, Riley Kong</p>
             <p>
               This project is licensed under the 
               <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal hoverlink'>

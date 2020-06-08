@@ -54,7 +54,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="block md:hidden ml-8 mt-8">
+		<div class="block md:hidden ml-8 mt-8 sidebar-button">
 			<button @click='collapse'
 			class='py-1 px-2 btn-purple opacity-87 hover:opacity-75 text-white rounded'>
 				<svg class="bi bi-list" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -106,5 +106,11 @@ export default {
 	#sidebar-content {
 		left: -300px;
 	}
+}
+
+#sidebar-button {
+	position: fixed;
+	left: 20px;
+	top: 20px;
 }
 </style>

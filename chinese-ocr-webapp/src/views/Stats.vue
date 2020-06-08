@@ -3,11 +3,8 @@
 		<div class='col-span-1'>
 			<Sidebar/>
 		</div>
-		<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 mt-12 md:mt-0 overflow-y-scroll' id='page-content'>
+		<div class='col-span-1 ml-8 md:ml-0 mt-20 p-8 md:px-8 overflow-y-scroll' id='page-content'>
 			<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Stats</p>
-			<!-- <div hidden class="w-1/2 chart mt-8 opacity-87">
-				<line-chart :options='options' :chart-data="datacollection"></line-chart>
-			</div> -->
 			<div class="mt-8 md:mt-10 opacity-87 text-sm lg:text-md xl:text-lg">
 				<h1 class="mb-0 md:mb-2 text-lg lg:text-xl xl:text-2xl font-normal">General</h1>
 				<div>{{ $store.state.decks.length }} deck{{plural[1]}}</div>

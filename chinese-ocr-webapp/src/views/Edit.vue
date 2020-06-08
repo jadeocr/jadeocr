@@ -3,7 +3,8 @@
 		<div class='col-span-1'>
 			<Sidebar/>
 		</div>
-		<div class='col-span-1 ml-8 md:ml-0 mt-10 md:mt-20 p-8 md:px-8 overflow-x-none overflow-y-auto' id='page-content'>
+		<div class='col-span-1 ml-8 md:ml-0 md:mt-20 p-8 md:px-8 mt-20
+		overflow-x-none overflow-y-auto' id='page-content'>
 			<DeckGrid view='edit' :name='name'/>
 		</div>
 	</div>
@@ -25,5 +26,7 @@ export default {
 </script>
 
 <style scoped>
-
+#page-content {
+	height: 80vh;
+}
 </style>
