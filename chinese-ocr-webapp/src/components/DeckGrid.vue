@@ -24,35 +24,35 @@
 		</div>
 		<div class='mt-6'>
 			<div class="w-1/2 lg:w-1/4">
-				<input v-model='deck.name' class="bg-gray-300 shadow appearance-none rounded w-full py-2 px-4 text-gray-800 
-				leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Deck name'>
+				<input v-model='deck.name' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
+				leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder='Deck name'>
 				<p v-if='$store.state.formError.length' class='text-red-300 text-sm mt-1 -mb-1'>{{ $store.state.formError }}</p>
 			</div>
 			<div class="w-4/5 lg:w-2/5 mt-4 mb-12">
-				<input v-model='deck.description' class="bg-gray-300 shadow appearance-none rounded w-full py-2 px-4 text-gray-800 
-				leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder='Description'>
-				<div class="flex">
-					<div class="font-normal text-xl mt-3 mr-3">
+				<input v-model='deck.description' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
+				leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder='Description'>
+				<div class="flex mt-3">
+					<div class="text-xl mt-3 mr-3">
 						OCR
 					</div>
-					<toggle-button class='mt-4' v-model="deck.ocr"/>
+					<toggle-button class='mt-4 opacity-87' v-model="deck.ocr"/>
 				</div>
 			</div>
 			<!-- TODO: Add deck language -->
-			<div v-for='(n, i) in deck.numOfWords' :key='i.key' >
+			<div v-for='(n, i) in deck.numOfWords' :key='i.key'>
 				<form>
 					<div class="flex flex-wrap -mx-3 mb-6">
 						<div class="w-1/3 lg:w-1/4 px-3">
-							<input v-model='deck.cards[i].pinyin' class="bg-gray-300 shadow appearance-none rounded w-full py-3 px-4 text-gray-800 
-							leading-tight focus:outline-none focus:shadow-outline" type="text" :placeholder='(i+1) + ".  huā"'>
+							<input v-model='deck.cards[i].pinyin' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
+							leading-tight focus:outline-none focus:shadow-outline-none" type="text" :placeholder='(i+1) + ".  huā"'>
 						</div>
 						<div class="w-1/3 lg:w-1/4 px-3">
-							<input v-model='deck.cards[i].hanzi' class="bg-gray-300 shadow appearance-none rounded w-full py-3 px-4 text-gray-800 
-							leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="花">
+							<input v-model='deck.cards[i].hanzi' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
+							leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder="花">
 						</div>
 						<div class="w-1/3 lg:w-1/4 px-3">
-							<input v-model='deck.cards[i].definition' class="bg-gray-300 shadow appearance-none rounded w-full py-3 px-4 text-gray-800 
-							leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="flower">
+							<input v-model='deck.cards[i].definition' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
+							leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder="flower">
 						</div>
 					</div>
 				</form>
@@ -197,5 +197,13 @@ export default {
 </script>
 
 <style scoped>
+input {
+	background-color: transparent;
+	border-bottom: 2px solid rgba(255,255,255,0.4);
+	transition: border-bottom 0.25s ease-in-out;
+}
+input:focus {
+	border-bottom: 2px solid rgba(255,255,255,1);
+}
 
 </style>
