@@ -191,9 +191,6 @@ export default {
 				deck: JSON.parse(JSON.stringify(this.deck))
 			})
 		},
-		randInt(min, max) {
-			return Math.floor(Math.random() * (max - min) + min)
-		},
 		cardCheck(correctness) {
 			if (correctness == 'correct') {
 				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 5)
@@ -201,7 +198,7 @@ export default {
 				this.calculateSuperMemo2(this.dueIndices[this.currentIndex], 0)
 			}
 
-			if (((this.currentIndex == (this.dueIndices.length - 1)) && (this.currentIndex < this.randInt(10, 20)))) {
+			if (((this.currentIndex == this.dueIndices.length - 1) || (this.currentIndex == 15))) {
 				this.submitFinished()
 			} else {
 				this.nextCard()
@@ -341,6 +338,7 @@ canvas {
 	border-radius: 10px 10px 10px 10px;
 	width: 100%;	
 	height: 87.5%;
+	touch-action: none;
 }
 
 .bi {
