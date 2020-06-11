@@ -131,7 +131,6 @@ export default {
 						this.pred = 'No Prediction'
 					}
 				})
-				.then(this.clearCanvas())
 				.catch(error => console.log(error))
     },
 		flipCard() {
