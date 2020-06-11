@@ -65,7 +65,6 @@ export default {
 			this.$store.dispatch('resetPassword', this.$store.state.userInfo.email)
 		},
 		deleteAccount() {
-			// TODO: Add confirmation screen
 			if (this.showConfirmation && (this.confirmedEmail == this.$store.state.userInfo.email)) { 
 				this.$store.dispatch('deleteAccount')
 			} else if (this.showConfirmation && !(this.confirmedEmail == this.$store.state.userInfo.email)) {
