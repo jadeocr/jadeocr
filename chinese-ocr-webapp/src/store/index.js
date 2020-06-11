@@ -92,10 +92,8 @@ export default new Vuex.Store({
         .catch(error => console.log(error))
     },
     resetPassword(state, email) {
-      if (state.signedIn && state.userInfo.uid) {
-        auth.sendPasswordResetEmail(email)
-          .catch(error => console.log(error))
-      }
+      auth.sendPasswordResetEmail(email)
+        .catch(error => console.log(error))
     },
     deleteAccount({ state }) {
       if (state.signedIn && state.userInfo.uid) {
