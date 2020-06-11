@@ -95,11 +95,12 @@ export default {
 				this.$store.commit('addError', '')
 				this.$store.dispatch('resetPassword', this.email.trim())
 					.then(this.$store.dispatch('showSuccess', 'Sent a password reset email'))
+					.then(this.$store.dispatch('showSuccess', ''))
 			}
 		},
 		mounted() {
 			this.$store.commit('addError', '')
-			this.$store.commit('addSuccess', '')
+			this.$store.dispatch('showSuccess', '')
 		}
 	}
 }

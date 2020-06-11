@@ -176,6 +176,7 @@ export default {
 			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('deleteDeck', this.deck.name)
 				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))
+				.then(this.$store.dispatch('showSuccess', ''))
 		}
 	},
 	mounted() {

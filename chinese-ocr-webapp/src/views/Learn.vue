@@ -22,6 +22,9 @@ export default {
 	},
 	props: {
 		deckName: String
+	},
+	mounted() {
+		
 	}
 }
 </script>
