@@ -97,9 +97,9 @@ export default new Vuex.Store({
     },
     deleteAccount({ state }) {
       if (state.signedIn && state.userInfo.uid) {
-        // TODO: Delete all user docs
-        // TODO: Check perms
         auth.currentUser.delete()
+          .then(router.push('/'))
+          .then(this.$store.commit('addError', ''))
           .catch(error => console.log(error))
       }
     },

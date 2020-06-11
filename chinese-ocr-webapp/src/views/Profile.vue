@@ -29,8 +29,16 @@
 					<div class="mt-6">
 						<button @click='deleteAccount'
 						class='btn-red opacity-87 text-white py-2 px-4 rounded'>
-							Delete Account
+							{{ deleteBtnText }}
 						</button>
+					</div>
+					<div v-if='showConfirmation' class='mt-4 w-1/4'>
+						<label class='block opacity-87 mb-2 font-normal'>
+							Confirm email
+						</label>
+						<input v-model='confirmedEmail' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 
+						leading-tight focus:outline-none focus:shadow-outline' type='text' placeholder='alice@example.com'>
+						<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1'>{{ $store.state.formError }}</p>
 					</div>
 				</div>
 			</div>
@@ -44,7 +52,9 @@ export default {
 	name: 'Profile',
 	data() {
 		return {
-			
+			showConfirmation: false,
+			confirmedEmail: '',
+			deleteBtnText: 'Delete Account'
 		}
 	},
 	components: {
@@ -56,7 +66,15 @@ export default {
 		},
 		deleteAccount() {
 			// TODO: Add confirmation screen
-			// this.$store.dispatch('deleteAccount')
+			if (this.showConfirmation && (this.confirmedEmail == this.$store.state.userInfo.email)) { 
+				this.$store.dispatch('deleteAccount')
+			} else if (this.showConfirmation && !(this.confirmedEmail == this.$store.state.userInfo.email)) {
+				this.$store.commit('addError', 'Incorrect Email')
+			} else {
+				this.showConfirmation = true
+				this.deleteBtnText = 'Confirm Delete'
+				this.$store.commit('addError', '')
+			}
 		}
 	}
 }
