@@ -38,21 +38,25 @@
 					</svg>
 				</button>
 			</div>
-			<!-- TODO: Add deck language -->
+			<!-- <div class='flex text-center mt-8 mb-2 opacity-87 font-normal text-lg		'>
+				<div class="w-1/3 lg:w-1/4">Front</div>
+				<div class="w-1/3 lg:w-1/4">Back</div>
+				<div class="w-1/3 lg:w-1/4">Notes</div>
+			</div> -->
 			<div v-for='(n, i) in deck.numOfWords' :key='i.key'>
 				<form>
 					<div class="flex flex-wrap -mx-3 mb-6">
 						<div class="w-1/3 lg:w-1/4 px-3">
 							<input v-model='deck.cards[i].pinyin' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
-							leading-tight focus:outline-none focus:shadow-outline-none" type="text" :placeholder='(i+1) + ".  huā"'>
+							leading-tight focus:outline-none focus:shadow-outline-none" type="text" :placeholder='(i+1) + ". " + placeholders[i%placeholders.length].front'>
 						</div>
 						<div class="w-1/3 lg:w-1/4 px-3">
 							<input v-model='deck.cards[i].hanzi' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
-							leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder="花">
+							leading-tight focus:outline-none focus:shadow-outline-none" type="text" :placeholder="placeholders[i%placeholders.length].back">
 						</div>
 						<div class="w-1/3 lg:w-1/4 px-3">
 							<input v-model='deck.cards[i].definition' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
-							leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder="flower">
+							leading-tight focus:outline-none focus:shadow-outline-none" type="text" :placeholder="placeholders[i%placeholders.length].notes">
 						</div>
 					</div>
 				</form>
@@ -99,7 +103,39 @@ export default {
 				repetitions: [],
 				easiness: [],
 				originalName: String
-			}
+			},
+			placeholders: [
+				{
+					front: 'huā',
+					back: '花',
+					notes: 'flower'
+				},
+				{
+					front: 'flower',
+					back: 'la flor',
+					notes: 'N/A'
+				},
+				{
+					front: 'flower',
+					back: '꽃',
+					notes: 'N/A'
+				},
+				{
+					front: 'hana',
+					back: '花',
+					notes: 'flower'
+				},
+				{
+					front: 'phool',
+					back: 'फूल',
+					notes: 'flower'
+				},
+				{
+					front: 'zahra',
+					back: 'زهرة',
+					notes: 'flower'
+				},
+			]
 		}
 	},
 	methods: {
