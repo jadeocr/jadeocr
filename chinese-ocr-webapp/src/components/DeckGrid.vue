@@ -7,21 +7,6 @@
 				<p class="mt-2 text-lg lg:text-xl xl:text-2xl font-normal">{{ name }}</p>
 			</div>
 		</div>
-		<div class="mt-8">
-			<button @click='addWord("add")'
-			class='btn btn-teal opacity-87 text-white py-2 px-4 rounded mr-4'>
-				<svg class="bi bi-plus" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-					<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
-				</svg>
-			</button>
-			<button @click='addWord("subtract")'
-			class='btn btn-red opacity-87 text-white py-2 px-4 rounded mr-4'>
-				<svg class="bi bi-dash" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
-				</svg>
-			</button>
-		</div>
 		<div class='mt-6'>
 			<div class="w-1/2 lg:w-1/4">
 				<input v-model='deck.name' class="shadow appearance-none w-full py-2 px-2 text-gray-200 
@@ -33,10 +18,25 @@
 				leading-tight focus:outline-none focus:shadow-outline-none" type="text" placeholder='Description'>
 				<div class="flex mt-3">
 					<div class="text-xl mt-3 mr-3">
-						OCR
+						Handwriting
 					</div>
 					<toggle-button class='mt-4 opacity-87' v-model="deck.ocr"/>
 				</div>
+			</div>
+			<div class="mt-10 mb-6">
+				<button @click='addWord("add")'
+				class='btn btn-teal opacity-87 text-white py-2 px-4 rounded mr-4'>
+					<svg class="bi bi-plus" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+						<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+					</svg>
+				</button>
+				<button @click='addWord("subtract")'
+				class='btn btn-red opacity-87 text-white py-2 px-4 rounded mr-4'>
+					<svg class="bi bi-dash" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+					</svg>
+				</button>
 			</div>
 			<!-- TODO: Add deck language -->
 			<div v-for='(n, i) in deck.numOfWords' :key='i.key'>
