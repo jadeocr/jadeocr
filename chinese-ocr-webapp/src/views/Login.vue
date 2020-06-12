@@ -37,7 +37,7 @@
 
 <script>
 import GoogleButton from '../components/GoogleButton'
-
+const sanitizer = require('sanitizer')
 export default {
 	name: 'Login',
 	components: {
@@ -50,7 +50,12 @@ export default {
 		}
 	},
 	methods: {
+		escape() {
+			this.email = sanitizer.escape(this.email)
+			this.password = sanitizer.escape(this.password)
+		},
 		checkForm() {
+			this.escape()
 			this.$store.commit('addError', '')
 			if ((!this.email) || (!this.password)){
 				this.$store.commit('addError', 'Please complete all fields')
@@ -87,6 +92,7 @@ export default {
 			this.clearFields()
 		},
 		resetPassword() {
+			this.escape()
 			if (!this.email) {
 				this.$store.commit('addError', 'Please enter your email')
 			} else if (!this.validEmail(this.email)) {

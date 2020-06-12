@@ -3,7 +3,7 @@
 		<div class='col-span-1'>
 			<Sidebar/>
 		</div>
-		<div class='col-span-1 ml-8 md:ml-0 mt-20 p-8 md:px-8' id='page-content'>
+		<div class='col-span-1 ml-8 md:ml-0 mt-20 p-8 md:px-8 overflow-y-scroll overflow-x-none' id='page-content'>
 			<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Profile</p>
 			<div v-if='$store.state.signedIn' class="flex items-center mt-8 md:mt-12 text-base sm:text-sm md:text-md lg:text-lg xl:text-xl">
 				<img class='w-12 md:w-16 rounded-full' :src='$store.state.userInfo.photoURL' alt="Profile Image">
@@ -48,6 +48,7 @@
 
 <script>
 import Sidebar from '../components/Sidebar'
+const sanitizer = require('sanitizer')
 export default {
 	name: 'Profile',
 	data() {
@@ -61,13 +62,17 @@ export default {
 		Sidebar
 	},
 	methods: {
+		sanitize(text) {
+			return sanitizer.escape(text)
+		},
 		resetPassword() {
-			this.$store.dispatch('resetPassword', this.$store.state.userInfo.email)
+			this.$store.dispatch('resetPassword', this.sanitize(this.$store.state.userInfo.email))
 		},
 		deleteAccount() {
-			if (this.showConfirmation && (this.confirmedEmail == this.$store.state.userInfo.email)) { 
+			let email = this.sanitize(this.$store.state.userInfo.email)
+			if (this.showConfirmation && (this.confirmedEmail == email)) { 
 				this.$store.dispatch('deleteAccount')
-			} else if (this.showConfirmation && !(this.confirmedEmail == this.$store.state.userInfo.email)) {
+			} else if (this.showConfirmation && !(this.confirmedEmail == email)) {
 				this.$store.commit('addError', 'Incorrect Email')
 			} else {
 				this.showConfirmation = true

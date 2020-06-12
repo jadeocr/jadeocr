@@ -76,7 +76,7 @@
 
 <script>
 import { ToggleButton } from 'vue-js-toggle-button'
-
+const sanitizer = require('sanitizer')
 export default {
 	name: 'DeckGrid',
 	props: {
@@ -103,6 +103,13 @@ export default {
 		}
 	},
 	methods: {
+		sanitize() {
+			this.deck.name = sanitizer.escape(this.deck.name)
+			this.deck.description = sanitizer.escape(this.deck.description)
+			for (let card in this.deck.cards) {
+				card = sanitizer.escape(card)
+			}
+		},
 		loadDeck() {
 			this.deck = this.$store.state.decks.find(obj => {
 				return obj.name == this.name
@@ -140,6 +147,7 @@ export default {
 			this.deck.easiness = Array.apply(null, Array(this.deck.numOfWords)).map(Number.prototype.valueOf, 2.5) // Easiest
 		},
 		trimDeck() {
+			this.sanitize()
 			for(let i = 0; i < this.deck.numOfWords; i++) {
 				if (!(this.deck.cards[i].pinyin || this.deck.cards[i].hanzi || this.deck.cards[i].definition)) {
 					this.spliceMetadata(i)
