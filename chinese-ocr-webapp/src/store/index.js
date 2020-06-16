@@ -165,14 +165,14 @@ export default new Vuex.Store({
         let decksRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
         decksRef.get()
           .then(snapshot => {
-            const promise = new Promise((resolve) => {
+            new Promise((resolve) => {
               commit('updateDecks', {
                 size: snapshot.size,
                 docs: snapshot.docs.map(doc => doc.data())
               })
               resolve()
             })
-            promise.then(dispatch('calculateUntilDue'))
+              .then(dispatch('calculateUntilDue'))
           })
           .catch(error => console.log(error))
       }
@@ -181,9 +181,14 @@ export default new Vuex.Store({
       if (state.signedIn && state.userInfo.uid) {
         let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(name)
         docRef.delete()
-          .then(router.push('/dashboard/learn'))
-          .then(dispatch('getDecks'))
-          .catch(error => console.log(error))
+          .then(() => {
+            new Promise((resolve) => {
+              dispatch('getDecks')
+              resolve()
+            })
+              .then(router.push('/dashboard/learn'))
+              .catch(error => console.log(error))
+          })
       }
     },
     getServerTime({ commit }) {
