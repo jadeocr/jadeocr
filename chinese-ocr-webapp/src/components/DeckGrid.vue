@@ -216,7 +216,7 @@ export default {
 				this.spliceMetadata(this.deck.numOfWords - 1)
 			}
 		},
-		deleteDeck() { // TODO: Add confirmation
+		deleteDeck() {
 			this.$store.commit('addSuccess', '')
 			this.$store.dispatch('deleteDeck', this.deck.name)
 				.then(this.$store.dispatch('showSuccess', 'Deck deleted successfully'))

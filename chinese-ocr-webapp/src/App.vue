@@ -114,6 +114,14 @@ body {
 	border-radius: 100px;
 }
 
+/* ::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	-ms-overflow-style: none;
+} */
+
 #page-content {
 	-webkit-transition: width 0.3s ease, opacity 0.1s ease, visibility 0.1s ease;
 	transition: width 0.3s ease, opacity 0.1s ease, visibility 0.1s ease;

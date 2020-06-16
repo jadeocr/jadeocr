@@ -32,6 +32,9 @@ export default new Vuex.Store({
     numOfDecks: 0,
     decks: [],
     serverTime: null,
+    untilDue: [], // For displaying due dates on deck list
+    dueInfoColor: [],
+    dueDifference: 0
   },
   mutations: {
     updateUser(state, payload) {
@@ -68,6 +71,25 @@ export default new Vuex.Store({
     updateServerTime(state, payload) {
       state.serverTime = moment.utc(moment.unix(payload.seconds))
     },
+    getDueDifference(state, due) {
+      due = moment(due, 'YYYY-MM-DD')
+      let now = moment(state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
+      state.dueDifference = moment.duration(due.diff(now)).asDays()
+    },
+    updateUntilDue(state, payload) {
+      state.untilDue = payload
+    },
+    clearDues(state) { // THIS IS A MUTATION
+      state.untilDue = []
+      state.dueInfoColor = []
+    },
+    updateDues(state, payload) {
+      if (payload.option == 'untilDue') {
+        state.untilDue.push(payload.data)
+      } else {
+        state.dueInfoColor.push(payload.data)
+      }
+    }
   },
   actions: {
     signInWithGoogleAction({ commit }) {
@@ -103,29 +125,23 @@ export default new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
-    createDeck({ state, dispatch, commit }, payload) {
+    createDeck({ state, commit }, payload) {
       if (state.signedIn && state.userInfo.uid) {
         let docRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.name)
         let isRenaming = ((payload.name != payload.originalName))
         if ((payload.method == 'create') || !isRenaming) {
           docRef.set(payload.deck, { merge: true })    
-            .then(commit('addError', ''))  
-            .then(() => {
-              dispatch('getDecks')
-                .then(router.push('/dashboard/learn'))
-                .catch(error => console.log(error)) 
-            })
+            .then(commit('addError', ''))
+            .then(router.push('/dashboard/learn'))
+            .catch(error => console.log(error))
         } else if (isRenaming) {
           let originalDocRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid).doc(payload.originalName)
           docRef.set(payload.deck, { merge: true })
             .then(() => {
               originalDocRef.delete()
-                .then(() => {
-                  commit('addError', '')
-                  dispatch('getDecks')
-                    .then(router.push('/dashboard/learn'))
-                    .catch(error => console.log(error)) 
-                })
+                .then(commit('addError', ''))
+                .then(router.push('/dashboard/learn'))
+                .catch(error => console.log(error))
             })
         } else {
           commit('addError', 'A deck with this name already exists')
@@ -144,15 +160,19 @@ export default new Vuex.Store({
       })
         .catch(error => console.log(error))
     },
-    getDecks({ state, commit }) {
+    getDecks({ state, commit, dispatch }) {
       if (state.signedIn && state.userInfo.uid) {
         let decksRef = db.collection('decks').doc('user-decks').collection(state.userInfo.uid)
         decksRef.get()
           .then(snapshot => {
-            commit('updateDecks', { 
-              size: snapshot.size,
-              docs: snapshot.docs.map(doc => doc.data())
+            const promise = new Promise((resolve) => {
+              commit('updateDecks', {
+                size: snapshot.size,
+                docs: snapshot.docs.map(doc => doc.data())
+              })
+              resolve()
             })
+            promise.then(dispatch('calculateUntilDue'))
           })
           .catch(error => console.log(error))
       }
@@ -168,6 +188,35 @@ export default new Vuex.Store({
     },
     getServerTime({ commit }) {
       commit('updateServerTime', firebase.firestore.Timestamp.now())
+    },
+    calculateUntilDue({ state, commit, dispatch }) {
+      dispatch('getServerTime')
+        .then(() => {
+          commit('clearDues')
+          for (let i = 0; i < state.decks.length; i++) {
+            let dues = []
+            for (let duedate in state.decks[i].dueDates) {
+              commit('getDueDifference', state.decks[i].dueDates[duedate])
+              dues.push(state.dueDifference)
+            }
+            commit('updateDues', {
+              option: 'untilDue',
+              data: Math.min(...dues)
+            })
+            if (state.untilDue[i] > 0) {
+              commit('updateDues', {
+                option: 'dueInfoColor',
+                data: 'text-green-300'
+              })
+            } else {
+              commit('updateDues', {
+                option: 'dueInfoColor',
+                data: 'text-red-400'
+              })
+            }
+          }
+        })
+        .catch(error => console.log(error))
     }
   },
   modules: {

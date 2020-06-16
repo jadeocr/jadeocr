@@ -15,7 +15,7 @@
 							</div>
 						</router-link>
 						<div v-if='view == "learn"'>
-							<DueDate :untilDue='untilDue[i]' :color='dueInfoColor[i]' class="mt-2 -mb-2"/>
+							<DueDate :untilDue='$store.state.untilDue[i]' :color='$store.state.dueInfoColor[i]' class="mt-2 -mb-2"/>
 						</div>
 						<!-- TODO: Sort by due date -->
 					</div>
@@ -26,7 +26,6 @@
 
 <script>
 import DueDate from '../components/DueDate'
-import * as moment from 'moment'
 export default {
 	name: 'DeckList',
 	components: {
@@ -35,41 +34,11 @@ export default {
 	props: {
 		view: String
 	},
-	data() {
-		return {
-			dueInfoColor: [],
-			untilDue: [],
-		}
-	},
-	methods: {
-		getDueDifference(due) {
-			due = moment(due, 'YYYY-MM-DD')
-			let now = moment(this.$store.state.serverTime.format('YYYY-MM-DD'), 'YYYY-MM-DD')
-			return moment.duration(due.diff(now)).asDays()
-		},
-		dueInfo() {
-			let dues = []
-			for (let i = 0; i < this.$store.state.decks.length; i++) {
-				for (let duedate in this.$store.state.decks[i].dueDates) {
-					dues.push(this.getDueDifference(this.$store.state.decks[i].dueDates[duedate]))
-				}
-				this.untilDue.push(Math.min(...dues))
-				if (this.untilDue[i] > 0) {
-					this.dueInfoColor.push('text-green-300')
-				} else {
-					this.dueInfoColor.push('text-red-400')
-				}
-				dues = []
-			}
-		}
-	},
 	beforeCreate() {
 	},
 	mounted() {
 		this.$store.commit('addError', '')
-		this.$store.dispatch('getServerTime')
-		.then(this.$store.dispatch('getDecks'))
-		.then(this.dueInfo())
+		this.$store.dispatch('getDecks')
 	}
 }
 </script>
