@@ -14,10 +14,7 @@
 								Learn
 							</div>
 						</router-link>
-						<div v-if='view == "learn"'>
-							<DueDate :untilDue='$store.state.untilDue[i]' :color='$store.state.dueInfoColor[i]' class="mt-2 -mb-2"/>
-						</div>
-						<!-- TODO: Sort by due date -->
+						<DueDate :untilDue='$store.state.untilDue[i]' :color='$store.state.dueInfoColor[i]' class="mt-2 -mb-2"/>
 					</div>
 				</div>
 			</div>
@@ -30,9 +27,6 @@ export default {
 	name: 'DeckList',
 	components: {
 		DueDate
-	},
-	props: {
-		view: String
 	},
 	beforeCreate() {
 	},

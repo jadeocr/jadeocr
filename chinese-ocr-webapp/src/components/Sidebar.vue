@@ -13,17 +13,6 @@
 				</router-link>
 			</div>
 			<div class="mb-16">
-				<router-link :to='{ name: "decks" }'>
-					<div class="flex items-center hover:opacity-75">
-						<svg class="bi bi-files" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M3 2h8a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V4a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/>
-							<path d="M5 0h8a2 2 0 012 2v10a2 2 0 01-2 2v-1a1 1 0 001-1V2a1 1 0 00-1-1H5a1 1 0 00-1 1H3a2 2 0 012-2z"/>
-						</svg>
-						<p class="ml-5">Decks</p>
-					</div>
-				</router-link>
-			</div>
-			<div class="mb-16">
 				<router-link :to='{ name: "stats" }'>
 					<div class="flex items-center hover:opacity-75">
 						<svg class="bi bi-graph-up" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
