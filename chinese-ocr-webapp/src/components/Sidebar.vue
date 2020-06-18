@@ -95,14 +95,7 @@ export default {
 	transition: left 0.3s ease
 }
 
-@media(max-width: 640px){
-	#sidebar-content {
-		width: 100vw;
-		left: -100vw;
-	}
-}
-
-@media (max-width: 768px) and (orientation:landscape) {
+@media(max-width: 640px) {
 	#sidebar-content {
 		width: 100vw;
 		left: -100vw;

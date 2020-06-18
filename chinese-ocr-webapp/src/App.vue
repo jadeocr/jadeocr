@@ -76,7 +76,6 @@ body {
 @media (max-width: 1280px) {
 	.page-content {
 		height: 80vh;
-		width: 100vw;
 	}
 }
 
@@ -93,6 +92,7 @@ body {
 @media(max-width: 640px) {
 	.page-content {
 		height: 72.5vh;
+		width: 100vw;
 	}
 }
 
