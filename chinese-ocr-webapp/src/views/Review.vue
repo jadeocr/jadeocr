@@ -51,7 +51,7 @@
 				</div>
 			</div>
 			<div v-if="pred"
-			class="mt-4 md:mt-8 text-green-300 text-lg md:text-xl">
+			class="mt-4 md:mt-8 text-teal-500 text-lg md:text-xl">
 				{{ pred }}
 			</div>
 		</div>

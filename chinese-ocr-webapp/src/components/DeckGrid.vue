@@ -20,12 +20,12 @@
 					<div class="text-xl mt-3 mr-3">
 						Handwriting
 					</div>
-					<toggle-button class='mt-4 opacity-87' v-model="deck.ocr"/>
+					<toggle-button class='mt-4 opacity-87 opacity-87' color='#4FD1C5' v-model="deck.ocr"/>
 				</div>
 			</div>
 			<div class="mt-10 mb-6">
 				<button @click='addWord("add")'
-				class='btn btn-teal opacity-87 text-white py-2 px-4 rounded mr-4'>
+				class='btn bg-teal-500 opacity-87 text-white py-2 px-4 rounded mr-4'>
 					<svg class="bi bi-plus" width="1.25em" height="1.25em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
 						<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
@@ -38,11 +38,6 @@
 					</svg>
 				</button>
 			</div>
-			<!-- <div class='flex text-center mt-8 mb-2 opacity-87 font-normal text-lg		'>
-				<div class="w-1/3 lg:w-1/4">Front</div>
-				<div class="w-1/3 lg:w-1/4">Back</div>
-				<div class="w-1/3 lg:w-1/4">Notes</div>
-			</div> -->
 			<div v-for='(n, i) in deck.numOfWords' :key='i.key'>
 				<form>
 					<div class="flex flex-wrap -mx-3 mb-6">

@@ -35,14 +35,6 @@ const routes = [
 		}
 	},
 	{
-		path: '/dashboard/decks',
-		name: 'decks',
-		component: () => import('../views/Decks'),
-		meta: {
-			requiresAuth: true
-		}
-	},
-	{
 		path: '/dashboard/stats',
 		name: 'stats',
 		component: () => import('../views/Stats'),

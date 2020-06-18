@@ -1,38 +1,37 @@
 <template>
 	<div id='deck-list'>
 		<div v-if='$store.state.numOfDecks' class='mt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 font-normal text-center'>
-				<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='mr-4 md:mr-12 mt-4 mb-8	 col-span-1'>
-					<div class='bg-black rounded-md px-12 py-12 decklist'>
-						<div>
-							<router-link id='edit-link' class="font-normal"
-							:to='{ path: `/edit/${$store.state.decks[i].name}` }'>
-								{{ $store.state.decks[i].name }}
-							</router-link>
-						</div>
-						<router-link :to='{ path: `/review/${$store.state.decks[i].name}` }'>
-							<div class='btn btn-purple opacity-87 text-white py-1 text-sm mt-2 rounded w-full'>
-								Learn
-							</div>
+			<div v-for='(n, i) in $store.state.numOfDecks' :key='i.key' class='mr-4 md:mr-12 mt-4 mb-8 col-span-1'>
+				<div class='bg-black rounded-md px-12 py-12 decklist'>
+					<div>
+						<router-link id='edit-link' class="font-normal"
+						:to='{ path: `/edit/${$store.state.decks[i].name}` }'>
+							{{ $store.state.decks[i].name }}
 						</router-link>
-						<div v-if='view == "learn"'>
-							<DueDate :untilDue='$store.state.untilDue[i]' :color='$store.state.dueInfoColor[i]' class="mt-2 -mb-2"/>
-						</div>
-						<!-- TODO: Sort by due date -->
 					</div>
+					<router-link :to='{ path: `/review/${$store.state.decks[i].name}` }'>
+						<div class='btn btn-purple opacity-87 text-white py-1 text-sm mt-2 rounded w-full'>
+							Learn
+						</div>
+					</router-link>
+					<DueDate :untilDue='$store.state.untilDue[i]' :color='$store.state.dueInfoColor[i]' class="mt-2 -mb-2"/>
 				</div>
 			</div>
+		</div>
+		<div v-else>
+			<CreateNewDeckMsg/>
+		</div>
 	</div>
 </template>
 
 <script>
 import DueDate from '../components/DueDate'
+import CreateNewDeckMsg from '../components/CreateNewDeckMsg'
 export default {
 	name: 'DeckList',
 	components: {
-		DueDate
-	},
-	props: {
-		view: String
+		DueDate,
+		CreateNewDeckMsg
 	},
 	beforeCreate() {
 	},
