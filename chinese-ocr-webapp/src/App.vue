@@ -64,7 +64,7 @@ body {
 	opacity: 0.87;
 }
 
-#page-content {
+.page-content {
 	position: fixed;
 	right: 0px;
 	width: calc(100vw - 300px);
@@ -73,22 +73,29 @@ body {
 	height: calc(98vh - 8.5rem);
 }
 
-@media(max-width: 640px) {
-	#page-content {
+@media (max-width: 1280px) {
+	.page-content {
+		height: 80vh;
 		width: 100vw;
-		height: 100vh;
+	}
+}
+
+@media(max-width: 1024px) {
+	.page-content {
+		height: 75vh;
 	}
 }
 @media(max-width: 768px) {
-	#page-content {
-		height: calc(98vh - 7.75rem);
+	.page-content {
+		height: 75vh;
 	}
 }
-@media(max-width: 1024px) {
-	#page-content {
-		height: calc(98vh - 4.5rem);
+@media(max-width: 640px) {
+	.page-content {
+		height: 72.5vh;
 	}
 }
+
 
 /* Credit to @devinrhode2 on GitHub: https://gist.github.com/devinrhode2/2573411 */
 ::-webkit-scrollbar {
@@ -122,7 +129,7 @@ body {
 	-ms-overflow-style: none;
 } */
 
-#page-content {
+.page-content {
 	-webkit-transition: width 0.3s ease, opacity 0.1s ease, visibility 0.1s ease;
 	transition: width 0.3s ease, opacity 0.1s ease, visibility 0.1s ease;
 }

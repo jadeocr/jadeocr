@@ -4,7 +4,7 @@
 		opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">
 			{{ name }}
 		</div>
-		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center'>	
+		<div class='w-3/5 lg:w-1/2 m-auto mt-8 text-center' id='flashcards'>	
 			<div class='card-container'>
 				<div
 				class='bg-black rounded-md py-6 card font-normal text-xl lg:text-2xl xl:text-3xl'>
