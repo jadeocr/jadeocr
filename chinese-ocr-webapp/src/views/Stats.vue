@@ -28,6 +28,9 @@
 					</div>
 				</div>
 			</div>
+			<div v-else>
+				<CreateNewDeckMsg/>
+			</div>
 		</div>
 	</div>
 </template>
@@ -35,11 +38,13 @@
 <script>
 import Sidebar from '../components/Sidebar'
 import DueDate from '../components/DueDate'
+import CreateNewDeckMsg from '../components/CreateNewDeckMsg'
 import * as moment from 'moment'
 export default {
     components: {
 			Sidebar,
-			DueDate
+			DueDate,
+			CreateNewDeckMsg
     },
     data () {
       return {

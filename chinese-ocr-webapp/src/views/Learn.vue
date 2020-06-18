@@ -7,7 +7,7 @@
 			<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Learn</p>
 			<div class="mt-8">
 				<router-link :to='{ name: "create" }'
-				class='btn btn-teal font-normal opacity-87 text-white py-2 px-4 rounded'>
+				class='btn bg-teal-500 font-normal opacity-87 text-white py-2 px-4 rounded'>
 					Create Deck
 				</router-link>
 			</div>
