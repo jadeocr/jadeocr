@@ -3,7 +3,7 @@
 		<div class='col-span-1'>
 			<Sidebar/>
 		</div>
-		<div class='col-span-1 ml-8 md:ml-0 mt-20 p-8 md:px-8 overflow-y-scroll' id='page-content'>
+		<div class='col-span-1 ml-8 md:ml-0 mt-20 p-8 md:px-8 overflow-y-scroll page-content'>
 			<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Stats</p>
 			<div class="mt-8 md:mt-10 opacity-87 text-sm lg:text-md xl:text-lg">
 				<h1 class="mb-0 md:mb-2 text-lg lg:text-xl xl:text-2xl font-normal">General</h1>

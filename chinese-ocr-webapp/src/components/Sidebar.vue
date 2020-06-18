@@ -70,15 +70,15 @@ export default {
 			let currPos = $('#sidebar-content').css('left')
 			if (currPos == '0px') {
 				$('#sidebar-content').css('left', '-100vw')
-				$('#page-content').css('width', '100vw')
-				$('#page-content').css('opacity', '100%')
-				$('#page-content').css('visibility', 'visible')
+				$('.page-content').css('width', '100vw')
+				$('.page-content').css('opacity', '100%')
+				$('.page-content').css('visibility', 'visible')
 				this.$store.commit('toggleSidebarState')
 			} else {
 				$('#sidebar-content').css('left', '0px')
-				$('#page-content').css('width', '0px')
-				$('#page-content').css('opacity', '0%')
-				$('#page-content').css('visibility', 'hidden')
+				$('.page-content').css('width', '0px')
+				$('.page-content').css('opacity', '0%')
+				$('.page-content').css('visibility', 'hidden')
 				this.$store.commit('toggleSidebarState')
 			}
 		}
@@ -95,7 +95,14 @@ export default {
 	transition: left 0.3s ease
 }
 
-@media(max-width: 640px) {
+@media(max-width: 640px){
+	#sidebar-content {
+		width: 100vw;
+		left: -100vw;
+	}
+}
+
+@media (max-width: 768px) and (orientation:landscape) {
 	#sidebar-content {
 		width: 100vw;
 		left: -100vw;
