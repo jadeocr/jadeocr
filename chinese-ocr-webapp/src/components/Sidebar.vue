@@ -1,6 +1,6 @@
 <template>
 	<div id='sidebar'>
-		<div class='px-8 md:px-16 py-20 md:py-32 font-normal' id='sidebar-content'>
+		<div class='px-8 md:px-16 py-20 md:py-32 font-normal mt-12 md:mt-32 lg:mt-12 xl:mt-20' id='sidebar-content'>
 			<div class="mb-16">
 				<router-link :to='{ name: "learn" }'>
 					<div class="flex items-center hover:opacity-75">
