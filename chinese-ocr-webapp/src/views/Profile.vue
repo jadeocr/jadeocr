@@ -15,6 +15,17 @@
 				</svg>
 				<p class="ml-8 chinese">特尼</p>
 			</div>
+			<div class="mt-20">
+				<div class="mt-20 text-blue-500">
+					<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">My Data</p>
+				</div>
+				<div>
+					<button @click="downloadJSON()"
+					class='mt-4 btn-blue opacity-87 text-white py-2 px-4 rounded'>
+						Export
+					</button>
+				</div>
+			</div>
 			<div>
 				<div class="mt-20 text-red-500">
 					<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Danger Zone</p>
@@ -49,13 +60,15 @@
 <script>
 import Sidebar from '../components/Sidebar'
 const sanitizer = require('sanitizer')
+import saveAs from 'file-saver'
 export default {
 	name: 'Profile',
 	data() {
 		return {
 			showConfirmation: false,
 			confirmedEmail: '',
-			deleteBtnText: 'Delete Account'
+			deleteBtnText: 'Delete Account',
+			deckString: JSON.stringify(this.$store.state.decks)
 		}
 	},
 	components: {
@@ -79,6 +92,10 @@ export default {
 				this.deleteBtnText = 'Confirm Delete'
 				this.$store.commit('addError', '')
 			}
+		},
+		downloadJSON() {
+			const blob = new Blob([this.deckString], {type: 'application/json'})
+			saveAs(blob, 'chinese-ocr-export.json')
 		}
 	}
 }
