@@ -26,9 +26,9 @@ There will be a link to the official deployment here after v1.0 has been release
 ## Quickstart
 In the **chinese-ocr-webapp** directory, run the following to quickly spin up a development instance.
 ```bash
-$ npm install        # Installs dependencies
-$ npm run twbuild    # Builds Tailwind CSS files
-$ npm run serve      # Compiles/hot-reloads dev server
+$ yarn install    # Installs dependencies
+$ yarn twbuild    # Builds Tailwind CSS files
+$ yarn serve      # Compiles/hot-reloads dev server
 ```
 
 ### Adding Firebase
@@ -45,14 +45,14 @@ export default {
 
 ### Development
 ```bash
-$ npm run serve      # Compiles/hot-reloads dev server
-$ npm run build      # Compiles/minifies -> dist for production
-$ npm run lint       # Lints/fixes files
+$ yarn serve      # Compiles/hot-reloads dev server
+$ yarn build      # Compiles/minifies -> dist for production
+$ yarn lint       # Lints/fixes files
 ```
 
 ### Deployment
 ```bash
-$ npm run devbuild   # Builds, deploys to Firebase Hosting, and removes dist
+$ yarn devbuild   # Builds, deploys to Firebase Hosting, and removes dist
 ```
 
 
