@@ -1,0 +1,8 @@
+tensorflow_cpu==2.2.0
+h5py==2.10.0
+tensorflowjs==2.0.1
+opencv_python==4.2.0.34
+numpy==1.19.0
+keras==2.4.3
+Pillow==7.1.2
+tensorflow==2.2.0
