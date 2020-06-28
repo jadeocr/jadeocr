@@ -15,7 +15,9 @@
 					</label>
 					<input v-model='password' class='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 mb-3 
 					leading-tight focus:outline-none focus:shadow-outline' type='password' placeholder='********'>
-					<button @click='resetPassword' class='text-xs text-blue-400 hover:text-blue-500'>Forgot Password?</button>
+					<button @click='resetPassword' class='text-xs text-blue-400 hover:text-blue-500'>
+						Forgot Password?
+					</button>
 					<p v-if='$store.state.formError.length' class='text-red-500 text-sm mt-1'>{{ $store.state.formError }}</p>
 					<p v-if='$store.state.formSuccess' class='text-green-500 text-sm mt-1 -mb-1' id='successField'>{{ $store.state.formSuccess }}</p>
 				</div>
