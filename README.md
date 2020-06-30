@@ -1,7 +1,7 @@
-# chinese-ocr
-Chinese-ocr is a beautiful web-based [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcard app for learning languages (not just Chinese), complete with handwriting recognition.
+# jadeocr
+Jadeocr is a beautiful web-based [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcard app for learning languages (not just Chinese), complete with handwriting recognition.
 
-This project ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet. Chinese-ocr makes the language-learning process more fun and more efficient.
+This project ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet. Jadeocr makes the language-learning process more fun and more efficient.
 
 
 ## Webapp
@@ -24,7 +24,7 @@ There will be a link to the official deployment here after v1.0 has been release
 
 
 ## Quickstart
-In the **chinese-ocr-webapp** directory, run the following to quickly spin up a development instance.
+In the **jadeocr-webapp** directory, run the following to quickly spin up a development instance.
 ```bash
 $ yarn install    # Installs dependencies
 $ yarn twbuild    # Builds Tailwind CSS files
@@ -32,7 +32,7 @@ $ yarn serve      # Compiles/hot-reloads dev server
 ```
 
 ### Adding Firebase
-To add the backend, create a project in [Firebase](https://firebase.google.com). Copy the JS config snippets from the Firebase console into the `firebaseConfig` in **chinese-ocr-webapp/src/firebase/credentials.js** to add the SDK credentials.
+To add the backend, create a project in [Firebase](https://firebase.google.com). Copy the JS config snippets from the Firebase console into the `firebaseConfig` in **jadeocr-webapp/src/firebase/credentials.js** to add the SDK credentials.
 ```javascript
 export default {
   firebaseConfig: {
@@ -57,9 +57,17 @@ $ yarn devbuild   # Builds, deploys to Firebase Hosting, and removes dist
 
 
 ## OCR CNN
-Currently, chinese-ocr uses the Google Cloud Vision API to handle handwriting recognition. In the future, we plan to implement custom neural network for better detection of languages not using the Latin script.
+Currently, jadeocr uses the Google Cloud Vision API to handle handwriting recognition. In the future, we plan to implement custom neural network for better detection of languages not using the Latin script.
 
 The OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). To train on the full dataset effectively, it is necessary to have more training examples per class.
+
+### Dependencies
+Create a virtual environment and install dependencies with:
+```bash
+$ cd convnet && virtualenv env     # Creates virtual env
+$ source env/bin/activate          # Activates virtual env
+$ pip3 install -r requirements.txt # Installs dependencies
+```
 
 ### Obtaining the Dataset
 To obtain the full dataset, download [**HWDB1.1train_gnt (2741MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1trn.zip) and [**HWDB1.1test_gnt (681MB)**](http://www.nlpr.ia.ac.cn/databases/download/feature_data/HWDB1.1tst.zip) and extract the zip files. Store them in the directory **convnet/data** and check that the extracted folders are named **HWDB1.1trn_gnt** and **HWDB1.1tst_gnt**, respectively.
@@ -68,22 +76,19 @@ To obtain the full dataset, download [**HWDB1.1train_gnt (2741MB)**](http://www.
 Run **convnet/src/preprocess.py** to convert from GNT to png.
 
 ### Training
-Modify **convnet/src/train.py** to reflect the number of classes you want to train the model on.
-```python
-model.add(Dense(NUMBER_OF_CLASSES, activation='softmax'))
-```
+Run **convnet/src/train.py** to train the model. You can tweak the hyperparameters at the top of the file.
 
 ### Prediction
-Save an image **convnet/src/test.jpg** that you would like to have the network predict to **convnet/data** and run **convnet/src/predict.py**.
+Save an image **convnet/data/tests/test.png** that you would like to have the network predict to and run **convnet/src/predict.py**.
 
 
 ## Contribute
 Thank you for reading this far and considering contributing! Contributions are very much appreciated, and they are what makes this project what it is! We are looking for contributions of features/feature requests, bug fixes, documentation fixes, and anything else you can think of! The best contributions are those that will add value to the user experience. If you need to get in touch, please see the [contact/help](#Contact/Help) section.
 
-Please take a look at the information below before contributing. Also, please take a look at the [code of conduct](https://github.com/TanayB11/chinese-ocr/blob/master/CODE_OF_CONDUCT.md). We expect that you follow these standards, and we will enforce them. Please report any violations by sending me an <a href='mailto: tanaybiradar24@gmail.com'>email</a>. 
+Please take a look at the information below before contributing. Also, please take a look at the [code of conduct](https://github.com/TanayB11/jadeocr/blob/master/CODE_OF_CONDUCT.md). We expect that you follow these standards, and we will enforce them. Please report any violations by sending me an <a href='mailto: tanaybiradar24@gmail.com'>email</a>. 
 
 ### Issues
-Browse through the [issues](https://github.com/TanayB11/chinese-ocr/issues) or submit one. Here are a couple guidelines to follow:
+Browse through the [issues](https://github.com/TanayB11/jadeocr/issues) or submit one. Here are a couple guidelines to follow:
 * Make sure all of your dependencies are up to date
 * Include steps to reproduce the issue
 * Expected behavior and what went wrong
@@ -95,7 +100,7 @@ Pull requests are also always welcome. Here are a couple simple guidelines:
 * Document your changes adequately when opening a pull request
 
 ### Donations
-If chinese-ocr has been of some value to you, and if you can afford it, please consider donating. Donations will always first be allocated to the upkeep of the project. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
+If jadeocr has been of some value to you, and if you can afford it, please consider donating. Donations will always first be allocated to the upkeep of the project. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
 * BTC: 15Y9NZjxTLWHDU8kVsqN7FKey3c1RPNiFi
 * (We'll add more options soon)
 

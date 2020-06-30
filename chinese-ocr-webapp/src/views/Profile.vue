@@ -95,7 +95,7 @@ export default {
 		},
 		downloadJSON() {
 			const blob = new Blob([this.deckString], {type: 'application/json'})
-			saveAs(blob, 'chinese-ocr-export.json')
+			saveAs(blob, 'jadeocr-export.json')
 		}
 	}
 }

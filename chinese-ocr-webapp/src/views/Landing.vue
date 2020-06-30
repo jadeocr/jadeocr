@@ -43,7 +43,7 @@
               title='Minimalist Design'
               body="
                 A modern, simple design inspired by Material Dark 
-                makes chinese-ocr fun and intuitive.
+                makes jadeocr fun and intuitive.
               "
             />
             <Feature name='ocr' :isFirstElement='false'
@@ -56,7 +56,7 @@
             <Feature name='cloud' :isFirstElement='false'
               title='Cloud Sync'
               body='
-                Chinese-ocr safely stores your decks in the cloud so you 
+                Jadeocr safely stores your decks in the cloud so you 
                 can review no matter where you are.
               '
             />
@@ -65,7 +65,7 @@
             <Feature name='reactive' :isFirstElement='true'
               title='Reactive UI'
               body="
-                Vue.js powers chinese-ocr's snappy experience that makes 
+                Vue.js powers jadeocr's snappy experience that makes 
                 learning languages (not only Chinese) a joy.
               "
             />
@@ -81,7 +81,7 @@
               body='
                 In the open-source spirit, the
                 code is public on GitHub. Thus,  
-                chinese-ocr will remain free, forever.
+                jadeocr will remain free, forever.
               '
             />
           </div>
