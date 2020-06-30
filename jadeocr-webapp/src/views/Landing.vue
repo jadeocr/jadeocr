@@ -96,7 +96,7 @@
             <p>Tanay Biradar, Riley Kong</p>
             <p>
               This project is licensed under the 
-              <a href='https://github.com/TanayB11/chinese-ocr/blob/master/LICENSE' target="_blank" class='font-normal hoverlink'>
+              <a href='https://github.com/TanayB11/jadeocr/blob/master/LICENSE' target="_blank" class='font-normal hoverlink'>
                 MIT License.
               </a>
             </p>
@@ -106,15 +106,15 @@
             <div class='grid grid-cols-2 lg:grid-cols-1'>
               <div class='col-span-1'>
                 <div>
-                  <a href='https://github.com/TanayB11/chinese-ocr' target="_blank" class="hoverlink">GitHub Repo</a>
+                  <a href='https://github.com/TanayB11/jadeocr' target="_blank" class="hoverlink">GitHub Repo</a>
                 </div>
                 <div>
-                  <a href="https://github.com/TanayB11/chinese-ocr#Donations" target="_blank" class="hoverlink">Donate</a>
+                  <a href="https://github.com/TanayB11/jadeocr#Donations" target="_blank" class="hoverlink">Donate</a>
                 </div>
               </div>
               <div class="col-span-1">
                 <div>
-                  <a href='https://github.com/TanayB11/chinese-ocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms</a>
+                  <a href='https://github.com/TanayB11/jadeocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms</a>
                 </div>
                 <div>
                   <a href='mailto: tanaybiradar24@gmail.com' class="hoverlink">Contact</a>

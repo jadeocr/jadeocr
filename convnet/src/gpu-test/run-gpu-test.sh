@@ -1,5 +1,5 @@
 echo 'Grabbing files...'
-git clone 'https://github.com/TanayB11/chinese-ocr.git'
+git clone 'https://github.com/TanayB11/jadeocr.git'
 cd convnet
 
 echo 'About to install TF GPU and CUDA libraries...'

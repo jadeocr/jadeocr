@@ -1,4 +1,4 @@
-# chinese-ocr-webapp
+# jadeocr-webapp
 
 ## Quickstart
 Run these 3 commands to spin up a quick development instance:
