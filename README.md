@@ -52,7 +52,7 @@ $ yarn lint       # Lints/fixes files
 
 ### Deployment
 ```bash
-$ yarn devbuild   # Builds, deploys to Firebase Hosting, and removes dist
+$ yarn deploy   # Builds, deploys to Firebase Hosting, and removes dist
 ```
 
 
