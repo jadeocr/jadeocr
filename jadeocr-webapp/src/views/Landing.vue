@@ -117,7 +117,7 @@
                   <a href='https://github.com/TanayB11/jadeocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms</a>
                 </div>
                 <div>
-                  <a href='mailto: tanaybiradar24@gmail.com' class="hoverlink">Contact</a>
+                  <a href='mailto: devs@jadeocr.com' class="hoverlink">Contact</a>
                 </div>
               </div>
             </div>

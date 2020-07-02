@@ -84,7 +84,7 @@ Save an image **convnet/data/tests/test.png** that you would like to have the ne
 ## Contribute
 Thank you for reading this far and considering contributing! Contributions are very much appreciated, and they are what makes this project what it is! We are looking for contributions of features/feature requests, bug fixes, documentation fixes, and anything else you can think of! The best contributions are those that will add value to the user experience. If you need to get in touch, please see the [contact/help](#Contact/Help) section.
 
-Please take a look at the information below before contributing. Also, please take a look at the [code of conduct](https://github.com/TanayB11/jadeocr/blob/master/CODE_OF_CONDUCT.md). We expect that you follow these standards, and we will enforce them. Please report any violations by sending me an <a href='mailto: tanaybiradar24@gmail.com'>email</a>. 
+Please take a look at the information below before contributing. Also, please take a look at the [code of conduct](https://github.com/TanayB11/jadeocr/blob/master/CODE_OF_CONDUCT.md). We expect that you follow these standards, and we will enforce them. Please report any violations by sending me an <a href='mailto: devs@jadeocr.com'>email</a>. 
 
 ### Issues
 Browse through the [issues](https://github.com/TanayB11/jadeocr/issues) or submit one. Here are a couple guidelines to follow:
@@ -115,7 +115,7 @@ Thank you so much for taking the time to contribute!
 
 ## Contact/Help
 If you would like to get in touch with me for any (legitimate) reason, please do not hesitate to 
-<a href='mailto: tanaybiradar24@gmail.com'>contact</a> me. If you need more help, please open an issue or send me an email (if an issue isn't appropriate).
+<a href='mailto: devs@jadeocr.com'>contact</a> me. If you need more help, please open an issue or send me an email (if an issue isn't appropriate).
 
 
 ## License
