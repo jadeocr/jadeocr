@@ -100,18 +100,17 @@ Pull requests are also always welcome. Here are a couple simple guidelines:
 * Document your changes adequately when opening a pull request
 
 ### Donations
-If jadeocr has been of some value to you, and if you can afford it, please consider donating. Donations will always first be allocated to the upkeep of the project. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
+If jadeocr has been of some value to you, and if you can afford it, please consider buying us some 奶茶. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
 * BTC: 15Y9NZjxTLWHDU8kVsqN7FKey3c1RPNiFi
-* (We'll add more options soon)
 
 Thank you so much for taking the time to contribute!
 
 
 ## Credits
-* [integeruser on Github](https://github.com/integeruser/CASIA-HWDB1.1-cnn)
-* [想飞的石头在知乎](https://zhuanlan.zhihu.com/p/24698483)
-* [蹦跶的小羊羔在cdsn.net](https://blog.csdn.net/yql_617540298/article/details/82740382)
-* [Suragch on Stack Overflow](https://stackoverflow.com/questions/49047159/spaced-repetition-algorithm-from-supermemo-sm-2)
+* [integeruser](https://github.com/integeruser/CASIA-HWDB1.1-cnn)
+* [想飞的石头](https://zhuanlan.zhihu.com/p/24698483)
+* [蹦跶的小羊羔](https://blog.csdn.net/yql_617540298/article/details/82740382)
+* [Suragch](https://stackoverflow.com/questions/49047159/spaced-repetition-algorithm-from-supermemo-sm-2)
 
 
 ## Contact/Help

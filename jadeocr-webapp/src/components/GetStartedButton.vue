@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<router-link :to='{ name: "login" }'
-		class='chinese opacity-87 btn mt-8 px-3 py-1 text-base 
+		class='chinese btn bg-teal-500 btn mt-8 px-3 py-1 text-base 
 		sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-md'>
 			Get Started | 开始
 		</router-link>
@@ -17,7 +17,7 @@ export default {
 <style scoped>
 .btn{
   animation: 3s btnopacity;
-  background-color: #bb86fc;
+  /* background-color: #bb86fc; */
 }
 
 .btn:hover {
@@ -29,7 +29,7 @@ export default {
     opacity: 0;
   }
   to{
-    opacity: 0.87;
+    opacity: 1;
   }
 }
 </style>

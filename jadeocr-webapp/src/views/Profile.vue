@@ -21,7 +21,7 @@
 				</div>
 				<div>
 					<button @click="downloadJSON()"
-					class='mt-4 btn-blue opacity-87 text-white py-2 px-4 rounded'>
+					class='mt-4 btn btn-blue opacity-87 text-white py-2 px-4 rounded'>
 						Export
 					</button>
 				</div>
