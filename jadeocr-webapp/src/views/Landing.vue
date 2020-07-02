@@ -7,7 +7,7 @@
         </div>
         <div class='opacity-87 col-span-1 text-center lg:text-left -mt-16 md:-mt-24 lg:my-auto lg:ml-8'>
           <div class='mb-6 text-2xl md:text-3xl lg:text-4xl xl:text-5xl'>
-            <p>Learn Chinese</p>
+            <p>Learn languages</p>
             <p class=''>without distractions.</p>
           </div>
           <GetStartedButton/>
@@ -65,8 +65,8 @@
             <Feature name='reactive' :isFirstElement='true'
               title='Reactive UI'
               body="
-                Vue.js powers jadeocr's snappy experience that makes 
-                learning languages (not only Chinese) a joy.
+                Vue.js powers jadeocr's snappy experience, making 
+                learning new languages a joy.
               "
             />
             <Feature name='spaced-repetition' :isFirstElement='false'
@@ -106,7 +106,7 @@
             <div class='grid grid-cols-2 lg:grid-cols-1'>
               <div class='col-span-1'>
                 <div>
-                  <a href='https://github.com/TanayB11/jadeocr' target="_blank" class="hoverlink">GitHub Repo</a>
+                  <a href='https://github.com/TanayB11/jadeocr' target="_blank" class="hoverlink">GitHub</a>
                 </div>
                 <div>
                   <a href="https://github.com/TanayB11/jadeocr#Donations" target="_blank" class="hoverlink">Donate</a>

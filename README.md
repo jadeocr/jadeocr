@@ -1,13 +1,12 @@
 # jadeocr
-Jadeocr is a beautiful web-based [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcard app for learning languages (not just Chinese), complete with handwriting recognition.
+Jadeocr is a beautiful web-based [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcard app for learning languages, complete with handwriting recognition.
 
-This project ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet. Jadeocr makes the language-learning process more fun and more efficient.
+This project ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet. 
 
 
 ## Webapp
-There will be a link to the official deployment here after v1.0 has been released. In the meantime, if you want to get your hands dirty, read on.
+Visit the official deployment of jadeocr at [jadeocr.com](https://jadeocr.com)
 
-### Landing Page
 ![Landing Page](demos/landing-page.png)
 
 
@@ -57,7 +56,7 @@ $ yarn deploy   # Builds, deploys to Firebase Hosting, and removes dist
 
 
 ## OCR CNN
-Currently, jadeocr uses the Google Cloud Vision API to handle handwriting recognition. In the future, we plan to implement custom neural network for better detection of languages not using the Latin script.
+Currently, jadeocr uses the Google Cloud Vision API to handle handwriting recognition. In the future, we would like to implement custom neural network for better detection of languages not using the Latin script.
 
 The OCR neural network is trained on a 100-class subset of the [CASIA Chinese Handwriting Dataset](http://www.nlpr.ia.ac.cn/databases/handwriting/Home.html). To train on the full dataset effectively, it is necessary to have more training examples per class.
 
@@ -123,3 +122,4 @@ If you would like to get in touch with me for any (legitimate) reason, please do
 This repository is licensed under the MIT License.
 
 [Tanay Biradar](https://github.com/TanayB11)
+
