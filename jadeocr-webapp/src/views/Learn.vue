@@ -5,7 +5,7 @@
 		</div>
 		<div class='col-span-1 ml-8 md:ml-0 mt-20 p-8 md:px-8 overflow-x-none overflow-y-auto page-content'>
 			<p class="opacity-87 text-xl lg:text-2xl xl:text-3xl font-normal">Learn</p>
-			<div class="mt-8">
+			<div class="mt-8 md:mt-10">
 				<router-link :to='{ name: "create" }'
 				class='btn bg-teal-500 font-normal opacity-87 text-white py-2 px-4 rounded'>
 					Create Deck

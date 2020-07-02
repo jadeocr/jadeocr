@@ -23,11 +23,11 @@
 				</div>
 				<div class='flex items-center justify-between'>
 					<button @click='signInWithEmail'
-					class='btn-purple opacity-87 text-white py-2 px-4 rounded'>
+					class='btn bg-teal-500 opacity-87 text-white py-2 px-4 rounded'>
 						Sign In
 					</button>
 					<button @click='signUpWithEmail'
-					class='btn-purple opacity-87 text-white py-2 px-4 rounded'>
+					class='btn bg-teal-500 opacity-87 text-white py-2 px-4 rounded'>
 						Sign Up
 					</button>
 				</div>
