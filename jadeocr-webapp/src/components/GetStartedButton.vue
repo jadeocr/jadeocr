@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<router-link :to='{ name: "login" }'
+		<router-link :to='{ name: getStartedLink }'
 		class='chinese btn bg-teal-500 btn mt-8 px-3 py-1 text-base 
 		sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl rounded-md'>
 			Get Started | 开始
@@ -10,7 +10,16 @@
 
 <script>
 export default {
-	name: 'GetStartedButton'
+	name: 'GetStartedButton',
+	data() {
+		return {
+			getStartedLink: 'login'
+		}
+	},
+	mounted() {
+		if (this.$store.state.signedIn) this.getStartedLink = 'learn'
+		else this.getStartedLink = 'login'
+	}
 }
 </script>
 
