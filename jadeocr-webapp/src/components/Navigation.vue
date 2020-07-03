@@ -9,10 +9,6 @@
 <script>
 export default {
 	name: 'Navigation',
-	data(){
-		return {
-		}
-	},
 	computed: {
 		changeRoute() {
 			if (this.$store.state.signedIn) {
