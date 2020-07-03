@@ -11,7 +11,7 @@
 					Create Deck
 				</router-link>
 			</div>
-			<p v-if='$store.state.formSuccess' class='text-green-500 text-base mt-1 -mb-1' id='successField'>{{ $store.state.formSuccess }}</p>
+			<p v-if='$store.state.formSuccess' class='text-green-500 text-base mt-3 -mb-1' id='successField'>{{ $store.state.formSuccess }}</p>
 			<DeckList/>
 		</div>
 	</div>

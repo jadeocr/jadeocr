@@ -1,25 +1,21 @@
 # jadeocr
-Jadeocr is a beautiful web-based [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcard app for learning languages, complete with handwriting recognition.
+Elegant [spaced-repetition](https://en.wikipedia.org/wiki/Spaced_repetition) flashcards with handwriting recognition for learning languages — [jadeocr.com](https://jadeocr.com)
 
-This project ticks all the boxes. It's beautiful, efficient, and effective. Most importantly, it provides handwriting recognition that is crucial for learning languages without an alphabet. 
-
-
-## Webapp
-Visit the official deployment of jadeocr at [jadeocr.com](https://jadeocr.com)
-
-![Landing Page](demos/landing-page.png)
-
-
-## Built With
-* [TensorFlow](https://www.tensorflow.org)
-* [Vue.js](https://vuejs.org)
-* [Firebase](https://firebase.google.com/)
+![Landing Page](demos/creating-decks.gif)
 
 
 ## Features
 * [x] Handwriting recognition
 * [x] Spaced repetition flashcards
-* [x] Support for more languages
+* [x] Multilingual support
+* [x] Elegant UI 
+
+
+## Built With
+* [Keras](https://keras.io)
+* [Vue.js](https://vuejs.org)
+* [Firebase](https://firebase.google.com/)
+* [Node.js](https://nodejs.org)
 
 
 ## Quickstart
