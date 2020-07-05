@@ -114,7 +114,7 @@
               </div>
               <div class="col-span-1">
                 <div>
-                  <a href='https://github.com/TanayB11/jadeocr/blob/master/terms.md' target="_blank" class="hoverlink">Terms</a>
+                  <a href='/terms' target="_blank" class="hoverlink">Terms</a>
                 </div>
                 <div>
                   <a href='mailto: devs@jadeocr.com' class="hoverlink">Contact</a>
