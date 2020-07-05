@@ -5,7 +5,7 @@
     <h2 class="text-xl md:text-2xl lg:text-3xl mt-6 mb-2"> Terms of Use </h2>
     <ol class="list-decimal list-inside mx-4"> 
       <li> 
-        This software is licensed under the <a href="https://github.com/TanayB11/jadeocr/blob/master/terms.md" target="_blank" class="hoverlink"> MIT License</a>. Thus, all terms of the MIT License apply to these terms of use. 
+        This software is licensed under the <router-link to="/terms" target="_blank" class="hoverlink"> MIT License</router-link>. Thus, all terms of the MIT License apply to these terms of use. 
       </li>
       <li> 
         You will not use this software to cause harm to another individual or individuals. (Just in case someone, somehow, figures out a way to.)
