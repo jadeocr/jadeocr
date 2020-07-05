@@ -20,6 +20,11 @@ const routes = [
 		component: () => import('../views/Login')
 	},
 	{
+		path: '/terms',
+		name: 'Terms',
+		component: () => import('../views/Terms')
+	},
+	{
 		path: '/dashboard',
 		redirect: '/dashboard/learn',
 		meta: {
