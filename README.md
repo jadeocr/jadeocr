@@ -98,6 +98,7 @@ Pull requests are also always welcome. Here are a couple simple guidelines:
 If jadeocr has been of some value to you, and if you can afford it, please consider buying us some 奶茶. Your donations will also support the development of new features and code maintenance. Here's how you can donate:
 * BTC: 15Y9NZjxTLWHDU8kVsqN7FKey3c1RPNiFi
 * [Venmo](venmo.com/Tanayb11)
+* [Paypal](https://www.paypal.me/TanB11)
 
 Thank you so much for taking the time to contribute!
 
