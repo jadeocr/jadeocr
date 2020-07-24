@@ -6,10 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "twbuild": "npx tailwind build src/assets/css/styles.css -o src/assets/css/output.css",
     "deploy": "yarn build && firebase deploy && rm -rf dist",
-    "emulate": "firebase emulators:start"
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "emulate": "firebase emulators:start",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "twbuild": "npx tailwind build src/assets/css/styles.css -o src/assets/css/output.css"
   },
+  "main": "background.js",
   "dependencies": {
     "@google-cloud/vision": "^1.11.0",
     "axios": "^0.19.2",
@@ -35,9 +40,12 @@
     "@vue/cli-plugin-vuex": "^4.4.1",
     "@vue/cli-service": "~4.3.0",
     "babel-eslint": "^10.1.0",
+    "electron": "^9.0.0",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
     "tailwindcss": "^1.4.6",
+    "vue-cli-plugin-electron-builder": "~2.0.0-rc.4",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
