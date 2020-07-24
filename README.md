@@ -12,10 +12,11 @@ Elegant [spaced-repetition](https://en.wikipedia.org/wiki/Spaced_repetition) fla
 
 
 ## Built With
-* [Keras](https://keras.io)
+* [Keras](https://keras.io) (model not currently in use)
 * [Vue.js](https://vuejs.org)
 * [Firebase](https://firebase.google.com/)
 * [Node.js](https://nodejs.org)
+* [Electron](https://www.electronjs.org/) (desktop app only)
 
 
 ## Quickstart
@@ -24,6 +25,7 @@ In the **jadeocr-webapp** directory, run the following to quickly spin up a deve
 $ yarn install    # Installs dependencies
 $ yarn twbuild    # Builds Tailwind CSS files
 $ yarn serve      # Compiles/hot-reloads dev server
+$ yarn electron:serve # Compiles/hot-reloads desktop app
 ```
 
 ### Adding Firebase
@@ -41,14 +43,24 @@ export default {
 ### Development
 ```bash
 $ yarn serve      # Compiles/hot-reloads dev server
+$ yarn electron:serve # Compiles/hot-reloads desktop app
 $ yarn build      # Compiles/minifies -> dist for production
+$ yarn electron:build # Builds and packages desktop app
 $ yarn lint       # Lints/fixes files
 ```
 
 ### Deployment
 ```bash
 $ yarn deploy   # Builds, deploys to Firebase Hosting, and removes dist
+$ yarn electron:build # Builds and packages desktop app
 ```
+
+## Desktop App
+There is an experimental (cross-platform) electron desktop application should you choose to use it. There are a few caveats:
+* It acts basically the same as the website
+	* This means no optimizations for desktop have yet been made (removing landing screen, tweaking UI, etc.)
+* Only supports sign in with email and password
+	* This is likely a Firebase issue that we might work on in the future to add Google sign-in
 
 
 ## OCR CNN
