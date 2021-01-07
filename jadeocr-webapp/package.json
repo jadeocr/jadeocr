@@ -18,7 +18,7 @@
   "main": "background.js",
   "dependencies": {
     "@google-cloud/vision": "^1.11.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap-icons": "^1.0.0-alpha4",
     "core-js": "^3.6.4",
     "file-saver": "^2.0.2",
