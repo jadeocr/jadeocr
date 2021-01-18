@@ -3,6 +3,7 @@ Elegant [spaced-repetition](https://en.wikipedia.org/wiki/Spaced_repetition) fla
 
 ![Landing Page](demos/creating-decks.gif)
 
+Jadeocr has won the [3rd place award](https://eshoo.house.gov/constituent-services/house-student-app-challenge) in the CA18 Congressional App Challenge!
 
 ## Features
 * [x] Handwriting recognition
