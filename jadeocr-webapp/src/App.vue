@@ -1,5 +1,9 @@
 <template>
 	<div id='app'>
+    <div class="p-4 text-center text-gray-200 bg-gray-800">
+      This is the original version of jadeocr. See the new version 
+      <a class="font-normal hover:opacity-75" href="https://github.com/jadeocr/jadeocr-next">here</a>
+    </div>
 		<Navigation/>
 		<router-view/>
 	</div>

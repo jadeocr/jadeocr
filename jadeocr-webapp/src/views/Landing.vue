@@ -1,11 +1,11 @@
 <template>
 	<div id='landing'>
     <div id='intro' class='h-screen'>
-      <div class='title-container slide container opacity-87 font-light grid grid-cols-1 lg:grid-cols-2 m-auto'>
+      <div class='container m-auto font-light title-container slide opacity-87 grid grid-cols-1 lg:grid-cols-2'>
         <div class='col-span-1'>
           <img src='../assets/title-image.png' alt='An image of the Chinese character 文, meaning "written language"'>
         </div>
-        <div class='opacity-87 col-span-1 text-center lg:text-left -mt-16 md:-mt-24 lg:my-auto lg:ml-8'>
+        <div class='-mt-16 text-center opacity-87 col-span-1 lg:text-left md:-mt-24 lg:my-auto lg:ml-8'>
           <div class='mb-6 text-2xl md:text-3xl lg:text-4xl xl:text-5xl'>
             <p>Learn languages</p>
             <p class=''>without distractions.</p>
@@ -15,7 +15,7 @@
       </div>
       <div class='slide grid grid-rows-1'>
         <div @click='scrollDown' id='scroll-cue'
-        class="row-span-1 m-auto opacity-75 mt-8 lg:-mt-8 hoverlink">
+        class="m-auto mt-8 opacity-75 row-span-1 lg:-mt-8 hoverlink">
           <svg class="bi bi-chevron-down" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
           </svg>
@@ -24,11 +24,11 @@
     </div>
     <div id='about' class='py-4'>
       <div class="mt-4 md:mt-12">
-        <div class="text-lg md:text-2xl lg:text-3xl opacity-87 px-8 text-center">
+        <div class="px-8 text-lg text-center md:text-2xl lg:text-3xl opacity-87">
           <p>The perfect language learning system didn't exist...</p>
           <p>until now.</p>
         </div>
-        <div class='mt-6 text-sm md:text-lg lg:text-xl opacity-87 px-3 text-center'>
+        <div class='px-3 mt-6 text-sm text-center md:text-lg lg:text-xl opacity-87'>
           <div>
             Learn languages with 
             <a href="https://en.wikipedia.org/wiki/Spaced_repetition" target="_blank" class="font-normal hoverlink">spaced repetition</a>
@@ -36,8 +36,7 @@
           </div>
           <p>and practice writing with built-in handwriting recognition.</p>
         </div>
-        <div class="lg:mt-10 w-1/2 m-auto flex justify-center items-center
-        grid grid-rows-8 grid-cols-1 lg:grid-cols-2 text-md md:text-lg">
+        <div class="flex items-center justify-center w-1/2 m-auto lg:mt-10 grid grid-rows-8 grid-cols-1 lg:grid-cols-2 text-md md:text-lg">
           <div class="col-span-1 lg:pr-8">
             <Feature name='minimalist' :isFirstElement='true'
               title='Minimalist Design'
@@ -89,11 +88,11 @@
       </div>
     </div>
     <div class="footer mt-24">
-      <hr class="opacity-25">
+    <div class="mt-24 footer">
       <div id="footer-content" class='py-8 text-xs lg:text-sm'>
         <div class="text-center grid grid-cols-1 lg:grid-cols-2 opacity-87">
           <div class="col-span-1 w-1/2 m-auto text-center">
-            <p>Tanay Biradar, Riley Kong</p>
+          <div class="w-1/2 m-auto text-center col-span-1">
             <p>
               This project is licensed under the 
               <a href='https://github.com/TanayB11/jadeocr/blob/master/LICENSE' target="_blank" class='font-normal hoverlink'>
@@ -103,7 +102,7 @@
           </div>
           <!-- Make 2 more cols on small displays -->
           <div class="col-span-1 w-1/2 m-auto mt-4 lg:mt-0 text-center font-normal">
-            <div class='grid grid-cols-2 lg:grid-cols-1'>
+          <div class="w-1/2 m-auto mt-4 font-normal text-center col-span-1 lg:mt-0">
               <div class='col-span-1'>
                 <div>
                   <a href='https://github.com/TanayB11/jadeocr' target="_blank" class="hoverlink">GitHub</a>
